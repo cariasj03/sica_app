@@ -1,0 +1,107 @@
+.page-body {
+  display: flex;
+  flex-direction: column;
+  width: 80%;
+  margin: 0 20px;
+  margin-top: 20px;
+}
+
+.page-content {
+  display: flex;
+  height: 100%;
+  width: 100%;
+  justify-content: flex-start;
+  gap: 40px;
+}
+
+.filters {
+  display: flex;
+  flex-direction: column;
+  border: 1px solid #ddd;
+  border-radius: 8px;
+  padding: 10px 20px;
+  margin-bottom: 10px;
+  width: 220px;
+}
+
+label {
+  margin-left: 5px;
+}
+
+hr {
+  color: #444;
+  margin: 5px 0;
+}
+
+select {
+  cursor: pointer;
+}
+
+select,
+input:not([type="radio"]) {
+  width: 100%;
+  padding: 5px;
+  margin: 5px 0;
+}
+
+input[type="search"] {
+  background-image: url("/svg/search_icon.svg");
+  background-position: 8px center;
+  background-size: 20px 20px;
+  background-repeat: no-repeat;
+  padding: 5px 5px 5px 35px;
+}
+
+input[type="search"]:focus {
+  border: 1px solid #444;
+  outline: none;
+}
+
+.table-container {
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-start;
+  gap: 15px;
+  margin: 0 20px;
+  width: 100%;
+}
+
+.tablas {
+  border-collapse: collapse;
+  width: 100%;
+}
+
+.tablas td,
+.tablas th {
+  border: 1px solid #ddd;
+  padding: 8px;
+  text-align: left;
+}
+
+.tablas th {
+  background-color: #f7f7f7;
+}
+
+.tablas tr:hover,
+.selected-row {
+  background-color: #eff3e4;
+}
+
+.pagination-container {
+  display: flex;
+  justify-content: center;
+}
+
+.pagination-container a {
+  padding: 8px 14px;
+  border-radius: 5px;
+}
+
+.pagination-container a.active-page {
+  background-color: #798754;
+  color: white;
+}
+
+.pagination-container a:hover:not(.active-page) {
+  background-color: #eff3e4;
+}

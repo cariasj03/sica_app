@@ -1,0 +1,40 @@
+.page-body {
+  display: flex;
+  flex-direction: column;
+  width: 700px;
+  margin: 0 20px;
+  margin-top: 20px;
+}
+
+input,
+textarea,
+select {
+  display: block;
+  padding: 8px;
+  width: 100%;
+  margin-bottom: 15px;
+}
+
+label {
+  display: inline-block;
+  margin-left: 8px;
+  margin-bottom: 5px;
+}
+
+textarea {
+  background-color: #eeeeee;
+  border: none;
+  border-radius: 8px;
+}
+
+select {
+  cursor: pointer;
+}
+
+form p {
+  margin-bottom: 15px;
+}
+
+#registrar-activo {
+  align-self: flex-end;
+}

@@ -1,0 +1,275 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;700&display=swap"
+      rel="stylesheet"
+    />
+    <link
+      rel="stylesheet"
+      href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@20..48,100..700,0..1,-50..200"
+    />
+    <link href="/svg/sica_favicon.svg" rel="icon" />
+    <link href="/css/style.css" rel="stylesheet" />
+    <link href="/css/table_pages.css" rel="stylesheet" />
+    <title>SICA - Activos</title>
+  </head>
+
+  <body>
+    <header class="main-header">
+      <div class="header-tabs">
+        <a href="/html/index.html"
+          ><img
+            class="header-logo, pointer"
+            src="/svg/sica_logo_horizontal.svg"
+            height="40px"
+        /></a>
+
+        <nav class="header-nav bar-nav">
+          <a href="/html/index.html">Inicio</a>
+          <a class="current-tab" href="/html/activos.html">Activos</a>
+          <a href="#">Solicitudes</a>
+          <a href="#">Reportes</a>
+        </nav>
+      </div>
+
+      <div class="header-icons">
+        <a href="#"
+          ><span class="material-symbols-outlined"> settings </span></a
+        >
+        <a href="#"
+          ><span class="material-symbols-outlined"> account_box </span></a
+        >
+        <a href="#"><span class="material-symbols-outlined"> logout </span></a>
+      </div>
+    </header>
+
+    <main class="main-container">
+      <nav class="side-nav bar-nav">
+        <a class="current-tab" href="/html/activos.html">Activos</a>
+        <a href="/html/registro_activos.html">Registro de activos</a>
+      </nav>
+
+      <div class="page-body">
+        <h1>Activos</h1>
+        <div class="page-content">
+          <div>
+            <h2>Filtros</h2>
+            <div class="filters">
+              <h3>Ordenar por</h3>
+
+              <label for="id-radio"
+                ><input
+                  type="radio"
+                  id="id-radio"
+                  name="sort-radio"
+                  value="ID"
+                />
+                ID</label
+              >
+              <label for="nombre-radio"
+                ><input
+                  type="radio"
+                  id="nombre-radio"
+                  name="sort-radio"
+                  value="nombre"
+                />
+                Nombre</label
+              >
+              <label for="unidad-radio"
+                ><input
+                  type="radio"
+                  id="unidad-radio"
+                  name="sort-radio"
+                  value="unidad"
+                />
+                Unidad</label
+              >
+              <label for="estado-radio"
+                ><input
+                  type="radio"
+                  id="estado-radio"
+                  name="sort-radio"
+                  value="estado"
+                />
+                Estado</label
+              >
+
+              <hr />
+
+              <h3>Filtrar por</h3>
+              <label for="unidad-select"
+                >Unidad<select id="unidad-select">
+                  <option value="" disabled selected hidden>Unidad</option>
+                  <option value="bodega">Bodega</option>
+                  <option value="cartago">Cartago</option>
+                  <option value="heredia">Heredia</option>
+                </select></label
+              >
+              <label for="estado-select"
+                >Estado<select id="estado-select">
+                  <option value="" disabled selected hidden>Estado</option>
+                  <option value="activo">Activo</option>
+                  <option value="desuso">Desuso</option>
+                  <option value="danado">Dañado</option>
+                </select></label
+              >
+
+              <hr />
+
+              <h3>Buscar por</h3>
+              <label for="id-search"
+                >ID<input
+                  type="search"
+                  id="id-search"
+                  name="id-search"
+                  placeholder="ID"
+              /></label>
+              <label for="nombre-search"
+                >Nombre<input
+                  type="search"
+                  id="nombre-search"
+                  name="nombre-search"
+                  placeholder="Nombre"
+              /></label>
+            </div>
+          </div>
+
+          <div class="table-container">
+            <table class="tablas">
+              <tr>
+                <th></th>
+                <th>ID</th>
+                <th>Nombre</th>
+                <th>Unidad</th>
+                <th>Código de ubicación</th>
+                <th>Estado</th>
+              </tr>
+
+              <tr class="selected-row">
+                <td>
+                  <input type="radio" name="table-radio" />
+                </td>
+                <td>000001</td>
+                <td>Impresora EPSON F570</td>
+                <td>Heredia</td>
+                <td>PROHERPIS306</td>
+                <td>Activo</td>
+              </tr>
+
+              <tr>
+                <td><input type="radio" name="table-radio" /></td>
+                <td>000002</td>
+                <td>Monitor LG IPS</td>
+                <td>Bodega</td>
+                <td>PROBODPIS103</td>
+                <td>Desuso</td>
+              </tr>
+
+              <tr>
+                <td><input type="radio" name="table-radio" /></td>
+                <td>000003</td>
+                <td>UPS APC LS1200</td>
+                <td>Cartago</td>
+                <td>PROCARPIS201</td>
+                <td>Activo</td>
+              </tr>
+
+              <tr>
+                <td><input type="radio" name="table-radio" /></td>
+                <td></td>
+                <td></td>
+                <td></td>
+                <td></td>
+                <td></td>
+              </tr>
+
+              <tr>
+                <td><input type="radio" name="table-radio" /></td>
+                <td></td>
+                <td></td>
+                <td></td>
+                <td></td>
+                <td></td>
+              </tr>
+
+              <tr>
+                <td><input type="radio" name="table-radio" /></td>
+                <td></td>
+                <td></td>
+                <td></td>
+                <td></td>
+                <td></td>
+              </tr>
+
+              <tr>
+                <td><input type="radio" name="table-radio" /></td>
+                <td></td>
+                <td></td>
+                <td></td>
+                <td></td>
+                <td></td>
+              </tr>
+
+              <tr>
+                <td><input type="radio" name="table-radio" /></td>
+                <td></td>
+                <td></td>
+                <td></td>
+                <td></td>
+                <td></td>
+              </tr>
+
+              <tr>
+                <td><input type="radio" name="table-radio" /></td>
+                <td></td>
+                <td></td>
+                <td></td>
+                <td></td>
+                <td></td>
+              </tr>
+
+              <tr>
+                <td><input type="radio" name="table-radio" /></td>
+                <td></td>
+                <td></td>
+                <td></td>
+                <td></td>
+                <td></td>
+              </tr>
+            </table>
+
+            <div class="pagination-container">
+              <a href="#">&lt;</a>
+              <a href="#" class="active-page">1</a>
+              <a href="#">2</a>
+              <a href="#">3</a>
+              <a href="#">4</a>
+              <a href="#">5</a>
+              <a href="#">6</a>
+              <a href="#"> &gt;</a>
+            </div>
+
+            <div class="button-container">
+              <a href="/html/index.html"
+                ><button class="primary-button">Ver o editar</button></a
+              >
+              <a href="/html/index.html"
+                ><button class="primary-button">Trasladar</button></a
+              >
+            </div>
+          </div>
+        </div>
+      </div>
+    </main>
+
+    <footer class="footer">
+      <p class="copyright-text">Copyright &copy; 2023 by Beelders.</p>
+    </footer>
+  </body>
+</html>
