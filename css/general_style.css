@@ -95,7 +95,14 @@ body {
 
 .main-container {
   display: flex;
-  height: 100%;
+  flex: 1 1 auto;
+}
+
+.page-body {
+  display: flex;
+  flex-direction: column;
+  flex: 1 1 auto;
+  margin: 20px 20px;
 }
 
 .side-nav {
@@ -103,7 +110,6 @@ body {
   border-right: 1px solid #ddd;
   flex-direction: column;
   width: 200px;
-  height: 100%;
 }
 
 button {
@@ -116,6 +122,13 @@ input:not([type="radio"]) {
   background-color: #eeeeee;
   border: none;
   border-radius: 8px;
+}
+
+input:focus,
+select:focus,
+textarea:focus {
+  border: 1px solid #444;
+  outline: none;
 }
 
 .primary-button {
@@ -136,14 +149,18 @@ input:not([type="radio"]) {
 }
 
 .footer {
-  margin-top: auto;
   border-top: 1px solid #ddd;
   background-color: #f7f7f7;
   color: #444;
-  padding: 10px 0;
+  height: 30px;
   display: flex;
+  flex: 0 0 auto;
   justify-content: center;
   align-items: center;
+}
+
+.index-footer {
+  margin-top: auto;
 }
 
 .copyright-text {

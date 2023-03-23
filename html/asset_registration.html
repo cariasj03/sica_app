@@ -59,25 +59,29 @@
 
       <div class="page-body">
         <h1>Registro de un activo</h1>
-        <form>
+        <form id="form">
           <label for="asset-name">Nombre del activo * </label>
           <input
+          class="input-style error-border"
             type="text"
             id="asset-name"
             name="asset-name"
             placeholder="Nombre del activo"
           />
+          <p class="form-input-error" id="asset-name-error"></p>
 
           <label for="asset-description">Descripción del activo * </label>
           <textarea
+          class="input-style"
             id="asset-description"
             name="asset-description"
             rows="4"
             placeholder="Descripción del activo"
           ></textarea>
+          <p class="form-input-error" id="asset-description-error"></p>
 
           <label for="unit-select">Unidad en la que está ubicado *</label>
-          <select id="unit-select">
+          <select id="unit-select" class="input-style">
             <option value="" disabled selected hidden>
               Unidad en la que está ubicado
             </option>
@@ -88,13 +92,16 @@
 
           <label for="asset-location">Ubicación del activo * </label>
           <input
+          class="input-style"
             type="text"
             id="asset-location"
             name="asset-location"
             placeholder="Ubicación del activo"
           />
+          <p class="form-input-error" id="asset-location-error"></p>
+
           <label for="status-select">Estado *</label>
-          <select id="status-select">
+          <select id="status-select" class="input-style">
             <option value="" disabled selected hidden>Estado</option>
             <option value="activo">Activo</option>
             <option value="desuso">Desuso</option>
@@ -104,11 +111,9 @@
           <p>* Campos obligatorios</p>
 
           <div class="button-container">
-            <a href="#"
-              ><button type="button" id="register-asset" class="primary-button">
-                Registrar activo
-              </button></a
-            >
+            <button type="submit" id="register-asset" class="primary-button">
+              Registrar activo
+            </button>
           </div>
         </form>
       </div>
@@ -117,5 +122,7 @@
     <footer class="footer">
       <p class="copyright-text">Copyright &copy; 2023 by Beelders.</p>
     </footer>
+
+    <script src="/js/form_validation.js""></script>
   </body>
 </html>
