@@ -66,23 +66,23 @@ input[type="search"]:focus {
   width: 100%;
 }
 
-.tablas {
+.tables {
   border-collapse: collapse;
   width: 100%;
 }
 
-.tablas td,
-.tablas th {
+.tables td,
+.tables th {
   border: 1px solid #ddd;
   padding: 8px;
   text-align: left;
 }
 
-.tablas th {
+.tables th {
   background-color: #f7f7f7;
 }
 
-.tablas tr:hover,
+.tables tr:hover,
 .selected-row {
   background-color: #eff3e4;
 }
