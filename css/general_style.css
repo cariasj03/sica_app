@@ -166,3 +166,11 @@ textarea:focus {
 .copyright-text {
   font-size: 12px;
 }
+
+.logo_reports{
+  width: 100%;
+  max-width: 400px;
+  height: auto;
+  margin: auto;  
+  padding: 10px;
+}
