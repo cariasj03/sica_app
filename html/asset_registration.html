@@ -62,7 +62,7 @@
         <form id="form">
           <label for="asset-name">Nombre del activo * </label>
           <input
-          class="input-style error-border"
+            class="input-style error-border"
             type="text"
             id="asset-name"
             name="asset-name"
@@ -72,7 +72,7 @@
 
           <label for="asset-description">Descripción del activo * </label>
           <textarea
-          class="input-style"
+            class="input-style"
             id="asset-description"
             name="asset-description"
             rows="4"
@@ -80,19 +80,27 @@
           ></textarea>
           <p class="form-input-error" id="asset-description-error"></p>
 
-          <label for="unit-select">Unidad en la que está ubicado *</label>
-          <select id="unit-select" class="input-style">
+          <label for="asset-unit">Unidad en la que está ubicado *</label>
+          <select id="asset-unit" class="input-style">
             <option value="" disabled selected hidden>
               Unidad en la que está ubicado
             </option>
             <option value="bodega">Bodega</option>
+            <option value="Donaciones">Donaciones</option>
+            <option value="central">Central</option>
+            <option value="sanJose">San José</option>
+            <option value="alajuela">Alajuela</option>
             <option value="cartago">Cartago</option>
             <option value="heredia">Heredia</option>
+            <option value="guanacaste">Guanacaste</option>
+            <option value="puntarenas">Puntarenas</option>
+            <option value="limon">Limón</option>
           </select>
+          <p class="form-input-error" id="asset-unit-error"></p>
 
           <label for="asset-location">Ubicación del activo * </label>
           <input
-          class="input-style"
+            class="input-style"
             type="text"
             id="asset-location"
             name="asset-location"
@@ -100,13 +108,14 @@
           />
           <p class="form-input-error" id="asset-location-error"></p>
 
-          <label for="status-select">Estado *</label>
-          <select id="status-select" class="input-style">
+          <label for="asset-status">Estado *</label>
+          <select id="asset-status" class="input-style">
             <option value="" disabled selected hidden>Estado</option>
             <option value="activo">Activo</option>
             <option value="desuso">Desuso</option>
             <option value="danado">Dañado</option>
           </select>
+          <p class="form-input-error" id="asset-status-error"></p>
 
           <p>* Campos obligatorios</p>
 
@@ -123,6 +132,8 @@
       <p class="copyright-text">Copyright &copy; 2023 by Beelders.</p>
     </footer>
 
-    <script src="/js/form_validation.js""></script>
+    <script src="/js/form_validation.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+    <script src="/js/sweet_alert.js"></script>
   </body>
 </html>
