@@ -21,24 +21,24 @@
   </head>
 
   <body>
-    <header class="main-header">
-      <div class="header-tabs">
+    <header class="mainHeader">
+      <div class="headerTabs">
         <a href="/html/index.html"
           ><img
-            class="header-logo, pointer"
+            class="headerLogo, pointer"
             src="/svg/sica_horizontal_logo.svg"
             height="40px"
         /></a>
         <!-- Tabs de arriba -->
-        <nav class="header-nav bar-nav">
-            <a href="/html/index.html">Inicio</a>
-            <a href="/html/assets.html">Activos</a>
-            <a href="#">Solicitudes</a>
-            <a class="current-tab" href="/html/reports.html">Reportes</a>
+        <nav class="headerNav barNav">
+          <a href="/html/index.html">Inicio</a>
+          <a href="/html/assets.html">Activos</a>
+          <a href="#">Solicitudes</a>
+          <a class="currentTab" href="/html/reports.html">Reportes</a>
         </nav>
       </div>
 
-      <div class="header-icons">
+      <div class="headerIcons">
         <a href="#"
           ><span class="material-symbols-outlined"> settings </span></a
         >
@@ -49,56 +49,53 @@
       </div>
     </header>
     <!-- Reportes -->
-    <main class="main-container">
-      <nav class="side-nav bar-nav">
+    <main class="mainContainer">
+      <nav class="sideNav barNav">
         <a href="/html/reports_users.html">Usuarios</a>
         <a href="/html/reports_sides.html">Unidades</a>
         <a href="/html/reports_assets.html">Activos por unidad</a>
         <a href="/html/reports_warehouse.html">Bodega</a>
         <a href="/html/reports_donations.html">Donaciones</a>
-        <a class="current-tab" href="/html/reports_history_assets.html">Histórico de movimientos de activos</a>
+        <a class="currentTab" href="/html/reports_history_assets.html"
+          >Histórico de movimientos de activos</a
+        >
       </nav>
 
-      <div class="page-body">
+      <div class="pageBody">
         <h1>Reporte de histórico de movimientos de activos</h1>
-        <div class="page-content">
+        <div class="pageContent">
           <div>
             <h2>Filtros</h2>
             <div class="filters">
               <h3>Ordenar por</h3>
 
-              <label for="id-radio"
-                ><input
-                  type="radio"
-                  id="id-radio"
-                  name="sort-radio"
-                  value="ID"
-                />
+              <label for="idRadio"
+                ><input type="radio" id="idRadio" name="sortRadio" value="ID" />
                 ID</label
               >
-              <label for="name-radio"
+              <label for="nameRadio"
                 ><input
                   type="radio"
-                  id="name-radio"
-                  name="sort-radio"
+                  id="nameRadio"
+                  name="sortRadio"
                   value="nombre"
                 />
                 Nombre</label
               >
-              <label for="unit-radio"
+              <label for="unitRadio"
                 ><input
                   type="radio"
-                  id="unit-radio"
-                  name="sort-radio"
+                  id="unitRadio"
+                  name="sortRadio"
                   value="unidad"
                 />
                 Unidad</label
               >
-              <label for="status-radio"
+              <label for="statusRadio"
                 ><input
                   type="radio"
-                  id="status-radio"
-                  name="sort-radio"
+                  id="statusRadio"
+                  name="sortRadio"
                   value="estado"
                 />
                 Estado</label
@@ -107,16 +104,16 @@
               <hr />
 
               <h3>Filtrar por</h3>
-              <label for="unit-select"
-                >Unidad<select id="unit-select">
+              <label for="unitSelect"
+                >Unidad<select id="unitSelect">
                   <option value="" disabled selected hidden>Unidad</option>
                   <option value="bodega">Bodega</option>
                   <option value="cartago">Cartago</option>
                   <option value="heredia">Heredia</option>
                 </select></label
               >
-              <label for="status-select"
-                >Estado<select id="status-select">
+              <label for="statusSelect"
+                >Estado<select id="statusSelect">
                   <option value="" disabled selected hidden>Estado</option>
                   <option value="activo">Activo</option>
                   <option value="desuso">Desuso</option>
@@ -127,24 +124,24 @@
               <hr />
 
               <h3>Buscar por</h3>
-              <label for="id-search"
+              <label for="idSearch"
                 >ID<input
                   type="search"
-                  id="id-search"
-                  name="id-search"
+                  id="idSearch"
+                  name="idSearch"
                   placeholder="ID"
               /></label>
-              <label for="name-search"
+              <label for="nameSearch"
                 >Nombre<input
                   type="search"
-                  id="name-search"
-                  name="name-search"
+                  id="nameSearch"
+                  name="nameSearch"
                   placeholder="Nombre"
               /></label>
             </div>
           </div>
 
-          <div class="table-container">
+          <div class="tableContainer">
             <table class="tables">
               <tr>
                 <th></th>
@@ -155,9 +152,9 @@
                 <th>Estado</th>
               </tr>
 
-              <tr class="selected-row">
+              <tr class="selectedRow">
                 <td>
-                  <input type="radio" name="table-radio" />
+                  <input type="radio" name="tableRadio" />
                 </td>
                 <td>000001</td>
                 <td>Impresora EPSON F570</td>
@@ -167,7 +164,7 @@
               </tr>
 
               <tr>
-                <td><input type="radio" name="table-radio" /></td>
+                <td><input type="radio" name="tableRadio" /></td>
                 <td>000002</td>
                 <td>Monitor LG IPS</td>
                 <td>Bodega</td>
@@ -176,7 +173,7 @@
               </tr>
 
               <tr>
-                <td><input type="radio" name="table-radio" /></td>
+                <td><input type="radio" name="tableRadio" /></td>
                 <td>000003</td>
                 <td>UPS APC LS1200</td>
                 <td>Cartago</td>
@@ -185,7 +182,7 @@
               </tr>
 
               <tr>
-                <td><input type="radio" name="table-radio" /></td>
+                <td><input type="radio" name="tableRadio" /></td>
                 <td></td>
                 <td></td>
                 <td></td>
@@ -194,7 +191,7 @@
               </tr>
 
               <tr>
-                <td><input type="radio" name="table-radio" /></td>
+                <td><input type="radio" name="tableRadio" /></td>
                 <td></td>
                 <td></td>
                 <td></td>
@@ -203,7 +200,7 @@
               </tr>
 
               <tr>
-                <td><input type="radio" name="table-radio" /></td>
+                <td><input type="radio" name="tableRadio" /></td>
                 <td></td>
                 <td></td>
                 <td></td>
@@ -212,7 +209,7 @@
               </tr>
 
               <tr>
-                <td><input type="radio" name="table-radio" /></td>
+                <td><input type="radio" name="tableRadio" /></td>
                 <td></td>
                 <td></td>
                 <td></td>
@@ -221,7 +218,7 @@
               </tr>
 
               <tr>
-                <td><input type="radio" name="table-radio" /></td>
+                <td><input type="radio" name="tableRadio" /></td>
                 <td></td>
                 <td></td>
                 <td></td>
@@ -230,7 +227,7 @@
               </tr>
 
               <tr>
-                <td><input type="radio" name="table-radio" /></td>
+                <td><input type="radio" name="tableRadio" /></td>
                 <td></td>
                 <td></td>
                 <td></td>
@@ -239,7 +236,7 @@
               </tr>
 
               <tr>
-                <td><input type="radio" name="table-radio" /></td>
+                <td><input type="radio" name="tableRadio" /></td>
                 <td></td>
                 <td></td>
                 <td></td>
@@ -248,9 +245,9 @@
               </tr>
             </table>
 
-            <div class="pagination-container">
+            <div class="paginationContainer">
               <a href="#">&lt;</a>
-              <a href="#" class="active-page">1</a>
+              <a href="#" class="activePage">1</a>
               <a href="#">2</a>
               <a href="#">3</a>
               <a href="#">4</a>
@@ -259,12 +256,12 @@
               <a href="#"> &gt;</a>
             </div>
             <!--  -->
-            <div class="button-container">
+            <div class="buttonContainer">
               <a href="/html/index.html"
-                ><button class="primary-button">Ver o editar</button></a
+                ><button class="primaryButton">Ver o editar</button></a
               >
               <a href="/html/index.html"
-                ><button class="primary-button">Trasladar</button></a
+                ><button class="primaryButton">Trasladar</button></a
               >
             </div>
           </div>
@@ -273,7 +270,7 @@
     </main>
 
     <footer class="footer">
-      <p class="copyright-text">Copyright &copy; 2023 by Beelders.</p>
+      <p class="copyrightText">Copyright &copy; 2023 by Beelders.</p>
     </footer>
   </body>
 </html>

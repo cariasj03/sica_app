@@ -1,4 +1,4 @@
-.page-body {
+.pageBody {
   max-width: 700px;
 }
 
@@ -31,11 +31,11 @@ form p {
   margin-bottom: 15px;
 }
 
-#registrar-activo {
+#registerAsset {
   align-self: flex-end;
 }
 
-.form-input-error {
+.formInputError {
   font-size: 12px;
   margin-bottom: 10px;
   margin-left: 8px;
@@ -43,6 +43,18 @@ form p {
   display: none;
 }
 
-.form-input-error-active {
+.formInputErrorActive {
   display: block;
+}
+
+.sideImgContainer {
+  width: 50%;
+  display: flex;
+  align-items: center;
+  background-color: #c6d4a1;
+}
+
+.signupContainer {
+  width: 50%;
+  margin: 20px;
 }

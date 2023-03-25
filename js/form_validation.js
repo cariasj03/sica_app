@@ -22,13 +22,13 @@ const assetRegistrationFields = {
 const validateForm = function (event) {
   const elementId = event.target.id;
   const elementValue = event.target.value;
-  const errorActiveClass = "form-input-error-active";
+  const errorActiveClass = "formInputErrorActive";
 
   switch (elementId) {
-    case "asset-name":
+    case "assetName":
       validateField(elementId, elementValue, errorActiveClass, "assetName");
       break;
-    case "asset-description":
+    case "assetDescription":
       validateField(
         elementId,
         elementValue,
@@ -36,13 +36,13 @@ const validateForm = function (event) {
         "assetDescription"
       );
       break;
-    case "asset-unit":
+    case "assetUnit":
       validateField(elementId, elementValue, errorActiveClass, "assetUnit");
       break;
-    case "asset-location":
+    case "assetLocation":
       validateField(elementId, elementValue, errorActiveClass, "assetLocation");
       break;
-    case "asset-status":
+    case "assetStatus":
       validateField(elementId, elementValue, errorActiveClass, "assetStatus");
       break;
   }
@@ -55,19 +55,17 @@ const validateField = function (
   errorActiveClass,
   field
 ) {
-  console.log(assetRegistrationFields);
-
   //Validates if the input field is empty
   if (!expressions.empty.test(elementValue)) {
-    document.getElementById(`${elementId}-error`).innerHTML =
+    document.getElementById(`${elementId}Error`).innerHTML =
       "Este es un campo obligatorio.";
     document
-      .getElementById(`${elementId}-error`)
+      .getElementById(`${elementId}Error`)
       .classList.add(errorActiveClass);
     assetRegistrationFields[field] = false;
   } else {
     document
-      .getElementById(`${elementId}-error`)
+      .getElementById(`${elementId}Error`)
       .classList.remove(errorActiveClass);
     assetRegistrationFields[field] = true;
   }

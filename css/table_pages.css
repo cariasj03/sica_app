@@ -1,4 +1,4 @@
-.page-content {
+.pageContent {
   display: flex;
   height: 100%;
   width: 100%;
@@ -44,7 +44,7 @@ input[type="search"] {
   padding: 5px 5px 5px 35px;
 }
 
-.table-container {
+.tableContainer {
   display: flex;
   flex-direction: column;
   justify-content: flex-start;
@@ -70,25 +70,25 @@ input[type="search"] {
 }
 
 .tables tr:hover,
-.selected-row {
+.selectedRow {
   background-color: #eff3e4;
 }
 
-.pagination-container {
+.paginationContainer {
   display: flex;
   justify-content: center;
 }
 
-.pagination-container a {
+.paginationContainer a {
   padding: 8px 14px;
   border-radius: 5px;
 }
 
-.pagination-container a.active-page {
+.paginationContainer a.activePage {
   background-color: #798754;
   color: white;
 }
 
-.pagination-container a:hover:not(.active-page) {
+.paginationContainer a:hover:not(.activePage) {
   background-color: #eff3e4;
 }
