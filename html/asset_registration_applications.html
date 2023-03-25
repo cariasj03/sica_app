@@ -17,7 +17,7 @@
     <link href="/svg/sica_favicon.svg" rel="icon" />
     <link href="/css/general_style.css" rel="stylesheet" />
     <link href="/css/table_pages.css" rel="stylesheet" />
-    <title>SICA - Reportes</title>
+    <title>SICA - Activos</title>
   </head>
 
   <body>
@@ -29,12 +29,12 @@
             src="/svg/sica_horizontal_logo.svg"
             height="40px"
         /></a>
-        <!-- Tabs de arriba -->
+
         <nav class="headerNav barNav">
           <a href="/html/index.html">Inicio</a>
-          <a href="/html/assets.html">Activos</a>
-          <a href="/html/requests.html">Solicitudes</a>
-          <a class="currentTab" href="/html/reports.html">Reportes</a>
+          <a  href="/html/assets.html">Activos</a>
+          <a class="currentTab" href="/html/requests.html">Solicitudes</a>
+          <a href="/html/reports.html">Reportes</a>
         </nav>
       </div>
 
@@ -48,21 +48,16 @@
         <a href="#"><span class="material-symbols-outlined"> logout </span></a>
       </div>
     </header>
-    <!-- Reportes -->
+
     <main class="mainContainer">
       <nav class="sideNav barNav">
-        <a href="/html/reports_users.html">Usuarios</a>
-        <a href="/html/reports_sides.html">Unidades</a>
-        <a href="/html/reports_assets.html">Activos por unidad</a>
-        <a class="currentTab" href="/html/reports_warehouse.html">Bodega</a>
-        <a href="/html/reports_donations.html">Donaciones</a>
-        <a href="/html/reports_history_assets.html"
-          >Histórico de movimientos de activos</a
-        >
+        <a href="/html/review_requests_registration_users.html">Solicitudes de registro de usuarios</a>
+        <a class="currentTab" href="/html/asset_registration_applications.html">Solicitudes de registro de activos</a>
+        <a href="/html/asset_transfer_applications.html">Solicitudes de traslados de activos</a>
       </nav>
 
       <div class="pageBody">
-        <h1>Reporte de bodega</h1>
+        <h1>Solicitudes de registro de activos.</h1>
         <div class="pageContent">
           <div>
             <h2>Filtros</h2>
@@ -255,13 +250,10 @@
               <a href="#">6</a>
               <a href="#"> &gt;</a>
             </div>
-            <!--  -->
+
             <div class="buttonContainer">
-              <a href="/html/index.html"
-                ><button class="primaryButton">Ver o editar</button></a
-              >
-              <a href="/html/index.html"
-                ><button class="primaryButton">Trasladar</button></a
+              <a href="/html/review_asset_registration_application.html"
+                ><button class="primaryButton">Revisar solicitud</button></a
               >
             </div>
           </div>

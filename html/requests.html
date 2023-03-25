@@ -16,9 +16,11 @@
     />
     <link href="/svg/sica_favicon.svg" rel="icon" />
     <link href="/css/general_style.css" rel="stylesheet" />
-    <title>SICA - Inicio</title>
+    <link href="/css/table_pages.css" rel="stylesheet" />
+    <title>SICA - Activos</title>
   </head>
-  <body class="indexBody">
+
+  <body>
     <header class="mainHeader">
       <div class="headerTabs">
         <a href="/html/index.html"
@@ -29,9 +31,9 @@
         /></a>
 
         <nav class="headerNav barNav">
-          <a class="currentTab" href="/html/index.html">Inicio</a>
+          <a href="/html/index.html">Inicio</a>
           <a href="/html/assets.html">Activos</a>
-          <a href="/html/requests.html">Solicitudes</a>
+          <a class="currentTab" href="/html/requests.html">Solicitudes</a>
           <a href="/html/reports.html">Reportes</a>
         </nav>
       </div>
@@ -47,7 +49,23 @@
       </div>
     </header>
 
-    <footer class="footer indexFooter">
+    <main class="mainContainer">
+      <nav class="sideNav barNav">
+        <a href="/html/review_requests_registration_users.html">Solicitudes de registro de usuarios</a>
+        <a href="/html/asset_registration_applications.html">Solicitudes de registro de activos</a>
+        <a href="/html/asset_transfer_applications.html">Solicitudes de traslados de activos</a>
+      </nav>
+    </div><div class="pageBody">
+        <h1>Seleccione un tipo de solicitud</h1>
+        <div class="pageContent">
+          <div class="tableContainer">
+            <img src="/images/sica_background.png" alt="" class="logoReports" />
+          </div>
+        </div>
+      </div>
+    </main>
+
+    <footer class="footer">
       <p class="copyrightText">Copyright &copy; 2023 by Beelders.</p>
     </footer>
   </body>
