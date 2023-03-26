@@ -174,3 +174,9 @@ textarea:focus {
   margin: auto;
   padding: 10px;
 }
+
+.reviewAssetRegistration{
+  padding: 20px;
+  width: 70%;
+
+}
