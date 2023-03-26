@@ -52,7 +52,7 @@
     <main class="mainContainer">
       <nav class="sideNav barNav">
         <a class="currentTab" href="/html/reports_users.html">Usuarios</a>
-        <a href="/html/reports_sides.html">Unidades</a>
+        <a href="/html/reports_units.html">Unidades</a>
         <a href="/html/reports_assets.html">Activos por unidad</a>
         <a href="/html/reports_warehouse.html">Bodega</a>
         <a href="/html/reports_donations.html">Donaciones</a>
@@ -69,36 +69,36 @@
             <div class="filters">
               <h3>Ordenar por</h3>
 
-              <label for="idRadio"
-                ><input type="radio" id="idRadio" name="sortRadio" value="ID" />
-                ID</label
+              <label for="IDUserRadio"
+                ><input type="radio" id="IDUserRadio" name="sortRadio" value="IDUser" />
+                Identificación</label
               >
-              <label for="nameRadio"
+              <label for="nameUserRadio"
                 ><input
                   type="radio"
-                  id="nameRadio"
+                  id="nameUserUser"
                   name="sortRadio"
-                  value="nombre"
+                  value="nameUser"
                 />
-                Nombre</label
+                Nombre completo</label
               >
               <label for="unitRadio"
                 ><input
                   type="radio"
                   id="unitRadio"
                   name="sortRadio"
-                  value="unidad"
+                  value="unit"
                 />
                 Unidad</label
               >
-              <label for="statusRadio"
+              <label for="roleRadio"
                 ><input
                   type="radio"
-                  id="statusRadio"
+                  id="roleRadio"
                   name="sortRadio"
-                  value="estado"
+                  value="role"
                 />
-                Estado</label
+                Rol</label
               >
 
               <hr />
@@ -107,35 +107,35 @@
               <label for="unitSelect"
                 >Unidad<select id="unitSelect">
                   <option value="" disabled selected hidden>Unidad</option>
-                  <option value="bodega">Bodega</option>
-                  <option value="cartago">Cartago</option>
+                  <option value="central">Central</option>
                   <option value="heredia">Heredia</option>
+                  <option value="cartago">Cartago</option>
                 </select></label
               >
               <label for="statusSelect"
-                >Estado<select id="statusSelect">
-                  <option value="" disabled selected hidden>Estado</option>
-                  <option value="activo">Activo</option>
-                  <option value="desuso">Desuso</option>
-                  <option value="danado">Dañado</option>
+                >Rol<select id="statusSelect">
+                  <option value="" disabled selected hidden>Rol</option>
+                  <option value="jefatura">Jefatura</option>
+                  <option value="proveeduria">Proveeduría</option>
+                  <option value="encargado">Encargado de inventario por unidad</option>
                 </select></label
               >
 
               <hr />
 
               <h3>Buscar por</h3>
-              <label for="idSearch"
-                >ID<input
+              <label for="IDUserSearch"
+                >Identificación<input
                   type="search"
-                  id="idSearch"
-                  name="idSearch"
+                  id="IDUserSearch"
+                  name="IDUserSearch"
                   placeholder="ID"
               /></label>
-              <label for="nameSearch"
+              <label for="nameUserSearch"
                 >Nombre<input
                   type="search"
-                  id="nameSearch"
-                  name="nameSearch"
+                  id="nameUserSearch"
+                  name="nameUserSearch"
                   placeholder="Nombre"
               /></label>
             </div>
@@ -144,45 +144,108 @@
           <div class="tableContainer">
             <table class="tables">
               <tr>
-                <th></th>
-                <th>ID</th>
-                <th>Nombre</th>
+                <th>Identificación</th>
+                <th>Nombre completo</th>
+                <th>Correo electrónico</th> 
+                <th>Teléfono</th>               
                 <th>Unidad</th>
-                <th>Código de ubicación</th>
-                <th>Estado</th>
-              </tr>
-
-              <tr class="selectedRow">
-                <td>
-                  <input type="radio" name="tableRadio" />
-                </td>
-                <td>000001</td>
-                <td>Impresora EPSON F570</td>
-                <td>Heredia</td>
-                <td>PROHERPIS306</td>
-                <td>Activo</td>
+                <th>Rol</th>
+                <th>Fecha de creación</th>
+                <th>Aprobado por</th>
               </tr>
 
               <tr>
-                <td><input type="radio" name="tableRadio" /></td>
-                <td>000002</td>
-                <td>Monitor LG IPS</td>
-                <td>Bodega</td>
-                <td>PROBODPIS103</td>
-                <td>Desuso</td>
+                <td>705390185</td>
+                <td>Jeff Brown</td>
+                <td>jbrown@sica.co.cr</td>
+                <td>75829635</td>
+                <td>Central</td>
+                <td>Jefatura</td>
+                <td>25/02/2023</td>
+                <td>705390185</td>
               </tr>
 
               <tr>
-                <td><input type="radio" name="tableRadio" /></td>
-                <td>000003</td>
-                <td>UPS APC LS1200</td>
+                <td>103580645</td>
+                <td>Mónica Gómez</td>
+                <td>mgomez@sica.co.cr</td>
+                <td>85369254</td>
+                <td>Central</td>
+                <td>Proveeduría</td>
+                <td>26/02/2023</td>
+                <td>705390185</td>
+              </tr>
+
+              <tr>
+                <td>405890654</td>
+                <td>Hazel Porras</td>
+                <td>hporras@sica.co.cr</td>
+                <td>69582415</td>
                 <td>Cartago</td>
-                <td>PROCARPIS201</td>
-                <td>Activo</td>
+                <td>Encargado de inventario por unidad</td>
+                <td>03/03/2023</td>
+                <td>705390185</td>
               </tr>
 
               <tr>
-                <td><input type="radio" name="tableRadio" /></td>
+                <td>605890365</td>
+                <td>Phillips Morales</td>
+                <td>pmorales@sica.co.cr</td>
+                <td>89653245</td>
+                <td>Cartago</td>
+                <td>Encargado de inventario por unidad</td>
+                <td>03/03/2023</td>
+                <td>705390185</td>
+              </tr>
+
+              <tr>
+                <td>105360875</td>
+                <td>Malen Montesillo</td>
+                <td>mmontesillo@sica.co.cr</td>
+                <td>84593625</td>
+                <td>Central</td>
+                <td>Proveeduría</td>
+                <td>28/02/2023</td>
+                <td>705390185</td>
+              </tr>
+
+              <tr>
+                <td>308590654</td>
+                <td>Hazel Juárez</td>
+                <td>hjuarez@sica.co.cr</td>
+                <td>86259487</td>
+                <td>Heredia</td>
+                <td>Encargado de inventario por unidad</td>
+                <td>05/03/2023</td>
+                <td>705390185</td>
+              </tr>
+
+              <tr>
+                <td>405890654</td>
+                <td>Erick Quiñones</td>
+                <td>equinones@sica.co.cr</td>
+                <td>83456985</td>
+                <td>Heredia</td>
+                <td>Encargado de inventario por unidad</td>
+                <td>05/03/2023</td>
+                <td>705390185</td>
+              </tr>
+
+              <tr>
+                <td>505401251</td>
+                <td>Juan Aguilera</td>
+                <td>jaguilera@sica.co.cr</td>
+                <td>84209865</td>
+                <td>Central</td>
+                <td>Jefatura</td>
+                <td>25/03/2023</td>
+                <td>705390185</td>
+              </tr>
+
+              <tr>
+                <td></td>
+                <td></td>
+                <td></td>
                 <td></td>
                 <td></td>
                 <td></td>
@@ -191,52 +254,9 @@
               </tr>
 
               <tr>
-                <td><input type="radio" name="tableRadio" /></td>
                 <td></td>
                 <td></td>
                 <td></td>
-                <td></td>
-                <td></td>
-              </tr>
-
-              <tr>
-                <td><input type="radio" name="tableRadio" /></td>
-                <td></td>
-                <td></td>
-                <td></td>
-                <td></td>
-                <td></td>
-              </tr>
-
-              <tr>
-                <td><input type="radio" name="tableRadio" /></td>
-                <td></td>
-                <td></td>
-                <td></td>
-                <td></td>
-                <td></td>
-              </tr>
-
-              <tr>
-                <td><input type="radio" name="tableRadio" /></td>
-                <td></td>
-                <td></td>
-                <td></td>
-                <td></td>
-                <td></td>
-              </tr>
-
-              <tr>
-                <td><input type="radio" name="tableRadio" /></td>
-                <td></td>
-                <td></td>
-                <td></td>
-                <td></td>
-                <td></td>
-              </tr>
-
-              <tr>
-                <td><input type="radio" name="tableRadio" /></td>
                 <td></td>
                 <td></td>
                 <td></td>
@@ -244,26 +264,6 @@
                 <td></td>
               </tr>
             </table>
-
-            <div class="paginationContainer">
-              <a href="#">&lt;</a>
-              <a href="#" class="activePage">1</a>
-              <a href="#">2</a>
-              <a href="#">3</a>
-              <a href="#">4</a>
-              <a href="#">5</a>
-              <a href="#">6</a>
-              <a href="#"> &gt;</a>
-            </div>
-            <!--  -->
-            <div class="buttonContainer">
-              <a href="/html/index.html"
-                ><button class="primaryButton">Ver o editar</button></a
-              >
-              <a href="/html/index.html"
-                ><button class="primaryButton">Trasladar</button></a
-              >
-            </div>
           </div>
         </div>
       </div>

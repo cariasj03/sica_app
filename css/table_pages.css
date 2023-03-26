@@ -62,15 +62,14 @@ input[type="search"] {
 .tables th {
   border: 1px solid #ddd;
   padding: 8px;
-  text-align: left;
+  text-align: center;
 }
 
 .tables th {
   background-color: #f7f7f7;
 }
 
-.tables tr:hover,
-.selectedRow {
+.tables tr:hover{
   background-color: #eff3e4;
 }
 
@@ -92,3 +91,10 @@ input[type="search"] {
 .paginationContainer a:hover:not(.activePage) {
   background-color: #eff3e4;
 }
+
+td{
+  height: 50px;
+
+}
+
+tr:nth-child(even) {background-color: #eff3e4;}
