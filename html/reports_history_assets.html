@@ -52,7 +52,7 @@
     <main class="mainContainer">
       <nav class="sideNav barNav">
         <a href="/html/reports_users.html">Usuarios</a>
-        <a href="/html/reports_sides.html">Unidades</a>
+        <a href="/html/reports_units.html">Unidades</a>
         <a href="/html/reports_assets.html">Activos por unidad</a>
         <a href="/html/reports_warehouse.html">Bodega</a>
         <a href="/html/reports_donations.html">Donaciones</a>
@@ -82,43 +82,23 @@
                 />
                 Nombre</label
               >
-              <label for="unitRadio"
+              <label for="oldUnitRadio"
                 ><input
                   type="radio"
-                  id="unitRadio"
+                  id="oldUnitRadio"
                   name="sortRadio"
-                  value="unidad"
+                  value="unidadAnterior"
                 />
-                Unidad</label
+                Unidad anterior</label
               >
-              <label for="statusRadio"
+              <label for="newUnitRadio"
                 ><input
                   type="radio"
-                  id="statusRadio"
+                  id="newUnitRadio"
                   name="sortRadio"
-                  value="estado"
+                  value="unidadActual"
                 />
-                Estado</label
-              >
-
-              <hr />
-
-              <h3>Filtrar por</h3>
-              <label for="unitSelect"
-                >Unidad<select id="unitSelect">
-                  <option value="" disabled selected hidden>Unidad</option>
-                  <option value="bodega">Bodega</option>
-                  <option value="cartago">Cartago</option>
-                  <option value="heredia">Heredia</option>
-                </select></label
-              >
-              <label for="statusSelect"
-                >Estado<select id="statusSelect">
-                  <option value="" disabled selected hidden>Estado</option>
-                  <option value="activo">Activo</option>
-                  <option value="desuso">Desuso</option>
-                  <option value="danado">Dañado</option>
-                </select></label
+                Unidad actual</label
               >
 
               <hr />
@@ -144,126 +124,126 @@
           <div class="tableContainer">
             <table class="tables">
               <tr>
-                <th></th>
                 <th>ID</th>
                 <th>Nombre</th>
-                <th>Unidad</th>
+                <th>Unidad anterior</th>
+                <th>Unidad actual</th>
                 <th>Código de ubicación</th>
-                <th>Estado</th>
+                <th>Fecha de creación</th>
+                <th>Solicitado por</th>
+                <th>Aprobado por</th>
               </tr>
 
-              <tr class="selectedRow">
-                <td>
-                  <input type="radio" name="tableRadio" />
-                </td>
+              <tr>
                 <td>000001</td>
                 <td>Impresora EPSON F570</td>
+                <td>Central</td>   
                 <td>Heredia</td>
-                <td>PROHERPIS306</td>
-                <td>Activo</td>
+                <td>PROHERPIS301</td>
+                <td>19/03/2023</td>
+                <td>105360875</td>
+                <td>105360875</td>
               </tr>
 
               <tr>
-                <td><input type="radio" name="tableRadio" /></td>
                 <td>000002</td>
                 <td>Monitor LG IPS</td>
+                <td>Central</td>
                 <td>Bodega</td>
-                <td>PROBODPIS103</td>
-                <td>Desuso</td>
+                <td>PROBODPIS102</td>
+                <td>20/03/2023</td>
+                <td>105360875</td>
+                <td>105360875</td>
               </tr>
 
               <tr>
-                <td><input type="radio" name="tableRadio" /></td>
                 <td>000003</td>
                 <td>UPS APC LS1200</td>
+                <td>Central</td>
                 <td>Cartago</td>
-                <td>PROCARPIS201</td>
-                <td>Activo</td>
+                <td>PROCARPIS203</td>
+                <td>25/03/2023</td>
+                <td>105360875</td>
+                <td>105360875</td>
               </tr>
 
               <tr>
-                <td><input type="radio" name="tableRadio" /></td>
-                <td></td>
-                <td></td>
-                <td></td>
-                <td></td>
-                <td></td>
+                <td>000004</td>
+                <td>Monitor LG IPS</td>
+                <td>Central</td>
+                <td>Bodega</td>
+                <td>PROBODPIS104</td>
+                <td>20/03/2023</td>
+                <td>105360875</td>
+                <td>105360875</td>
               </tr>
 
               <tr>
-                <td><input type="radio" name="tableRadio" /></td>
-                <td></td>
-                <td></td>
-                <td></td>
-                <td></td>
-                <td></td>
+                <td>000005</td>
+                <td>UPS APC LS1200</td>
+                <td>Central</td>
+                <td>Bodega</td>
+                <td>PROBODPIS105</td>
+                <td>20/03/2023</td>
+                <td>105360875</td>
+                <td>105360875</td>
               </tr>
 
               <tr>
-                <td><input type="radio" name="tableRadio" /></td>
-                <td></td>
-                <td></td>
-                <td></td>
-                <td></td>
-                <td></td>
+                <td>000006</td>
+                <td>Impresora EPSON F570</td>
+                <td>Central</td>
+                <td>Bodega</td>
+                <td>PROBODPIS106</td>
+                <td>20/03/2023</td>
+                <td>105360875</td>
+                <td>105360875</td>
               </tr>
 
               <tr>
-                <td><input type="radio" name="tableRadio" /></td>
-                <td></td>
-                <td></td>
-                <td></td>
-                <td></td>
-                <td></td>
+                <td>000007</td>
+                <td>Impresora EPSON F570</td>
+                <td>Central</td>
+                <td>Donaciones</td>
+                <td>PRDONPIS307</td>
+                <td>19/03/2023</td>
+                <td>105360875</td>
+                <td>105360875</td>
               </tr>
 
               <tr>
-                <td><input type="radio" name="tableRadio" /></td>
-                <td></td>
-                <td></td>
-                <td></td>
-                <td></td>
-                <td></td>
+                <td>000008</td>
+                <td>Impresora EPSON F570</td>
+                <td>Central</td>
+                <td>Donaciones</td>
+                <td>PRODONPIS308</td>
+                <td>19/03/2023</td>
+                <td>105360875</td>
+                <td>105360875</td>
               </tr>
 
               <tr>
-                <td><input type="radio" name="tableRadio" /></td>
-                <td></td>
-                <td></td>
-                <td></td>
-                <td></td>
-                <td></td>
+                <td>000009</td>
+                <td>UPS APC LS1200</td>
+                <td>Central</td>
+                <td>Donaciones</td>
+                <td>PRODONPIS209</td>
+                <td>25/03/2023</td>
+                <td>105360875</td>
+                <td>105360875</td>
               </tr>
 
               <tr>
-                <td><input type="radio" name="tableRadio" /></td>
-                <td></td>
-                <td></td>
-                <td></td>
-                <td></td>
-                <td></td>
+                <td>000010</td>
+                <td>UPS APC LS1200</td>
+                <td>Central</td>
+                <td>Donaciones</td>
+                <td>PRODONPIS2010</td>
+                <td>25/03/2023</td>
+                <td>105360875</td>
+                <td>105360875</td>
               </tr>
             </table>
-
-            <div class="paginationContainer">
-              <a href="#">&lt;</a>
-              <a href="#" class="activePage">1</a>
-              <a href="#">2</a>
-              <a href="#">3</a>
-              <a href="#">4</a>
-              <a href="#">5</a>
-              <a href="#">6</a>
-              <a href="#"> &gt;</a>
-            </div>
-            <!--  -->
-            <div class="buttonContainer">
-              <a href="/html/index.html"
-                ><button class="primaryButton">Ver o editar</button></a
-              >
-              <a href="/html/index.html"
-                ><button class="primaryButton">Trasladar</button></a
-              >
-            </div>
           </div>
         </div>
       </div>

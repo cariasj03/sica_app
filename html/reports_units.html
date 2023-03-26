@@ -52,7 +52,7 @@
     <main class="mainContainer">
       <nav class="sideNav barNav">
         <a href="/html/reports_users.html">Usuarios</a>
-        <a class="currentTab" href="/html/reports_sides.html">Unidades</a>
+        <a class="currentTab" href="/html/reports_units.html">Unidades</a>
         <a href="/html/reports_assets.html">Activos por unidad</a>
         <a href="/html/reports_warehouse.html">Bodega</a>
         <a href="/html/reports_donations.html">Donaciones</a>
@@ -69,36 +69,28 @@
             <div class="filters">
               <h3>Ordenar por</h3>
 
-              <label for="idRadio"
-                ><input type="radio" id="idRadio" name="sortRadio" value="ID" />
+              <label for="IDSide"
+                ><input type="radio" id="IDSide" name="sortRadio" value="IDSide" />
                 ID</label
-              >
-              <label for="nameRadio"
-                ><input
-                  type="radio"
-                  id="nameRadio"
-                  name="sortRadio"
-                  value="nombre"
-                />
-                Nombre</label
               >
               <label for="unitRadio"
                 ><input
                   type="radio"
                   id="unitRadio"
                   name="sortRadio"
-                  value="unidad"
+                  value="unit"
                 />
                 Unidad</label
               >
+              
               <label for="statusRadio"
                 ><input
                   type="radio"
                   id="statusRadio"
                   name="sortRadio"
-                  value="estado"
+                  value="dateSide"
                 />
-                Estado</label
+                Fecha de creación</label
               >
 
               <hr />
@@ -107,22 +99,17 @@
               <label for="unitSelect"
                 >Unidad<select id="unitSelect">
                   <option value="" disabled selected hidden>Unidad</option>
+                  <option value="central">Central</option>
                   <option value="bodega">Bodega</option>
+                  <option value="donaciones">Donaciones</option>
                   <option value="cartago">Cartago</option>
                   <option value="heredia">Heredia</option>
-                </select></label
-              >
-              <label for="statusSelect"
-                >Estado<select id="statusSelect">
-                  <option value="" disabled selected hidden>Estado</option>
-                  <option value="activo">Activo</option>
-                  <option value="desuso">Desuso</option>
-                  <option value="danado">Dañado</option>
+
                 </select></label
               >
 
               <hr />
-
+                  
               <h3>Buscar por</h3>
               <label for="idSearch"
                 >ID<input
@@ -131,12 +118,12 @@
                   name="idSearch"
                   placeholder="ID"
               /></label>
-              <label for="nameSearch"
+              <label for="unitSearch"
                 >Nombre<input
                   type="search"
-                  id="nameSearch"
-                  name="nameSearch"
-                  placeholder="Nombre"
+                  id="unitSearch"
+                  name="unitSearch"
+                  placeholder="Unidad"
               /></label>
             </div>
           </div>
@@ -144,54 +131,54 @@
           <div class="tableContainer">
             <table class="tables">
               <tr>
-                <th></th>
                 <th>ID</th>
-                <th>Nombre</th>
                 <th>Unidad</th>
-                <th>Código de ubicación</th>
-                <th>Estado</th>
-              </tr>
-
-              <tr class="selectedRow">
-                <td>
-                  <input type="radio" name="tableRadio" />
-                </td>
-                <td>000001</td>
-                <td>Impresora EPSON F570</td>
-                <td>Heredia</td>
-                <td>PROHERPIS306</td>
-                <td>Activo</td>
+                <th>Ubicación</th>
+                <th>Fecha de creación</th>
+                <th>Aprobado por</th>
               </tr>
 
               <tr>
-                <td><input type="radio" name="tableRadio" /></td>
-                <td>000002</td>
-                <td>Monitor LG IPS</td>
+                <td>01</td>
+                <td>Central</td>
+                <td>San Jose</td>
+                <td>20/02/2010</td>
+                <td>705390185</td>
+              </tr>
+
+              <tr>
+                <td>02</td>
                 <td>Bodega</td>
-                <td>PROBODPIS103</td>
-                <td>Desuso</td>
+                <td>San Jose</td>
+                <td>06/03/2011</td>
+                <td>705390185</td>
               </tr>
 
               <tr>
-                <td><input type="radio" name="tableRadio" /></td>
-                <td>000003</td>
-                <td>UPS APC LS1200</td>
+                <td>03</td>
+                <td>Donaciones</td>
+                <td>San Jose</td>
+                <td>16/10/2014</td>
+                <td>705390185</td>
+              </tr>
+
+              <tr>
+                <td>04</td>
+                <td>Heredia</td>
+                <td>Heredia</td>
+                <td>06/06/2016</td>
+                <td>705390185</td>
+              </tr>
+
+              <tr>
+                <td>05</td>
                 <td>Cartago</td>
-                <td>PROCARPIS201</td>
-                <td>Activo</td>
+                <td>Cartago</td>
+                <td>05/07/2018</td>
+                <td>705390185</td>
               </tr>
 
               <tr>
-                <td><input type="radio" name="tableRadio" /></td>
-                <td></td>
-                <td></td>
-                <td></td>
-                <td></td>
-                <td></td>
-              </tr>
-
-              <tr>
-                <td><input type="radio" name="tableRadio" /></td>
                 <td></td>
                 <td></td>
                 <td></td>
@@ -200,7 +187,6 @@
               </tr>
 
               <tr>
-                <td><input type="radio" name="tableRadio" /></td>
                 <td></td>
                 <td></td>
                 <td></td>
@@ -209,7 +195,6 @@
               </tr>
 
               <tr>
-                <td><input type="radio" name="tableRadio" /></td>
                 <td></td>
                 <td></td>
                 <td></td>
@@ -218,7 +203,6 @@
               </tr>
 
               <tr>
-                <td><input type="radio" name="tableRadio" /></td>
                 <td></td>
                 <td></td>
                 <td></td>
@@ -227,16 +211,6 @@
               </tr>
 
               <tr>
-                <td><input type="radio" name="tableRadio" /></td>
-                <td></td>
-                <td></td>
-                <td></td>
-                <td></td>
-                <td></td>
-              </tr>
-
-              <tr>
-                <td><input type="radio" name="tableRadio" /></td>
                 <td></td>
                 <td></td>
                 <td></td>
@@ -244,26 +218,6 @@
                 <td></td>
               </tr>
             </table>
-
-            <div class="paginationContainer">
-              <a href="#">&lt;</a>
-              <a href="#" class="activePage">1</a>
-              <a href="#">2</a>
-              <a href="#">3</a>
-              <a href="#">4</a>
-              <a href="#">5</a>
-              <a href="#">6</a>
-              <a href="#"> &gt;</a>
-            </div>
-            <!--  -->
-            <div class="buttonContainer">
-              <a href="/html/index.html"
-                ><button class="primaryButton">Ver o editar</button></a
-              >
-              <a href="/html/index.html"
-                ><button class="primaryButton">Trasladar</button></a
-              >
-            </div>
           </div>
         </div>
       </div>

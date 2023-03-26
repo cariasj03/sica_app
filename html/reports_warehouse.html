@@ -52,7 +52,7 @@
     <main class="mainContainer">
       <nav class="sideNav barNav">
         <a href="/html/reports_users.html">Usuarios</a>
-        <a href="/html/reports_sides.html">Unidades</a>
+        <a href="/html/reports_units.html">Unidades</a>
         <a href="/html/reports_assets.html">Activos por unidad</a>
         <a class="currentTab" href="/html/reports_warehouse.html">Bodega</a>
         <a href="/html/reports_donations.html">Donaciones</a>
@@ -82,15 +82,6 @@
                 />
                 Nombre</label
               >
-              <label for="unitRadio"
-                ><input
-                  type="radio"
-                  id="unitRadio"
-                  name="sortRadio"
-                  value="unidad"
-                />
-                Unidad</label
-              >
               <label for="statusRadio"
                 ><input
                   type="radio"
@@ -104,14 +95,7 @@
               <hr />
 
               <h3>Filtrar por</h3>
-              <label for="unitSelect"
-                >Unidad<select id="unitSelect">
-                  <option value="" disabled selected hidden>Unidad</option>
-                  <option value="bodega">Bodega</option>
-                  <option value="cartago">Cartago</option>
-                  <option value="heredia">Heredia</option>
-                </select></label
-              >
+              
               <label for="statusSelect"
                 >Estado<select id="statusSelect">
                   <option value="" disabled selected hidden>Estado</option>
@@ -144,63 +128,52 @@
           <div class="tableContainer">
             <table class="tables">
               <tr>
-                <th></th>
                 <th>ID</th>
                 <th>Nombre</th>
-                <th>Unidad</th>
                 <th>Código de ubicación</th>
                 <th>Estado</th>
-              </tr>
-
-              <tr class="selectedRow">
-                <td>
-                  <input type="radio" name="tableRadio" />
-                </td>
-                <td>000001</td>
-                <td>Impresora EPSON F570</td>
-                <td>Heredia</td>
-                <td>PROHERPIS306</td>
-                <td>Activo</td>
+                <th>Fecha de creación</th>
+                <th>Aprobado por</th>
               </tr>
 
               <tr>
-                <td><input type="radio" name="tableRadio" /></td>
                 <td>000002</td>
                 <td>Monitor LG IPS</td>
-                <td>Bodega</td>
-                <td>PROBODPIS103</td>
+                <td>PROBODPIS102</td>
                 <td>Desuso</td>
+                <td>20/03/2023</td>
+                <td>105360875</td>
               </tr>
 
               <tr>
-                <td><input type="radio" name="tableRadio" /></td>
-                <td>000003</td>
+                <td>000004</td>
+                <td>Monitor LG IPS</td>
+                <td>PROBODPIS104</td>
+                <td>Dañado</td>
+                <td>20/03/2023</td>
+                <td>105360875</td>
+              </tr>
+
+              <tr>
+                <td>000005</td>
                 <td>UPS APC LS1200</td>
-                <td>Cartago</td>
-                <td>PROCARPIS201</td>
-                <td>Activo</td>
+                <td>PROBODPIS105</td>
+                <td>Desuso</td>
+                <td>20/03/2023</td>
+                <td>105360875</td>
               </tr>
 
               <tr>
-                <td><input type="radio" name="tableRadio" /></td>
-                <td></td>
-                <td></td>
-                <td></td>
-                <td></td>
-                <td></td>
+                <td>000006</td>
+                <td>Impresora EPSON F570</td>
+                <td>PROBODPIS106</td>
+                <td>Dañado</td>
+                <td>20/03/2023</td>
+                <td>105360875</td>
               </tr>
 
               <tr>
-                <td><input type="radio" name="tableRadio" /></td>
                 <td></td>
-                <td></td>
-                <td></td>
-                <td></td>
-                <td></td>
-              </tr>
-
-              <tr>
-                <td><input type="radio" name="tableRadio" /></td>
                 <td></td>
                 <td></td>
                 <td></td>
@@ -209,16 +182,7 @@
               </tr>
 
               <tr>
-                <td><input type="radio" name="tableRadio" /></td>
                 <td></td>
-                <td></td>
-                <td></td>
-                <td></td>
-                <td></td>
-              </tr>
-
-              <tr>
-                <td><input type="radio" name="tableRadio" /></td>
                 <td></td>
                 <td></td>
                 <td></td>
@@ -227,7 +191,7 @@
               </tr>
 
               <tr>
-                <td><input type="radio" name="tableRadio" /></td>
+                <td></td>
                 <td></td>
                 <td></td>
                 <td></td>
@@ -236,7 +200,25 @@
               </tr>
 
               <tr>
-                <td><input type="radio" name="tableRadio" /></td>
+                <td></td>
+                <td></td>
+                <td></td>
+                <td></td>
+                <td></td>
+                <td></td>
+              </tr>
+
+              <tr>
+                <td></td>
+                <td></td>
+                <td></td>
+                <td></td>
+                <td></td>
+                <td></td>
+              </tr>
+
+              <tr>
+                <td></td>
                 <td></td>
                 <td></td>
                 <td></td>
@@ -244,26 +226,6 @@
                 <td></td>
               </tr>
             </table>
-
-            <div class="paginationContainer">
-              <a href="#">&lt;</a>
-              <a href="#" class="activePage">1</a>
-              <a href="#">2</a>
-              <a href="#">3</a>
-              <a href="#">4</a>
-              <a href="#">5</a>
-              <a href="#">6</a>
-              <a href="#"> &gt;</a>
-            </div>
-            <!--  -->
-            <div class="buttonContainer">
-              <a href="/html/index.html"
-                ><button class="primaryButton">Ver o editar</button></a
-              >
-              <a href="/html/index.html"
-                ><button class="primaryButton">Trasladar</button></a
-              >
-            </div>
           </div>
         </div>
       </div>
