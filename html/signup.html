@@ -36,77 +36,120 @@
       <div class="sideImgContainer">
         <img src="/svg/signup_illustration.svg" width="100%" />
       </div>
-      <div class="signupContainer">
-        <p>
+      <div class="pageContainer">
+        <p class="link">
           ¿Ya tiene una cuenta?
-          <a class="underlined-link" href="">Iniciar sesión</a>
+          <a class="underlinedLink" href="/html/signin.html">Iniciar sesión</a>
         </p>
-        <h1>Cree una cuenta</h1>
-        <form id="signup-form">
-          <label for="user-first-name">Nombre * </label>
-          <input
-            type="text"
-            id="assetName"
-            name="assetName"
-            placeholder="Nombre del activo"
-          />
-          <p class="formInputError" id="assetNameError"></p>
+        <div class="headingFormContainer">
+          <h1>Cree una cuenta</h1>
+          <form id="signupForm" class="form">
+            <label for="userFirstName"
+              >Nombre *<input
+                type="text"
+                id="userFirstName"
+                name="userFirstName"
+                placeholder="Nombre" />
+              <p class="formInputError" id="userFirstNameError"></p
+            ></label>
 
-          <label for="assetDescription">Descripción del activo * </label>
-          <textarea
-            class="inputStyle"
-            id="assetDescription"
-            name="assetDescription"
-            rows="4"
-            placeholder="Descripción del activo"
-          ></textarea>
-          <p class="formInputError" id="assetDescription-error"></p>
+            <label for="userLastName"
+              >Apellidos *
+              <input
+                type="text"
+                id="userLastName"
+                name="userLastName"
+                placeholder="Apellidos" />
+              <p class="formInputError" id="userLastNameError"></p
+            ></label>
 
-          <label for="assetUnit">Unidad en la que está ubicado *</label>
-          <select id="assetUnit" class="inputStyle">
-            <option value="" disabled selected hidden>
-              Unidad en la que está ubicado
-            </option>
-            <option value="bodega">Bodega</option>
-            <option value="Donaciones">Donaciones</option>
-            <option value="central">Central</option>
-            <option value="sanJose">San José</option>
-            <option value="alajuela">Alajuela</option>
-            <option value="cartago">Cartago</option>
-            <option value="heredia">Heredia</option>
-            <option value="guanacaste">Guanacaste</option>
-            <option value="puntarenas">Puntarenas</option>
-            <option value="limon">Limón</option>
-          </select>
-          <p class="formInputError" id="assetUnit-error"></p>
+            <label for="userId"
+              >Identificación *
+              <input
+                type="text"
+                id="userId"
+                name="userId"
+                placeholder="Identificación" />
+              <p class="formInputError" id="userIdError"></p
+            ></label>
 
-          <label for="assetLocation">Ubicación del activo * </label>
-          <input
-            class="inputStyle"
-            type="text"
-            id="assetLocation"
-            name="assetLocation"
-            placeholder="Ubicación del activo"
-          />
-          <p class="formInputError" id="assetLocation-error"></p>
+            <label for="userDateOfBirth"
+              >Fecha de nacimiento *
+              <input
+                type="date"
+                id="userDateOfBirth"
+                name="userDateOfBirth"
+                placeholder="Fecha de nacimiento"
+                pattern="[0-9]{8}" />
+              <p class="formInputError" id="userDateOfBirthError"></p
+            ></label>
 
-          <label for="assetStatus">Estado *</label>
-          <select id="assetStatus" class="inputStyle">
-            <option value="" disabled selected hidden>Estado</option>
-            <option value="activo">Activo</option>
-            <option value="desuso">Desuso</option>
-            <option value="danado">Dañado</option>
-          </select>
-          <p class="formInputError" id="assetStatus-error"></p>
+            <label for="userEmail"
+              >Correo electrónico *
+              <input
+                type="text"
+                id="userEmail"
+                name="userEmail"
+                placeholder="Correo electrónico" />
+              <p class="formInputError" id="userEmailError"></p
+            ></label>
 
-          <p>* Campos obligatorios</p>
+            <label for="userPhoneNumber"
+              >Número de teléfono *
+              <input
+                type="text"
+                id="userPhoneNumber"
+                name="userPhoneNumber"
+                placeholder="Número de teléfono" />
+              <p class="formInputError" id="userPhoneNumberError"></p
+            ></label>
 
-          <div class="buttonContainer">
-            <button type="submit" id="registerAsset" class="primaryButton">
-              Registrar activo
-            </button>
-          </div>
-        </form>
+            <label id="userUnitLabel" for="userUnit"
+              >Unidad a la que pertenece *
+              <select id="userUnit" class="inputStyle">
+                <option value="" disabled selected hidden>
+                  Unidad a la que pertenece
+                </option>
+                <option value="bodega">Bodega</option>
+                <option value="Donaciones">Donaciones</option>
+                <option value="central">Central</option>
+                <option value="sanJose">San José</option>
+                <option value="alajuela">Alajuela</option>
+                <option value="cartago">Cartago</option>
+                <option value="heredia">Heredia</option>
+                <option value="guanacaste">Guanacaste</option>
+                <option value="puntarenas">Puntarenas</option>
+                <option value="limon">Limón</option>
+              </select>
+              <p class="formInputError" id="userUnitError"></p
+            ></label>
+
+            <label for="userProfilePicture"
+              >Foto de perfil *
+              <div class="imageDisplayInput">
+                <img
+                  id="imageDisplay"
+                  src="/images/profile_picture.png"
+                  alt="profile picture"
+                />
+                <input
+                  id="userProfilePicture"
+                  name="userProfilePicture"
+                  type="file"
+                  accept=".png, .jpg, .jpeg,"
+                /></div
+            ></label>
+            <p class="formInputError" id="userProfilePictureError"></p>
+
+            <p id="requiredFields">* Campos obligatorios</p>
+
+            <div class="buttonContainer">
+              <button type="submit" id="registerUser" class="primaryButton">
+                Registrarse
+              </button>
+            </div>
+          </form>
+        </div>
       </div>
     </main>
 
@@ -114,7 +157,8 @@
       <p class="copyrightText">Copyright &copy; 2023 by Beelders.</p>
     </footer>
 
-    <!-- <script src="/js/form_validation.js"></script> -->
+    <script src="/js/form_validation.js"></script>
+    <script src="/js/upload_img_display.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
     <script src="/js/sweet_alert.js"></script>
   </body>
