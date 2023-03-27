@@ -55,6 +55,68 @@ form p {
 }
 
 .signupContainer {
+  display: flex;
+  flex-direction: column;
   width: 50%;
   margin: 20px;
+}
+
+.formContainer {
+  align-self: center;
+  display: flex;
+  flex-direction: column;
+  margin-top: 20px;
+  padding: 0 50px;
+  width: 80%;
+}
+
+#signupForm {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+}
+
+.formContainer h1 {
+  align-self: center;
+}
+
+.signinLink {
+  align-self: flex-end;
+}
+
+.underlinedLink {
+  text-decoration: underline;
+}
+
+#userUnitLabel,
+#requiredFields,
+.buttonContainer {
+  grid-column: span 2;
+}
+
+#registerUser {
+  width: 100%;
+}
+
+#imageDisplay {
+  margin-top: 10px;
+  margin-left: 5px;
+  height: 90px;
+  width: 90px;
+  border: 1px solid #444;
+}
+
+#userProfilePicture {
+  height: 38px;
+  align-self: center;
+}
+
+.imageDisplayInput {
+  display: flex;
+  align-items: center;
+  gap: 30px;
+}
+
+#userProfilePictureError {
+  align-self: center;
+  justify-self: center;
 }
