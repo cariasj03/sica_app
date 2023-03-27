@@ -51,20 +51,27 @@ form p {
   width: 50%;
   display: flex;
   align-items: center;
+  background-color: #e49471;
+}
+
+#sideImgContainerSignin {
   background-color: #c6d4a1;
 }
 
-.signupContainer {
-  display: flex;
-  flex-direction: column;
+.pageContainer {
+  display: grid;
+  grid-template-rows: 1fr 15fr;
+  align-items: center;
+  justify-items: center;
   width: 50%;
   margin: 20px;
 }
 
-.formContainer {
+.headingFormContainer {
   align-self: center;
   display: flex;
   flex-direction: column;
+  align-items: center;
   margin-top: 20px;
   padding: 0 50px;
   width: 80%;
@@ -75,12 +82,12 @@ form p {
   grid-template-columns: repeat(2, 1fr);
 }
 
-.formContainer h1 {
+.headingFormContainer h1 {
   align-self: center;
 }
 
-.signinLink {
-  align-self: flex-end;
+.link {
+  justify-self: end;
 }
 
 .underlinedLink {
@@ -119,4 +126,37 @@ form p {
 #userProfilePictureError {
   align-self: center;
   justify-self: center;
+}
+
+#signinButton {
+  width: 100%;
+  background-color: #ad522a;
+}
+
+#signinButton:hover {
+  background-color: #6c331a;
+}
+
+#signinForm {
+  width: 70%;
+}
+
+#signinEmailLabel,
+#signinPasswordLabel {
+  width: 100%;
+  margin-left: 0;
+}
+
+.rememberMeContainer {
+  display: flex;
+  justify-content: space-between;
+}
+
+#rememberMe {
+  display: inline;
+  width: auto;
+}
+
+#signinPasswordError {
+  display: none;
 }

@@ -1,0 +1,94 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;700&display=swap"
+      rel="stylesheet"
+    />
+    <link
+      rel="stylesheet"
+      href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@20..48,100..700,0..1,-50..200"
+    />
+    <link href="/svg/sica_favicon.svg" rel="icon" />
+    <link href="/css/general_style.css" rel="stylesheet" />
+    <link href="/css/form_pages.css" rel="stylesheet" />
+    <title>SICA - Inicio de sesión</title>
+  </head>
+
+  <body>
+    <header class="mainHeader">
+      <div class="headerTabs">
+        <img
+          class="headerLogo, pointer"
+          src="/svg/sica_horizontal_logo.svg"
+          height="40px"
+          alt="logo"
+        />
+      </div>
+    </header>
+
+    <main class="mainContainer">
+      <div class="pageContainer">
+        <p class="link">
+          ¿No tiene una cuenta?
+          <a class="underlinedLink" href="/html/signup.html">Registrarse</a>
+        </p>
+        <div class="headingFormContainer" id="signinFormContainer">
+          <h1>Inicio de sesión</h1>
+          <form id="signinForm" class="form">
+            <label id="signinEmailLabel" for="signinEmail"
+              >Correo electrónico<input
+                type="text"
+                id="signinEmail"
+                name="signinEmail"
+                placeholder="Correo electrónico" />
+              <p class="formInputError" id="signinEmailError"></p
+            ></label>
+
+            <label id="signinPasswordLabel" for="signinPassword"
+              >Contraseña<input
+                type="password"
+                id="signinPassword"
+                name="signinPassword"
+                placeholder="Contraseña" />
+              <p class="formInputError" id="signinPasswordError"></p
+            ></label>
+
+            <div class="rememberMeContainer">
+              <label id="rememberMeLabel" for=""
+                ><input
+                  id="rememberMe"
+                  name="rememberMe"
+                  type="checkbox"
+                />Recordarme</label
+              >
+              <a class="underlinedLink" href="#">¿Olvidó su contraseña?</a>
+            </div>
+
+            <div class="buttonContainer">
+              <button id="signinButton" class="primaryButton" type="submit">
+                Ingresar
+              </button>
+            </div>
+          </form>
+        </div>
+      </div>
+      <div class="sideImgContainer" id="sideImgContainerSignin">
+        <img src="/svg/signin_illustration.svg" width="100%" />
+      </div>
+    </main>
+
+    <footer class="footer">
+      <p class="copyrightText">Copyright &copy; 2023 by Beelders.</p>
+    </footer>
+
+    <script src="/js/form_validation.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+    <script src="/js/sweet_alert.js"></script>
+  </body>
+</html>

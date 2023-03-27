@@ -34,6 +34,12 @@ const signupRegistrationFields = {
   userProfilePicture: false,
 };
 
+//Signup object for validation
+const signinRegistrationFields = {
+  signinEmail: false,
+  signinPassword: false,
+};
+
 //Functions
 //Validation fuction for the entire form
 const validateForm = function (event) {
@@ -48,9 +54,12 @@ const validateForm = function (event) {
     case "assetLocation":
     case "assetStatus":
     case "userDateOfBirth":
-
     case "userUnit":
+    case "signinPassword":
       validateEmptyField(elementId, elementValue, errorActiveClass);
+      break;
+    case "signinEmail":
+      validateEmailField(elementId, elementValue, errorActiveClass);
       break;
     case "userFirstName":
     case "userLastName":
@@ -84,6 +93,7 @@ const validateEmptyField = function (
   elementValue,
   errorActiveClass
 ) {
+  console.log(signinRegistrationFields);
   //Validates if the input field is empty
   if (!regExp.empty.test(elementValue)) {
     errorModifier(
@@ -184,6 +194,9 @@ const errorModifier = function (elementId, errorActiveClass, status, message) {
       case "signupForm":
         signupRegistrationFields[elementId] = false;
         break;
+      case "signinForm":
+        signinRegistrationFields[elementId] = false;
+        break;
     }
   } else if (!status) {
     document
@@ -195,6 +208,9 @@ const errorModifier = function (elementId, errorActiveClass, status, message) {
         break;
       case "signupForm":
         signupRegistrationFields[elementId] = true;
+        break;
+      case "signinForm":
+        signinRegistrationFields[elementId] = true;
         break;
     }
   }
@@ -253,14 +269,33 @@ const submitBtn = function () {
         errorAlert("Hay campos obligatorios sin llenar.");
       }
       break;
+
+    case "signinForm":
+      if (
+        signinRegistrationFields.signinEmail &&
+        signinRegistrationFields.signinPassword
+      ) {
+        form.reset();
+        signinRegistrationFields.signinEmail = false;
+        signinRegistrationFields.signinPassword = false;
+        window.location.href = "/html/index.html";
+      } else {
+        errorAlert(
+          "Debe ingresar tanto su correo como su contraseña para ingresar."
+        );
+      }
+      break;
   }
 };
 
+const submit = function () {
+  form.addEventListener("submit", function (event) {
+    event.preventDefault();
+    submitBtn(form);
+  });
+};
+
 //Event Listeners
-form.addEventListener("submit", function (event) {
-  event.preventDefault();
-  submitBtn(form);
-});
 
 const validation = function () {
   formInputs.forEach(function (input) {
@@ -272,3 +307,4 @@ const validation = function () {
 
 //Function calls
 validation();
+submit();
