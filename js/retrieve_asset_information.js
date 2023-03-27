@@ -1,3 +1,5 @@
+//INCOMPLETE
+
 window.onload = function() {
     //Se crea un array de la informacion en la fila correspondiente al radio input que selecciona el usuario
     const table = document.querySelector('table');
