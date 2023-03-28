@@ -280,9 +280,7 @@ const submitBtn = function () {
         signinRegistrationFields.signinPassword = false;
         window.location.href = "/html/index.html";
       } else {
-        errorAlert(
-          "Debe ingresar tanto su correo como su contraseña para ingresar."
-        );
+        errorAlert("Debe ingresar su correo y contraseña para iniciar sesión.");
       }
       break;
   }
@@ -294,8 +292,6 @@ const submit = function () {
     submitBtn(form);
   });
 };
-
-//Event Listeners
 
 const validation = function () {
   formInputs.forEach(function (input) {
