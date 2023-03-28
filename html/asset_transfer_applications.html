@@ -72,10 +72,9 @@
             <div class="filters">
               <h3>Ordenar por</h3>
 
-              <label for="idRadio"
-                ><input type="radio" id="idRadio" name="sortRadio" value="ID" />
-                ID</label
-              >
+              <label for="idRadio">
+                <input type="radio" id="idRadio" name="sortRadio" value="ID" />
+                ID del traslado</label>
               <label for="nameRadio"
                 ><input
                   type="radio"
@@ -83,7 +82,7 @@
                   name="sortRadio"
                   value="nombre"
                 />
-                Nombre</label
+                ID del activo</label
               >
               <label for="unitRadio"
                 ><input
@@ -92,7 +91,7 @@
                   name="sortRadio"
                   value="unidad"
                 />
-                Unidad</label
+                Nombre del activo</label
               >
               <label for="statusRadio"
                 ><input
@@ -101,41 +100,57 @@
                   name="sortRadio"
                   value="estado"
                 />
-                Estado</label
+                Unidad de origen</label
+              >
+              <label for="statusRadio"
+                ><input
+                  type="radio"
+                  id="statusRadio"
+                  name="sortRadio"
+                  value="estado"
+                />
+                Unidad de destino</label
               >
 
               <hr />
 
               <h3>Filtrar por</h3>
-              <label for="unitSelect"
-                >Unidad<select id="unitSelect">
+              <label for="unitSelectOrigin"
+                >Unidad de origen<select id="unitSelectOrigin">
                   <option value="" disabled selected hidden>Unidad</option>
                   <option value="bodega">Bodega</option>
                   <option value="cartago">Cartago</option>
                   <option value="heredia">Heredia</option>
                 </select></label
               >
-              <label for="statusSelect"
-                >Estado<select id="statusSelect">
-                  <option value="" disabled selected hidden>Estado</option>
-                  <option value="activo">Activo</option>
-                  <option value="desuso">Desuso</option>
-                  <option value="danado">Dañado</option>
+              <label for="unitSelectDestiny"
+                >Unidad de destino<select id="unitSelectDestiny">
+                  <option value="" disabled selected hidden>Unidad</option>
+                  <option value="bodega">Bodega</option>
+                  <option value="cartago">Cartago</option>
+                  <option value="heredia">Heredia</option>
                 </select></label
               >
 
               <hr />
 
               <h3>Buscar por</h3>
-              <label for="idSearch"
-                >ID<input
+              <label for="idTransferSearch"
+                >ID del traslado<input
                   type="search"
-                  id="idSearch"
-                  name="idSearch"
-                  placeholder="ID"
+                  id="idTransferSearch"
+                  name="idTransferSearch"
+                  placeholder="ID del traslado"
+              /></label>
+              <label for="idassetSearch"
+                >ID del activo<input
+                  type="search"
+                  id="idassetSearch"
+                  name="idassetSearch"
+                  placeholder="ID del activo"
               /></label>
               <label for="nameSearch"
-                >Nombre<input
+                >Nombre del activo<input
                   type="search"
                   id="nameSearch"
                   name="nameSearch"
