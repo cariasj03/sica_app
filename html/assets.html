@@ -39,9 +39,9 @@
       </div>
 
       <div class="headerIcons">
-        <a href="#"
-          ><span class="material-symbols-outlined"> settings </span></a
-        >
+        <a href="/html/units.html"
+        ><span class="material-symbols-outlined"> settings </span>
+        </a> 
         <a href="#"
           ><span class="material-symbols-outlined"> account_box </span></a
         >
@@ -148,7 +148,7 @@
                 <th>Estado</th>
               </tr>
 
-              <tr class="selectedRow">
+              <tr class="selectedRow" data-id="1">
                 <td>
                   <input type="radio" name="tableRadio" />
                 </td>
@@ -159,7 +159,7 @@
                 <td>Activo</td>
               </tr>
 
-              <tr>
+              <tr data-id="2">
                 <td><input type="radio" name="tableRadio" /></td>
                 <td>000002</td>
                 <td>Monitor LG IPS</td>
@@ -168,7 +168,7 @@
                 <td>Desuso</td>
               </tr>
 
-              <tr>
+              <tr data-id="3">
                 <td><input type="radio" name="tableRadio" /></td>
                 <td>000003</td>
                 <td>UPS APC LS1200</td>
@@ -177,7 +177,7 @@
                 <td>Activo</td>
               </tr>
 
-              <tr>
+              <tr data-id="4">
                 <td><input type="radio" name="tableRadio" /></td>
                 <td></td>
                 <td></td>
@@ -186,7 +186,7 @@
                 <td></td>
               </tr>
 
-              <tr>
+              <tr data-id="5">
                 <td><input type="radio" name="tableRadio" /></td>
                 <td></td>
                 <td></td>
@@ -195,7 +195,7 @@
                 <td></td>
               </tr>
 
-              <tr>
+              <tr data-id="6">
                 <td><input type="radio" name="tableRadio" /></td>
                 <td></td>
                 <td></td>
@@ -204,7 +204,7 @@
                 <td></td>
               </tr>
 
-              <tr>
+              <tr data-id="7">
                 <td><input type="radio" name="tableRadio" /></td>
                 <td></td>
                 <td></td>
@@ -213,7 +213,7 @@
                 <td></td>
               </tr>
 
-              <tr>
+              <tr data-id="8">
                 <td><input type="radio" name="tableRadio" /></td>
                 <td></td>
                 <td></td>
@@ -222,7 +222,7 @@
                 <td></td>
               </tr>
 
-              <tr>
+              <tr data-id="9">
                 <td><input type="radio" name="tableRadio" /></td>
                 <td></td>
                 <td></td>
@@ -231,7 +231,7 @@
                 <td></td>
               </tr>
 
-              <tr>
+              <tr data-id="10">
                 <td><input type="radio" name="tableRadio" /></td>
                 <td></td>
                 <td></td>
@@ -253,12 +253,8 @@
             </div>
 
             <div class="buttonContainer">
-              <a href="/html/index.html"
-                ><button class="primaryButton">Ver o editar</button></a
-              >
-              <a href="/html/index.html"
-                ><button class="primaryButton">Trasladar</button></a
-              >
+              <button class="primaryButton" id="showEditAssetInformation">Ver o editar</button>
+              <button class="primaryButton">Trasladar</button>
             </div>
           </div>
         </div>
@@ -268,5 +264,8 @@
     <footer class="footer">
       <p class="copyrightText">Copyright &copy; 2023 by Beelders.</p>
     </footer>
+
+  <script src="/js/retrieve_asset_information.js"></script>
+
   </body>
 </html>
