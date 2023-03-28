@@ -86,3 +86,10 @@ form p {
 #additionalGeographicInformation {
   margin-bottom: 30px;
 }
+
+.imageStyle {
+  border: 2px solid #ddd; 
+  border-radius: 0%; 
+  width: 200px; 
+  height: 200px; 
+}
