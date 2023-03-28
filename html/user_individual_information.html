@@ -62,80 +62,54 @@
     <div class="pageBody">
     <h1>Información de usuario</h1>
     
-    <div class="formContainer">
-        <div>
-            <img src="/images/profile_picture.png" alt="placeholderUserImage" width="200px" height="200px" class="imageStyle">
+    <div class="userFormContainer">
+        <form id="userInfoForm">
+        <div class="profilePictureContainer">
+            <img class="imageStyle" src="/images/profile_picture.png" alt="placeholderUserImage">
             <button type="submit" id="editProfilePicture" class="primaryButton" onclick="window.location.href='user_individual_information_edit.html'">
-                Modificar foto de perfil
+                Modificar
             </button>
         </div>
-        <form id="form" class="inputContainer">
+        <div class="allInputsContainer">
+            <label for="userId">Identificación <input
+                class="inputStyle"
+                id="userId"
+                name="userId"
+                placeholder="Identificación"
+                value="101230456"
+                disabled
+            ></input>
+            <p class="formInputError" id="userIdError"></p></label>
 
-            <label for="userId">Identificación</label>
-                <input
-                    class="inputStyle"
-                    id="userId"
-                    name="userId"
-                    placeholder="Identificación"
-                    value="101230456"
-                ></input>
-                <p class="formInputError" id="userIdError"></p>
+            <label for="userName">Nombre <input type="text" id="userName" name="userName" placeholder="Nombre" value="Juan"/>
+                    <p class="formInputError" id="userNameError"></p></label>
+                
+            <label for="userLastName">Apellidos <input type="text" id="userLastName" name="userLastName" placeholder="Apellidos" value="Pérez González"/>
+                    <p class="formInputError" id="userLastNameError"></p></label>
+                
+            <label for="userEmail">Correo electrónico registrado <input type="text" id="userEmail" name="userEmail" placeholder="Correo electrónico registrado" value="juan.perez@ejemplo.com"/>
+                    <p class="formInputError" id="userEmailError"></p></label>
+                
+            <label for="userPhone">Número de teléfono <input type="text" id="userPhone" name="userPhone" placeholder="Número de teléfono" value="8888-8888"/>
+                    <p class="formInputError" id="userPhoneError"></p></label>
+                
+            <label for="userRole">Rol asignado <input type="text" id="userRole" name="userRole" placeholder="Rol asignado" value="Encargado de inventario por undiad"/>
+                    <p class="formInputError" id="userRoleError"></p></label>
+                
+            <label for="userBirthDate">Fecha de nacimiento <input type="text" id="userBirthDate" name="userBirthDate" placeholder="Fecha de nacimiento" value="01/01/2000"/>
+                    <p class="formInputError" id="userBirthDateError"></p></label>
 
-            <div class="formContainer">
-                <div class="inputContainer">
-                <label for="userName">Nombre</label>
-                <input type="text" id="userName" name="userName" placeholder="Nombre" value="Juan"/>
-                <p class="formInputError" id="userNameError"></p>
-                </div>
-
-                <div class="inputContainer">
-                <label for="userLastName">Apellidos</label>
-                <input type="text" id="userLastName" name="userLastName" placeholder="Apellidos" value="Pérez González"/>
-                <p class="formInputError" id="userLastNameError"></p>
-                </div>
-            </div>
-
-            <div class="formContainer">
-                <div class="inputContainer">
-                <label for="userEmail">Correo electrónico registrado</label>
-                <input type="text" id="userEmail" name="userEmail" placeholder="Correo electrónico registrado" value="juan.perez@ejemplo.com"/>
-                <p class="formInputError" id="userEmailError"></p>
-                </div>
-
-                <div class="inputContainer">
-                <label for="userPhone">Número de teléfono</label>
-                <input type="text" id="userPhone" name="userPhone" placeholder="Número de teléfono" value="8888-8888"/>
-                <p class="formInputError" id="userPhoneError"></p>
-                </div>
-            </div>
-
-            <div class="formContainer">
-                <div class="inputContainer">
-                <label for="userRole">Rol asignado</label>
-                <input type="text" id="userRole" name="userRole" placeholder="Rol asignado" value="Encargado de inventario por undiad"/>
-                <p class="formInputError" id="userRoleError"></p>
-                </div>
-
-                <div class="inputContainer">
-                <label for="userBirthDate">Fecha de nacimiento</label>
-                <input type="text" id="userBirthDate" name="userBirthDate" placeholder="Fecha de nacimiento" value="01/01/2000"/>
-                <p class="formInputError" id="userBirthDateError"></p>
-                </div>
-            </div>
-
-            <label for="userUnit">Unidad a la que pertenece</label>
-                <input
+            <label for="userUnit">Unidad a la que pertenece <input
                     class="inputStyle"
                     id="userUnit"
                     name="userUnit"
                     placeholder="Unidad a la que pertenece"
                     value="Unidad de Cartago"
                 ></input>
-                <p class="formInputError" id="userUnitError"></p>            
+                <p class="formInputError" id="userUnitError"></p> </label>
         </div>
 
-            <div class="buttonContainer">
-
+            <div id="userInfoButtonContainer" class="buttonContainer">
             <button type="submit" id="editUserInformation" class="primaryButton" onclick="window.location.href='user_individual_information_edit.html'">
                 Editar Información
             </button>
