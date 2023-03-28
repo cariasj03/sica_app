@@ -187,3 +187,10 @@ textarea:focus {
 .smallText {
   font-size: 12px;
 }
+
+
+#assetTransferInfoDisplay {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  
+}
