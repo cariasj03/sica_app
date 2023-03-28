@@ -32,10 +32,7 @@ window.onload = function() {
         window.location.href = '/html/asset_individual_information.html';
     });
 
-    //Crear elementos HTML para la info extraida de la tabla
-//    selectedRowData.forEach(function() {
-//        const assetID = document.createElement("input");
-        //UNFINISHED
-//    })
+    //Llenar HTML inputs con la info extraida de la tabla
+    document.getElementsByClassName("assetIdJs").defaultValue = '${selectedRowData[1]}';
 
 }
