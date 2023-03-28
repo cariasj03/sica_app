@@ -67,6 +67,10 @@ a {
   color: #ad522a;
 }
 
+.currentIcon{
+  color: #934422;
+}
+
 .headerIcons {
   display: flex;
   gap: 16px;
