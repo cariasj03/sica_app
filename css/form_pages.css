@@ -160,3 +160,23 @@ form p {
 #signinPasswordError {
   display: none;
 }
+
+.formContainer {
+  display: flex;
+  justify-content: space-between;
+  width: 100%;
+}
+
+.inputContainer {
+  display: flex;
+  flex-direction: column;
+  width: 48%;
+}
+
+.inputContainer label {
+  margin-bottom: 5px;
+}
+
+#additionalGeographicInformation {
+  margin-bottom: 30px;
+}
