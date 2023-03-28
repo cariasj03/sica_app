@@ -1,5 +1,5 @@
 .pageBody {
-  max-width: 700px;
+  max-width: 800px;
 }
 
 input,
@@ -85,4 +85,33 @@ form p {
 
 #additionalGeographicInformation {
   margin-bottom: 30px;
+}
+
+.imageStyle {
+  border: 2px solid #ddd;
+  width: 150px;
+  height: 150px;
+}
+
+#userInfoForm {
+  display: grid;
+  grid-template-columns: 0.5fr 1fr;
+  row-gap: 20px;
+}
+
+.profilePictureContainer {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 20px;
+}
+
+.allInputsContainer {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  row-gap: 20px;
+}
+
+#userInfoButtonContainer {
+  grid-column: 2;
 }
