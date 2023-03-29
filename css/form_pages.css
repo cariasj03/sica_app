@@ -116,16 +116,15 @@ form p {
   grid-column: 2;
 }
 
-.disabled {
-  font-family: "Inter", sans-serif;
-  font-size: 16px;
-  box-sizing: border-box;
-  color: #949494;
+input[type=text]:disabled, textarea:disabled {
+  background-color: white;
+  color:black;
+  border-style: solid;
+  border-width: 1px;
+  border-color: darkgrey;
 }
 
-.enabled {
-  font-family: "Inter", sans-serif;
-  font-size: 16px;
-  box-sizing: border-box;
-  color: black;
+input[type=text]:enabled, textarea:enabled {
+  background-color: #eeeeee;
+  color: #a3a3a3;
 }

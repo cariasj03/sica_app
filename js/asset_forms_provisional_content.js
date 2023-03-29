@@ -31,24 +31,15 @@ window.onload = function(){
     let editButton = document.getElementById('editAsset');
     editButton.addEventListener("click", function () {
 
-        assetId.classList.add('disabled');
-
-        assetCodeLocation.classList.add('disabled');
-
         assetName.disabled = false;
         assetName.classList.add('enabled');
 
         assetDescription.disabled = false;
         assetDescription.classList.add('enabled');
 
-        assetUnit.disabled = false;
-        assetUnit.classList.add('enabled');
-
         assetLocation.disabled = false;
         assetLocation.classList.add('enabled');
 
-        assetStatus.disabled = false;
-        assetStatus.classList.add('enabled');
     })
 
 }
