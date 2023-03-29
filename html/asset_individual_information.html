@@ -57,7 +57,7 @@
     <nav class="sideNav barNav">
     <a href="/html/assets.html">Activos</a>
     <a class="currentTab" href="/html/asset_registration.html"
-        >Registro de activos</a
+    >Registro de activos</a
     >
     </nav>
 
@@ -68,19 +68,16 @@
         <label for="assetName">ID </label>
         <input
         type="text"
-        id="assetName"
-        name="assetName"
-        placeholder="000001"
-        class="assetIdJs"
+        id="assetId"
+        name="assetId"
         />
         <p class="formInputError" id="assetNameError"></p>
 
         <label for="assetDescription">Nombre del activo</label>
         <input
         class="inputStyle"
-        id="assetDescription"
-        name="assetDescription"
-        placeholder="Descripción del activo"
+        id="assetName"
+        name="assetName"
         ></form>
         <p class="formInputError" id="assetDescriptionError"></p>
 
@@ -90,12 +87,16 @@
         id="assetDescription"
         name="assetDescription"
         rows="4"
-        placeholder="Descripción del activo"
         ></textarea>
         <p class="formInputError" id="assetDescriptionError"></p>
 
         <label for="assetUnit">Unidad en la que está ubicado</label>
-        <input></input>
+        <input
+        class="inputStyle"
+        id="assetUnit"
+        name="assetUnit"
+        rows="4"
+        ></input>
         <p class="formInputError" id="assetUnitError"></p>
 
         <label for="assetLocation">Ubicación del activo</label>
@@ -104,7 +105,6 @@
         type="text"
         id="assetLocation"
         name="assetLocation"
-        placeholder="Ubicación del activo"
         />
         <p class="formInputError" id="assetLocationError"></p>
 
@@ -112,24 +112,25 @@
         <input
         class="inputStyle"
         type="text"
-        id="assetLocation"
-        name="assetLocation"
-        placeholder="Ubicación del activo"
+        id="assetCodeLocation"
+        name="assetCodeLocation"
         />
         <p class="formInputError" id="assetLocationError"></p>
 
         <label for="assetStatus">Estado</label>
         <input 
         type="text"
+        id="assetStatus"
+        name="assetStatus"
         />
         <p class="formInputError" id="assetStatusError"></p>
 
         <div class="buttonContainer">
-        <button type="submit" id="registerAsset" class="primaryButton">
+        <button type="submit" id="editAsset" class="primaryButton">
             Editar Información
         </button>
 
-        <button type="submit" id="registerAsset" class="primaryButton">
+        <button type="submit" id="saveAssetInformation" class="primaryButton">
             Guardar Información
         </button>
 
@@ -147,7 +148,7 @@
 <script src="/js/form_validation.js"></script>
 <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
 <script src="/js/sweet_alert.js"></script>
-<script src="/js/retrieve_asset_information.js"></script>
+<script src="/js/forms_provisional_content.js"></script>
 
 </body>
 </html>
