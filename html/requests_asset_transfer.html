@@ -65,7 +65,7 @@
     <h1>Solicitud de traslado de un activo</h1>
 
     <form id="form">
-        <label for="assetName">ID </label>
+        <label for="assetName">ID del activo</label>
         <input
         type="text"
         id="assetName"
@@ -74,7 +74,7 @@
         />
         <p class="formInputError" id="assetNameError"></p>
 
-        <label for="assetDescription">Nombre del activo</label>
+        <label for="assetDescription">Unidad de origen</label>
         <input
         class="inputStyle"
         id="assetDescription"
@@ -83,7 +83,7 @@
         ></input>
         <p class="formInputError" id="assetDescriptionError"></p>
 
-        <label for="assetDescription">Descripción del activo</label>
+        <label for="assetDescription">Ubicación de destino*</label>
         <textarea
         class="inputStyle"
         id="assetDescription"
@@ -93,11 +93,16 @@
         ></textarea>
         <p class="formInputError" id="assetDescriptionError"></p>
 
-        <label for="assetUnit">Unidad en la que está ubicado</label>
-
+        <label for="assetUnit">Nombre del activo</label>
+        <input
+        class="inputStyle"
+        id="assetName"
+        name="assetName"
+        placeholder="Descripción del activo"
+        ></input>
         <p class="formInputError" id="assetUnitError"></p>
 
-        <label for="assetLocation">Ubicación del activo</label>
+        <label for="assetLocation">Unidad de destino*</label>
         <input
         class="inputStyle"
         type="text"
@@ -107,7 +112,7 @@
         />
         <p class="formInputError" id="assetLocationError"></p>
 
-        <label for="assetLocation">Código de la ubicación</label>
+        <label for="assetLocation">Motivo del traslado</label>
         <input
         class="inputStyle"
         type="text"
@@ -117,7 +122,7 @@
         />
         <p class="formInputError" id="assetLocationError"></p>
 
-        <label for="assetStatus">Estado</label>
+        <label for="assetStatus">Descripción detallada de la solicitud*</label>
         <input 
         type="text"
         />
