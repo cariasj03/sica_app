@@ -128,3 +128,20 @@ input[type=text]:enabled, textarea:enabled {
   background-color: #eeeeee;
   color: #a3a3a3;
 }
+
+#pictureButtons {
+  display: inline-block;
+  margin-top: 8px;
+  width: 40%;
+  justify-content: flex-end;
+}
+
+select:required:invalid {
+  color: #666;
+}
+option[value=""][disabled] {
+  display: none;
+}
+option {
+  color: #000;
+}

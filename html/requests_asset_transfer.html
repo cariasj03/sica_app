@@ -55,89 +55,128 @@
 
 <main class="mainContainer">
     <nav class="sideNav barNav">
-    <a href="/html/assets.html">Activos</a>
-    <a class="currentTab" href="/html/asset_registration.html"
-        >Registro de activos</a
-    >
-    </nav>
+        <a class="currentTab" href="/html/assets.html">Activos</a>
+        <a href="/html/asset_registration.html">Registro de activos</a>
+      </nav>
 
     <div class="pageBody">
     <h1>Solicitud de traslado de un activo</h1>
 
     <form id="form">
+
+        <div class="column ">
+
         <label for="assetName">ID del activo</label>
         <input
         type="text"
-        id="assetName"
-        name="assetName"
-        placeholder="000001"
+        id="assetId"
+        name="assetId"
         />
         <p class="formInputError" id="assetNameError"></p>
 
         <label for="assetDescription">Unidad de origen</label>
         <input
         class="inputStyle"
-        id="assetDescription"
-        name="assetDescription"
-        placeholder="Descripción del activo"
+        type="text"
+        id="assetUnit"
+        name="assetUnit"
         ></input>
         <p class="formInputError" id="assetDescriptionError"></p>
 
         <label for="assetDescription">Ubicación de destino*</label>
-        <textarea
+        <input
         class="inputStyle"
-        id="assetDescription"
-        name="assetDescription"
-        rows="4"
-        placeholder="Descripción del activo"
-        ></textarea>
+        type="text"
+        id="assetTargetUnit"
+        name="assetTargetUnit"
+        placeholder="Ubicación de destino"
+        />
         <p class="formInputError" id="assetDescriptionError"></p>
+
+        </div>
+
+        <div class="column ">
 
         <label for="assetUnit">Nombre del activo</label>
         <input
         class="inputStyle"
+        type="text"
         id="assetName"
         name="assetName"
-        placeholder="Descripción del activo"
         ></input>
         <p class="formInputError" id="assetUnitError"></p>
 
         <label for="assetLocation">Unidad de destino*</label>
-        <input
+        <select required
         class="inputStyle"
         type="text"
-        id="assetLocation"
-        name="assetLocation"
-        placeholder="Ubicación del activo"
-        />
+        id="assetTargetLocation"
+        name="assetTargetLocation"
+        >
+        <option value="" disabled selected>Unidad de Destino</option>
+        <option value="targetUnit">Alajuela</option>
+        <option value="targetUnit">Guanaste</option>>
+        <option value="targetUnit">San José</option>>
+        </select>
         <p class="formInputError" id="assetLocationError"></p>
 
-        <label for="assetLocation">Motivo del traslado</label>
-        <input
+        <label for="assetLocation">Motivo del traslado*</label>
+        <select required
         class="inputStyle"
         type="text"
-        id="assetLocation"
-        name="assetLocation"
-        placeholder="Ubicación del activo"
-        />
+        id="assetTransferReason"
+        name="assetTransferReason"
+        >
+        <option value="" disabled selected>Motivo del traslado</option>
+        <option value="transferReason">Daño</option>
+        <option value="transferReason">Desuso</option>>
+        <option value="transferReason">Donación</option>>
+        </select>
+
         <p class="formInputError" id="assetLocationError"></p>
 
-        <label for="assetStatus">Descripción detallada de la solicitud*</label>
-        <input 
+        </div>
+
+        <div class="paddingVerticalText">
+
+        <label for="assetDescription">Descripción detallada de la solicitud*</label>
+        <textarea
+        class="inputStyle"
         type="text"
-        />
+        id="assetRequestDescription";
+        name="assetRequestDescription";
+        placeholder="Descripción detallada de la solicitud"
+        ></textarea>
         <p class="formInputError" id="assetStatusError"></p>
+
+        <label for="assetStatus">Imagenes que justifiquen el traslado*</label>
+
+        </div>
+
+        <div class="column">
+        <img alt="Upload a picture" src="/images/upload_picture_icon.jpeg" class="imageStyle">
+        <button type="submit" id="pictureButtons">
+            Elegir archivo
+        </button>
+        </div>
+        <div class="column">
+        <img alt="Upload a picture" src="/images/upload_picture_icon.jpeg" class="imageStyle">
+        <button type="submit" id="pictureButtons">
+            Elegir archivo
+        </button>
+        </div>
+
+        <div class="topMargin">
+        <p>* Campos obligatorios</p>
+        <p class="formInputError" id="assetStatusError"></p>
+        </div>
 
         <div class="buttonContainer">
         <button type="submit" id="registerAsset" class="primaryButton">
-            Editar Información
+            Enviar solicitud
         </button>
-
-        <button type="submit" id="registerAsset" class="primaryButton">
-            Guardar Información
-        </button>
-
         </div>
+
 
     </form>
     
@@ -151,7 +190,7 @@
 <script src="/js/form_validation.js"></script>
 <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
 <script src="/js/sweet_alert.js"></script>
-<script src="/js/retrieve_asset_information.js"></script>
+<script src="/js/transfer_forms_provisional_content.js"></script>
 
 </body>
 </html>
