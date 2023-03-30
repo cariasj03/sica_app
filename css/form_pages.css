@@ -129,13 +129,6 @@ input[type=text]:enabled, textarea:enabled {
   color: #a3a3a3;
 }
 
-#pictureButtons {
-  display: inline-block;
-  margin-top: 8px;
-  width: 40%;
-  justify-content: flex-end;
-}
-
 select:required:invalid {
   color: #666;
 }
@@ -144,4 +137,88 @@ option[value=""][disabled] {
 }
 option {
   color: #000;
+}
+
+.containerUserRegistration {
+  display: grid; 
+  grid-template-columns: 0.5fr 1fr; 
+}
+
+.photoUserRegistration {
+  justify-self: center; 
+  align-self: start; 
+}
+
+.inputsUserRegistration {
+  display: grid; 
+  grid-template-columns: 1fr 1fr; 
+  justify-self: end; 
+}
+
+.buttonsUserRegistration {
+  justify-self: end; 
+  align-self: start;
+  grid-column: 2; 
+}
+
+#userIdLabelUserRegistration {
+  grid-column: 1/3;
+}
+
+.containerAssetTransfer {
+  display: grid; 
+  grid-template-columns: 1fr 1fr; 
+}
+
+#userIdLabelAssetTransfer {
+  display: grid;
+  grid-column: 1/3;
+}
+
+#firstColumn {
+  display: grid;
+  grid-column: 1/2;
+}
+
+#centerFirstColumn {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  justify-self: left;
+}
+
+#buttonAssetTransfer {
+  background-color: #e7e7e7; 
+  color: #949494;
+  border: none;
+  padding: 10px 24px;
+  border-radius: 12px;
+  text-align: center;
+  text-decoration: none;
+  margin-top: 4px;
+  margin-bottom: 4px;
+  width: 75%;
+  font-size: 11px;  
+  justify-self: center;
+}
+
+#buttonAssetTransfer:hover {
+  background-color: darkgrey;
+  color: white;
+}
+
+#submitButton {
+  display: grid;
+  grid-column: 2/3;
+  justify-self: end;
+}
+
+.imageStyleTransfers {
+  border: 2px solid #ddd;
+  width: 150px;
+  height: 150px;
+  margin: 4px;
+}
+
+#titleMargin {
+  margin-left: 7px;
 }

@@ -1,5 +1,3 @@
-<!-- INCOMPLETE-->
-
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -60,53 +58,37 @@
       </nav>
 
     <div class="pageBody">
-    <h1>Solicitud de traslado de un activo</h1>
+    <h1 id="titleMargin">Solicitud de traslado de un activo</h1>
 
-    <form id="form">
+    <form class="containerAssetTransfer">
 
-        <div class="column ">
-
-        <label for="assetName">ID del activo</label>
+        <label for="assetName">ID del activo
         <input
         type="text"
         id="assetId"
         name="assetId"
-        />
+        /></label>
         <p class="formInputError" id="assetNameError"></p>
 
-        <label for="assetDescription">Unidad de origen</label>
-        <input
-        class="inputStyle"
-        type="text"
-        id="assetUnit"
-        name="assetUnit"
-        ></input>
-        <p class="formInputError" id="assetDescriptionError"></p>
-
-        <label for="assetDescription">Ubicación de destino*</label>
-        <input
-        class="inputStyle"
-        type="text"
-        id="assetTargetUnit"
-        name="assetTargetUnit"
-        placeholder="Ubicación de destino"
-        />
-        <p class="formInputError" id="assetDescriptionError"></p>
-
-        </div>
-
-        <div class="column ">
-
-        <label for="assetUnit">Nombre del activo</label>
+        <label for="assetUnit">Nombre del activo
         <input
         class="inputStyle"
         type="text"
         id="assetName"
         name="assetName"
-        ></input>
+        /></label>
         <p class="formInputError" id="assetUnitError"></p>
+            
+        <label for="assetDescription">Unidad de origen
+        <input
+        class="inputStyle"
+        type="text"
+        id="assetUnit"
+        name="assetUnit"
+        /></label>
+        <p class="formInputError" id="assetDescriptionError"></p>
 
-        <label for="assetLocation">Unidad de destino*</label>
+        <label for="assetLocation">Unidad de destino*
         <select required
         class="inputStyle"
         type="text"
@@ -115,12 +97,22 @@
         >
         <option value="" disabled selected>Unidad de Destino</option>
         <option value="targetUnit">Alajuela</option>
-        <option value="targetUnit">Guanaste</option>>
-        <option value="targetUnit">San José</option>>
-        </select>
+        <option value="targetUnit">Guanaste</option>
+        <option value="targetUnit">San José</option>
+        </select></label>
         <p class="formInputError" id="assetLocationError"></p>
+            
+        <label for="assetDescription">Ubicación de destino*
+        <input
+        class="inputStyle"
+        type="text"
+        id="assetTargetUnit"
+        name="assetTargetUnit"
+        placeholder="Ubicación de destino"
+        /></label>
+        <p class="formInputError" id="assetDescriptionError"></p>
 
-        <label for="assetLocation">Motivo del traslado*</label>
+        <label for="assetLocation">Motivo del traslado*
         <select required
         class="inputStyle"
         type="text"
@@ -129,54 +121,49 @@
         >
         <option value="" disabled selected>Motivo del traslado</option>
         <option value="transferReason">Daño</option>
-        <option value="transferReason">Desuso</option>>
-        <option value="transferReason">Donación</option>>
-        </select>
+        <option value="transferReason">Desuso</option>
+        <option value="transferReason">Donación</option>
+        </select></label>
 
         <p class="formInputError" id="assetLocationError"></p>
 
-        </div>
-
-        <div class="paddingVerticalText">
-
-        <label for="assetDescription">Descripción detallada de la solicitud*</label>
+        <label for="assetDescription" id="userIdLabelAssetTransfer">Descripción detallada de la solicitud*
         <textarea
         class="inputStyle"
         type="text"
         id="assetRequestDescription";
         name="assetRequestDescription";
         placeholder="Descripción detallada de la solicitud"
-        ></textarea>
+        ></textarea></label>
         <p class="formInputError" id="assetStatusError"></p>
 
-        <label for="assetStatus">Imagenes que justifiquen el traslado*</label>
-
+        <div id="userIdLabelAssetTransfer">
+        <label for="assetStatus" id="userIdLabelAssetTransfer">Imagenes que justifiquen el traslado*</label>
         </div>
 
-        <div class="column">
-        <img alt="Upload a picture" src="/images/upload_picture_icon.jpeg" class="imageStyle">
-        <button type="submit" id="pictureButtons">
+        <div id="firstColumn">
+        
+        <div id="centerFirstColumn">
+        <img alt="Upload a picture" src="/images/upload_picture_icon.jpeg" class="imageStyleTransfers">
+
+        <img alt="Upload a picture" src="/images/upload_picture_icon.jpeg" class="imageStyleTransfers">
+
+        <button type="submit" id="buttonAssetTransfer">
+            Elegir archivo
+        </button>
+        
+        <button type="submit" id="buttonAssetTransfer">
             Elegir archivo
         </button>
         </div>
-        <div class="column">
-        <img alt="Upload a picture" src="/images/upload_picture_icon.jpeg" class="imageStyle">
-        <button type="submit" id="pictureButtons">
-            Elegir archivo
-        </button>
         </div>
 
-        <div class="topMargin">
-        <p>* Campos obligatorios</p>
+        <p id="userIdLabelAssetTransfer">*Campos obligatorios</p>
         <p class="formInputError" id="assetStatusError"></p>
-        </div>
 
-        <div class="buttonContainer">
-        <button type="submit" id="registerAsset" class="primaryButton">
+        <button type="submit" class="primaryButton" id="submitButton">
             Enviar solicitud
         </button>
-        </div>
-
 
     </form>
     
