@@ -1,0 +1,154 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="stylesheet" href="/assets/css/styles.css" />
+    <title>Beelders Landing Page</title>
+  </head>
+  <body>
+    <header>
+        <a href="#" class="logo">
+            <h1>
+              <img src="/assets/icons/b_logo_horizontal_color.png" alt="Beelders" />
+            </h1>
+          </a> 
+          
+          <nav>
+            <ul>
+              <li class="nav-item">
+                <a 
+                  href="start"
+                  class="nav-link"
+                  id="nav-link"
+                  >Inicio</a
+                  >
+              </li>
+              <li class="nav-item">
+                <a 
+                  href="services"
+                  class="nav-link"
+                  id="nav-link"
+                  >Servicios</a
+                  >
+              </li>
+              <li class="nav-item">
+                <a 
+                  href="about"
+                  class="nav-link"
+                  id="nav-link"
+                  >Sobre nosotros</a
+                  >
+              </li>
+              <li class="nav-item">
+                <a 
+                  href="resources"
+                  class="nav-link"
+                  id="nav-link"
+                  >Recursos</a
+                  >
+            </ul>
+            <!-- <div class="theme-switch-wrapper">
+              <div class="hamburger" id="hamburger">
+                <span class="bar"></span>
+                <span class="bar"></span>
+                <span class="bar"></span>
+              </div>
+            </div> -->
+          </nav>
+
+          <a class="nav-button" href="contact">Póngase en contacto</a>
+
+    </header>
+
+    <section class="offer-section">
+        <div class="first-panel">
+            <h1>Estilo empresarial basado en <span>soluciones digitales</span></h1>
+            <p>Potenciamos el crecimiento de las organizaciones mediante la implementación de soluciones digitales de vanguardia.</p>
+            <a class="btn1" href="#">Contáctenos</a>
+            <a class="btn2" href="#">Nosotros</a>
+        </div>
+    </section>
+    <section class="about-section">
+      <div class="mission-vision-values">
+        <h2>Misión</h2>
+        <p>
+          Proporcionar productos y servicios de alta calidad que satisfagan las necesidades,
+          expectativas y requerimientos de nuestros clientes, creando siempre una interfaz orientada al
+          usuario y sus necesidades. Además, fomentar un impacto positivo en la comunidad y el medio
+          ambiente.
+        </p>
+        <h2>Visión</h2>
+        <p>
+          Ser una empresa que a través de su labor marque la diferencia en el mercado, de la mano con la
+          innovación constante, la excelencia en la atención al cliente y el compromiso con la
+          sostenibilidad.
+        </p>
+        <h2>Valores</h2>
+        <div class="special-list">
+            <ol style="--length: 9" role="list">
+                <li style="--i: 1">
+                    <h3>Trabajo en equipo</h3>
+                </li>
+                <li style="--i: 2">
+                    <h3>Comprensión</h3>
+                </li>
+                <li style="--i: 3">
+                    <h3>Coordinación</h3>
+                </li>
+                <li style="--i: 4">
+                    <h3>Respeto</h3>
+                </li>
+                <li style="--i: 5">
+                    <h3>Humildad</h3>
+                </li>
+                <li style="--i: 6">
+                    <h3>Comunicación asertiva</h3>
+                </li>
+                <li style="--i: 7">
+                    <h3>Compromiso</h3>
+                </li>
+                <li style="--i: 8">
+                    <h3>Iniciativa</h3>
+                </li>
+                <li style="--i: 9">
+                    <h3>Empatía</h3>
+                </li>
+            </ol>
+        </div>
+      </div>
+    </section>     
+      
+
+    <!-- Scroll to top button -->
+    <i class="scroll-up" id="scroll-up"
+     ><img
+       src="/assets/icons/uparrow_120588.svg"
+       class="up-arrow"
+       alt="up-arrow"
+    /></i>
+
+    <!-- Web page script -->
+    <script src="assets/js/app.js"></script>
+
+    <script>
+      const hamburger = document.querySelector("#hamburger");
+      const navMenu = document.querySelector("ul");
+
+      function openMenu() {
+        hamburger.classList.toggle("active");
+        navMenu.classList.toggle("active");
+      }
+
+      const navLink = document.querySelectorAll("#nav-link");
+
+      navLink.forEach((n) => n.addEventListener("click", closeMenu));
+      function closeMenu() {
+        hamburger.classList.remove("active");
+        navMenu.classList.remove("active");
+      }
+    </script>
+  </body>
+  
+</html>
