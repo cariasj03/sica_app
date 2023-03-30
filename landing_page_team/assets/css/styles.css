@@ -373,7 +373,190 @@ special-list ol {
   }
 }
 
-@import url("https://fonts.googleapis.com/css?family=Montserrat:400,700");
+.specialities-section {
+  background-color: #f8f8f8;
+  padding: 4rem 2rem;
+  text-align: center;
+}
 
+.specialities-title {
+  font-size: 3rem;
+  margin-bottom: 1.5rem;
+  color: var(--primary-color);
+  font-weight: var(--bolder-font);
+}
 
+.specialities {
+  font-size: 1.2rem;
+  line-height: var(--line-height);
+  margin-bottom: 2rem;
+}
 
+specialities-list {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-evenly;
+  max-width: 45rem;
+  margin: 0 auto;
+  padding: 0 1rem;
+  }
+  
+  .specialities-list ol {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-between;
+  list-style: none;
+  margin-top: 2rem;
+  }
+  
+  .specialities-list li {
+  position: relative;
+  counter-increment: list;
+  max-width: 45rem;
+  margin: 2rem auto;
+  padding: 2rem 1rem 1rem;
+  box-shadow: 0.1rem 0.1rem 1.5rem rgba(0, 0, 0, 0.3);
+  border-radius: 0.25rem;
+  overflow: hidden;
+  background-color: white;
+  display: flex;
+  align-items: center;
+  margin-bottom: 2rem;
+  flex-basis: calc(50% - 1rem);
+  flex-direction: column;
+  }
+  
+  .specialities-list li::before {
+    --stop: calc(100% / var(--length) * var(--i));
+    --l: 62%;
+    --l2: 88%;
+    --c1: var(--primary-color);
+    --c2: var(--secondary-color);
+    content: counter(list);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin-right: 0.5rem;
+    margin-bottom: 0.5rem;
+    width: 3rem;
+    height: 3rem;
+    border-radius: 50%;
+    background: linear-gradient(to right, var(--c1) var(--stop), var(--c2) var(--stop));
+    color: #fff;
+    font-weight: var(--bold-font);
+    }
+    
+    .specialities-list h3 {
+    margin: 0;
+    color: var(--primary-color);
+    font-weight: bold;
+    margin-top: 1rem;
+    font-size: 1.4rem;
+    }
+    
+    .specialities-list li {
+    position: relative;
+    counter-increment: list;
+    max-width: 45rem;
+    margin: 2rem auto;
+    padding: 2rem 1rem 1rem;
+    box-shadow: 0.1rem 0.1rem 1.5rem rgba(0, 0, 0, 0.3);
+    border-radius: 0.25rem;
+    overflow: hidden;
+    background-color: white;
+    display: flex;
+    align-items: center;
+    margin-bottom: 2rem;
+    flex-basis: calc(50% - 1rem);
+    flex-direction: column;
+    }
+    
+    .specialities-list p {
+    margin: 1rem 0;
+    font-size: 1.1rem;
+    line-height: 1.3;
+    }
+
+  .client-section {
+    background-color: #f8f8f8;
+    padding: 4rem 2rem;
+    text-align: center;
+  }
+
+  .slider-body {
+    background: #f7f7f7;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+  }
+
+  .slider {
+    display: flex;
+    height: auto;
+    margin: auto;
+    overflow: hidden;
+    align-items: center;
+  }
+  .slider:before {
+    position: absolute;
+    z-index: 1;
+    left: 0;
+    content: "";
+    width: 23.958%;
+    height: 110px;
+    background: linear-gradient(-90deg, hsla(0, 0%, 96.9%, 0), #f7f7f7);
+  }
+  
+  .slider:after {
+    position: absolute;
+    right: 0;
+    content: "";
+    width: 23.958%;
+    height: 110px;
+    background: linear-gradient(
+      90deg,
+      hsla(0, 0%, 96.9%, 0),
+      hsla(0, 0%, 96.9%, 0.99) 99%
+    );
+  }
+  .slider .slide-track {
+    display: flex;
+    animation: scroll 35s linear infinite;
+    -webkit-animation: scroll 35s linear infinite;
+    width: calc(240px * 9);
+  }
+  .slider .slide {
+    cursor: pointer;
+    width: 180px;
+    height: auto;
+    padding: 10px;
+    margin: 20px;
+    background-color: white;
+    border-radius: 8px;
+    box-shadow: rgba(50, 50, 93, 0.25) 0px 2px 5px -1px,
+      rgba(0, 0, 0, 0.3) 0px 1px 3px -1px;
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
+  
+  .slider .slide img {
+    height: auto;
+    width: 160px;
+    filter: brightness(0) saturate(100%);
+    opacity: 0.25;
+  }
+  
+  @keyframes scroll {
+    0% {
+      -webkit-transform: translateX(0);
+      transform: translateX(0);
+    }
+  
+    100% {
+      -webkit-transform: translateX(calc(-240px * 5));
+      transform: translateX(calc(-240px * 5));
+    }
+  }
