@@ -59,52 +59,98 @@
 
       <div>
         <h1>Revisión de solicitud de registro de un activo</h1>
-        <div>
-            <div> 
-                <div id="assetTransferInfoDisplay">
-                    <div>
-                        <h2>ID del traslado</h2>
-                        <h3>000002</h3>
-                        <h2>ID del activo</h2>
-                        <h3>000001</h3>
-                        <h2>Unidad de origen</h2>
-                        <h3>Unidad de heredia</h3>
-                        <h2>Motivo del traslado</h2>
-                        <h3>Piso 3, estante 23</h3>
-                    </div>
-                    <div >
-                        <h2>Fecha de la solicitud</h2>
-                        <h3>16/03/2023</h3>
-                        <h2>Nombre del activo</h2>
-                        <h3>Impresora EPSON F570</h3>
-                        <h2>Unidad de destino</h2>
-                        <h3>Bodega</h3>
-                        <h2>Ubicacion de destino</h2>
-                        <h3>Ubicacion de destino</h3>
-                    </div>
-                
-                </div >
-                <h3>Descripción</h3>
-                <textarea>Impresora de gran formato para sublimacion de 24 pulgadas. Para impresiones de sublimacion en papel de transferencia especializado para medios rigidos y blandos, una bandeja de alimentacion de 50 hojas y un cortador incorporado.</textarea>
-            
-            </div>
-            <div>
-                <h3>Imagenes que justifican el traslado</h3>
-                <img alt="activo foto 1">
-                <img alt="activo foto 2">
-            </div>
-        </div>
-        <div class="buttonContainer">
-            <button type="submit" id="registerAssetAproved" class="primaryButton">
-                Aprobar traslado
-            </button>
-            <button type="button" id="registerAssetDeclined" class="primaryButton">
-                Rechazar traslado
-                </button>
-        </div>
+        <form id="form">
 
-        
-      </div>
+          <div class="column ">
+    
+            <label for="assetName">ID del activo</label>
+            <input
+            type="text"
+            id="assetId"
+            name="assetId"
+            >
+            <p class="formInputError" id="assetNameError"></p>
+    
+            <label for="assetDescription">Unidad de origen</label>
+            <input
+            class="inputStyle"
+            type="text"
+            id="assetUnit"
+            name="assetUnit"
+            ></input>
+          
+    
+            <label for="assetDescription">Ubicación de destino*</label>
+            <input
+            class="inputStyle"
+            type="text"
+            id="assetTargetUnit"
+            name="assetTargetUnit"
+            placeholder="Ubicación de destino"
+            />
+            <p class="formInputError" id="assetDescriptionError"></p>
+    
+          </div>
+    
+          <div class="column ">
+    
+            <label for="assetUnit">Nombre del activo</label>
+            <input
+            class="inputStyle"
+            type="text"
+            id="assetName"
+            name="assetName"
+            ></input>
+            <p class="formInputError" id="assetUnitError"></p>
+    
+            <label for="assetLocation">Unidad de destino*</label>
+            <input
+            class="inputStyle"
+            type="text"
+            id="assetTargetLocation"
+            name="assetTargetLocation"
+            >
+          </input>
+            <p class="formInputError" id="assetLocationError"></p>
+    
+            <label for="assetLocation">Motivo del traslado*</label>
+            <input required
+            type="text"
+            id="assetTransferReason"
+            name="assetTransferReason"
+            >
+          </div>
+    
+          <div class="paddingVerticalText">
+    
+              <label for="assetDescription">Descripción detallada de la solicitud</label>
+              <textarea
+              type="text"
+              id="assetRequestDescription";
+              name="assetRequestDescription";
+              placeholder="Descripción detallada de la solicitud"
+              ></textarea>
+
+              <label for="assetStatus">Imagenes que justifiquen el traslado</label>
+              <div class="column">
+                <img alt="Upload a picture" src="/images/s-l1600.jpeg" class="imageStyle">
+              </div>
+              <div class="column">
+                <img alt="Upload a picture" src="/images/s-l500.jpeg" class="imageStyle">
+              </div>
+            
+          </div>
+    
+          <div class="buttonContainer">
+              <button type="submit" id="aproveAssetTransfer" class="primaryButton" src="/html/review_asset_transfer_requests.html">
+                  Aprobar traslado
+              </button>
+              <button id="declineAssetTrasfer" class="primaryButton" src="/html/review_asset_transfer_requests.html">
+                Rechazar traslado
+              </button>
+          </div>
+        </form>
+    </div>
     </main>
 
     <footer class="footer">
