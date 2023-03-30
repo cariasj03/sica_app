@@ -1,0 +1,481 @@
+/* Type Scale */
+/* 12 / 16 / 18 / 20 / 24 / 28 / 34 / 38 / 46/ 50 / 66 */
+
+* {
+  margin: 0;
+  padding: 0;
+  font-family: "Open Sans", sans-serif;
+  font-size: 1rem;
+  box-sizing: border-box;
+  color: #444;
+}
+
+.material-symbols-outlined {
+  font-variation-settings: "FILL" 1, "wght" 700, "GRAD" 0, "opsz" 48;
+}
+body {
+  display: flex;
+  flex-direction: column;
+}
+
+h1 {
+  font-size: 3.5rem;
+  font-weight: 700;
+  color: #adc178;
+  line-height: 1;
+}
+
+h2 {
+  font-size: 2rem;
+  line-height: 1.2;
+  margin-bottom: 1.5rem;
+  color: #ad522a;
+}
+
+h3 {
+  font-size: 1.5rem;
+}
+
+h4 {
+  font-size: 1rem;
+  margin-bottom: 0.25rem;
+}
+
+p,
+a {
+  font-family: "Manrope", sans-serif;
+}
+
+p {
+  line-height: 1.8;
+  margin-bottom: 1rem;
+}
+
+a:link,
+a:visited {
+  text-decoration: none;
+}
+
+a:hover,
+a:active {
+  color: #adc178;
+  font-weight: 500;
+}
+
+.headerFooterLogo {
+  grid-column: 1;
+  justify-self: start;
+}
+
+.headerFooterLogo img {
+  padding: 0.25rem;
+  height: 3.5rem;
+}
+
+.mainHeader {
+  width: 100%;
+  display: grid;
+  grid-template-columns: 2fr 5fr 2fr;
+  justify-items: center;
+  align-items: center;
+  border-bottom: 1px solid #ddd;
+  margin-bottom: 2rem;
+}
+
+.mainNav {
+  width: 90%;
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-around;
+  gap: 1rem;
+}
+
+.sicaNav {
+  width: 90%;
+  display: flex;
+  justify-content: flex-end;
+  gap: 1rem;
+}
+
+.button {
+  padding: 0.5rem;
+  border-radius: 0.5rem;
+  cursor: pointer;
+  text-align: center;
+  border: none;
+}
+
+.secondaryButton {
+  color: #ad522a;
+  background-color: #fff;
+  font-weight: 700;
+}
+
+.secondaryButton:hover {
+  color: #fff;
+  background-color: #e49471;
+}
+
+.primaryButton {
+  color: #fff;
+  background-color: #57613c;
+}
+
+.primaryButton:hover {
+  color: #fff;
+  background-color: #798754;
+}
+
+.mainContainer {
+  display: grid;
+  grid-template-rows: 1fr 1fr 0.75fr 1fr 0.75fr 0.5fr;
+  justify-items: center;
+  gap: 2rem;
+}
+
+.headingImage {
+  width: 55%;
+  border-radius: 20px;
+}
+
+.notBold {
+  font-weight: 400;
+}
+
+.section1 {
+  align-self: center;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-around;
+  align-items: center;
+  gap: 1rem;
+}
+
+.section2 {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  grid-template-rows: 1fr 3fr;
+  align-items: center;
+  column-gap: 5rem;
+}
+
+.laptopImage {
+  width: 60%;
+  justify-self: end;
+}
+
+.sicaDescriptionParagraphContainer {
+  grid-column: 1/3;
+  justify-self: center;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  text-align: center;
+}
+
+.subSectionParagraph {
+  justify-self: start;
+  width: 70%;
+}
+
+.section3 {
+  width: 100%;
+  display: grid;
+  grid-template-columns: 3fr 4fr;
+  grid-template-rows: 1fr 3fr;
+  align-items: center;
+  justify-items: end;
+  column-gap: 10rem;
+  background-color: #eff3e4;
+}
+
+.section3Subtitle {
+  font-weight: 400;
+  color: #57613c;
+  border-bottom: 1px solid #57613c;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.selectedSubtitle,
+.section3Subtitle:hover {
+  color: #57613c;
+  font-weight: 700;
+  border-bottom: 3px solid #57613c;
+}
+
+.selectedSubtitle .icon {
+  height: 1.5rem;
+  color: #57613c;
+}
+
+.subSectionList {
+  grid-row: 2;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+}
+
+#section3Title {
+  color: #57613c;
+  grid-column: 1/3;
+  justify-self: center;
+  margin: 0;
+}
+
+#section3Text {
+  grid-row: 2;
+}
+
+.section4 {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  grid-template-rows: 0.25fr 1fr 1fr;
+  align-items: center;
+  justify-items: center;
+}
+
+#section4Title {
+  grid-column: 1/3;
+  justify-self: center;
+}
+
+.subSection {
+  padding-left: 15%;
+}
+.imageIcon {
+  height: 4rem;
+}
+
+.section5 {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  align-items: center;
+  column-gap: 5rem;
+  background-color: #eff3e4;
+}
+
+#section5Title {
+  color: #57613c;
+}
+
+#clientReviewContainer {
+  width: 85%;
+  justify-self: end;
+  display: flex;
+  flex-direction: column;
+  align-items: flex-end;
+}
+
+#clientReviewParagraph {
+  width: 100%;
+}
+
+.officeImage {
+  width: 70%;
+  justify-self: center;
+  border-radius: 1.5rem;
+}
+
+.section6 {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  width: 100%;
+}
+
+.calltoActionContainer {
+  width: 70%;
+  height: 60%;
+  background-color: #ad522a;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  border-radius: 2rem;
+}
+
+#section6Title {
+  color: #fff;
+}
+
+.mainFooter {
+  width: 90%;
+  align-self: center;
+  display: grid;
+  grid-template-columns: 2fr 5fr;
+  justify-items: center;
+  align-items: center;
+  border-top: 1px solid #ddd;
+  margin-top: 2rem;
+}
+
+/* Only happens when the screen is larger than 48rem wide*/
+@media only screen and (min-width: 48rem) {
+  .hiddenDT {
+    display: none;
+  }
+
+  .subSectionList {
+    height: 80%;
+    width: 70%;
+  }
+}
+
+/* Only happens when the screen is smaller than 48rem wide*/
+@media only screen and (max-width: 48rem) {
+  h1 {
+    font-size: 3rem;
+  }
+
+  h2 {
+    font-size: 1.5rem;
+  }
+
+  h3 {
+    font-size: 1.25rem;
+  }
+
+  h4 {
+    font-size: 1rem;
+    margin-bottom: 0.25rem;
+  }
+
+  nav a:hover,
+  nav a:active {
+    color: #fff;
+    background-color: #798754;
+  }
+
+  .headerFooterLogo {
+    grid-column: 2;
+    justify-self: center;
+  }
+
+  .headerFooterLogo img {
+    height: 3rem;
+  }
+
+  .mainHeader {
+    grid-template-columns: 3fr 2fr 3fr;
+  }
+
+  .menuIcon {
+    color: #798754;
+    justify-self: start;
+    padding: 0 1rem;
+    cursor: pointer;
+  }
+
+  .mainNav {
+    width: 70%;
+    position: fixed;
+    top: 3.1rem;
+    left: 0;
+    background-color: #f7f7f7;
+    flex-direction: column;
+    grid-column: 1;
+    gap: 0;
+  }
+
+  .hidden {
+    display: none;
+  }
+
+  .mainNav a {
+    padding: 0.5rem 1rem;
+  }
+
+  .sicaNav {
+    grid-column: 3;
+  }
+
+  .button {
+    font-size: 0.9rem;
+  }
+
+  .mainContainer {
+    width: 100%;
+    display: grid;
+    grid-template-rows: 0.5fr 1fr 0.5fr 1fr 0.5fr 0.3fr;
+    justify-items: center;
+    gap: 2rem;
+  }
+
+  .section {
+    width: 100%;
+    align-items: center;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+  }
+
+  .textCenter {
+    text-align: center;
+  }
+
+  .headingImage {
+    width: 70%;
+  }
+
+  .section2 {
+    gap: 0;
+  }
+
+  .subSectionMob {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+  }
+
+  .subSectionParagraph {
+    justify-self: center;
+  }
+
+  .laptopImage {
+    justify-self: center;
+  }
+
+  .section3 {
+    justify-content: center;
+    gap: 1.5rem;
+  }
+
+  .subSectionList {
+    height: 30%;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-around;
+  }
+
+  .subSection {
+    padding-left: 0;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+  }
+
+  .section5 {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: space-around;
+    padding: 1rem 0;
+  }
+
+  #clientReviewContainer {
+    width: 85%;
+    align-self: center;
+    align-items: center;
+    justify-content: space-around;
+  }
+
+  .mainFooter {
+    display: flex;
+    justify-content: center;
+  }
+}
