@@ -8,6 +8,11 @@
   font-size: 1rem;
   box-sizing: border-box;
   color: #444;
+  transition: 0.4s ease-in;
+}
+
+html {
+  scroll-behavior: smooth;
 }
 
 .material-symbols-outlined {
@@ -79,7 +84,14 @@ a:active {
   justify-items: center;
   align-items: center;
   border-bottom: 1px solid #ddd;
+  background-color: #fff;
   margin-bottom: 2rem;
+  box-shadow: 2px 3px 2px #f1f1f1;
+  position: sticky;
+  top: 0;
+  left: 0;
+  z-index: 1;
+  outline: none;
 }
 
 .mainNav {
@@ -131,6 +143,10 @@ a:active {
   grid-template-rows: 1fr 1fr 0.75fr 1fr 0.75fr 0.5fr;
   justify-items: center;
   gap: 2rem;
+}
+
+.section {
+  padding: 4rem 0;
 }
 
 .headingImage {
