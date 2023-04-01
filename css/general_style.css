@@ -67,7 +67,7 @@ a {
   color: #ad522a;
 }
 
-.currentIcon{
+.currentIcon {
   color: #934422;
 }
 
@@ -89,6 +89,7 @@ a {
 
 html {
   height: 100%;
+  scroll-behavior: smooth;
 }
 
 body {
@@ -143,13 +144,27 @@ textarea:focus {
 }
 
 .primaryButton:hover {
-  background-color: #57613c;
+  background-color: #adc178;
+}
+
+.secondaryButton {
+  background-color: #eff3e4;
+  color: #57613c;
+  border: 1px solid #57613c;
+  border-radius: 5px;
 }
 
 .buttonContainer {
   display: flex;
   justify-content: flex-end;
   gap: 20px;
+}
+
+.disabled,
+.disabled:hover {
+  background-color: #d6d6d6;
+  color: #999;
+  cursor: default;
 }
 
 .footer {
@@ -190,5 +205,5 @@ textarea:focus {
 
 #assetTransferInfoDisplay {
   display: grid;
-  grid-template-columns: repeat(2, 1fr); 
+  grid-template-columns: repeat(2, 1fr);
 }

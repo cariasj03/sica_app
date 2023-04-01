@@ -118,49 +118,35 @@ form p {
 
 input[type="text"]:disabled,
 textarea:disabled {
-  background-color: white;
-  color: black;
-  border-style: solid;
-  border-width: 1px;
-  border-color: #a9a9a9;
-}
-
-input[type="text"]:enabled,
-textarea:enabled {
-  background-color: #eeeeee;
-  color: #a3a3a3;
+  background-color: #fff;
+  color: #000;
+  border: 1px solid #a9a9a9;
 }
 
 select:required:invalid {
   color: #666;
 }
-option[value=""][disabled] {
-  display: none;
-}
-option {
-  color: #000;
-}
 
 .containerUserRegistration {
-  display: grid; 
-  grid-template-columns: 0.5fr 1fr; 
+  display: grid;
+  grid-template-columns: 0.5fr 1fr;
 }
 
 .photoUserRegistration {
-  justify-self: center; 
-  align-self: start; 
+  justify-self: center;
+  align-self: start;
 }
 
 .inputsUserRegistration {
-  display: grid; 
-  grid-template-columns: 1fr 1fr; 
-  justify-self: end; 
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  justify-self: end;
 }
 
 .buttonsUserRegistration {
-  justify-self: end; 
+  justify-self: end;
   align-self: start;
-  grid-column: 2; 
+  grid-column: 2;
 }
 
 #userIdLabelUserRegistration {
@@ -168,8 +154,8 @@ option {
 }
 
 .containerAssetTransfer {
-  display: grid; 
-  grid-template-columns: 1fr 1fr; 
+  display: grid;
+  grid-template-columns: 1fr 1fr;
 }
 
 #userIdLabelAssetTransfer {
@@ -189,7 +175,7 @@ option {
 }
 
 #buttonAssetTransfer {
-  background-color: #e7e7e7; 
+  background-color: #e7e7e7;
   color: #949494;
   border: none;
   padding: 10px 24px;
@@ -199,7 +185,7 @@ option {
   margin-top: 4px;
   margin-bottom: 4px;
   width: 75%;
-  font-size: 11px;  
+  font-size: 11px;
   justify-self: center;
 }
 
@@ -208,8 +194,9 @@ option {
   color: white;
 }
 
-#submitButton {
-  display: grid;
+#buttonContainer {
+  display: flex;
+  gap: 1rem;
   grid-column: 2/3;
   justify-self: end;
 }
