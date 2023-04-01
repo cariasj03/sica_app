@@ -4,20 +4,37 @@
     <meta charset="UTF-8" />
     <meta http-equiv="X-UA-Compatible" content="IE=edge" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link
+      rel="stylesheet"
+      href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@20..48,100..700,0..1,-50..200"
+    />
     <link href="/landing_page_team/assets/icons/b_icono_color.png" rel="icon" />
     <link rel="stylesheet" href="/landing_page_team/assets/css/styles.css" />
     <title>Beelders | You dream. We build.</title>
   </head>
   <body id="body">
     <header>
+      <span
+        id="openMenuIcon"
+        class="material-symbols-outlined menuIcon hiddenDT"
+      >
+        menu
+      </span>
+      <span
+        id="closeMenuIcon"
+        class="material-symbols-outlined menuIcon hidden hiddenDT"
+      >
+        close
+      </span>
+
       <a href="#body" class="logo">
         <img
           src="/landing_page_team/assets/icons/b_logo_horizontal_color.png"
           alt="Beelders logo"
         />
       </a>
-
-      <nav>
+      
+      <nav id="mainNav" class="mainNav hidden">
         <ul>
           <li class="nav-item">
             <a href="#body" class="nav-link" id="nav-link">Inicio</a>
@@ -40,7 +57,7 @@
         </ul>
       </nav>
 
-      <a class="nav-button" href="mailto:info@beelders.com"
+      <a class="nav-button hidden" href="mailto:info@beelders.com"
         >Póngase en contacto</a
       >
     </header>

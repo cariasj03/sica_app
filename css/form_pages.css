@@ -1,5 +1,5 @@
 .pageBody {
-  max-width: 800px;
+  max-width: 900px;
 }
 
 input,
@@ -215,4 +215,8 @@ select:required:invalid {
 
 #titleMargin {
   margin-left: 7px;
+}
+
+#assetTransferRequest {
+  max-width: 90%;
 }

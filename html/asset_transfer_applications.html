@@ -17,7 +17,7 @@
     <link href="/svg/sica_favicon.svg" rel="icon" />
     <link href="/css/general_style.css" rel="stylesheet" />
     <link href="/css/table_pages.css" rel="stylesheet" />
-    <title>SICA - Activos</title>
+    <title>SICA - Solicitudes de traslado de activos</title>
   </head>
 
   <body>
@@ -40,8 +40,8 @@
 
       <div class="headerIcons">
         <a href="/html/config.html"
-        ><span class="material-symbols-outlined"> settings </span>
-        </a> 
+          ><span class="material-symbols-outlined"> settings </span>
+        </a>
         <a href="/html/myprofile.html"
           ><span class="material-symbols-outlined"> account_box </span></a
         >
@@ -65,7 +65,7 @@
       </nav>
 
       <div class="pageBody">
-        <h1>Solicitudes de traslado de activos.</h1>
+        <h1>Solicitudes de traslado de activos</h1>
         <div class="pageContent">
           <div>
             <h2>Filtros</h2>
@@ -74,7 +74,8 @@
 
               <label for="idRadio">
                 <input type="radio" id="idRadio" name="sortRadio" value="ID" />
-                ID del traslado</label>
+                ID del traslado</label
+              >
               <label for="nameRadio"
                 ><input
                   type="radio"
@@ -117,15 +118,19 @@
               <h3>Filtrar por</h3>
               <label for="unitSelectOrigin"
                 >Unidad de origen<select id="unitSelectOrigin">
-                  <option value="" disabled selected hidden>Unidad</option>
+                  <option value="" disabled selected hidden>
+                    Unidad de origen
+                  </option>
                   <option value="bodega">Bodega</option>
                   <option value="cartago">Cartago</option>
                   <option value="heredia">Heredia</option>
                 </select></label
               >
-              <label for="unitSelectDestiny"
-                >Unidad de destino<select id="unitSelectDestiny">
-                  <option value="" disabled selected hidden>Unidad</option>
+              <label for="unitSelectTarget"
+                >Unidad de destino<select id="unitSelectTarget">
+                  <option value="" disabled selected hidden>
+                    Unidad de destino
+                  </option>
                   <option value="bodega">Bodega</option>
                   <option value="cartago">Cartago</option>
                   <option value="heredia">Heredia</option>
@@ -142,11 +147,11 @@
                   name="idTransferSearch"
                   placeholder="ID del traslado"
               /></label>
-              <label for="idassetSearch"
+              <label for="idAssetSearch"
                 >ID del activo<input
                   type="search"
-                  id="idassetSearch"
-                  name="idassetSearch"
+                  id="idAssetSearch"
+                  name="idAssetSearch"
                   placeholder="ID del activo"
               /></label>
               <label for="nameSearch"
@@ -154,7 +159,7 @@
                   type="search"
                   id="nameSearch"
                   name="nameSearch"
-                  placeholder="Nombre"
+                  placeholder="Nombre del activo"
               /></label>
             </div>
           </div>
