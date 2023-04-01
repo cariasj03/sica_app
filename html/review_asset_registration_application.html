@@ -65,7 +65,90 @@
         >
       </nav>
 
-      <div class="reviewAssetRegistration">
+      <div class="pageBody">
+      <h1>Información del activo</h1>
+
+      <form id="form">
+        <label for="assetName">ID del activo.</label>
+        <input
+        type="text"
+        id="assetId"
+        name="assetId"
+        type="text"
+        />
+        <p class="formInputError" id="assetNameError"></p>
+
+        <label for="assetDescription">Nombre del activo</label>
+        <input
+        class="inputStyle"
+        id="assetName"
+        name="assetName" 
+        type="text"
+        ></form>
+        <p class="formInputError" id="assetDescriptionError"></p>
+
+        <label for="assetDescription">Descripción del activo</label>
+        <textarea
+        class="inputStyle"
+        id="assetDescription"
+        name="assetDescription"
+        type="text"
+        rows="4"
+        ></textarea>
+        <p class="formInputError" id="assetDescriptionError"></p>
+
+        <label for="assetUnit">Unidad en la que está ubicado</label>
+        <input
+        class="inputStyle"
+        id="assetUnit"
+        name="assetUnit"
+        type="text"
+        rows="4"
+        ></input>
+        <p class="formInputError" id="assetUnitError"></p>
+
+        <label for="assetLocation">Ubicación del activo</label>
+        <input
+        class="inputStyle"
+        id="assetLocation"
+        name="assetLocation"
+        type="text"
+        />
+        <p class="formInputError" id="assetLocationError"></p>
+
+        <label for="assetLocation">Código de la ubicación</label>
+        <input
+        class="inputStyle"
+        id="assetCodeLocation"
+        name="assetCodeLocation"
+        type="text"
+        />
+        <p class="formInputError" id="assetLocationError"></p>
+
+        <label for="assetStatus">Estado</label>
+        <input 
+        id="assetStatus"
+        name="assetStatus"
+        type="text"
+        />
+        <p class="formInputError" id="assetStatusError"></p>
+
+        <div class="buttonContainer">
+        <button type="submit" id="AproveAsset" class="primaryButton">
+            Aceptar solicitud
+        </button>
+
+        <button type="buttom" id="DeclainAsset" class="primaryButton">
+            Rechazar solicitud
+        </button>
+
+        </div>
+
+    </form>
+
+      
+      <!--
+        <div class="reviewAssetRegistration">
         <h1>Revisión de solicitud de registro de un activo</h1>
         <div>
           <h3>ID del activo</h3>
@@ -104,7 +187,7 @@ Impresora de gran formato para sublimación de 24 pulgadas. Para impresiones de 
             </button>
           </div>
         </div>
-      </div>
+      </div>-->
     </main>
 
     <footer class="footer">

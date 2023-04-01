@@ -59,7 +59,7 @@
 
       <div>
         <h1>Revisión de solicitud de registro de un activo</h1>
-        <form id="form">
+        <form id="form" >
 
           <div class="column ">
     
@@ -80,7 +80,7 @@
             ></input>
           
     
-            <label for="assetDescription">Ubicación de destino*</label>
+            <label for="assetDescription">Ubicación de destino</label>
             <input
             class="inputStyle"
             type="text"
@@ -103,7 +103,7 @@
             ></input>
             <p class="formInputError" id="assetUnitError"></p>
     
-            <label for="assetLocation">Unidad de destino*</label>
+            <label for="assetLocation">Unidad de destino</label>
             <input
             class="inputStyle"
             type="text"
@@ -113,8 +113,8 @@
           </input>
             <p class="formInputError" id="assetLocationError"></p>
     
-            <label for="assetLocation">Motivo del traslado*</label>
-            <input required
+            <label for="assetLocation">Motivo del traslado</label>
+            <input 
             type="text"
             id="assetTransferReason"
             name="assetTransferReason"
@@ -130,24 +130,25 @@
               name="assetRequestDescription";
               placeholder="Descripción detallada de la solicitud"
               ></textarea>
-
               <label for="assetStatus">Imagenes que justifiquen el traslado</label>
-              <div class="column">
-                <img alt="Upload a picture" src="/images/s-l1600.jpeg" class="imageStyle">
-              </div>
-              <div class="column">
-                <img alt="Upload a picture" src="/images/s-l500.jpeg" class="imageStyle">
-              </div>
+              <div id="imageTransferDirection">
+                <div class="column">
+                  <img alt="Upload a picture 1" src="/images/s-l1600.jpeg"  id="imageTransferDisplay">
+                </div>
+                <div class="column">
+                  <img alt="Upload a picture 2" src="/images/s-l500.jpeg"  id="imageTransferDisplay">
+                </div>
+            </div>
             
           </div>
     
           <div class="buttonContainer">
-              <button type="submit" id="aproveAssetTransfer" class="primaryButton" src="/html/review_asset_transfer_requests.html">
-                  Aprobar traslado
-              </button>
-              <button id="declineAssetTrasfer" class="primaryButton" src="/html/review_asset_transfer_requests.html">
+              <button  type="button"  id="declineAssetTrasfer" class="primaryButton" src="/html/review_asset_transfer_requests.html">
                 Rechazar traslado
               </button>
+              <button type="submit" id="acceptAssetTransfer" class="primaryButton" src="/html/review_asset_transfer_requests.html">
+                Aprobar traslado
+            </button>
           </div>
         </form>
     </div>

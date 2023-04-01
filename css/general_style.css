@@ -205,5 +205,19 @@ textarea:focus {
 
 #assetTransferInfoDisplay {
   display: grid;
-  grid-template-columns: repeat(2, 1fr);
+  grid-template-columns: repeat(2, 1fr); 
 }
+
+#imageTransferDisplay {
+  margin-top: 10px;
+  margin-left: 5px;
+  height: 200px;
+  width: 250px;
+  border: 1px solid #444;
+}
+
+#imageTransferDirection{
+  display: flex;
+  flex-direction: row;
+}
+  
