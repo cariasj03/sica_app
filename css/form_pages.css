@@ -167,7 +167,7 @@ option {
   grid-column: 1/3;
 }
 
-.containerAssetTransfer {
+.containerAssetTransfer {                              
   display: grid; 
   grid-template-columns: 1fr 1fr; 
 }
