@@ -156,6 +156,9 @@ select:required:invalid {
 .containerAssetTransfer {
   display: grid;
   grid-template-columns: 1fr 1fr;
+.containerAssetTransfer {                              
+  display: grid; 
+  grid-template-columns: 1fr 1fr; 
 }
 
 #userIdLabelAssetTransfer {
