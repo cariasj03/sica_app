@@ -68,6 +68,18 @@
             type="text"
             id="assetId"
             name="assetId"
+            value="000001"
+            disabled
+            >
+            <p class="formInputError" id="assetNameError"></p>
+
+            <label for="assetTransferID">ID del traslado</label>
+            <input
+            type="text"
+            id="assetTransferId"
+            name="assetId"
+            value="000003"
+            disabled
             >
             <p class="formInputError" id="assetNameError"></p>
     
@@ -77,22 +89,37 @@
             type="text"
             id="assetUnit"
             name="assetUnit"
+            value="Cartago"
+            disabled
             ></input>
           
-    
+            
             <label for="assetDescription">Ubicación de destino</label>
             <input
             class="inputStyle"
             type="text"
             id="assetTargetUnit"
             name="assetTargetUnit"
-            placeholder="Ubicación de destino"
+            value="Piso 4, estante 2, caja 3"
+            disabled
             />
             <p class="formInputError" id="assetDescriptionError"></p>
+
+            <label for="assetLocation">Unidad de destino</label>
+            <input
+            class="inputStyle"
+            type="text"
+            id="assetTargetLocation"
+            name="assetTargetLocation"
+            value="Alajuela"
+            disabled
+            >
+          </input>
+            <p class="formInputError" id="assetLocationError"></p>
     
           </div>
     
-          <div class="column ">
+          <div class="column">
     
             <label for="assetUnit">Nombre del activo</label>
             <input
@@ -100,24 +127,19 @@
             type="text"
             id="assetName"
             name="assetName"
+            value="Impresora EPSON F570"
+            disabled
             ></input>
             <p class="formInputError" id="assetUnitError"></p>
     
-            <label for="assetLocation">Unidad de destino</label>
-            <input
-            class="inputStyle"
-            type="text"
-            id="assetTargetLocation"
-            name="assetTargetLocation"
-            >
-          </input>
-            <p class="formInputError" id="assetLocationError"></p>
     
             <label for="assetLocation">Motivo del traslado</label>
             <input 
             type="text"
             id="assetTransferReason"
             name="assetTransferReason"
+            value="Activo dañado"
+            disabled
             >
           </div>
     
@@ -128,8 +150,8 @@
               type="text"
               id="assetRequestDescription";
               name="assetRequestDescription";
-              placeholder="Descripción detallada de la solicitud"
-              ></textarea>
+              disabled
+              >El activo se encuentra en mal estado y se requiere reparación</textarea>
               <label for="assetStatus">Imagenes que justifiquen el traslado</label>
               <div id="imageTransferDirection">
                 <div class="column">
@@ -143,12 +165,19 @@
           </div>
     
           <div class="buttonContainer">
-              <button  type="button"  id="declineAssetTrasfer" class="primaryButton" src="/html/review_asset_transfer_requests.html">
-                Rechazar traslado
-              </button>
-              <button type="submit" id="acceptAssetTransfer" class="primaryButton" src="/html/review_asset_transfer_requests.html">
+            <a href="/html/asset_registration_applications.html"
+              ><button type="submit" id="acceptAssetTransfer" class="primaryButton">
                 Aprobar traslado
-            </button>
+            </button></a>
+            <a href="/html/asset_registration_applications.html"
+            ><button  type="button"  id="declineAssetTrasfer" class="destructiveButton">
+                Rechazar traslado
+              </button></a>
+              
+            <a href="/html/asset_registration_applications.html"
+              ><button type="button" class="secondaryButton">
+                Regresar
+              </button></a>
           </div>
         </form>
     </div>
