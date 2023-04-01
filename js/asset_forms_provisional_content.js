@@ -38,10 +38,10 @@ window.onload = function () {
     assetLocation.disabled = false;
 
     saveButton.disabled = false;
-    saveButton.classList.remove("disabled");
+    saveButton.classList.remove("disabledButton");
 
     editButton.disabled = true;
-    editButton.classList.add("disabled");
+    editButton.classList.add("disabledButton");
   });
 
   saveButton.addEventListener("click", function () {
@@ -52,9 +52,9 @@ window.onload = function () {
     assetLocation.disabled = true;
 
     saveButton.disabled = true;
-    saveButton.classList.add("disabled");
+    saveButton.classList.add("disabledButton");
 
     editButton.disabled = false;
-    editButton.classList.remove("disabled");
+    editButton.classList.remove("disabledButton");
   });
 };

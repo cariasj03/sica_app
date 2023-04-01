@@ -154,14 +154,29 @@ textarea:focus {
   border-radius: 5px;
 }
 
+.secondaryButton:hover {
+  background-color: #d6e0bc;
+}
+
+.destructiveButton {
+  background-color: #974724;
+  color: #fff;
+  border: none;
+  border-radius: 5px;
+}
+
+.destructiveButton:hover {
+  background-color: #c25c2f;
+}
+
 .buttonContainer {
   display: flex;
   justify-content: flex-end;
   gap: 20px;
 }
 
-.disabled,
-.disabled:hover {
+.disabledButton,
+.disabledButton:hover {
   background-color: #d6d6d6;
   color: #999;
   cursor: default;
@@ -205,7 +220,7 @@ textarea:focus {
 
 #assetTransferInfoDisplay {
   display: grid;
-  grid-template-columns: repeat(2, 1fr); 
+  grid-template-columns: repeat(2, 1fr);
 }
 
 #imageTransferDisplay {
@@ -216,8 +231,7 @@ textarea:focus {
   border: 1px solid #444;
 }
 
-#imageTransferDirection{
+#imageTransferDirection {
   display: flex;
   flex-direction: row;
 }
-  
