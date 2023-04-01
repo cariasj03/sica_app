@@ -379,7 +379,7 @@ special-list ol {
 
 .specialities-section {
   background-color: #f8f8f8;
-  padding: 4rem 2rem;
+  padding: 2rem 0rem;
   text-align: center;
 }
 
@@ -505,6 +505,7 @@ specialities-list {
   overflow: hidden;
   align-items: center;
 }
+
 .slider:before {
   position: absolute;
   z-index: 1;
@@ -527,12 +528,14 @@ specialities-list {
     hsla(0, 0%, 96.9%, 0.99) 99%
   );
 }
+
 .slider .slide-track {
   display: flex;
   animation: scroll 35s linear infinite;
   -webkit-animation: scroll 35s linear infinite;
   width: calc(240px * 9);
 }
+
 .slider .slide {
   cursor: pointer;
   width: 180px;
