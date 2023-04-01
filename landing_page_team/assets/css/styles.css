@@ -711,7 +711,7 @@ specialities-list {
 
   .card3:hover {
     background: url(/landing_page_team/assets/images/Efrain.png) left center no-repeat;
-    background-size: 450px;
+    background-size: 500px;
   }
 
   .card4 {
@@ -721,7 +721,7 @@ specialities-list {
 
   .card4:hover {
     background: url(/landing_page_team/assets/images/Armando.png) left center no-repeat;
-    background-size: 400px;
+    background-size: 450px;
   }
 
   .container-h2 {
@@ -770,3 +770,181 @@ specialities-list {
     text-align: center;
     width: 100%;
   }
+
+  .contact-section {
+    padding: 2rem 2rem;
+    background: #f8f8f8;
+    margin: 0;
+    box-sizing: border-box;
+    display: grid;
+    height: 100%;
+    width: 100%;
+    place-items: center;
+  }
+  
+  .contact-section h2 {
+    text-align: center;
+    margin-bottom: 2rem;
+    font-size: 3rem;
+    color: var(--primary-color);
+    font-weight: bold;
+  }
+
+    ::selection{
+      background: var(--secondary-color);
+      color: #fff;
+  }
+  .wrapper{
+      width: 380px;
+      background: #fff;
+      border-radius: 10px;
+      box-shadow: 0px 15px 20px rgba(0, 0, 0, 0.1);
+  }
+  .wrapper .title{
+      font-size: 2rem;
+      font-weight: 700;
+      text-align: center;
+      line-height: 100px;
+      color: var(--secondary-color);
+      padding-top: 30px;
+      user-select: none;
+  }
+  .wrapper form{
+      padding: 0px 30px 50px 30px;
+  }
+  .wrapper form .field{
+      height: 50px;
+      width: 100%;
+      margin-top: 20px;
+      position: relative;
+  }
+  .wrapper form .field input{
+      height: 100%;
+      width: 100%;
+      outline: none;
+      font-size: 17px;
+      padding-left: 20px;
+      border: 1px solid lightgray;
+      border-radius: 25px;
+      transition: all 0.3s ease;
+  }
+  .wrapper form .field input:focus,
+  form .field input:valid{
+      border-color: var(--secondary-color);
+  }
+  .wrapper form .field label{
+      position: absolute;
+      top: 50%;
+      left: 20px;
+      color: #999999;
+      font-weight: 400;
+      font-size: 17px;
+      pointer-events: none;
+      transform: translateY(-50%);
+      transition: all 0.3s ease;
+  }
+  form .field input:focus ~ label,
+  form .field input:valid ~ label{
+      top: 0%;
+      font-size: 16px;
+      color: var(--secondary-color);
+      background: #fff;
+      transform: translateY(-50%);
+  }
+  form .content{
+      display: flex;
+      width: 100%;
+      height: 50px;
+      font-size: 16px;
+      align-items: center;
+      justify-content: space-around;
+  }
+
+  form .content input{
+      width: 15px;
+      height: 15px;
+  }
+  form .content label{
+      color:#262626;
+      user-select: none;
+      padding-left: 5px;
+  }
+  form .field input[type="submit"]{
+      color: #fff;
+      border: none;
+      padding-left: 0;
+      margin-top: -10px;
+      font-size: 20px;
+      font-weight: 500;
+      cursor: pointer;
+      transition: all 0.3s ease;
+      background: linear-gradient(45deg, var(--secondary-color) 0%, var(--tertiary-color) 100%);
+  }
+  form .field input[type="submit"]:active{
+      transform: scale(0.95);
+  }
+  
+  footer {
+    background-color: #f7f7f7;
+    color: #666;
+    padding: 30px 0;
+    font-size: 14px;
+    }
+    
+    .footer-container {
+    display: flex;
+    justify-content: space-evenly;
+    align-items: center;
+    flex-wrap: wrap;
+    max-width: 1200px;
+    margin: 0 auto;
+    }
+    
+    .footer-section {
+    flex-basis: 30%;
+    max-width: 350px;
+    margin-bottom: 30px;
+    }
+    
+    .footer-section h3 {
+    font-size: 16px;
+    margin-bottom: 20px;
+    color: var(--primary-color);
+    }
+    
+    .footer-section p {
+    line-height: 1.5;
+    margin-bottom: 20px;
+    }
+    
+    .social-icons {
+    display: flex;
+    }
+    
+    .social-icons a {
+    margin-right: 15px;
+    color: #666;
+    }
+    
+    .social-icons a:hover {
+    color: #333;
+    }
+    
+    .footer-bottom {
+    border-top: 1px solid #ddd;
+    padding-top: 20px;
+    text-align: center;
+    }
+    
+    .footer-bottom p {
+    margin-bottom: 0;
+    color: var(--primary-color);
+    }
+
+    section {
+      border-bottom: 1px solid #e7e7e7;
+    }
+
+    section {
+      border-top: 1px solid #e7e7e7;
+    }

@@ -70,14 +70,14 @@
         />
         <p class="formInputError" id="assetNameError"></p>
 
-        <label for="assetDescription">Nombre del activo</label>
+        <label for="assetName">Nombre del activo</label>
         <input
         class="inputStyle"
         id="assetName"
         name="assetName" 
         type="text"
         ></form>
-        <p class="formInputError" id="assetDescriptionError"></p>
+        <p class="formInputError" id="assetNameError"></p>
 
         <label for="assetDescription">Descripción del activo</label>
         <textarea
@@ -97,7 +97,6 @@
         type="text"
         rows="4"
         ></input>
-        <p class="formInputError" id="assetUnitError"></p>
 
         <label for="assetLocation">Ubicación del activo</label>
         <input
@@ -115,7 +114,6 @@
         name="assetCodeLocation"
         type="text"
         />
-        <p class="formInputError" id="assetLocationError"></p>
 
         <label for="assetStatus">Estado</label>
         <input 
@@ -123,16 +121,20 @@
         name="assetStatus"
         type="text"
         />
-        <p class="formInputError" id="assetStatusError"></p>
 
         <div class="buttonContainer">
-        <button type="submit" id="editAsset" class="primaryButton">
-            Editar Información
+        <button type="button" id="editAsset" class="primaryButton">
+            Editar información
         </button>
 
-        <button type="submit" id="saveAssetInformation" class="primaryButton">
-            Guardar Información
+        <button type="button" id="saveAssetInformation" class="primaryButton disabled" disabled>
+            Guardar información
         </button>
+
+        <a href="/html/assets.html"
+              ><button type="button" class="secondaryButton">
+                Regresar
+              </button></a
 
         </div>
 
@@ -146,8 +148,8 @@
 </footer>
 
 <script src="/js/form_validation.js"></script>
-<script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
 <script src="/js/sweet_alert.js"></script>
+<script src="/js/user_feedback.js"></script>
 <script src="/js/asset_forms_provisional_content.js"></script>
 
 </body>
