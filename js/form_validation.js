@@ -275,6 +275,9 @@ const errorModifier = function (elementId, errorActiveClass, status, message) {
       case "unitRegistrationForm":
         unitRegistrationFields[elementId] = false;
         break;
+      case "assetIndividualInformationForm":
+        unitRegistrationFields[elementId] = false;
+        break;
     }
   } else if (!status) {
     //If the status is true means the field is ok, the fuction hides the error paragraph by removing the visible class
@@ -299,6 +302,9 @@ const errorModifier = function (elementId, errorActiveClass, status, message) {
         unitInfoFields[elementId] = true;
         break;
       case "unitRegistrationForm":
+        unitRegistrationFields[elementId] = true;
+        break;
+      case "assetIndividualInformationForm":
         unitRegistrationFields[elementId] = true;
         break;
     }
@@ -360,29 +366,6 @@ const submitBtn = function () {
         form.reset();
         Object.keys(assetRegistrationFields).forEach(
           (attribute) => (assetRegistrationFields[attribute] = false)
-        );
-      } else {
-        errorAlert("Hay campos obligatorios sin llenar.");
-      }
-      break;
-
-    case "userInfoForm":
-      if (Object.values(userInfoFields).every(Boolean)) {
-        successAlert(
-          "Información guardada con éxito",
-          "La información del usuario se actualizó exitosamente."
-        );
-      } else {
-        errorAlert("Hay campos obligatorios sin llenar.");
-      }
-      break;
-
-    case "unitRegistrationForm":
-      if (Object.values(unitRegistrationFields).every(Boolean)) {
-        successAlert("Unidad registrada con éxito", "La unidad exitosamente.");
-        form.reset();
-        Object.keys(unitRegistrationFields).forEach(
-          (attribute) => (unitRegistrationFields[attribute] = false)
         );
       } else {
         errorAlert("Hay campos obligatorios sin llenar.");
