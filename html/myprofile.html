@@ -35,7 +35,7 @@
     <nav class="headerNav barNav">
         <a href="/html/index.html">Inicio</a>
         <a href="/html/assets.html">Activos</a>
-        <a href="/html/review_requests_registration_users.html">Solicitudes</a>
+        <a href="/html/requests_registration_users.html">Solicitudes</a>
         <a href="/html/reports.html">Reportes</a>
     </nav>
     </div>
@@ -79,7 +79,7 @@
                 value="101230456"
                 disabled
             ></input>
-            <p class="formInputError" id="userIdError"></p></label>
+            </label>
 
             <label for="userName">Nombre <input class="inputStyle" type="text" id="userName" name="userName" placeholder="Nombre" value="Juan"/>
                     <p class="formInputError" id="userNameError"></p></label>
@@ -87,14 +87,14 @@
             <label for="userLastName">Apellidos <input class="inputStyle" type="text" id="userLastName" name="userLastName" placeholder="Apellidos" value="Pérez González"/>
                     <p class="formInputError" id="userLastNameError"></p></label>
                 
-            <label for="userEmail">Correo electrónico registrado <input class="inputStyle" type="text" id="userEmail" name="userEmail" placeholder="Correo electrónico registrado" value="juan.perez@ejemplo.com"/>
+            <label for="userEmail">Correo electrónico<input class="inputStyle" type="text" id="userEmail" name="userEmail" placeholder="Correo electrónico registrado" value="juan.perez@ejemplo.com"/>
                     <p class="formInputError" id="userEmailError"></p></label>
                 
             <label for="userPhone">Número de teléfono <input class="inputStyle" type="text" id="userPhone" name="userPhone" placeholder="Número de teléfono" value="8888-8888"/>
                     <p class="formInputError" id="userPhoneError"></p></label>
                 
             <label for="userRole">Rol asignado <input class="inputStyle disabled" type="text" id="userRole" name="userRole" placeholder="Rol asignado" value="Encargado de Inventario por Unidad" disabled/>
-                    <p class="formInputError" id="userRoleError"></p></label>
+            </label>
                 
             <label for="userBirthDate">Fecha de nacimiento <input class="inputStyle" type="date" id="userBirthDate" name="userBirthDate" placeholder="Fecha de nacimiento" value="2000-01-01"/>
                     <p class="formInputError" id="userBirthDateError"></p></label>
@@ -105,8 +105,8 @@
                     name="userUnit"
                     placeholder="Unidad a la que pertenece"
                     value="Unidad de Cartago"
+                    disabled
                 ></input>
-                <p class="formInputError" id="userUnitError"></p> </label>
         </div>
 
             <div id="userInfoButtonContainer" class="buttonContainer">

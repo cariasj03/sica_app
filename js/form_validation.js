@@ -9,7 +9,7 @@ const formInputs = document.querySelectorAll(
 const regExp = {
   empty: /^.+$/, //Any character
   lettersNumbers: /^[a-zA-ZÀ-ÿ0-9\s]{1,40}$/, // Letters, numbers and spaces, accepts accents
-  letters: /^[a-zA-Z\s]{1,40}$/, // Letters and spaces, does no accept accents
+  letters: /^[a-zA-ZÀ-ÿ\s]{1,40}$/, // Letters and spaces, accepts accents
   numbers: /^[0-9]{1,40}$/, // Numbers
   password: /^(?=.*[A-Z])(?=.*[0-9])(?=.*[a-z])(?=.*\W).{8,40}$/, // 8 characters, 1 uppercase, 1 lowercase, 1 number and 1 special character minimun
   email: /^[a-zA-Z0-9_.+-]+@[a-zA-Z0-9-]+\.[a-zA-Z0-9-.]+$/,
@@ -42,6 +42,16 @@ const signinRegistrationFields = {
   signinPassword: false,
 };
 
+const userInfoFields = {
+  userFirstName: true,
+  userLastName: true,
+  userDateOfBirth: true,
+  userEmail: true,
+  userPhoneNumber: true,
+  userUnit: true,
+  userRole: true,
+};
+
 //Functions
 //Validation fuction for the entire form
 const validateForm = function (event) {
@@ -60,6 +70,7 @@ const validateForm = function (event) {
     case "userDateOfBirth":
     case "userUnit":
     case "signinPassword":
+    case "userRole":
       validateEmptyField(elementId, elementValue, errorActiveClass);
       break;
     //Validates the user inputs a valid email
@@ -226,6 +237,9 @@ const errorModifier = function (elementId, errorActiveClass, status, message) {
       case "signinForm":
         signinRegistrationFields[elementId] = false;
         break;
+      case "userInfoForm":
+        userInfoFields[elementId] = false;
+        break;
     }
   } else if (!status) {
     //If the status is true means the field is ok, the fuction hides the error paragraph by removing the visible class
@@ -243,6 +257,9 @@ const errorModifier = function (elementId, errorActiveClass, status, message) {
       case "signinForm":
         signinRegistrationFields[elementId] = true;
         break;
+      case "userInfoForm":
+        userInfoFields[elementId] = true;
+        break;
     }
   }
 };
@@ -250,6 +267,7 @@ const errorModifier = function (elementId, errorActiveClass, status, message) {
 //Submit button function
 const submitBtn = function () {
   //Depending on the form the user is in, the function validates different objects and fields
+
   switch (form.id) {
     case "assetRegistrationForm":
       if (Object.values(assetRegistrationFields).every(Boolean)) {
