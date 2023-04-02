@@ -42,6 +42,7 @@ const signinRegistrationFields = {
   signinPassword: false,
 };
 
+//Object for user info validation
 const userInfoFields = {
   userFirstName: true,
   userLastName: true,
@@ -52,6 +53,28 @@ const userInfoFields = {
   userRole: true,
 };
 
+//Object for unit info validation
+const unitInfoFields = {
+  unitName: true,
+  unitDescription: true,
+  unitID: true,
+  unitCreationDate: true,
+  provinceSelect: true,
+  cantonSelect: true,
+  districtSelect: true,
+  additionalGeographicInformation: true,
+};
+
+// Object for unit registration validation
+const unitRegistrationFields = {
+  unitName: false,
+  unitDescription: false,
+  provinceSelect: false,
+  cantonSelect: false,
+  districtSelect: false,
+  additionalGeographicInformation: false,
+};
+  
 //Functions
 //Validation fuction for the entire form
 const validateForm = function (event) {
@@ -71,6 +94,8 @@ const validateForm = function (event) {
     case "userUnit":
     case "signinPassword":
     case "userRole":
+    case "unitDescription":
+    case "additionalGeographicInformation":
       validateEmptyField(elementId, elementValue, errorActiveClass);
       break;
     //Validates the user inputs a valid email
@@ -80,6 +105,7 @@ const validateForm = function (event) {
     //Validates if the input is empty and if not, validates that the field only contains letters
     case "userFirstName":
     case "userLastName":
+    case "unitName":
       validateEmptyField(elementId, elementValue, errorActiveClass);
       if (!validateEmptyField(elementId, elementValue, errorActiveClass)) {
         validateLettersField(elementId, elementValue, errorActiveClass);
@@ -240,6 +266,12 @@ const errorModifier = function (elementId, errorActiveClass, status, message) {
       case "userInfoForm":
         userInfoFields[elementId] = false;
         break;
+      case "unitInfoForm":
+        unitInfoFields[elementId] = false;
+        break;
+      case "unitRegistrationForm":
+        unitRegistrationFields[elementId] = false;
+        break;
     }
   } else if (!status) {
     //If the status is true means the field is ok, the fuction hides the error paragraph by removing the visible class
@@ -259,6 +291,12 @@ const errorModifier = function (elementId, errorActiveClass, status, message) {
         break;
       case "userInfoForm":
         userInfoFields[elementId] = true;
+        break;
+      case "unitInfoForm":
+        unitInfoFields[elementId] = true;
+        break;
+      case "unitRegistrationForm":
+        unitRegistrationFields[elementId] = true;
         break;
     }
   }

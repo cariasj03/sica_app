@@ -59,15 +59,16 @@
         <a class="currentTab" href="/html/units.html">Lista de unidades</a>
     </nav>
 
-    <div class="pageBody">
+  <div class="pageBody">
     <h1>Información de unidad</h1>
-
-    <form id="form">
+    <div class="unitFormContainer">
+      <form class="form" id="unitInfoForm">
         <div class="formContainer">
+
             <div class="inputContainer">
-              <label for="unitName">ID</label>
-              <input class="inputStyle disabled" type="text" id="unitName" name="unitName" placeholder="000001" value="000012" disabled/>
-              <p class="formInputError" id="unitNameError"></p>
+              <label for="unitID">ID</label>
+              <input class="inputStyle disabled" type="text" id="unitID" name="unitID" placeholder="000001" value="000012" disabled/>
+              <p class="formInputError" id="unitIDError"></p>
             </div>
           
             <div class="inputContainer">
@@ -83,9 +84,9 @@
                 id="unitName"
                 name="unitName"
                 placeholder="Nombre de la unidad"
-                value="San José"
+                value="San Ramón"
             ></input>
-            <p class="formInputError" id="unitNameError"></p>
+            <p class="formInputError" id="unitNameError"></p> 
 
         <label for="unitDescription">Descripción</label>
             <textarea
@@ -95,7 +96,7 @@
                 rows="4"
                 placeholder="Descripción de la unidad"
             >Instalación de propiedad de PROVEGUARD ubicada en San José. Esta unidad es parte importante de la operación general de PROVEGUARD, y se utiliza como centro de distribución para la entrega de productos a los clientes de la empresa en la zona.</textarea>
-            <p class="formInputError" id="assetDescriptionError"></p>
+            <p class="formInputError" id="unitDescriptionError"></p>
 
         <h3>Ubicación geográfica</h3>
         <div class="formContainer">
@@ -456,8 +457,7 @@
       ></input>
       <p class="formInputError" id="additionalGeographicInformationError"></p>
 
-        <div class="buttonContainer">
-
+      <div id="unitInfoButtonContainer" class="buttonContainer">
         <button type="button" id="editUnitInformation" class="primaryButton">
             Editar información
         </button>
@@ -470,16 +470,20 @@
               ><button type="button" class="secondaryButton">
                 Regresar
               </button></a>
-        </div>
-
+      </div>
     </form>
-    
-    </div>
+  </div>
+ </div>
 </main>
 
 <footer class="footer">
     <p class="copyrightText">Copyright &copy; 2023 by Beelders.</p>
 </footer>
+
+<script src="/js/user_feedback.js"></script>
+<script src="/js/sweet_alert.js"></script>
+<script src="/js/form_validation.js"></script>
+<script src="/js/disable_enable_input_fields_unit_information.js"></script>
 
 </body>
 </html>
