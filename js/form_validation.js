@@ -378,13 +378,13 @@ const submitBtn = function () {
         break;
 
       case "assetIndividualInformationForm":
-        if (Object.values(assetRegistrationFields).every(Boolean)) {
+        if (Object.values(assetIndividualInformationFields).every(Boolean)) {
           successAlert(
             "La edición de la información del activo fue exitosa."
           );
           form.reset();
-          Object.keys(assetRegistrationFields).forEach(
-            (attribute) => (assetRegistrationFields[attribute] = false)
+          Object.keys(assetIndividualInformationFields).forEach(
+            (attribute) => (assetIndividualInformationFields[attribute] = false)
           );
         } else {
           errorAlert("Hay campos obligatorios sin llenar.");
