@@ -33,17 +33,17 @@
         <nav class="headerNav barNav">
           <a href="/html/index.html">Inicio</a>
           <a class="currentTab" href="/html/assets.html">Activos</a>
-          <a href="/html/requests.html">Solicitudes</a>
+          <a href="/html/requests_registration_users.html">Solicitudes</a>
           <a href="/html/reports.html">Reportes</a>
         </nav>
       </div>
 
       <div class="headerIcons">
-        <a href="/html/config.html"
-        ><span class="material-symbols-outlined"> settings </span>
-        </a> 
+        <a href="/html/users.html"
+          ><span class="material-symbols-outlined"> settings </span>
+        </a>
         <a href="/html/myprofile.html"
-          ><span class="material-symbols-outlined"> account_box </span></a
+          ><span class="material-symbols-outlined"> account_circle </span></a
         >
         <a href="/html/signin.html"
           ><span class="material-symbols-outlined"> logout </span></a
@@ -101,7 +101,7 @@
 
               <h3>Filtrar por</h3>
               <label for="unitSelect"
-                >Unidad<select id="unitSelect">
+                >Unidad<select class="inputStyle" id="unitSelect">
                   <option value="" disabled selected hidden>Unidad</option>
                   <option value="bodega">Bodega</option>
                   <option value="cartago">Cartago</option>
@@ -109,7 +109,7 @@
                 </select></label
               >
               <label for="statusSelect"
-                >Estado<select id="statusSelect">
+                >Estado<select class="inputStyle" id="statusSelect">
                   <option value="" disabled selected hidden>Estado</option>
                   <option value="activo">Activo</option>
                   <option value="desuso">Desuso</option>
@@ -122,6 +122,7 @@
               <h3>Buscar por</h3>
               <label for="idSearch"
                 >ID<input
+                  class="inputStyle"
                   type="search"
                   id="idSearch"
                   name="idSearch"
@@ -129,6 +130,7 @@
               /></label>
               <label for="nameSearch"
                 >Nombre<input
+                  class="inputStyle"
                   type="search"
                   id="nameSearch"
                   name="nameSearch"
@@ -179,38 +181,38 @@
 
               <tr>
                 <td><input type="radio" name="tableRadio" /></td>
-                <td></td>
-                <td></td>
-                <td></td>
-                <td></td>
-                <td></td>
+                <td>000004</td>
+                <td>Silla Ergonomica SON-4100</td>
+                <td>San José</td>
+                <td>PROSANPIS413</td>
+                <td>Activo</td>
               </tr>
 
               <tr>
                 <td><input type="radio" name="tableRadio" /></td>
-                <td></td>
-                <td></td>
-                <td></td>
-                <td></td>
-                <td></td>
+                <td>000005</td>
+                <td>Escritorio de madera MU-580</td>
+                <td>Donaciones</td>
+                <td>PRODONPIS215</td>
+                <td>Donado</td>
               </tr>
 
               <tr>
                 <td><input type="radio" name="tableRadio" /></td>
-                <td></td>
-                <td></td>
-                <td></td>
-                <td></td>
-                <td></td>
+                <td>000006</td>
+                <td>Televisor Samsung FULL HD UN43T5300</td>
+                <td>Cartago</td>
+                <td>PROCARPIS105</td>
+                <td>Activo</td>
               </tr>
 
               <tr>
                 <td><input type="radio" name="tableRadio" /></td>
-                <td></td>
-                <td></td>
-                <td></td>
-                <td></td>
-                <td></td>
+                <td>000007</td>
+                <td>Laptop Lenovo 82K200X8GJ</td>
+                <td>Puntarenas</td>
+                <td>PROPUNPIS215</td>
+                <td>Activo</td>
               </tr>
 
               <tr>
@@ -254,10 +256,12 @@
 
             <div class="buttonContainer">
               <a href="/html/asset_individual_information.html">
-              <button class="primaryButton" a href="/html/asset_individual_information.html">Ver o editar</button>
+                <button type="button" class="primaryButton">
+                  Ver o editar activo
+                </button>
               </a>
-              <a href="/html/requests_asset_transfer.html">
-              <button class="primaryButton">Trasladar</button>
+              <a href="/html/requests_asset_transfer.html"
+                ><button type="button" class="primaryButton">Trasladar</button>
               </a>
             </div>
           </div>
@@ -268,6 +272,5 @@
     <footer class="footer">
       <p class="copyrightText">Copyright &copy; 2023 by Beelders.</p>
     </footer>
-
   </body>
 </html>

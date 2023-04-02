@@ -33,17 +33,17 @@
         <nav class="headerNav barNav">
           <a href="/html/index.html">Inicio</a>
           <a href="/html/assets.html">Activos</a>
-          <a href="/html/requests.html">Solicitudes</a>
+          <a href="/html/requests_registration_users.html">Solicitudes</a>
           <a href="/html/reports.html">Reportes</a>
         </nav>
       </div>
 
       <div class="headerIcons">
-        <a href="/html/config.html"
-        ><span class="material-symbols-outlined currentIcon"> settings </span>
-        </a>        
+        <a href="/html/users.html"
+          ><span class="material-symbols-outlined currentIcon"> settings </span>
+        </a>
         <a href="/html/myprofile.html"
-          ><span class="material-symbols-outlined"> account_box </span></a
+          ><span class="material-symbols-outlined"> account_circle </span></a
         >
         <a href="/html/signin.html"
           ><span class="material-symbols-outlined"> logout </span></a
@@ -65,46 +65,41 @@
             <div class="filters">
               <h3>Ordenar por</h3>
               <label for="idRadio">
-                <input 
-                  type="radio" 
-                  id="idRadio" 
-                  name="sortRadio" 
-                  value="id"
-                  />
-                  Identificación
-            </label>
-            <label for="nameRadio">
-                <input 
-                  type="radio" 
-                  id="nameRadio" 
-                  name="sortRadio" 
+                <input type="radio" id="idRadio" name="sortRadio" value="id" />
+                Identificación
+              </label>
+              <label for="nameRadio">
+                <input
+                  type="radio"
+                  id="nameRadio"
+                  name="sortRadio"
                   value="name"
-                  />
+                />
                 Nombre
-            </label>
-            <label for="emailRadio">
-              <input 
-                type="radio" 
-                id="emailRadio" 
-                name="sortRadio" 
-                value="email" 
+              </label>
+              <label for="emailRadio">
+                <input
+                  type="radio"
+                  id="emailRadio"
+                  name="sortRadio"
+                  value="email"
                 />
-              Correo electrónico
-            </label>
-            <label for="unitRadio">
-              <input 
-                type="radio" 
-                id="unitRadio" 
-                name="sortRadio" 
-                value="unit" 
+                Correo electrónico
+              </label>
+              <label for="unitRadio">
+                <input
+                  type="radio"
+                  id="unitRadio"
+                  name="sortRadio"
+                  value="unit"
                 />
-              Unidad
-            </label>
+                Unidad
+              </label>
               <hr />
 
               <h3>Filtrar por</h3>
               <label for="provinceSelect"
-                >Unidad<select id="provinceSelect">
+                >Unidad<select class="inputStyle" id="provinceSelect">
                   <option value="" disabled selected hidden>Unidad</option>
                   <option value="san jose">Cartago</option>
                   <option value="san ramón">Central</option>
@@ -115,6 +110,7 @@
               <h3>Buscar por</h3>
               <label for="idSearch"
                 >Identificación<input
+                  class="inputStyle"
                   type="search"
                   id="idSearch"
                   name="idSearch"
@@ -122,6 +118,7 @@
               /></label>
               <label for="nameSearch"
                 >Nombre<input
+                  class="inputStyle"
                   type="search"
                   id="nameSearch"
                   name="nameSearch"
@@ -129,6 +126,7 @@
               /></label>
               <label for="emailSearch"
                 >Correo electrónico<input
+                  class="inputStyle"
                   type="search"
                   id="emailSearch"
                   name="emailSearch"
@@ -174,11 +172,12 @@
               </tr>
 
               <tr>
-                <td><input type="radio" name="tableRadio"></td>
+                <td><input type="radio" name="tableRadio" /></td>
                 <td></td>
                 <td></td>
                 <td></td>
                 <td></td>
+              </tr>
 
               <tr>
                 <td><input type="radio" name="tableRadio" /></td>

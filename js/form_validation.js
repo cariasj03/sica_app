@@ -9,7 +9,7 @@ const formInputs = document.querySelectorAll(
 const regExp = {
   empty: /^.+$/, //Any character
   lettersNumbers: /^[a-zA-ZÀ-ÿ0-9\s]{1,40}$/, // Letters, numbers and spaces, accepts accents
-  letters: /^[a-zA-Z\s]{1,40}$/, // Letters and spaces, does no accept accents
+  letters: /^[a-zA-ZÀ-ÿ\s]{1,40}$/, // Letters and spaces, accepts accents
   numbers: /^[0-9]{1,40}$/, // Numbers
   password: /^(?=.*[A-Z])(?=.*[0-9])(?=.*[a-z])(?=.*\W).{8,40}$/, // 8 characters, 1 uppercase, 1 lowercase, 1 number and 1 special character minimun
   email: /^[a-zA-Z0-9_.+-]+@[a-zA-Z0-9-]+\.[a-zA-Z0-9-.]+$/,
@@ -42,13 +42,39 @@ const signinRegistrationFields = {
   signinPassword: false,
 };
 
-//Object for asset individual information edit validaton
-const assetInformationEditFields = {
-  assetName: false,
-  assetDescription: false,
-  assetLocation: false,
-}
+//Object for user info validation
+const userInfoFields = {
+  userFirstName: true,
+  userLastName: true,
+  userDateOfBirth: true,
+  userEmail: true,
+  userPhoneNumber: true,
+  userUnit: true,
+  userRole: true,
+};
 
+//Object for unit info validation
+const unitInfoFields = {
+  unitName: true,
+  unitDescription: true,
+  unitID: true,
+  unitCreationDate: true,
+  provinceSelect: true,
+  cantonSelect: true,
+  districtSelect: true,
+  additionalGeographicInformation: true,
+};
+
+// Object for unit registration validation
+const unitRegistrationFields = {
+  unitName: false,
+  unitDescription: false,
+  provinceSelect: false,
+  cantonSelect: false,
+  districtSelect: false,
+  additionalGeographicInformation: false,
+};
+  
 //Functions
 //Validation function for the entire form
 const validateForm = function (event) {
@@ -68,6 +94,9 @@ const validateForm = function (event) {
     case "userDateOfBirth":
     case "userUnit":
     case "signinPassword":
+    case "userRole":
+    case "unitDescription":
+    case "additionalGeographicInformation":
       validateEmptyField(elementId, elementValue, errorActiveClass);
       break;
     //Validates the user inputs a valid email
@@ -77,6 +106,7 @@ const validateForm = function (event) {
     //Validates if the input is empty and if not, validates that the field only contains letters
     case "userFirstName":
     case "userLastName":
+    case "unitName":
       validateEmptyField(elementId, elementValue, errorActiveClass);
       if (!validateEmptyField(elementId, elementValue, errorActiveClass)) {
         validateLettersField(elementId, elementValue, errorActiveClass);
@@ -234,8 +264,14 @@ const errorModifier = function (elementId, errorActiveClass, status, message) {
       case "signinForm":
         signinRegistrationFields[elementId] = false;
         break;
-      case "assetInformationEditForm":
-        assetInformationEditFields[elementId] = false;
+      case "userInfoForm":
+        userInfoFields[elementId] = false;
+        break;
+      case "unitInfoForm":
+        unitInfoFields[elementId] = false;
+        break;
+      case "unitRegistrationForm":
+        unitRegistrationFields[elementId] = false;
         break;
     }
   } else if (!status) {
@@ -254,8 +290,14 @@ const errorModifier = function (elementId, errorActiveClass, status, message) {
       case "signinForm":
         signinRegistrationFields[elementId] = true;
         break;
-      case "assetInformationEditForm":
-        assetInformationEditFields[elementId] = true;
+      case "userInfoForm":
+        userInfoFields[elementId] = true;
+        break;
+      case "unitInfoForm":
+        unitInfoFields[elementId] = true;
+        break;
+      case "unitRegistrationForm":
+        unitRegistrationFields[elementId] = true;
         break;
     }
   }
@@ -264,6 +306,7 @@ const errorModifier = function (elementId, errorActiveClass, status, message) {
 //Submit button function
 const submitBtn = function () {
   //Depending on the form the user is in, the function validates different objects and fields
+
   switch (form.id) {
     case "assetRegistrationForm":
       if (Object.values(assetRegistrationFields).every(Boolean)) {

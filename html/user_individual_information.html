@@ -35,17 +35,17 @@
     <nav class="headerNav barNav">
         <a href="/html/index.html">Inicio</a>
         <a href="/html/assets.html">Activos</a>
-        <a href="/html/requests.html">Solicitudes</a>
+        <a href="/html/requests_registration_users.html">Solicitudes</a>
         <a href="/html/reports.html">Reportes</a>
     </nav>
     </div>
 
     <div class="headerIcons">
-        <a href="/html/config.html"
+        <a href="/html/users.html"
         ><span class="material-symbols-outlined currentIcon"> settings </span>
         </a>        
         <a href="/html/myprofile.html"
-          ><span class="material-symbols-outlined"> account_box </span></a
+          ><span class="material-symbols-outlined"> account_circle </span></a
         >
         <a href="/html/signin.html"
           ><span class="material-symbols-outlined"> logout </span></a
@@ -63,7 +63,7 @@
     <h1>Información de usuario</h1>
     
     <div class="userFormContainer">
-        <form id="userInfoForm">
+        <form class="form" id="userInfoForm">
         <div class="profilePictureContainer">
             <img class="imageStyle" src="/images/profile_picture.png" alt="placeholderUserImage">
             <button type="submit" id="editProfilePicture" class="primaryButton" onclick="window.location.href='user_individual_information_edit.html'">
@@ -71,52 +71,74 @@
             </button>
         </div>
         <div class="allInputsContainer">
-            <label for="userId">Identificación <input
-                class="inputStyle"
+            <label id="userIdLabel" for="userId">Identificación <input
+                class="inputStyle disabled"
                 id="userId"
                 name="userId"
                 placeholder="Identificación"
                 value="101230456"
                 disabled
             ></input>
-            <p class="formInputError" id="userIdError"></p></label>
+            </label>
 
-            <label for="userName">Nombre <input type="text" id="userName" name="userName" placeholder="Nombre" value="Juan"/>
-                    <p class="formInputError" id="userNameError"></p></label>
+            <label for="userName">Nombre
+                <input class="inputStyle" type="text" id="userFirstName" name="userFirstName" placeholder="Nombre" value="Juan"/>
+                    <p class="formInputError" id="userFirstNameError"></p></label>
                 
-            <label for="userLastName">Apellidos <input type="text" id="userLastName" name="userLastName" placeholder="Apellidos" value="Pérez González"/>
+            <label for="userLastName">Apellidos <input class="inputStyle" type="text" id="userLastName" name="userLastName" placeholder="Apellidos" value="Pérez González"/>
                     <p class="formInputError" id="userLastNameError"></p></label>
                 
-            <label for="userEmail">Correo electrónico registrado <input type="text" id="userEmail" name="userEmail" placeholder="Correo electrónico registrado" value="juan.perez@ejemplo.com"/>
+            <label for="userEmail">Correo electrónico <input class="inputStyle" type="text" id="userEmail" name="userEmail" placeholder="Correo electrónico" value="juan.perez@proveguard.cr"/>
                     <p class="formInputError" id="userEmailError"></p></label>
                 
-            <label for="userPhone">Número de teléfono <input type="text" id="userPhone" name="userPhone" placeholder="Número de teléfono" value="8888-8888"/>
-                    <p class="formInputError" id="userPhoneError"></p></label>
+            <label for="userPhoneNumber">Número de teléfono <input class="inputStyle" type="text" id="userPhoneNumber" name="userPhoneNumber" placeholder="Número de teléfono" value="88888888"/>
+                    <p class="formInputError" id="userPhoneNumberError"></p></label>
                 
-            <label for="userRole">Rol asignado <input type="text" id="userRole" name="userRole" placeholder="Rol asignado" value="Encargado de inventario por undiad"/>
+            <label for="userRole">Rol asignado 
+                <select id="userRole" class="inputStyle">
+                <option value="" disabled hidden>Rol asignado</option>
+                <option value="manager">Jefatura</option>
+                <option value="supply">Proveeduría</option>
+                <option value="inventoryUnitManager" selected>Encargado de Inventario por Unidad</option>
+              </select>
                     <p class="formInputError" id="userRoleError"></p></label>
                 
-            <label for="userBirthDate">Fecha de nacimiento <input type="text" id="userBirthDate" name="userBirthDate" placeholder="Fecha de nacimiento" value="01/01/2000"/>
-                    <p class="formInputError" id="userBirthDateError"></p></label>
+            <label for="userDateOfBirth">Fecha de nacimiento <input class="inputStyle" type="date" id="userDateOfBirth" name="userDateOfBirth" placeholder="Fecha de nacimiento" value="2000-01-01"/>
+                    <p class="formInputError" id="userDateOfBirthError"></p></label>
 
-            <label for="userUnit">Unidad a la que pertenece <input
-                    class="inputStyle"
-                    id="userUnit"
-                    name="userUnit"
-                    placeholder="Unidad a la que pertenece"
-                    value="Unidad de Cartago"
-                ></input>
+            <label id="userUnitLabel"for="userUnit">Unidad a la que pertenece 
+                <select id="userUnit" class="inputStyle">
+                <option value=""disabled hidden>
+                  Unidad a la que pertenece
+                </option>
+                <option value="bodega">Bodega</option>
+                <option value="donaciones">Donaciones</option>
+                <option value="central">Central</option>
+                <option value="sanJose">San José</option>
+                <option value="alajuela">Alajuela</option>
+                <option value="cartago"selected>Cartago</option>
+                <option value="heredia">Heredia</option>
+                <option value="guanacaste">Guanacaste</option>
+                <option value="puntarenas">Puntarenas</option>
+                <option value="limon">Limón</option>
+                </select>
                 <p class="formInputError" id="userUnitError"></p> </label>
         </div>
 
             <div id="userInfoButtonContainer" class="buttonContainer">
-            <button type="submit" id="editUserInformation" class="primaryButton" onclick="window.location.href='user_individual_information_edit.html'">
-                Editar Información
+            <button type="button" id="editUserInformation" class="primaryButton">
+                Editar información
             </button>
 
-            <button type="submit" id="saveUserInformation" class="primaryButton" onclick="window.location.href='user_individual_information.html'">
-                Guardar Información
+            <button type="submit" id="saveUserInformation" class="primaryButton disabledButton" disabled>
+                Guardar información
             </button>
+
+            <a href="/html/users.html"
+              ><button type="button" class="secondaryButton">
+                Regresar
+              </button></a>
+        </div>
 
             </div>
 
@@ -128,11 +150,10 @@
 <footer class="footer">
     <p class="copyrightText">Copyright &copy; 2023 by Beelders.</p>
 </footer>
-
-<script src="/js/form_validation.js"></script>
-<script src="/js/sweet_alert.js"></script>
 <script src="/js/user_feedback.js"></script>
-<script src="/js/retrieve_asset_information.js"></script>
+<script src="/js/sweet_alert.js"></script>
+<script src="/js/form_validation.js"></script>
+<script src="/js/disable_enable_input_fields.js"></script>
 
 </body>
 </html>

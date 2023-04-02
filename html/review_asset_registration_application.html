@@ -17,7 +17,7 @@
     <link href="/svg/sica_favicon.svg" rel="icon" />
     <link href="/css/general_style.css" rel="stylesheet" />
     <link href="/css/form_pages.css" rel="stylesheet" />
-    <title>SICA - Registro de un activo</title>
+    <title>SICA - Revisión de solicitud de registro de un activo</title>
   </head>
 
   <body>
@@ -34,17 +34,17 @@
         <nav class="headerNav barNav">
           <a href="/html/index.html">Inicio</a>
           <a href="/html/assets.html">Activos</a>
-          <a class="currentTab" href="/html/requests.html">Solicitudes</a>
+          <a class="currentTab" href="/html/requests_registration_users.html">Solicitudes</a>
           <a href="/html/reports.html">Reportes</a>
         </nav>
       </div>
 
       <div class="headerIcons">
-        <a href="/html/config.html"
+        <a href="/html/users.html"
           ><span class="material-symbols-outlined"> settings </span>
         </a>
         <a href="/html/myprofile.html"
-          ><span class="material-symbols-outlined"> account_box </span></a
+          ><span class="material-symbols-outlined"> account_circle </span></a
         >
         <a href="/html/signin.html"
           ><span class="material-symbols-outlined"> logout </span></a
@@ -54,7 +54,7 @@
 
     <main class="mainContainer">
       <nav class="sideNav barNav">
-        <a href="/html/review_requests_registration_users.html"
+        <a href="/html/requests_registration_users.html"
           >Solicitudes de registro de usuarios</a
         >
         <a class="currentTab" href="/html/asset_registration_applications.html"
@@ -66,128 +66,104 @@
       </nav>
 
       <div class="pageBody">
-      <h1>Información del activo</h1>
+      <h1>Revisión de solicitud de registro de un activo</h1>
 
       <form id="form">
-        <label for="assetName">ID del activo.</label>
+        <label for="assetId">ID del activo</label>
         <input
+        class="inputStyle disabled"
         type="text"
         id="assetId"
         name="assetId"
         type="text"
+        value="000001"
+        disabled
         />
-        <p class="formInputError" id="assetNameError"></p>
+        <p class="formInputError" id="assetIdError"></p>
 
-        <label for="assetDescription">Nombre del activo</label>
+        <label for="assetName">Nombre del activo</label>
         <input
-        class="inputStyle"
+        class="inputStyle disabled"
         id="assetName"
         name="assetName" 
         type="text"
-        ></form>
-        <p class="formInputError" id="assetDescriptionError"></p>
+        value="Impresora EPSON F570"
+        disabled
+        />
+        <p class="formInputError" id="assetNameError"></p>
 
         <label for="assetDescription">Descripción del activo</label>
         <textarea
-        class="inputStyle"
+        class="inputStyle disabled"
         id="assetDescription"
         name="assetDescription"
         type="text"
-        rows="4"
-        ></textarea>
+        rows="3"
+        disabled
+        >Impresora de gran formato para sublimación de 24 pulgadas. Para impresiones de sublimación en papel de transferencia especializado para medios rígidos y blandos. Posee una bandeja de alimentación automática de 50 hojas y un cortador incorporado.</textarea>
         <p class="formInputError" id="assetDescriptionError"></p>
 
         <label for="assetUnit">Unidad en la que está ubicado</label>
         <input
-        class="inputStyle"
+        class="inputStyle disabled"
         id="assetUnit"
         name="assetUnit"
         type="text"
-        rows="4"
-        ></input>
+        rows="3"
+        value="Heredia"
+        disabled
+        />
         <p class="formInputError" id="assetUnitError"></p>
 
         <label for="assetLocation">Ubicación del activo</label>
         <input
-        class="inputStyle"
+        class="inputStyle disabled"
         id="assetLocation"
         name="assetLocation"
         type="text"
+        value="Piso 3, estante 32, posición 06."
+        disabled
         />
         <p class="formInputError" id="assetLocationError"></p>
 
-        <label for="assetLocation">Código de la ubicación</label>
+        <label for="assetLocationCode">Código de la ubicación</label>
         <input
-        class="inputStyle"
-        id="assetCodeLocation"
-        name="assetCodeLocation"
+        class="inputStyle disabled"
+        id="assetLocationCode"
+        name="assetLocationCode"
         type="text"
+        value="PROHERPIS306"
+        disabled
         />
-        <p class="formInputError" id="assetLocationError"></p>
+        <p class="formInputError" id="assetLocationCodeError"></p>
 
         <label for="assetStatus">Estado</label>
         <input 
+        class="inputStyle disabled"
         id="assetStatus"
         name="assetStatus"
         type="text"
+        value="Activo"
+        disabled
         />
         <p class="formInputError" id="assetStatusError"></p>
 
         <div class="buttonContainer">
-        <button type="submit" id="AproveAsset" class="primaryButton">
-            Aceptar solicitud
+        <button type="submit" id="approveRequest" class="primaryButton">
+            Aprobar solicitud
         </button>
 
-        <button type="buttom" id="DeclainAsset" class="primaryButton">
+        <button type="button" id="rejectRequest" class="destructiveButton">
             Rechazar solicitud
         </button>
 
+        <a href="/html/asset_registration_applications.html"
+              ><button type="button" class="secondaryButton">
+                Regresar
+              </button></a>
         </div>
-
     </form>
 
-      
-      <!--
-        <div class="reviewAssetRegistration">
-        <h1>Revisión de solicitud de registro de un activo</h1>
-        <div>
-          <h3>ID del activo</h3>
-          <textarea>000001</textarea>
-          <h3>Nombre</h3>
-          <textarea>Impresora EPSON F570</textarea>
-          <h3>Descripción</h3>
-          <textarea>
-Impresora de gran formato para sublimación de 24 pulgadas. Para impresiones de sublimación en papel de transferencia especializado para medios rígidos y blandos, una bandeja de alimentación de 50 hojas y un cortador incorporado.</textarea
-          >
-          <h3>Unidad en la que esta ubicado</h3>
-          <textarea>Unidad de heredia</textarea>
-          <h3>Ubicación</h3>
-          <textarea>Piso 3, estante 23</textarea>
-          <h3>Estado</h3>
-          <textarea>Activo</textarea>
-          <br />
-          <br />
-          <br />
-          <div class="buttonContainer">
-            <button
-              type="submit"
-              id="registerAssetAproved"
-              class="primaryButton"
-              onclick="window.location.href='asset_registration_applications.html'"
-            >
-              Aprobar solicitud
-            </button>
-            <button
-              type="button"
-              id="registerAssetDeclined"
-              class="primaryButton"
-              onclick="window.location.href='asset_registration_applications.html'"
-            >
-              Rechazar solicitud
-            </button>
-          </div>
-        </div>
-      </div>-->
     </main>
 
     <footer class="footer">

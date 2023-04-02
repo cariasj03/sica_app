@@ -9,7 +9,6 @@ const menuLinks = document.querySelectorAll(".mainNav a");
 const selectedSubtitle = function (subtitle) {
   const subtitleId = subtitle.id;
   const selectedClass = "selectedSubtitle";
-  console.log(subtitleId);
 
   document.getElementById(`${subtitleId}`).classList.add(selectedClass);
 
