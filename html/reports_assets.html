@@ -33,17 +33,19 @@
         <nav class="headerNav barNav">
           <a href="/html/index.html">Inicio</a>
           <a href="/html/assets.html">Activos</a>
-          <a href="/html/requests.html">Solicitudes</a>
+          <a href="/html/review_requests_registration_users.html"
+            >Solicitudes</a
+          >
           <a class="currentTab" href="/html/reports.html">Reportes</a>
         </nav>
       </div>
 
       <div class="headerIcons">
-        <a href="/html/config.html"
-        ><span class="material-symbols-outlined"> settings </span>
-        </a> 
+        <a href="/html/users.html"
+          ><span class="material-symbols-outlined"> settings </span>
+        </a>
         <a href="/html/myprofile.html"
-          ><span class="material-symbols-outlined"> account_box </span></a
+          ><span class="material-symbols-outlined"> account_circle </span></a
         >
         <a href="/html/signin.html"
           ><span class="material-symbols-outlined"> logout </span></a
@@ -109,7 +111,7 @@
 
               <h3>Filtrar por</h3>
               <label for="unitSelect"
-                >Unidad<select id="unitSelect">
+                >Unidad<select class="inputStyle" id="unitSelect">
                   <option value="" disabled selected hidden>Unidad</option>
                   <option value="bodega">Bodega</option>
                   <option value="cartago">Cartago</option>
@@ -117,7 +119,7 @@
                 </select></label
               >
               <label for="statusSelect"
-                >Estado<select id="statusSelect">
+                >Estado<select class="inputStyle" id="statusSelect">
                   <option value="" disabled selected hidden>Estado</option>
                   <option value="activo">Activo</option>
                   <option value="desuso">Desuso</option>
@@ -130,6 +132,7 @@
               <h3>Buscar por</h3>
               <label for="idSearch"
                 >ID<input
+                  class="inputStyle"
                   type="search"
                   id="idSearch"
                   name="idSearch"
@@ -137,6 +140,7 @@
               /></label>
               <label for="nameSearch"
                 >Nombre<input
+                  class="inputStyle"
                   type="search"
                   id="nameSearch"
                   name="nameSearch"

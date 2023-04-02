@@ -33,17 +33,19 @@
         <nav class="headerNav barNav">
           <a href="/html/index.html">Inicio</a>
           <a href="/html/assets.html">Activos</a>
-          <a href="/html/requests.html">Solicitudes</a>
+          <a href="/html/review_requests_registration_users.html"
+            >Solicitudes</a
+          >
           <a href="/html/reports.html">Reportes</a>
         </nav>
       </div>
 
       <div class="headerIcons">
-        <a href="/html/config.html"
+        <a href="/html/users.html"
           ><span class="material-symbols-outlined currentIcon"> settings </span>
         </a>
         <a href="/html/myprofile.html"
-          ><span class="material-symbols-outlined"> account_box </span></a
+          ><span class="material-symbols-outlined"> account_circle </span></a
         >
         <a href="/html/signin.html"
           ><span class="material-symbols-outlined"> logout </span></a
@@ -109,7 +111,7 @@
 
               <h3>Filtrar por</h3>
               <label for="provinceSelect"
-                >Provincia<select id="provinceSelect">
+                >Provincia<select class="inputStyle" id="provinceSelect">
                   <option value="" disabled selected hidden>Provincia</option>
                   <option value="san jose">San José</option>
                   <option value="cartago">Cartago</option>
@@ -122,7 +124,7 @@
               >
               <label for="cantonSelect"
                 >Cantón
-                <select id="cantonSelect">
+                <select class="inputStyle" id="cantonSelect">
                   <option value="" disabled selected hidden>Cantón</option>
                   <optgroup label="San José">
                     <option value="san-jose">San José</option>
@@ -226,6 +228,7 @@
               <h3>Buscar por</h3>
               <label for="idSearch"
                 >ID<input
+                  class="inputStyle"
                   type="search"
                   id="idSearch"
                   name="idSearch"
@@ -233,6 +236,7 @@
               /></label>
               <label for="nameSearch"
                 >Nombre<input
+                  class="inputStyle"
                   type="search"
                   id="nameSearch"
                   name="nameSearch"

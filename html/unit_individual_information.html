@@ -35,17 +35,17 @@
     <nav class="headerNav barNav">
         <a href="/html/index.html">Inicio</a>
         <a href="/html/assets.html">Activos</a>
-        <a href="/html/requests.html">Solicitudes</a>
+        <a href="/html/review_requests_registration_users.html">Solicitudes</a>
         <a href="/html/reports.html">Reportes</a>
     </nav>
     </div>
 
     <div class="headerIcons">
-        <a href="/html/config.html"
+        <a href="/html/users.html"
         ><span class="material-symbols-outlined currentIcon"> settings </span>
         </a>        
         <a href="/html/myprofile.html"
-          ><span class="material-symbols-outlined"> account_box </span></a
+          ><span class="material-symbols-outlined"> account_circle </span></a
         >
         <a href="/html/signin.html"
           ><span class="material-symbols-outlined"> logout </span></a
@@ -66,13 +66,13 @@
         <div class="formContainer">
             <div class="inputContainer">
               <label for="unitName">ID</label>
-              <input type="text" id="unitName" name="unitName" placeholder="000001" value="000012"/>
+              <input class="inputStyle disabled" type="text" id="unitName" name="unitName" placeholder="000001" value="000012" disabled/>
               <p class="formInputError" id="unitNameError"></p>
             </div>
           
             <div class="inputContainer">
               <label for="unitCreationDate">Fecha de creación</label>
-              <input type="text" id="unitCreationDate" name="unitCreationDate" placeholder="03/03/2021" value="03/03/2021"/>
+              <input class="inputStyle disabled" type="text" id="unitCreationDate" name="unitCreationDate" placeholder="03/03/2021" value="03/03/2021" disabled/>
               <p class="formInputError" id="unitCreationDateError"></p>
             </div>
           </div>
@@ -100,38 +100,351 @@
         <h3>Ubicación geográfica</h3>
         <div class="formContainer">
           <div class="inputContainer">
-              <label for="provinceInput">Provincia</label>
-              <input
-                  class="inputStyle"
-                  id="provinceInput"
-                  name="provinceInput"
-                  placeholder="Provincia"
-                  value="San José"
-              ></input>
-              <p class="formInputError" id="provinceInputError"></p>
+              <label for="provinceSelect">Provincia</label>
+              <select class="inputStyle" id="provinceSelect" name="provinceSelect">
+                <option value="" disabled hidden>Provincia</option>
+                <option value="San Jose">San José</option>
+                <option value="Alajuela" selected>Alajuela</option>
+                <option value="Cartago">Cartago</option>
+                <option value="Heredia">Heredia</option>
+                <option value="Guanacaste">Guanacaste</option>
+                <option value="Puntarenas">Puntarenas</option>
+                <option value="Limon">Limón</option>
+              </select>
+              <p class="formInputError" id="provinceSelectError"></p>
           </div>
+
           <div class="inputContainer">
-              <label for="cantonInput">Cantón</label>
-              <input
-                  class="inputStyle"
-                  id="cantonInput"
-                  name="cantonInput"
-                  placeholder="Cantón"
-                  value="Goicoechea"
-              ></input>
-              <p class="formInputError" id="cantonInputError"></p>
+              <label for="cantonSelect">Cantón</label>
+              <select class="inputStyle" id="cantonSelect">
+                <option value="" disabled hidden>Cantón</option>
+                <optgroup label="San José">
+                  <option value="san-jose">San José</option>
+                  <option value="escazu">Escazú</option>
+                  <option value="desamparados">Desamparados</option>
+                  <option value="puriscal">Puriscal</option>
+                  <option value="tarrazu">Tarrazú</option>
+                  <option value="aserri">Aserrí</option>
+                  <option value="mora">Mora</option>
+                  <option value="goicoechea">Goicoechea</option>
+                  <option value="santa-ana">Santa Ana</option>
+                  <option value="alajuelita">Alajuelita</option>
+                  <option value="vazquez-de-coronado">Vázquez de Coronado</option>
+                  <option value="acosta">Acosta</option>
+                  <option value="tibas">Tibás</option>
+                  <option value="moravia">Moravia</option>
+                  <option value="montes-de-oca">Montes de Oca</option>
+                  <option value="turrubares">Turrubares</option>
+                  <option value="dota">Dota</option>
+                  <option value="curridabat">Curridabat</option>
+                  <option value="perez-zeledon">Pérez Zeledón</option>
+                </optgroup>
+                <optgroup label="Heredia">
+                  <option value="heredia">Heredia</option>
+                  <option value="barva">Barva</option>
+                  <option value="santo-domingo">Santo Domingo</option>
+                  <option value="santa-barbara">Santa Bárbara</option>
+                  <option value="san-rafael">San Rafael</option>
+                  <option value="san-isidro">San Isidro</option>
+                  <option value="belen">Belén</option>
+                  <option value="flores">Flores</option>
+                </optgroup>
+                <optgroup label="Alajuela">
+                  <option value="alajuela">Alajuela</option>
+                  <option value="san-ramon" selected>San Ramón</option>
+                  <option value="grecia">Grecia</option>
+                  <option value="san-mateo">San Mateo</option>
+                  <option value="atenas">Atenas</option>
+                  <option value="naranjo">Naranjo</option>
+                  <option value="palmares">Palmares</option>
+                  <option value="poas">Poás</option>
+                  <option value="orotina">Orotina</option>
+                  <option value="san-carlos">San Carlos</option>
+                  <option value="zarcero">Zarcero</option>
+                  <option value="valverde-vega">Valverde Vega</option>
+                  <option value="upala">Upala</option>
+                  <option value="los-chiles">Los Chiles</option>
+                  <option value="guatuso">Guatuso</option>
+                </optgroup>
+                <optgroup label="Cartago">
+                  <option value="cartago">Cartago</option>
+                  <option value="paraíso">Paraíso</option>
+                  <option value="la-union">La Unión</option>
+                  <option value="jimenez">Jiménez</option>
+                  <option value="turrialba">Turrialba</option>
+                  <option value="alvarado">Alvarado</option>
+                  <option value="oreamuno">Oreamuno</option>
+                  <option value="el-guarco">El Guarco</option>
+                </optgroup>
+                <optgroup label="Guanacaste">
+                  <option value="liberia">Liberia</option>
+                  <option value="nicoya">Nicoya</option>
+                  <option value="santa-cruz">Santa Cruz</option>
+                  <option value="bagaces">Bagaces</option>
+                  <option value="carrillo">Carrillo</option>
+                  <option value="canas">Cañas</option>
+                  <option value="abangares">Abangares</option>
+                  <option value="tilaran">Tilarán</option>
+                  <option value="nandayure">Nandayure</option>
+                  <option value="la-cruz">La Cruz</option>
+                  <option value="hojancha">Hojancha</option>
+                </optgroup>
+                <optgroup label="Puntarenas">
+                  <option value="puntarenas">Puntarenas</option>
+                  <option value="esparza">Esparza</option>
+                  <option value="buenos-aires">Buenos Aires</option>
+                  <option value="montes-de-oro">Montes de Oro</option>
+                  <option value="osa">Osa</option>
+                  <option value="quepos">Quepos</option>
+                  <option value="garabito">Garabito</option>
+                  <option value="golfito">Golfito</option>
+                  <option value="coto-brus">Coto Brus</option>
+                  <option value="parrita">Parrita</option>
+                  <option value="corredores">Corredores</option>
+                  <option value="pacifico-central">Pacífico Central</option>
+                </optgroup>
+                <optgroup label="Limón">
+                  <option value="limon">Limón</option>
+                  <option value="pococi">Pococí</option>
+                  <option value="siquirres">Siquirres</option>
+                  <option value="talamanca">Talamanca</option>
+                  <option value="matina">Matina</option>
+                  <option value="guacimo">Guácimo</option>
+                </optgroup>
+              </select
+              >
+              <p class="formInputError" id="cantonSelectError"></p>
           </div>
       </div>
 
-      <label for="distritInput">Distrito</label>
-      <input
-          class="inputStyle"
-          id="distritInput"
-          name="distritInput"
-          placeholder="Distrito"
-          value="Guadalupe"
-      ></input>
-      <p class="formInputError" id="distritInputError"></p>
+      <label for="districtSelect">Distrito</label>
+      <select class="inputStyle" id="districtSelect" name="distritSelect">
+        <option value="" disabled hidden>Distrito</option>
+        <optgroup label="San José">
+            <optgroup label="San José">
+            <option value="Carmen">Carmen</option>
+            <option value="Merced">Merced</option>
+            <option value="Hospital">Hospital</option>
+            <option value="Catedral">Catedral</option>
+            <option value="Zapote">Zapote</option>
+            <option value="San Francisco de Dos Ríos">San Francisco de Dos Ríos</option>
+            <option value="Uruca">Uruca</option>
+            <option value="Mata Redonda">Mata Redonda</option>
+            <option value="Pavas">Pavas</option>
+            <option value="Hatillo">Hatillo</option>
+            <option value="San Sebastián">San Sebastián</option>
+            </optgroup>
+            <optgroup label="Escazú">
+            <option value="Escazú">Escazú</option>
+            <option value="San Antonio">San Antonio</option>
+            </optgroup>
+            <optgroup label="Desamparados">
+            <option value="Desamparados">Desamparados</option>
+            <option value="San Miguel">San Miguel</option>
+            <option value="San Juan de Dios">San Juan de Dios</option>
+            <option value="San Rafael Arriba">San Rafael Arriba</option>
+            <option value="San Antonio">San Antonio</option>
+            <option value="Frailes">Frailes</option>
+            <option value="Patarrá">Patarrá</option>
+            <option value="San Cristóbal">San Cristóbal</option>
+            <option value="Rosario">Rosario</option>
+            <option value="Damas">Damas</option>
+            <option value="San Rafael Abajo">San Rafael Abajo</option>
+            <option value="Gravilias">Gravilias</option>
+            </optgroup>
+            <optgroup label="Puriscal">
+            <option value="Santiago">Santiago</option>
+            <option value="Mercedes Sur">Mercedes Sur</option>
+            <option value="Barbacoas">Barbacoas</option>
+            <option value="Grifo Alto">Grifo Alto</option>
+            <option value="San Rafael">San Rafael</option>
+            <option value="Candelarita">Candelarita</option>
+            <option value="Desamparaditos">Desamparaditos</option>
+            <option value="San Antonio">San Antonio</option>
+            <option value="Chires">Chires</option>
+            </optgroup>
+            <optgroup label="Tarrazú">
+            <option value="San Marcos">San Marcos</option>
+            <option value="San Lorenzo">San Lorenzo</option>
+            <option value="San Carlos">San Carlos</option>
+            </optgroup>
+            <optgroup label="Aserrí">
+            <option value="Aserrí">Aserrí</option>
+            <option value="Tarbaca">Tarbaca</option>
+            <option value="Vuelta de Jorco">Vuelta de Jorco</option>
+            <option value="San Gabriel">San Gabriel</option>
+            <option value="Legua">Legua</option>
+            <option value="Monterrey">Monterrey</option>
+            <option value="Salitrillos">Salitrillos</option>
+            </optgroup>
+            <optgroup label="Mora">
+            <option value="Colón">Colón</option>
+            <option value="Guayabo">Guayabo</option>
+            <option value="Tabarcia">Tabarcia</option>
+            <option value="Piedras Negras">Piedras Negras</option>
+            <option value="Picagres">Picagres</option>
+            </optgroup>
+            <optgroup label="Goicoechea">
+            <option value="Guadalupe">Guadalupe</option>
+            <option value="San Francisco">San Francisco</option>
+            <option value="Calle Blancos">Calle Blancos</option>
+            <option value="Mata de Platano">Mata de Platano</option>
+            <option value="Ipis">Ipis</option>
+            <option value="Rancho Redondo">Rancho Redondo</option>
+            <option value="Purral">Purral</option>
+            </optgroup>
+            <optgroup label="Santa Ana">
+            <option value="Santa Ana">Santa Ana</option>
+            <option value="Salitral">Salitral</option>
+            <option value="Pozos">Pozos</option>
+            <option value="Uruca">Uruca</option>
+            <option value="Piedades">Piedades</option>
+            <option value="Brasil">Brasil</option>
+            </optgroup>
+            <optgroup label="Alajuelita">
+            <option value="Alajuelita">Alajuelita</option>
+            <option value="San Josecito">San Josecito</option>
+            <option value="San Antonio">San Antonio</option>
+            <option value="Concepción">Concepción</option>
+            <option value="San Felipe">San Felipe</option>
+            </optgroup>
+            <optgroup label="Vázquez de Coronado">
+            <option value="San Isidro">San Isidro</option>
+            <option value="San Rafael">San Rafael</option>
+            <option value="Dulce Nombre de Jesús">Dulce Nombre de Jesús</option>
+            <option value="Patalillo">Patalillo</option>
+            <option value="Cascajal">Cascajal</option>
+            </optgroup>
+            <optgroup label="Acosta">
+            <option value="San Ignacio">San Ignacio</option>
+            <option value="Guaitil">Guaitil</option>
+            <option value="Palmichal">Palmichal</option>
+            <option value="Cangrejal">Cangrejal</option>
+            <option value="Sabana Grande">Sabana Grande</option>
+            </optgroup>
+            <optgroup label="Tibás">
+            <option value="San Juan">San Juan</option>
+            <option value="Cinco Esquinas">Cinco Esquinas</option>
+            <option value="Anselmo Llorente">Anselmo Llorente</option>
+            <option value="León XIII">León XIII</option>
+            <option value="Colima">Colima</option>
+            </optgroup>
+            <optgroup label="Moravia">
+            <option value="San Vicente">San Vicente</option>
+            <option value="San Jerónimo">San Jerónimo</option>
+            <option value="La Trinidad">La Trinidad</option>
+            </optgroup>
+            <optgroup label="Montes de Oca">
+            <option value="San Pedro">San Pedro</option>
+            <option value="Sabanilla">Sabanilla</option>
+            <option value="Mercedes">Mercedes</option>
+            <option value="San Rafael">San Rafael</option>
+            </optgroup>
+            <optgroup label="Turrubares">
+            <option value="San Pablo">San Pablo</option>
+            <option value="San Pedro">San Pedro</option>
+            <option value="San Juan de Mata">San Juan de Mata</option>
+            <option value="San Luis">San Luis</option>
+            </optgroup>
+            <optgroup label="Dota">
+            <option value="Santa Maria">Santa Maria</option>
+            <option value="Jardín">Jardín</option>
+            <option value="Copey">Copey</option>
+            </optgroup>
+            <optgroup label="Curridabat">
+            <option value="Curridabat">Curridabat</option>
+            <option value="Granadilla">Granadilla</option>
+            <option value="Sánchez">Sánchez</option>
+            <option value="Tirrases">Tirrases</option>
+            </optgroup>
+            <optgroup label="Pérez Zeledón">
+            <option value="San Isidro de El General">San Isidro de El General</option>
+            <option value="General">General</option>
+            <option value="Daniel Flores">Daniel Flores</option>
+            <option value="Rivas">Rivas</option>
+            <option value="San Pedro">San Pedro</option>
+            <option value="Platanares">Platanares</option>
+            <option value="Pejibaye">Pejibaye</option>
+            <option value="Cajón">Cajón</option>
+            <option value="Barú">Barú</option>
+            <option value="Río Nuevo">Río Nuevo</option>
+            <option value="Páramo">Páramo</option>
+            <option value="La Amistad">La Amistad</option>
+            </optgroup>
+        <optgroup label="Heredia">
+            <optgroup label="Heredia">
+            <option value="Heredia">Heredia</option>
+            <option value="Mercedes">Mercedes</option>
+            <option value="San Francisco">San Francisco</option>
+            <option value="Ulloa">Ulloa</option>
+            <option value="Vara Blanca">Vara Blanca</option>
+            </optgroup>
+            <optgroup label="Barva">
+            <option value="Barva">Barva</option>
+            <option value="San Pedro">San Pedro</option>
+            <option value="San Pablo">San Pablo</option>
+            <option value="San Roque">San Roque</option>
+            <option value="Santa Lucia">Santa Lucia</option>
+            </optgroup>
+            <optgroup label="Santo Domingo">
+            <option value="Santo Domingo">Santo Domingo</option>
+            <option value="San Vicente">San Vicente</option>
+            <option value="San Miguel">San Miguel</option>
+            <option value="Paracito">Paracito</option>
+            <option value="Santo Tomás">Santo Tomás</option>
+            <option value="Santa Rosa">Santa Rosa</option>
+            <option value="Tures">Tures</option>
+            <option value="Pará">Pará</option>
+            </optgroup>
+            <optgroup label="Santa Bárbara">
+            <option value="Santa Bárbara">Santa Bárbara</option>
+            <option value="San Pedro">San Pedro</option>
+            <option value="San Juan">San Juan</option>
+            <option value="Jesús">Jesús</option>
+            <option value="Santo Domingo">Santo Domingo</option>
+            <option value="Purabá">Purabá</option>
+            </optgroup>
+            <optgroup label="San Rafael">
+            <option value="San Rafael">San Rafael</option>
+            <option value="San Josecito">San Josecito</option>
+            <option value="Santiago">Santiago</option>
+            <option value="Ángeles">Ángeles</option>
+            <option value="Concepción">Concepción</option>
+            </optgroup>
+            <optgroup label="San Isidro">
+            <option value="San Isidro">San Isidro</option>
+            <option value="San José">San José</option>
+            <option value="Concepción">Concepción</option>
+            <option value="San Francisco">San Francisco</option>
+            </optgroup>
+            <optgroup label="Belén">
+            <option value="San Antonio">San Antonio</option>
+            <option value="La Ribera">La Ribera</option>
+            <option value="La Asunción">La Asunción</option>
+            </optgroup>
+            <optgroup label="Flores">
+            <option value="San Joaquín">San Joaquín</option>
+            <option value="Barrantes">Barrantes</option>
+            <option value="Llorente">Llorente</option>
+            </optgroup>
+            <optgroup label="San Pablo">
+            <option value="San Pablo">San Pablo</option>
+            <option value="Rincón de Sabanilla">Rincón de Sabanilla</option>
+            </optgroup>
+            <optgroup label="Sarapiquí">
+            <option value="Puerto Viejo">Puerto Viejo</option>
+            <option value="La Virgen">La Virgen</option>
+            <option value="Horquetas">Horquetas</option>
+            <option value="Llanuras del Gaspar">Llanuras del Gaspar</option>
+            <option value="Cureña">Cureña</option>
+            </optgroup>
+            <optgroup label="Alajuela">
+                <optgroup label="San Ramón">
+                <option value="San Ramón" selected>San Ramón</option>
+            </optgroup>
+            </optgroup>
+    </select>
+    <p class="formInputError" id="districtSelectError"></p>
 
       <label for="additionalGeographicInformation">Otras señas</label>
       <input
@@ -145,14 +458,18 @@
 
         <div class="buttonContainer">
 
-        <button type="submit" id="editUnitInformation" class="primaryButton" onclick="window.location.href='unit_individual_information_edit.html'">
-            Editar Información
+        <button type="button" id="editUnitInformation" class="primaryButton">
+            Editar información
         </button>
 
-        <button type="submit" id="saveUnitInformation" class="primaryButton" onclick="window.location.href='unit_individual_information.html'">
-          Guardar Información
+        <button type="button" id="saveUnitInformation" class="primaryButton disabledButton" disabled>
+          Guardar información
         </button>
 
+        <a href="/html/units.html"
+              ><button type="button" class="secondaryButton">
+                Regresar
+              </button></a>
         </div>
 
     </form>
@@ -163,11 +480,6 @@
 <footer class="footer">
     <p class="copyrightText">Copyright &copy; 2023 by Beelders.</p>
 </footer>
-
-<script src="/js/form_validation.js"></script>
-<script src="/js/sweet_alert.js"></script>
-<script src="/js/user_feedback.js"></script>
-<script src="/js/retrieve_asset_information.js"></script>
 
 </body>
 </html>

@@ -33,7 +33,7 @@
       </div>
     </header>
 
-    <main class="mainContainer">
+    <main class="mainContainer signinSignupMain">
       <div class="sideImgContainer">
         <img src="/svg/signup_illustration.svg" width="100%" />
       </div>
@@ -47,6 +47,7 @@
           <form id="signupForm" class="form">
             <label for="userFirstName"
               >Nombre *<input
+                class="inputStyle"
                 type="text"
                 id="userFirstName"
                 name="userFirstName"
@@ -57,6 +58,7 @@
             <label for="userLastName"
               >Apellidos *
               <input
+                class="inputStyle"
                 type="text"
                 id="userLastName"
                 name="userLastName"
@@ -67,6 +69,7 @@
             <label for="userId"
               >Identificación *
               <input
+                class="inputStyle"
                 type="text"
                 id="userId"
                 name="userId"
@@ -77,6 +80,7 @@
             <label for="userDateOfBirth"
               >Fecha de nacimiento *
               <input
+                class="inputStyle"
                 type="date"
                 id="userDateOfBirth"
                 name="userDateOfBirth"
@@ -88,6 +92,7 @@
             <label for="userEmail"
               >Correo electrónico *
               <input
+                class="inputStyle"
                 type="text"
                 id="userEmail"
                 name="userEmail"
@@ -98,6 +103,7 @@
             <label for="userPhoneNumber"
               >Número de teléfono *
               <input
+                class="inputStyle"
                 type="text"
                 id="userPhoneNumber"
                 name="userPhoneNumber"
@@ -125,7 +131,7 @@
               <p class="formInputError" id="userUnitError"></p
             ></label>
 
-            <label for="userProfilePicture"
+            <label id="userProfilePictureLabel" for="userProfilePicture"
               >Foto de perfil *
               <div class="imageDisplayInput">
                 <img
@@ -134,6 +140,7 @@
                   alt="profile picture"
                 />
                 <input
+                  class="inputStyle"
                   id="userProfilePicture"
                   name="userProfilePicture"
                   type="file"
@@ -154,7 +161,7 @@
       </div>
     </main>
 
-    <footer class="footer">
+    <footer class="footer completeFooter">
       <p class="copyrightText">Copyright &copy; 2023 by Beelders.</p>
     </footer>
 
@@ -162,6 +169,5 @@
     <script src="/js/upload_img_display.js"></script>
     <script src="/js/user_feedback.js"></script>
     <script src="/js/sweet_alert.js"></script>
-    <script src="/js/user_feedback.js"></script>
   </body>
 </html>
