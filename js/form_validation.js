@@ -42,12 +42,20 @@ const signinRegistrationFields = {
   signinPassword: false,
 };
 
+//Object for asset individual information edit validaton
+const assetInformationEditFields = {
+  assetName: false,
+  assetDescription: false,
+  assetLocation: false,
+}
+
 //Functions
-//Validation fuction for the entire form
+//Validation function for the entire form
 const validateForm = function (event) {
   const elementId = event.target.id; //Stores the input or element ID that triggered the event
   const elementValue = event.target.value; //Stores the input or element value
   const errorActiveClass = "formInputErrorActive"; //Stores the class that has to be added for the error message to show up
+  console.log(elementId);
 
   //Depending on the input field ID, the code runs certain validations or not
   switch (elementId) {
@@ -226,6 +234,9 @@ const errorModifier = function (elementId, errorActiveClass, status, message) {
       case "signinForm":
         signinRegistrationFields[elementId] = false;
         break;
+      case "assetInformationEditForm":
+        assetInformationEditFields[elementId] = false;
+        break;
     }
   } else if (!status) {
     //If the status is true means the field is ok, the fuction hides the error paragraph by removing the visible class
@@ -242,6 +253,9 @@ const errorModifier = function (elementId, errorActiveClass, status, message) {
         break;
       case "signinForm":
         signinRegistrationFields[elementId] = true;
+        break;
+      case "assetInformationEditForm":
+        assetInformationEditFields[elementId] = true;
         break;
     }
   }
@@ -293,6 +307,20 @@ const submitBtn = function () {
         errorAlert("Debe ingresar su correo y contraseña para iniciar sesión.");
       }
       break;
+
+      case "assetInformationEditForm":
+        if (Object.values(assetRegistrationFields).every(Boolean)) {
+          successAlert(
+            "La edición de la información del activo fue exitosa."
+          );
+          form.reset();
+          Object.keys(assetRegistrationFields).forEach(
+            (attribute) => (assetRegistrationFields[attribute] = false)
+          );
+        } else {
+          errorAlert("Hay campos obligatorios sin llenar.");
+        }
+        break;
   }
 };
 

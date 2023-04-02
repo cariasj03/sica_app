@@ -60,8 +60,11 @@
     <div class="pageBody">
     <h1>Información del activo</h1>
 
-    <form id="form">
-        <label for="assetName">ID </label>
+    <form 
+    id="assetInformationEditForm"
+    class="form"
+    >
+        <label for="assetId">ID </label>
         <input
         type="text"
         id="assetId"
@@ -69,7 +72,7 @@
         type="text"
         
         />
-        <p class="formInputError" id="assetNameError"></p>
+        <p class="formInputError"></p>
 
         <label for="assetName">Nombre del activo</label>
         <input
@@ -77,7 +80,7 @@
         id="assetName"
         name="assetName" 
         type="text"
-        ></form>
+        >
         <p class="formInputError" id="assetNameError"></p>
 
         <label for="assetDescription">Descripción del activo</label>
@@ -124,18 +127,27 @@
         />
 
         <div class="buttonContainer">
-        <button type="button" id="editAsset" class="primaryButton">
+        <button 
+        type="button" 
+        id="editAsset" 
+        class="primaryButton">
             Editar información
         </button>
 
-        <button type="button" id="saveAssetInformation" class="primaryButton disabled" disabled>
+        <button 
+        type="submit" 
+        id="saveAssetInformation" 
+        class="primaryButton disabled" 
+        disabled>
             Guardar información
         </button>
 
         <a href="/html/assets.html"
-              ><button type="button" class="secondaryButton">
+              ><button 
+              type="button" 
+              class="secondaryButton">
                 Regresar
-              </button></a
+              </button></a>
 
         </div>
 
