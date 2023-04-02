@@ -75,6 +75,13 @@ const unitRegistrationFields = {
   additionalGeographicInformation: false,
 };
 
+// Object for asset individual info edit validation
+const assetIndividualInformationFields = {
+  assetName: true,
+  assetDescription: true,
+  assetLocation: true,
+};
+
 //Functions
 //Validation function for the entire form
 const validateForm = function (event) {
@@ -276,7 +283,7 @@ const errorModifier = function (elementId, errorActiveClass, status, message) {
         unitRegistrationFields[elementId] = false;
         break;
       case "assetIndividualInformationForm":
-        unitRegistrationFields[elementId] = false;
+        assetIndividualInformationFields[elementId] = false;
         break;
     }
   } else if (!status) {
@@ -305,7 +312,7 @@ const errorModifier = function (elementId, errorActiveClass, status, message) {
         unitRegistrationFields[elementId] = true;
         break;
       case "assetIndividualInformationForm":
-        unitRegistrationFields[elementId] = true;
+        assetIndividualInformationFields[elementId] = true;
         break;
     }
   }
@@ -314,7 +321,7 @@ const errorModifier = function (elementId, errorActiveClass, status, message) {
 //Submit button function
 const submitBtn = function () {
   //Depending on the form the user is in, the function validates different objects and fields
-  console.log(userInfoFields);
+  console.log(assetIndividualInformationFields);
 
   switch (form.id) {
     case "assetRegistrationForm":
@@ -360,13 +367,9 @@ const submitBtn = function () {
       }
       break;
 
-    case "assetInformationEditForm":
-      if (Object.values(assetRegistrationFields).every(Boolean)) {
+    case "assetIndividualInformationForm":
+      if (Object.values(assetIndividualInformationFields).every(Boolean)) {
         successAlert("La edición de la información del activo fue exitosa.");
-        form.reset();
-        Object.keys(assetRegistrationFields).forEach(
-          (attribute) => (assetRegistrationFields[attribute] = false)
-        );
       } else {
         errorAlert("Hay campos obligatorios sin llenar.");
       }
@@ -393,5 +396,13 @@ const validation = function () {
 validation();
 submit();
 
-const saveUserButton = document.getElementById("saveUserInformation");
-saveUserButton.addEventListener("click", submitBtn);
+switch (form.id) {
+  case "assetIndividualInformationForm":
+    const saveAssetButton = document.getElementById("saveAssetInformation");
+    saveAssetButton.addEventListener("click", submitBtn);
+    break;
+  case "userInfoForm":
+    const saveUserButton = document.getElementById("saveUserInformation");
+    saveUserButton.addEventListener("click", submitBtn);
+    break;
+}

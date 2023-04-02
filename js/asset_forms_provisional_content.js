@@ -48,19 +48,21 @@ window.onload = function () {
   });
 
   saveButton.addEventListener("click", function () {
-    assetName.disabled = true;
-    assetName.classList.add("disabled");
+    if (Object.values(assetIndividualInformationFields).every(Boolean)) {
+      assetName.disabled = true;
+      assetName.classList.add("disabled");
 
-    assetDescription.disabled = true;
-    assetDescription.classList.add("disabled");
+      assetDescription.disabled = true;
+      assetDescription.classList.add("disabled");
 
-    assetLocation.disabled = true;
-    assetLocation.classList.add("disabled");
+      assetLocation.disabled = true;
+      assetLocation.classList.add("disabled");
 
-    saveButton.disabled = true;
-    saveButton.classList.add("disabledButton");
+      saveButton.disabled = true;
+      saveButton.classList.add("disabledButton");
 
-    editButton.disabled = false;
-    editButton.classList.remove("disabledButton");
+      editButton.disabled = false;
+      editButton.classList.remove("disabledButton");
+    }
   });
 };
