@@ -63,10 +63,6 @@ form p {
   margin-bottom: 5px;
 }
 
-#additionalGeographicInformation {
-  margin-bottom: 30px;
-}
-
 .formContainer {
   display: flex;
   justify-content: space-between;
@@ -81,10 +77,6 @@ form p {
 
 .inputContainer label {
   margin-bottom: 5px;
-}
-
-#additionalGeographicInformation {
-  margin-bottom: 30px;
 }
 
 .imageStyle {

@@ -74,14 +74,13 @@ const unitRegistrationFields = {
   districtSelect: false,
   additionalGeographicInformation: false,
 };
-  
+
 //Functions
 //Validation function for the entire form
 const validateForm = function (event) {
   const elementId = event.target.id; //Stores the input or element ID that triggered the event
   const elementValue = event.target.value; //Stores the input or element value
   const errorActiveClass = "formInputErrorActive"; //Stores the class that has to be added for the error message to show up
-  console.log(elementId);
 
   //Depending on the input field ID, the code runs certain validations or not
   switch (elementId) {
@@ -96,6 +95,9 @@ const validateForm = function (event) {
     case "signinPassword":
     case "userRole":
     case "unitDescription":
+    case "provinceSelect":
+    case "cantonSelect":
+    case "districtSelect":
     case "additionalGeographicInformation":
       validateEmptyField(elementId, elementValue, errorActiveClass);
       break;
@@ -306,6 +308,7 @@ const errorModifier = function (elementId, errorActiveClass, status, message) {
 //Submit button function
 const submitBtn = function () {
   //Depending on the form the user is in, the function validates different objects and fields
+  console.log(userInfoFields);
 
   switch (form.id) {
     case "assetRegistrationForm":
@@ -342,7 +345,7 @@ const submitBtn = function () {
     case "signinForm":
       if (Object.values(signinRegistrationFields).every(Boolean)) {
         form.reset();
-        Object.keys(signupRegistrationFields).forEach(
+        Object.keys(signinRegistrationFields).forEach(
           (attribute) => (signinRegistrationFields[attribute] = false)
         );
         window.location.href = "/html/index.html";
@@ -351,19 +354,40 @@ const submitBtn = function () {
       }
       break;
 
-      case "assetInformationEditForm":
-        if (Object.values(assetRegistrationFields).every(Boolean)) {
-          successAlert(
-            "La edición de la información del activo fue exitosa."
-          );
-          form.reset();
-          Object.keys(assetRegistrationFields).forEach(
-            (attribute) => (assetRegistrationFields[attribute] = false)
-          );
-        } else {
-          errorAlert("Hay campos obligatorios sin llenar.");
-        }
-        break;
+    case "assetInformationEditForm":
+      if (Object.values(assetRegistrationFields).every(Boolean)) {
+        successAlert("La edición de la información del activo fue exitosa.");
+        form.reset();
+        Object.keys(assetRegistrationFields).forEach(
+          (attribute) => (assetRegistrationFields[attribute] = false)
+        );
+      } else {
+        errorAlert("Hay campos obligatorios sin llenar.");
+      }
+      break;
+
+    case "userInfoForm":
+      if (Object.values(userInfoFields).every(Boolean)) {
+        successAlert(
+          "Información guardada con éxito",
+          "La información del usuario se actualizó exitosamente."
+        );
+      } else {
+        errorAlert("Hay campos obligatorios sin llenar.");
+      }
+      break;
+
+    case "unitRegistrationForm":
+      if (Object.values(unitRegistrationFields).every(Boolean)) {
+        successAlert("Unidad registrada con éxito", "La unidad exitosamente.");
+        form.reset();
+        Object.keys(unitRegistrationFields).forEach(
+          (attribute) => (unitRegistrationFields[attribute] = false)
+        );
+      } else {
+        errorAlert("Hay campos obligatorios sin llenar.");
+      }
+      break;
   }
 };
 
@@ -385,3 +409,6 @@ const validation = function () {
 //Function calls
 validation();
 submit();
+
+const saveUserButton = document.getElementById("saveUserInformation");
+saveUserButton.addEventListener("click", submitBtn);

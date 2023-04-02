@@ -200,9 +200,9 @@
                   >
                   <p class="formInputError" id="cantonSelectError"></p>
 
-          <label for="distritSelect"
+          <label for="districtSelect"
           >Distrito *</label>
-              <select class="inputStyle" id="distritSelect" name="distritSelect">
+              <select class="inputStyle" id="districtSelect" name="districtSelect">
                   <option value="" disabled selected hidden>Distrito</option>
                   <optgroup label="San José">
                       <optgroup label="San José">
@@ -424,7 +424,7 @@
                       </optgroup>
               </select
               >
-              <p class="formInputError" id="distritSelectError"></p>
+              <p class="formInputError" id="districtSelectError"></p>
 
           <label for="additionalGeographicInformation">Otras señas *</label>
           <input
@@ -439,17 +439,15 @@
           <p class="smallText">* Campos obligatorios</p>
 
           <div id="unitRegistrationButtonContainer" class="buttonContainer">
+            <button type="submit" id="registerUnit" class="primaryButton">
+                Registrar unidad
+            </button>
 
-          <button type="submit" id="registerUnit" class="primaryButton">
-              Registrar unidad
-          </button>
-
-          <a href="/html/units.html"
-                ><button type="button" class="secondaryButton">
-                  Regresar
-                </button></a>
+            <a href="/html/units.html"
+                  ><button type="button" class="secondaryButton">
+                    Regresar
+                  </button></a>
           </div>
-
       </form>
     </div>
   </div>
@@ -462,7 +460,7 @@
 <script src="/js/user_feedback.js"></script>
 <script src="/js/sweet_alert.js"></script>
 <script src="/js/form_validation.js"></script>
-<script src="/js/disable_enable_input_fields_unit_registration.js"></script>
+<!-- <script src="/js/disable_enable_input_fields_unit_registration.js"></script> -->
 
 </body>
 </html>
