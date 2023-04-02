@@ -34,7 +34,11 @@
         <nav class="headerNav barNav">
           <a href="/html/index.html">Inicio</a>
           <a href="/html/assets.html">Activos</a>
-          <a class="currentTab" href="/html/requests.html">Solicitudes</a>
+          <a
+            class="currentTab"
+            href="/html/review_requests_registration_users.html"
+            >Solicitudes</a
+          >
           <a href="/html/reports.html">Reportes</a>
         </nav>
       </div>
@@ -44,143 +48,173 @@
           ><span class="material-symbols-outlined"> settings </span></a
         >
         <a href="/html/myprofile.html"
-          ><span class="material-symbols-outlined"> account_box </span></a
+          ><span class="material-symbols-outlined"> account_circle </span></a
         >
-        <a href="/html/signin.html"><span class="material-symbols-outlined"> logout </span></a>
+        <a href="/html/signin.html"
+          ><span class="material-symbols-outlined"> logout </span></a
+        >
       </div>
     </header>
 
     <main class="mainContainer">
-        <nav class="sideNav barNav">
-            <a href="/html/review_requests_registration_users.html">Solicitudes de registro de usuarios</a>
-            <a  href="/html/asset_registration_applications.html">Solicitudes de registro de activos</a>
-            <a class="currentTab" href="/html/asset_transfer_applications.html">Solicitudes de traslados de activos</a>
-          </nav>
+      <nav class="sideNav barNav">
+        <a href="/html/review_requests_registration_users.html"
+          >Solicitudes de registro de usuarios</a
+        >
+        <a href="/html/asset_registration_applications.html"
+          >Solicitudes de registro de activos</a
+        >
+        <a class="currentTab" href="/html/asset_transfer_applications.html"
+          >Solicitudes de traslados de activos</a
+        >
+      </nav>
 
       <div id="assetTransferRequest" class="pageBody">
         <h1>Revisión de solicitud de traslado de un activo</h1>
-        <form id="assetTransferRequestForm" >
-
+        <form id="assetTransferRequestForm">
           <div class="formInputContainer">
-    
-            <label for="assetName">ID del activo</label>
-            <input
-            type="text"
-            id="assetId"
-            name="assetId"
-            value="000001"
-            disabled
-            >
-            <p class="formInputError" id="assetNameError"></p>
+            <label for="assetTransferId"
+              >ID del traslado
+              <input
+                class="inputStyle disabled"
+                type="text"
+                id="assetTransferId"
+                name="assetTransferId"
+                value="000003"
+                disabled
+            /></label>
 
-            <label for="assetTransferID">ID del traslado</label>
-            <input
-            type="text"
-            id="assetTransferId"
-            name="assetId"
-            value="000003"
-            disabled
-            >
-            <p class="formInputError" id="assetNameError"></p>
-    
-            <label for="assetDescription">Unidad de origen</label>
-            <input
-            class="inputStyle"
-            type="text"
-            id="assetUnit"
-            name="assetUnit"
-            value="Cartago"
-            disabled
-            ></input>
-          
-            
-            <label for="assetDescription">Ubicación de destino</label>
-            <input
-            class="inputStyle"
-            type="text"
-            id="assetTargetUnit"
-            name="assetTargetUnit"
-            value="Piso 4, estante 2, caja 3"
-            disabled
-            />
-            <p class="formInputError" id="assetDescriptionError"></p>
+            <label for="assetTransferRequestDate"
+              >Fecha de la solicitud
+              <input
+                class="inputStyle disabled"
+                type="text"
+                id="assetTransferRequestDate"
+                name="assetTransferRequestDate"
+                value="16/03/2023"
+                disabled
+            /></label>
 
-            <label for="assetLocation">Unidad de destino</label>
-            <input
-            class="inputStyle"
-            type="text"
-            id="assetTargetLocation"
-            name="assetTargetLocation"
-            value="Alajuela"
-            disabled
-            >
-          </input>
-            <p class="formInputError" id="assetLocationError"></p>
-    
-          </div>
-    
-          <div class="column">
-    
-            <label for="assetUnit">Nombre del activo</label>
-            <input
-            class="inputStyle"
-            type="text"
-            id="assetName"
-            name="assetName"
-            value="Impresora EPSON F570"
-            disabled
-            ></input>
-            <p class="formInputError" id="assetUnitError"></p>
-    
-    
-            <label for="assetLocation">Motivo del traslado</label>
-            <input 
-            type="text"
-            id="assetTransferReason"
-            name="assetTransferReason"
-            value="Activo dañado"
-            disabled
-            >
-          </div>
-    
-          <div class="paddingVerticalText">
-    
-              <label for="assetDescription">Descripción detallada de la solicitud</label>
+            <label for="assetId"
+              >ID del activo
+              <input
+                class="inputStyle disabled"
+                type="text"
+                id="assetId"
+                name="assetId"
+                value="000001"
+                disabled
+            /></label>
+
+            <label for="assetName"
+              >Nombre del activo
+              <input
+                class="inputStyle disabled"
+                type="text"
+                id="assetName"
+                name="assetName"
+                value="Impresora EPSON F570"
+                disabled
+            /></label>
+
+            <label for="assetOriginUnit"
+              >Unidad de origen
+              <input
+                class="inputStyle disabled"
+                type="text"
+                id="assetOriginUnit"
+                name="assetOriginUnit"
+                value="Cartago"
+                disabled
+            /></label>
+
+            <label for="assetTargetUnit"
+              >Unidad de destino
+              <input
+                class="inputStyle disabled"
+                type="text"
+                id="assetTargetUnit"
+                name="assetTargetUnit"
+                value="Piso 4, estante 2, caja 3"
+                disabled
+            /></label>
+
+            <label for="assetTransferReason"
+              >Motivo del traslado
+              <input
+                class="inputStyle disabled"
+                type="text"
+                id="assetTransferReason"
+                name="assetTransferReason"
+                value="Daño"
+                disabled
+            /></label>
+
+            <label for="assetTargetLocation"
+              >Ubicación de destino
+              <input
+                class="inputStyle disabled"
+                type="text"
+                id="assetTargetLocation"
+                name="assetTargetLocation"
+                value="Alajuela"
+                disabled
+            /></label>
+
+            <label id="assetDescriptionLabel" for="assetDescription"
+              >Descripción detallada de la solicitud
               <textarea
-              type="text"
-              id="assetRequestDescription";
-              name="assetRequestDescription";
-              disabled
-              >El activo se encuentra en mal estado y se requiere reparación</textarea>
-              <label for="assetStatus">Imagenes que justifiquen el traslado</label>
-              <div id="imageTransferDirection">
-                <div class="column">
-                  <img alt="Upload a picture 1" src="/images/s-l1600.jpeg"  id="imageTransferDisplay">
-                </div>
-                <div class="column">
-                  <img alt="Upload a picture 2" src="/images/s-l500.jpeg"  id="imageTransferDisplay">
-                </div>
-            </div>
-            
+                class="inputStyle disabled"
+                id="assetRequestDescription"
+                name="assetRequestDescription"
+                rows="3"
+                disabled
+              >
+Impresora presenta problemas de conectividad con la red Wi-Fi de la unidad. No se ha logrado recuperar su funcionalidad luego de visitas de técnicos especializados.
+            </textarea
+              >
+            </label>
           </div>
-    
+
+          <div class="assetTransferRequestPictureContainer">
+            <label for="assetStatus">Imágenes que justifican el traslado</label>
+            <img
+              class="assetTransferPicture"
+              alt="Upload a picture 1"
+              src="/images/assetTransferPicture1.png"
+            />
+            <img
+              class="assetTransferPicture"
+              alt="Upload a picture 2"
+              src="/images/assetTransferPicture2.png"
+            />
+          </div>
+
           <div class="buttonContainer">
-            <a href="/html/asset_registration_applications.html"
-              ><button type="submit" id="acceptAssetTransfer" class="primaryButton">
-                Aprobar traslado
-            </button></a>
-            <a href="/html/asset_registration_applications.html"
-            ><button  type="button"  id="declineAssetTrasfer" class="destructiveButton">
-                Rechazar traslado
-              </button></a>
-              
-            <a href="/html/asset_registration_applications.html"
+            <button
+              type="button"
+              id="acceptAssetTransfer"
+              class="primaryButton"
+            >
+              Aprobar solicitud
+            </button>
+
+            <button
+              type="button"
+              id="declineAssetTrasfer"
+              class="destructiveButton"
+            >
+              Rechazar solicitud
+            </button>
+
+            <a href="/html/asset_transfer_applications.html"
               ><button type="button" class="secondaryButton">
                 Regresar
-              </button></a>
+              </button></a
+            >
           </div>
         </form>
-    </div>
+      </div>
     </main>
 
     <footer class="footer">

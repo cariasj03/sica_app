@@ -35,7 +35,7 @@
     <nav class="headerNav barNav">
         <a href="/html/index.html">Inicio</a>
         <a href="/html/assets.html">Activos</a>
-        <a href="/html/requests.html">Solicitudes</a>
+        <a href="/html/review_requests_registration_users.html">Solicitudes</a>
         <a href="/html/reports.html">Reportes</a>
     </nav>
     </div>
@@ -45,7 +45,7 @@
         ><span class="material-symbols-outlined "> settings </span>
         </a>        
         <a href="/html/myprofile.html"
-          ><span class="material-symbols-outlined currentIcon"> account_box </span></a
+          ><span class="material-symbols-outlined currentIcon"> account_circle </span></a
         >
         <a href="/html/signin.html"
           ><span class="material-symbols-outlined"> logout </span></a
@@ -55,8 +55,8 @@
 
 <main class="mainContainer">
     <nav class="sideNav barNav">
-        <a class="currentTab" href="/html/myprofile.html">Mi prefil</a>
-        <a href="/html/signin.html">Cerrar sesión</a>
+        <a class="currentTab accountTab" href="/html/myprofile.html"><span class="material-symbols-outlined"> account_circle </span> Mi perfil</a>
+        <a class="accountTab" href="/html/signin.html"><span class="material-symbols-outlined"> logout </span> Cerrar sesión</a>
     </nav>
 
     <div class="pageBody">
@@ -66,13 +66,13 @@
         <form id="userInfoForm">
         <div class="profilePictureContainer">
             <img class="imageStyle" src="/images/profile_picture.png" alt="placeholderUserImage">
-            <button type="submit" id="editProfilePicture" class="primaryButton" onclick="window.location.href='user_individual_information_edit.html'">
+            <button type="button" id="editProfilePicture" class="primaryButton">
                 Modificar
             </button>
         </div>
         <div class="allInputsContainer">
-            <label for="userId">Identificación <input
-                class="inputStyle"
+            <label id="userIdLabel" for="userId">Identificación <input
+                class="inputStyle disabled"
                 id="userId"
                 name="userId"
                 placeholder="Identificación"
@@ -81,26 +81,26 @@
             ></input>
             <p class="formInputError" id="userIdError"></p></label>
 
-            <label for="userName">Nombre <input type="text" id="userName" name="userName" placeholder="Nombre" value="Juan"/>
+            <label for="userName">Nombre <input class="inputStyle" type="text" id="userName" name="userName" placeholder="Nombre" value="Juan"/>
                     <p class="formInputError" id="userNameError"></p></label>
                 
-            <label for="userLastName">Apellidos <input type="text" id="userLastName" name="userLastName" placeholder="Apellidos" value="Pérez González"/>
+            <label for="userLastName">Apellidos <input class="inputStyle" type="text" id="userLastName" name="userLastName" placeholder="Apellidos" value="Pérez González"/>
                     <p class="formInputError" id="userLastNameError"></p></label>
                 
-            <label for="userEmail">Correo electrónico registrado <input type="text" id="userEmail" name="userEmail" placeholder="Correo electrónico registrado" value="juan.perez@ejemplo.com"/>
+            <label for="userEmail">Correo electrónico registrado <input class="inputStyle" type="text" id="userEmail" name="userEmail" placeholder="Correo electrónico registrado" value="juan.perez@ejemplo.com"/>
                     <p class="formInputError" id="userEmailError"></p></label>
                 
-            <label for="userPhone">Número de teléfono <input type="text" id="userPhone" name="userPhone" placeholder="Número de teléfono" value="8888-8888"/>
+            <label for="userPhone">Número de teléfono <input class="inputStyle" type="text" id="userPhone" name="userPhone" placeholder="Número de teléfono" value="8888-8888"/>
                     <p class="formInputError" id="userPhoneError"></p></label>
                 
-            <label for="userRole">Rol asignado <input type="text" id="userRole" name="userRole" placeholder="Rol asignado" value="Encargado de inventario por undiad"/>
+            <label for="userRole">Rol asignado <input class="inputStyle disabled" type="text" id="userRole" name="userRole" placeholder="Rol asignado" value="Encargado de Inventario por Unidad" disabled/>
                     <p class="formInputError" id="userRoleError"></p></label>
                 
-            <label for="userBirthDate">Fecha de nacimiento <input type="text" id="userBirthDate" name="userBirthDate" placeholder="Fecha de nacimiento" value="01/01/2000"/>
+            <label for="userBirthDate">Fecha de nacimiento <input class="inputStyle" type="date" id="userBirthDate" name="userBirthDate" placeholder="Fecha de nacimiento" value="2000-01-01"/>
                     <p class="formInputError" id="userBirthDateError"></p></label>
 
-            <label for="userUnit">Unidad a la que pertenece <input
-                    class="inputStyle"
+            <label id="userUnitLabel" for="userUnit">Unidad a la que pertenece <input
+                    class="inputStyle disabled"
                     id="userUnit"
                     name="userUnit"
                     placeholder="Unidad a la que pertenece"
@@ -110,12 +110,12 @@
         </div>
 
             <div id="userInfoButtonContainer" class="buttonContainer">
-            <button type="submit" id="editUserInformation" class="primaryButton" onclick="window.location.href='user_individual_information_edit.html'">
-                Editar Información
+            <button type="button" id="editUserInformation" class="primaryButton">
+                Editar información
             </button>
 
-            <button type="submit" id="saveUserInformation" class="primaryButton" onclick="window.location.href='user_individual_information.html'">
-                Guardar Información
+            <button type="button" id="saveUserInformation" class="primaryButton disabledButton" disabled>
+                Guardar información
             </button>
 
             </div>
@@ -128,11 +128,6 @@
 <footer class="footer">
     <p class="copyrightText">Copyright &copy; 2023 by Beelders.</p>
 </footer>
-
-<script src="/js/form_validation.js"></script>
-<script src="/js/sweet_alert.js"></script>
-<script src="/js/user_feedback.js"></script>
-<script src="/js/retrieve_asset_information.js"></script>
 
 </body>
 </html>

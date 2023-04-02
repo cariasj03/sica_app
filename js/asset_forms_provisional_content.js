@@ -32,10 +32,13 @@ window.onload = function () {
   let saveButton = document.getElementById("saveAssetInformation");
   editButton.addEventListener("click", function () {
     assetName.disabled = false;
+    assetName.classList.remove("disabled");
 
     assetDescription.disabled = false;
+    assetDescription.classList.remove("disabled");
 
     assetLocation.disabled = false;
+    assetLocation.classList.remove("disabled");
 
     saveButton.disabled = false;
     saveButton.classList.remove("disabledButton");
@@ -46,10 +49,13 @@ window.onload = function () {
 
   saveButton.addEventListener("click", function () {
     assetName.disabled = true;
+    assetName.classList.add("disabled");
 
     assetDescription.disabled = true;
+    assetDescription.classList.add("disabled");
 
     assetLocation.disabled = true;
+    assetLocation.classList.add("disabled");
 
     saveButton.disabled = true;
     saveButton.classList.add("disabledButton");

@@ -33,17 +33,19 @@
         <nav class="headerNav barNav">
           <a href="/html/index.html">Inicio</a>
           <a href="/html/assets.html">Activos</a>
-          <a href="/html/requests.html">Solicitudes</a>
+          <a href="/html/review_requests_registration_users.html"
+            >Solicitudes</a
+          >
           <a class="currentTab" href="/html/reports.html">Reportes</a>
         </nav>
       </div>
 
       <div class="headerIcons">
-        <a href="/html/config.html"
-        ><span class="material-symbols-outlined"> settings </span>
+        <a href="/html/users.html"
+          ><span class="material-symbols-outlined"> settings </span>
         </a>
         <a href="/html/myprofile.html"
-          ><span class="material-symbols-outlined"> account_box </span></a
+          ><span class="material-symbols-outlined"> account_circle </span></a
         >
         <a href="/html/signin.html"
           ><span class="material-symbols-outlined"> logout </span></a
@@ -71,12 +73,12 @@
             <div class="filters">
               <h3>Ordenar por</h3>
 
-              <label for="IDSide"
+              <label for="unitId"
                 ><input
                   type="radio"
-                  id="IDSide"
+                  id="unitId"
                   name="sortRadio"
-                  value="IDSide"
+                  value="unitId"
                 />
                 ID</label
               >
@@ -104,7 +106,7 @@
 
               <h3>Filtrar por</h3>
               <label for="unitSelect"
-                >Unidad<select id="unitSelect">
+                >Unidad<select class="inputStyle" id="unitSelect">
                   <option value="" disabled selected hidden>Unidad</option>
                   <option value="central">Central</option>
                   <option value="bodega">Bodega</option>
@@ -119,6 +121,7 @@
               <h3>Buscar por</h3>
               <label for="idSearch"
                 >ID<input
+                  class="inputStyle"
                   type="search"
                   id="idSearch"
                   name="idSearch"
@@ -126,6 +129,7 @@
               /></label>
               <label for="unitSearch"
                 >Nombre<input
+                  class="inputStyle"
                   type="search"
                   id="unitSearch"
                   name="unitSearch"

@@ -33,17 +33,21 @@
         <nav class="headerNav barNav">
           <a href="/html/index.html">Inicio</a>
           <a href="/html/assets.html">Activos</a>
-          <a class="currentTab" href="/html/requests.html">Solicitudes</a>
+          <a
+            class="currentTab"
+            href="/html/review_requests_registration_users.html"
+            >Solicitudes</a
+          >
           <a href="/html/reports.html">Reportes</a>
         </nav>
       </div>
 
       <div class="headerIcons">
-        <a href="/html/config.html"
+        <a href="/html/users.html"
           ><span class="material-symbols-outlined"> settings </span>
         </a>
         <a href="/html/myprofile.html"
-          ><span class="material-symbols-outlined"> account_box </span></a
+          ><span class="material-symbols-outlined"> account_circle </span></a
         >
         <a href="/html/signin.html"
           ><span class="material-symbols-outlined"> logout </span></a
@@ -117,7 +121,10 @@
 
               <h3>Filtrar por</h3>
               <label for="unitSelectOrigin"
-                >Unidad de origen<select id="unitSelectOrigin">
+                >Unidad de origen<select
+                  class="inputStyle"
+                  id="unitSelectOrigin"
+                >
                   <option value="" disabled selected hidden>
                     Unidad de origen
                   </option>
@@ -127,7 +134,10 @@
                 </select></label
               >
               <label for="unitSelectTarget"
-                >Unidad de destino<select id="unitSelectTarget">
+                >Unidad de destino<select
+                  class="inputStyle"
+                  id="unitSelectTarget"
+                >
                   <option value="" disabled selected hidden>
                     Unidad de destino
                   </option>
@@ -142,6 +152,7 @@
               <h3>Buscar por</h3>
               <label for="idTransferSearch"
                 >ID del traslado<input
+                  class="inputStyle"
                   type="search"
                   id="idTransferSearch"
                   name="idTransferSearch"
@@ -149,6 +160,7 @@
               /></label>
               <label for="idAssetSearch"
                 >ID del activo<input
+                  class="inputStyle"
                   type="search"
                   id="idAssetSearch"
                   name="idAssetSearch"
@@ -156,6 +168,7 @@
               /></label>
               <label for="nameSearch"
                 >Nombre del activo<input
+                  class="inputStyle"
                   type="search"
                   id="nameSearch"
                   name="nameSearch"
