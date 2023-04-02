@@ -868,57 +868,57 @@ specialities-list {
 .card0 {
   background: url(/landing_page_team/assets/images/Angelo.jpg) center center
     no-repeat;
-  background-size: 300px;
+    background-size: 20rem;
 }
 .card0:hover {
   background: url(/landing_page_team/assets/images/Angelo.jpg) left center
     no-repeat;
-  background-size: 450px;
+  background-size: 26rem;
 }
 .card1 {
   background: url(/landing_page_team/assets/images/Carolina.png) center center
     no-repeat;
-  background-size: 300px;
+  background-size: 20rem;
 }
 .card1:hover {
   background: url(/landing_page_team/assets/images/Carolina.png) left center
     no-repeat;
-  background-size: 450px;
+  background-size: 26rem;
 }
 
 .card2 {
   background: url(/landing_page_team/assets/images/Ana.jpg) center center
     no-repeat;
-  background-size: 300px;
+  background-size: 20rem;
 }
 .card2:hover {
   background: url(/landing_page_team/assets/images/Ana.jpg) left center
     no-repeat;
-  background-size: 450px;
+  background-size: 27rem;
 }
 
 .card3 {
   background: url(/landing_page_team/assets/images/Efrain.png) center center
     no-repeat;
-  background-size: 300px;
+  background-size: 20rem;
 }
 
 .card3:hover {
   background: url(/landing_page_team/assets/images/Efrain.png) left center
     no-repeat;
-  background-size: 500px;
+  background-size: 28rem;
 }
 
 .card4 {
   background: url(/landing_page_team/assets/images/Armando.png) center center
     no-repeat;
-  background-size: 300px;
+  background-size: 20rem;
 }
 
 .card4:hover {
   background: url(/landing_page_team/assets/images/Armando.png) left center
     no-repeat;
-  background-size: 450px;
+  background-size: 25rem;
 }
 
 .container-h2 {
