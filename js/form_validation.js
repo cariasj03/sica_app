@@ -74,14 +74,20 @@ const unitRegistrationFields = {
   districtSelect: false,
   additionalGeographicInformation: false,
 };
-  
+
+// Object for individual asset information validation
+const assetIndividualInformationFields = {
+  assetName: false,
+  assetDescription: false,
+  assetLocation: false,
+};
+
 //Functions
 //Validation function for the entire form
 const validateForm = function (event) {
   const elementId = event.target.id; //Stores the input or element ID that triggered the event
   const elementValue = event.target.value; //Stores the input or element value
   const errorActiveClass = "formInputErrorActive"; //Stores the class that has to be added for the error message to show up
-  console.log(elementId);
 
   //Depending on the input field ID, the code runs certain validations or not
   switch (elementId) {
@@ -273,6 +279,9 @@ const errorModifier = function (elementId, errorActiveClass, status, message) {
       case "unitRegistrationForm":
         unitRegistrationFields[elementId] = false;
         break;
+      case "assetIndividualInformationForm":
+        unitRegistrationFields[elementId] = false;
+        break;
     }
   } else if (!status) {
     //If the status is true means the field is ok, the fuction hides the error paragraph by removing the visible class
@@ -297,6 +306,9 @@ const errorModifier = function (elementId, errorActiveClass, status, message) {
         unitInfoFields[elementId] = true;
         break;
       case "unitRegistrationForm":
+        unitRegistrationFields[elementId] = true;
+        break;
+      case "assetIndividualInformationForm":
         unitRegistrationFields[elementId] = true;
         break;
     }
@@ -352,6 +364,20 @@ const submitBtn = function () {
       break;
 
       case "assetInformationEditForm":
+        if (Object.values(assetRegistrationFields).every(Boolean)) {
+          successAlert(
+            "La edición de la información del activo fue exitosa."
+          );
+          form.reset();
+          Object.keys(assetRegistrationFields).forEach(
+            (attribute) => (assetRegistrationFields[attribute] = false)
+          );
+        } else {
+          errorAlert("Hay campos obligatorios sin llenar.");
+        }
+        break;
+
+      case "assetIndividualInformationForm":
         if (Object.values(assetRegistrationFields).every(Boolean)) {
           successAlert(
             "La edición de la información del activo fue exitosa."
