@@ -91,7 +91,6 @@
           <label for="assetTargetUnit"
             >Unidad de destino *
             <select
-              required
               class="inputStyle"
               type="text"
               id="assetTargetUnit"
@@ -128,7 +127,6 @@
           <label for="assetTransferReason"
             >Motivo del traslado *
             <select
-              required
               class="inputStyle"
               type="text"
               id="assetTransferReason"
@@ -165,32 +163,38 @@
           <div id="firstColumn">
             <div id="centerFirstColumn">
               <img
+                id="assetImageDisplay1"
                 alt="Upload a picture"
                 src="/images/upload_picture_icon.jpeg"
                 class="imageStyleTransfers"
               />
 
               <img
+                id="assetImageDisplay2"
                 alt="Upload a picture"
                 src="/images/upload_picture_icon.jpeg"
                 class="imageStyleTransfers"
               />
 
               <input
-                class="inputStyle"
-                id="uploadPictureAsset"
+                class="inputStyle uploadPictureAsset"
+                id="uploadPictureAsset1"
                 name="uploadPictureAsset1"
                 type="file"
                 accept=".png, .jpg, .jpeg,"
               />
 
               <input
-                class="inputStyle"
-                id="uploadPictureAsset"
+                class="inputStyle uploadPictureAsset"
+                id="uploadPictureAsset2"
                 name="uploadPictureAsset2"
                 type="file"
                 accept=".png, .jpg, .jpeg,"
               />
+
+              <p class="formInputError" id="uploadPictureAsset1Error"></p>
+
+              <p class="formInputError" id="uploadPictureAsset2Error"></p>
             </div>
           </div>
 
@@ -224,5 +228,6 @@
     <script src="/js/sweet_alert.js"></script>
     <script src="/js/user_feedback.js"></script>
     <script src="/js/transfer_forms_provisional_content.js"></script>
+    <script src="/js/upload_img_display.js"></script>
   </body>
 </html>

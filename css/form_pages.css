@@ -159,7 +159,7 @@ select:required:invalid {
   justify-self: left;
 }
 
-#uploadPictureAsset {
+.uploadPictureAsset {
   background-color: #e7e7e7;
   color: #949494;
   border: none;
@@ -190,6 +190,7 @@ select:required:invalid {
   width: 150px;
   height: 150px;
   margin: 4px;
+  object-fit: cover;
 }
 
 #titleMargin {

@@ -60,6 +60,7 @@
   margin-left: 5px;
   height: 90px;
   width: 90px;
+  object-fit: cover;
   border: 1px solid #444;
 }
 

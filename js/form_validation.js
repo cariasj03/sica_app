@@ -88,7 +88,8 @@ const assetTransferRequestFields = {
   assetTargetLocation: false,
   assetTransferReason: false,
   assetRequestDescription: false,
-  uploadPictureAsset: false,
+  uploadPictureAsset1: false,
+  uploadPictureAsset2: false,
 };
 
 //Functions
@@ -97,6 +98,8 @@ const validateForm = function (event) {
   const elementId = event.target.id; //Stores the input or element ID that triggered the event
   const elementValue = event.target.value; //Stores the input or element value
   const errorActiveClass = "formInputErrorActive"; //Stores the class that has to be added for the error message to show up
+
+  console.log(assetTransferRequestFields);
 
   //Depending on the input field ID, the code runs certain validations or not
   switch (elementId) {
@@ -151,7 +154,8 @@ const validateForm = function (event) {
       break;
     //Validates if the user uploaded a picture when required
     case "userProfilePicture":
-    case "uploadPictureAsset":
+    case "uploadPictureAsset1":
+    case "uploadPictureAsset2":
       validateFileField(elementId, elementValue, errorActiveClass);
       break;
   }
@@ -365,7 +369,8 @@ const submitBtn = function () {
           "Su solicitud para crear una cuenta ha sido enviada. En caso de ser aprobada le llegará una contraseña temporal al correo electónico registrado."
         );
         form.reset();
-        imageDisplay.src = "/images/profile_picture.png";
+        const imageDisplaySignup = document.getElementById("imageDisplay");
+        imageDisplaySignup.src = "/images/profile_picture.png";
         Object.keys(signupRegistrationFields).forEach(
           (attribute) => (signupRegistrationFields[attribute] = false)
         );
@@ -398,6 +403,12 @@ const submitBtn = function () {
       if (Object.values(assetTransferRequestFields).every(Boolean)) {
         successAlert("La solicitud se ha enviado con éxito.");
         form.reset();
+        const assetImageDisplay1 =
+          document.getElementById("assetImageDisplay1");
+        assetImageDisplay1.src = "/images/upload_picture_icon.jpeg";
+        const assetImageDisplay2 =
+          document.getElementById("assetImageDisplay2");
+        assetImageDisplay2.src = "/images/upload_picture_icon.jpeg";
         Object.keys(assetTransferRequestFields).forEach(
           (attribute) => (assetTransferRequestFields[attribute] = false)
         );
@@ -436,10 +447,11 @@ switch (form.id) {
     const saveUserButton = document.getElementById("saveUserInformation");
     saveUserButton.addEventListener("click", submitBtn);
     break;
-  case "assetTransferRequestValidation":
-    const saveTransferButton = document.getElementById(
-      "saveTransferInformation"
+  case "assetTransferRequestform":
+    const approveAssetRegistration = document.getElementById("approveRequest");
+    approveAssetRegistration.addEventListener(
+      "click",
+      successAlert("Solicitud apro")
     );
-    saveTransferButton.addEventListener("click", submitBtn);
     break;
 }
