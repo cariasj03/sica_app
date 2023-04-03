@@ -143,13 +143,8 @@ select:required:invalid {
   grid-template-columns: 1fr 1fr;
 }
 
-.containerAssetTransfer {
-  display: grid;
-  grid-template-columns: 1fr 1fr;
-}
-
 #userIdLabelAssetTransfer {
-  display: grid;
+  display: grid;  
   grid-column: 1/3;
 }
 
@@ -164,22 +159,21 @@ select:required:invalid {
   justify-self: left;
 }
 
-#buttonAssetTransfer {
+#uploadPictureAsset {
   background-color: #e7e7e7;
   color: #949494;
   border: none;
-  padding: 10px 24px;
   border-radius: 12px;
-  text-align: center;
+  text-align: left;
   text-decoration: none;
   margin-top: 4px;
   margin-bottom: 4px;
   width: 75%;
   font-size: 11px;
-  justify-self: center;
+  justify-self: left;
 }
 
-#buttonAssetTransfer:hover {
+#uploadPictureAsset:hover {
   background-color: darkgrey;
   color: white;
 }

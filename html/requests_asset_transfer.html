@@ -61,7 +61,8 @@
       <div class="pageBody">
         <h1 id="titleMargin">Solicitud de traslado de un activo</h1>
 
-        <form class="containerAssetTransfer">
+        <form class="containerAssetTransfer" class="form" id="assetTransferRequestValidation">
+
           <label for="assetId"
             >ID del activo
             <input class="inputStyle" type="text" id="assetId" name="assetId"
@@ -85,8 +86,7 @@
               name="assetOriginUnit"
           /></label>
 
-          <label for="assetTargetUnit"
-            >Unidad de destino *
+          <label for="assetTargetUnit">Unidad de destino *
             <select
               required
               class="inputStyle"
@@ -107,8 +107,7 @@
               <option value="guanacaste">Guanacaste</option>
               <option value="puntarenas">Puntarenas</option>
               <option value="limon">Limón</option>
-            </select></label
-          >
+            </select></label>
           <p class="formInputError" id="assetTargetUnitError"></p>
 
           <label for="assetTargetLocation"
@@ -173,28 +172,42 @@
                 class="imageStyleTransfers"
               />
 
-              <button type="button" id="buttonAssetTransfer">
-                Elegir archivo
-              </button>
+              <input
+                class="inputStyle"
+                id="uploadPictureAsset"
+                name="uploadPictureAsset1"
+                type="file"
+                accept=".png, .jpg, .jpeg,"
+              />
 
-              <button type="button" id="buttonAssetTransfer">
-                Elegir archivo
-              </button>
+              <input
+                class="inputStyle"
+                id="uploadPictureAsset"
+                name="uploadPictureAsset2"
+                type="file"
+                accept=".png, .jpg, .jpeg,"
+              /></div>
+
             </div>
-          </div>
 
           <p id="userIdLabelAssetTransfer">* Campos obligatorios</p>
           <p class="formInputError" id="assetStatusError"></p>
 
           <div id="buttonContainer">
-            <button type="submit" class="primaryButton" id="submitButton">
+            <button 
+            type="submit" 
+            class="primaryButton" 
+            id="saveTransferInformation">
               Enviar solicitud
             </button>
-            <a href="/html/assets.html"
-              ><button type="button" class="secondaryButton">
-                Regresar
-              </button></a
-            >
+
+            <A href="/html/assets.html"
+            ><button 
+            type="button" 
+            class="secondaryButton">
+              Regresar
+            </button></A>
+
           </div>
         </form>
       </div>

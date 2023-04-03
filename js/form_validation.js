@@ -3,7 +3,7 @@
 const form = document.querySelector("form");
 //Stores all the inputs, textareas and selects inside the form of the page the user is in
 const formInputs = document.querySelectorAll(
-  ".form input, .form textarea, .form select"
+  ".form input, .form textarea, .form select, .form label input, .form label textarea, .form label select"
 );
 //Stores all the regular expressions to validate the input fields
 const regExp = {
@@ -82,6 +82,15 @@ const assetIndividualInformationFields = {
   assetLocation: true,
 };
 
+// Object for asset transfer request validation
+const assetTransferRequestFields = {
+  assetTargetUnit: false,
+  assetTargetLocation: false,
+  assetTransferReason: false,
+  assetRequestDescription: false,
+  uploadPictureAsset: false,
+};
+
 //Functions
 //Validation function for the entire form
 const validateForm = function (event) {
@@ -106,6 +115,10 @@ const validateForm = function (event) {
     case "cantonSelect":
     case "districtSelect":
     case "additionalGeographicInformation":
+    case "assetTargetUnit":
+    case "assetTargetLocation":
+    case "assetTransferReason":
+    case "assetRequestDescription":
       validateEmptyField(elementId, elementValue, errorActiveClass);
       break;
     //Validates the user inputs a valid email
@@ -136,8 +149,9 @@ const validateForm = function (event) {
         validateEmailField(elementId, elementValue, errorActiveClass);
       }
       break;
-    //Validates if the user uploaded a picture to the signup form
+    //Validates if the user uploaded a picture when required
     case "userProfilePicture":
+    case "uploadPictureAsset":
       validateFileField(elementId, elementValue, errorActiveClass);
       break;
   }
@@ -285,6 +299,9 @@ const errorModifier = function (elementId, errorActiveClass, status, message) {
       case "assetIndividualInformationForm":
         assetIndividualInformationFields[elementId] = false;
         break;
+      case "assetTransferRequestValidation":
+        assetTransferRequestFields[elementId] = false;
+        break;
     }
   } else if (!status) {
     //If the status is true means the field is ok, the fuction hides the error paragraph by removing the visible class
@@ -313,6 +330,9 @@ const errorModifier = function (elementId, errorActiveClass, status, message) {
         break;
       case "assetIndividualInformationForm":
         assetIndividualInformationFields[elementId] = true;
+        break;
+      case "assetTransferRequestValidation":
+        assetTransferRequestFields[elementId] = true;
         break;
     }
   }
@@ -374,6 +394,20 @@ const submitBtn = function () {
         errorAlert("Hay campos obligatorios sin llenar.");
       }
       break;
+
+    case "assetTransferRequestValidation":
+      if (Object.values(assetTransferRequestFields).every(Boolean)) {
+        successAlert(
+          "La solicitud se ha enviado con éxito."
+        );
+        form.reset();
+        Object.keys(assetTransferRequestFields).forEach(
+          (attribute) => (assetTransferRequestFields[attribute] = false)
+        );
+      } else {
+        errorAlert("Hay campos obligatorios sin llenar.");
+      }
+      break;
   }
 };
 
@@ -404,5 +438,9 @@ switch (form.id) {
   case "userInfoForm":
     const saveUserButton = document.getElementById("saveUserInformation");
     saveUserButton.addEventListener("click", submitBtn);
+    break;
+  case "assetTransferRequestValidation":
+    const saveTransferButton = document.getElementById("saveTransferInformation");
+    saveTransferButton.addEventListener("click", submitBtn);
     break;
 }
