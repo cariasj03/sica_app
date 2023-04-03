@@ -61,8 +61,10 @@
       <div class="pageBody">
         <h1 id="titleMargin">Solicitud de traslado de un activo</h1>
 
-        <form class="containerAssetTransfer" class="form" id="assetTransferRequestValidation">
-
+        <form
+          class="containerAssetTransfer form"
+          id="assetTransferRequestValidation"
+        >
           <label for="assetId"
             >ID del activo
             <input class="inputStyle" type="text" id="assetId" name="assetId"
@@ -86,7 +88,8 @@
               name="assetOriginUnit"
           /></label>
 
-          <label for="assetTargetUnit">Unidad de destino *
+          <label for="assetTargetUnit"
+            >Unidad de destino *
             <select
               required
               class="inputStyle"
@@ -107,8 +110,9 @@
               <option value="guanacaste">Guanacaste</option>
               <option value="puntarenas">Puntarenas</option>
               <option value="limon">Limón</option>
-            </select></label>
-          <p class="formInputError" id="assetTargetUnitError"></p>
+            </select>
+            <p class="formInputError" id="assetTargetUnitError"></p
+          ></label>
 
           <label for="assetTargetLocation"
             >Ubicación de destino *
@@ -117,9 +121,9 @@
               type="text"
               id="assetTargetLocation"
               name="assetTargetLocation"
-              placeholder="Ubicación de destino"
-          /></label>
-          <p class="formInputError" id="assetTargetLocationError"></p>
+              placeholder="Ubicación de destino" />
+            <p class="formInputError" id="assetTargetLocationError"></p
+          ></label>
 
           <label for="assetTransferReason"
             >Motivo del traslado *
@@ -136,9 +140,9 @@
               <option value="damage">Daño</option>
               <option value="disuse">Desuso</option>
               <option value="donation">Donación</option>
-            </select></label
-          >
-          <p class="formInputError" id="assetTransferReasonError"></p>
+            </select>
+            <p class="formInputError" id="assetTransferReasonError"></p>
+          </label>
 
           <label for="assetRequestDescription" id="userIdLabelAssetTransfer"
             >Descripción detallada de la solicitud *
@@ -149,8 +153,8 @@
               name="assetRequestDescription"
               placeholder="Descripción detallada de la solicitud"
             ></textarea>
+            <p class="formInputError" id="assetRequestDescriptionError"></p>
           </label>
-          <p class="formInputError" id="assetRequestDescriptionsError"></p>
 
           <div id="userIdLabelAssetTransfer">
             <label for="assetRequestPictures" id="userIdLabelAssetTransfer"
@@ -186,28 +190,27 @@
                 name="uploadPictureAsset2"
                 type="file"
                 accept=".png, .jpg, .jpeg,"
-              /></div>
-
+              />
             </div>
+          </div>
 
           <p id="userIdLabelAssetTransfer">* Campos obligatorios</p>
           <p class="formInputError" id="assetStatusError"></p>
 
           <div id="buttonContainer">
-            <button 
-            type="submit" 
-            class="primaryButton" 
-            id="saveTransferInformation">
+            <button
+              type="submit"
+              class="primaryButton"
+              id="saveTransferInformation"
+            >
               Enviar solicitud
             </button>
 
-            <A href="/html/assets.html"
-            ><button 
-            type="button" 
-            class="secondaryButton">
-              Regresar
-            </button></A>
-
+            <a href="/html/assets.html"
+              ><button type="button" class="secondaryButton">
+                Regresar
+              </button></a
+            >
           </div>
         </form>
       </div>

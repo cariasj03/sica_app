@@ -341,7 +341,6 @@ const errorModifier = function (elementId, errorActiveClass, status, message) {
 //Submit button function
 const submitBtn = function () {
   //Depending on the form the user is in, the function validates different objects and fields
-  console.log(assetIndividualInformationFields);
 
   switch (form.id) {
     case "assetRegistrationForm":
@@ -397,9 +396,7 @@ const submitBtn = function () {
 
     case "assetTransferRequestValidation":
       if (Object.values(assetTransferRequestFields).every(Boolean)) {
-        successAlert(
-          "La solicitud se ha enviado con éxito."
-        );
+        successAlert("La solicitud se ha enviado con éxito.");
         form.reset();
         Object.keys(assetTransferRequestFields).forEach(
           (attribute) => (assetTransferRequestFields[attribute] = false)
@@ -440,7 +437,9 @@ switch (form.id) {
     saveUserButton.addEventListener("click", submitBtn);
     break;
   case "assetTransferRequestValidation":
-    const saveTransferButton = document.getElementById("saveTransferInformation");
+    const saveTransferButton = document.getElementById(
+      "saveTransferInformation"
+    );
     saveTransferButton.addEventListener("click", submitBtn);
     break;
 }
