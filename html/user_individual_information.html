@@ -65,10 +65,17 @@
     <div class="userFormContainer">
         <form class="form" id="userInfoForm">
         <div class="profilePictureContainer">
-            <img class="imageStyle" src="/images/profile_picture.png" alt="placeholderUserImage">
-            <button type="button" id="editProfilePicture" class="primaryButton" onclick="window.location.href='user_individual_information_edit.html'">
-                Modificar
-            </button>
+            <img id="userPictureDisplay" class="imageStyle userImageDisplay" src="/images/juan_perez_profile_picture.jpg" alt="placeholderUserImage">
+
+            <button type="button" class="primaryButton" id="editUserPictureButton">Modificar</button>
+
+            <input
+                class="inputStyle"
+                id="userPictureInput"
+                name="userPictureInput"
+                type="file"
+                accept=".png, .jpg, .jpeg,"
+              />
         </div>
         <div class="allInputsContainer">
             <label id="userIdLabel" for="userId">Identificación <input
@@ -154,6 +161,7 @@
 <script src="/js/sweet_alert.js"></script>
 <script src="/js/form_validation.js"></script>
 <script src="/js/disable_enable_input_fields.js"></script>
+<script src="/js/upload_img_display.js"></script>
 
 </body>
 </html>

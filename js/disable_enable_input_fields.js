@@ -1,19 +1,20 @@
 window.onload = function () {
   //form
   const formId = document.querySelector("form").id;
-  // User individual information
-  const userFirstName = document.getElementById("userFirstName");
-  const userLastName = document.getElementById("userLastName");
-  const userEmail = document.getElementById("userEmail");
-  const userPhoneNumber = document.getElementById("userPhoneNumber");
-  const userRole = document.getElementById("userRole");
-  const userDateOfBirth = document.getElementById("userDateOfBirth");
-  const userUnit = document.getElementById("userUnit");
-  const editButton = document.getElementById("editUserInformation");
-  const saveButton = document.getElementById("saveUserInformation");
 
   switch (formId) {
     case "userInfoForm":
+      // User individual information
+      const userFirstName = document.getElementById("userFirstName");
+      const userLastName = document.getElementById("userLastName");
+      const userEmail = document.getElementById("userEmail");
+      const userPhoneNumber = document.getElementById("userPhoneNumber");
+      const userRole = document.getElementById("userRole");
+      const userDateOfBirth = document.getElementById("userDateOfBirth");
+      const userUnit = document.getElementById("userUnit");
+      const editButton = document.getElementById("editUserInformation");
+      const saveButton = document.getElementById("saveUserInformation");
+
       //Functions
       const disbleFields = function () {
         userFirstName.classList.add("disabled");
@@ -142,7 +143,6 @@ window.onload = function () {
 
       // Unit individual information
       unitEditButton.addEventListener("click", function () {
-        console.log("edit");
         enableUnitFields();
         unitEditButton.classList.add("disabledButton");
         unitEditButton.disabled = true;
@@ -160,6 +160,75 @@ window.onload = function () {
 
           unitEditButton.classList.remove("disabledButton");
           unitEditButton.disabled = false;
+        }
+      });
+      break;
+
+    case "myProfileForm":
+      // My profile
+      const profileFirstName = document.getElementById("userFirstName");
+      const profileLastName = document.getElementById("userLastName");
+      const profileEmail = document.getElementById("userEmail");
+      const profilePhoneNumber = document.getElementById("userPhoneNumber");
+      const profileDateOfBirth = document.getElementById("userDateOfBirth");
+      const profileEditButton = document.getElementById("editUserInformation");
+      const profileSaveButton = document.getElementById("saveUserInformation");
+
+      //Functions
+      const profileDisbleFields = function () {
+        profileFirstName.classList.add("disabled");
+        profileFirstName.disabled = true;
+
+        profileLastName.classList.add("disabled");
+        profileLastName.disabled = true;
+
+        profileEmail.classList.add("disabled");
+        profileEmail.disabled = true;
+
+        profilePhoneNumber.classList.add("disabled");
+        profilePhoneNumber.disabled = true;
+
+        profileDateOfBirth.classList.add("disabled");
+        profileDateOfBirth.disabled = true;
+      };
+
+      const profileEnableFields = function () {
+        profileFirstName.classList.remove("disabled");
+        profileFirstName.disabled = false;
+
+        profileLastName.classList.remove("disabled");
+        profileLastName.disabled = false;
+
+        profileEmail.classList.remove("disabled");
+        profileEmail.disabled = false;
+
+        profilePhoneNumber.classList.remove("disabled");
+        profilePhoneNumber.disabled = false;
+
+        profileDateOfBirth.classList.remove("disabled");
+        profileDateOfBirth.disabled = false;
+      };
+
+      profileDisbleFields();
+
+      // User individual information
+      profileEditButton.addEventListener("click", function () {
+        profileEnableFields();
+        profileEditButton.classList.add("disabledButton");
+        profileEditButton.disabled = true;
+
+        profileSaveButton.classList.remove("disabledButton");
+        profileSaveButton.disabled = false;
+      });
+
+      profileSaveButton.addEventListener("click", function () {
+        if (Object.values(myProfileFields).every(Boolean)) {
+          profileDisbleFields();
+          profileSaveButton.classList.add("disabledButton");
+          profileSaveButton.disabled = true;
+
+          profileEditButton.classList.remove("disabledButton");
+          profileEditButton.disabled = false;
         }
       });
       break;

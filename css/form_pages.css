@@ -85,7 +85,8 @@ form p {
   height: 150px;
 }
 
-#userInfoForm {
+#userInfoForm,
+#myProfileForm {
   display: grid;
   grid-template-columns: 0.5fr 1.5fr;
   row-gap: 20px;
@@ -114,7 +115,7 @@ select:required:invalid {
 
 .containerUserRegistration {
   display: grid;
-  grid-template-columns: 0.5fr 1fr;
+  grid-template-columns: 0.5fr 1.5fr;
 }
 
 .photoUserRegistration {
@@ -126,6 +127,7 @@ select:required:invalid {
   display: grid;
   grid-template-columns: 1fr 1fr;
   justify-self: end;
+  width: 100%;
 }
 
 .buttonsUserRegistration {
@@ -242,4 +244,14 @@ select:required:invalid {
   border: none;
   border-radius: 1rem;
   box-shadow: 5px 5px 5px #00000099;
+}
+
+.userImageDisplay {
+  border-radius: 50%;
+  object-fit: cover;
+}
+
+#profilePictureInput,
+#userPictureInput {
+  display: none;
 }

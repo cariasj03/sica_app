@@ -92,6 +92,15 @@ const assetTransferRequestFields = {
   uploadPictureAsset2: false,
 };
 
+//Object for user info validation
+const myProfileFields = {
+  userFirstName: true,
+  userLastName: true,
+  userDateOfBirth: true,
+  userEmail: true,
+  userPhoneNumber: true,
+};
+
 //Functions
 //Validation function for the entire form
 const validateForm = function (event) {
@@ -99,7 +108,7 @@ const validateForm = function (event) {
   const elementValue = event.target.value; //Stores the input or element value
   const errorActiveClass = "formInputErrorActive"; //Stores the class that has to be added for the error message to show up
 
-  console.log(assetTransferRequestFields);
+  console.log(myProfileFields);
 
   //Depending on the input field ID, the code runs certain validations or not
   switch (elementId) {
@@ -306,6 +315,9 @@ const errorModifier = function (elementId, errorActiveClass, status, message) {
       case "assetTransferRequestValidation":
         assetTransferRequestFields[elementId] = false;
         break;
+      case "myProfileForm":
+        myProfileFields[elementId] = false;
+        break;
     }
   } else if (!status) {
     //If the status is true means the field is ok, the fuction hides the error paragraph by removing the visible class
@@ -337,6 +349,9 @@ const errorModifier = function (elementId, errorActiveClass, status, message) {
         break;
       case "assetTransferRequestValidation":
         assetTransferRequestFields[elementId] = true;
+        break;
+      case "myProfileForm":
+        myProfileFields[elementId] = true;
         break;
     }
   }
@@ -442,6 +457,17 @@ const submitBtn = function () {
         errorAlert("Hay campos obligatorios sin llenar.");
       }
       break;
+
+    case "myProfileForm":
+      if (Object.values(myProfileFields).every(Boolean)) {
+        successAlert(
+          "La información se guardó con éxito",
+          "La actualización de su información se ha realizado exitosamente."
+        );
+      } else {
+        errorAlert("Hay campos obligatorios sin llenar.");
+      }
+      break;
   }
 };
 
@@ -481,5 +507,9 @@ switch (form.id) {
       "click",
       successAlert("Solicitud apro")
     );
+    break;
+  case "myProfileForm":
+    const saveProfileButton = document.getElementById("saveUserInformation");
+    saveProfileButton.addEventListener("click", submitBtn);
     break;
 }

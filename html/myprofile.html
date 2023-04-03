@@ -17,7 +17,7 @@
 <link href="/svg/sica_favicon.svg" rel="icon" />
 <link href="/css/general_style.css" rel="stylesheet" />
 <link href="/css/form_pages.css" rel="stylesheet" />
- <title>SICA - Información del usuario</title>
+ <title>SICA - Mi perfil</title>
 </head>
 
 <body>
@@ -41,7 +41,7 @@
     </div>
 
     <div class="headerIcons">
-        <a href="/html/units.html"
+        <a href="/html/users.html"
         ><span class="material-symbols-outlined "> settings </span>
         </a>        
         <a href="/html/myprofile.html"
@@ -63,12 +63,17 @@
     <h1>Mi perfil</h1>
     
     <div class="userFormContainer">
-        <form id="userInfoForm">
+        <form id="myProfileForm" class="form">
         <div class="profilePictureContainer">
-            <img class="imageStyle" src="/images/profile_picture.png" alt="placeholderUserImage">
-            <button type="button" id="editProfilePicture" class="primaryButton">
-                Modificar
-            </button>
+            <img id="profilePictureDisplay" class="imageStyle userImageDisplay" src="/images/juan_perez_profile_picture.jpg" alt="placeholderUserImage">
+            <button type="button" class="primaryButton" id="profilePictureUploadButton">Modificar</button>
+            <input
+                class="inputStyle"
+                id="profilePictureInput"
+                name="profilePictureInput"
+                type="file"
+                accept=".png, .jpg, .jpeg,"
+              />
         </div>
         <div class="allInputsContainer">
             <label id="userIdLabel" for="userId">Identificación <input
@@ -81,8 +86,8 @@
             ></input>
             </label>
 
-            <label for="userName">Nombre <input class="inputStyle" type="text" id="userName" name="userName" placeholder="Nombre" value="Juan"/>
-                    <p class="formInputError" id="userNameError"></p></label>
+            <label for="userFirstName">Nombre <input class="inputStyle" type="text" id="userFirstName" name="userFirstName" placeholder="Nombre" value="Juan"/>
+                    <p class="formInputError" id="userFirstNameError"></p></label>
                 
             <label for="userLastName">Apellidos <input class="inputStyle" type="text" id="userLastName" name="userLastName" placeholder="Apellidos" value="Pérez González"/>
                     <p class="formInputError" id="userLastNameError"></p></label>
@@ -90,14 +95,14 @@
             <label for="userEmail">Correo electrónico<input class="inputStyle" type="text" id="userEmail" name="userEmail" placeholder="Correo electrónico registrado" value="juan.perez@ejemplo.com"/>
                     <p class="formInputError" id="userEmailError"></p></label>
                 
-            <label for="userPhone">Número de teléfono <input class="inputStyle" type="text" id="userPhone" name="userPhone" placeholder="Número de teléfono" value="8888-8888"/>
-                    <p class="formInputError" id="userPhoneError"></p></label>
+            <label for="userPhoneNumber">Número de teléfono <input class="inputStyle" type="text" id="userPhoneNumber" name="userPhoneNumber" placeholder="Número de teléfono" value="8888-8888"/>
+                    <p class="formInputError" id="userPhoneNumberError"></p></label>
                 
             <label for="userRole">Rol asignado <input class="inputStyle disabled" type="text" id="userRole" name="userRole" placeholder="Rol asignado" value="Encargado de Inventario por Unidad" disabled/>
             </label>
                 
-            <label for="userBirthDate">Fecha de nacimiento <input class="inputStyle" type="date" id="userBirthDate" name="userBirthDate" placeholder="Fecha de nacimiento" value="2000-01-01"/>
-                    <p class="formInputError" id="userBirthDateError"></p></label>
+            <label for="userDateOfBirth">Fecha de nacimiento <input class="inputStyle" type="date" id="userDateOfBirth" name="userDateOfBirth" placeholder="Fecha de nacimiento" value="2000-01-01"/>
+                    <p class="formInputError" id="userDateOfBirthError"></p></label>
 
             <label id="userUnitLabel" for="userUnit">Unidad a la que pertenece <input
                     class="inputStyle disabled"
@@ -128,6 +133,12 @@
 <footer class="footer">
     <p class="copyrightText">Copyright &copy; 2023 by Beelders.</p>
 </footer>
+
+<script src="/js/form_validation.js"></script>
+<script src="/js/sweet_alert.js"></script>
+<script src="/js/user_feedback.js"></script>
+<script src="/js/disable_enable_input_fields.js"></script>
+<script src="/js/upload_img_display.js"></script>
 
 </body>
 </html>
