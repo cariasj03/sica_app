@@ -63,7 +63,7 @@
     <div class="pageBody">
     <h1>Revisión de solicitud de registro de un usuario</h1>
     
-        <form class="containerUserRegistration">
+        <form class="containerUserRegistration" id="userRegistrationRequestReviewForm">
 
         <div class="photoUserRegistration">
             <img class="imageStyle" src="/images/profile_picture.png" alt="placeholderUserImage">
@@ -160,20 +160,24 @@
 
         <div class="buttonsUserRegistration">
         <button 
-        type="submit" 
-        id="editUserInformation" 
-        class="primaryButton" 
-        onclick="window.location.href='user_individual_information_edit.html'">
+        type="button" 
+        id="approveUserRegistration" 
+        class="primaryButton">
             Aprobar solicitud
         </button>
 
         <button 
-        type="submit" 
-        id="saveUserInformation" 
-        class="destructiveButton" 
-        onclick="window.location.href='user_individual_information.html'">
+        type="button" 
+        id="rejectUserRegistration" 
+        class="destructiveButton">
             Rechazar solicitud
         </button>
+
+        <a href="/html/requests_registration_users.html"
+              ><button type="button" class="secondaryButton">
+                Regresar
+              </button></a
+            >
         </div>
 
         </form>
@@ -184,10 +188,10 @@
     <p class="copyrightText">Copyright &copy; 2023 by Beelders.</p>
 </footer>
 
-<script src="/js/form_validation.js"></script>
+<script src="/js/approve_reject_requests.js"></script>
+<!-- <script src="/js/form_validation.js"></script> -->
 <script src="/js/sweet_alert.js"></script>
 <script src="/js/user_feedback.js"></script>
-<script src="/js/user_registration_request_provisional_information.js"></script>
 
 </body>
 </html>

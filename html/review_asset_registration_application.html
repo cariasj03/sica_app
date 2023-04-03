@@ -68,7 +68,7 @@
       <div class="pageBody">
       <h1>Revisión de solicitud de registro de un activo</h1>
 
-      <form id="assetTransferRequestform">
+      <form id="assetRegistrationRequestReviewForm">
         <label for="assetId">ID del activo</label>
         <input
         class="inputStyle disabled"
@@ -149,11 +149,11 @@
         <p class="formInputError" id="assetStatusError"></p>
 
         <div class="buttonContainer">
-        <button type="button" id="approveRequest" class="primaryButton">
+        <button type="button" id="approveAssetRegistration" class="primaryButton">
             Aprobar solicitud
         </button>
 
-        <button type="button" id="rejectRequest" class="destructiveButton">
+        <button type="button" id="rejectAssetRegistration" class="destructiveButton">
             Rechazar solicitud
         </button>
 
@@ -170,7 +170,7 @@
       <p class="copyrightText">Copyright &copy; 2023 by Beelders.</p>
     </footer>
 
-    <script src="/js/form_validation.js"></script>
+    <script src="/js/approve_reject_requests.js"></script>
     <script src="/js/sweet_alert.js"></script>
     <script src="/js/user_feedback.js"></script>
   </body>

@@ -69,7 +69,7 @@
 
       <div id="assetTransferRequest" class="pageBody">
         <h1>Revisión de solicitud de traslado de un activo</h1>
-        <form id="assetTransferRequestForm">
+        <form id="assetTransferRequestReviewForm">
           <div class="formInputContainer">
             <label for="assetTransferId"
               >ID del traslado
@@ -191,7 +191,7 @@ Impresora presenta problemas de conectividad con la red Wi-Fi de la unidad. No s
           <div class="buttonContainer">
             <button
               type="button"
-              id="acceptAssetTransfer"
+              id="approveAssetTransfer"
               class="primaryButton"
             >
               Aprobar solicitud
@@ -199,7 +199,7 @@ Impresora presenta problemas de conectividad con la red Wi-Fi de la unidad. No s
 
             <button
               type="button"
-              id="declineAssetTrasfer"
+              id="rejectAssetTrasfer"
               class="destructiveButton"
             >
               Rechazar solicitud
@@ -219,7 +219,7 @@ Impresora presenta problemas de conectividad con la red Wi-Fi de la unidad. No s
       <p class="copyrightText">Copyright &copy; 2023 by Beelders.</p>
     </footer>
 
-    <script src="/js/form_validation.js"></script>
+    <script src="/js/approve_reject_requests.js"></script>
     <script src="/js/sweet_alert.js"></script>
     <script src="/js/user_feedback.js"></script>
   </body>

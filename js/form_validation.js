@@ -448,7 +448,9 @@ switch (form.id) {
     saveUserButton.addEventListener("click", submitBtn);
     break;
   case "assetTransferRequestform":
-    const approveAssetRegistration = document.getElementById("approveRequest");
+    const approveAssetRegistration = document.getElementById(
+      "approveAssetRegistration"
+    );
     approveAssetRegistration.addEventListener(
       "click",
       successAlert("Solicitud apro")

@@ -212,7 +212,7 @@ select:required:invalid {
   margin-top: 2rem;
 }
 
-#assetTransferRequestForm {
+#assetTransferRequestReviewForm {
   display: grid;
   grid-template-columns: 4fr 2fr;
   gap: 2rem;

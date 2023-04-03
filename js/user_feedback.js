@@ -15,3 +15,14 @@ const successAlert = function (alertTitle, message) {
     confirmButtonText: "Aceptar",
   });
 };
+
+const infoAlert = function (alertTitle, message, redirectURL) {
+  Swal.fire({
+    title: alertTitle,
+    text: message,
+    icon: "info",
+    confirmButtonText: "Aceptar",
+  }).then(function () {
+    window.location = redirectURL;
+  });
+};
