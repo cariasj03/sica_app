@@ -416,6 +416,32 @@ const submitBtn = function () {
         errorAlert("Hay campos obligatorios sin llenar.");
       }
       break;
+
+    case "userInfoForm":
+      if (Object.values(userInfoFields).every(Boolean)) {
+        successAlert(
+          "La información se guardó con éxito",
+          "La actualización de la información del usuario se ha realizado exitosamente."
+        );
+      } else {
+        errorAlert("Hay campos obligatorios sin llenar.");
+      }
+      break;
+
+    case "unitRegistrationForm":
+      if (Object.values(unitRegistrationFields).every(Boolean)) {
+        successAlert(
+          "Registro exitoso",
+          "La unidad ha sido registrada con éxito."
+        );
+        form.reset();
+        Object.keys(unitRegistrationFields).forEach(
+          (attribute) => (unitRegistrationFields[attribute] = false)
+        );
+      } else {
+        errorAlert("Hay campos obligatorios sin llenar.");
+      }
+      break;
   }
 };
 
