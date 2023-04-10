@@ -3,7 +3,7 @@
 * {
   margin: 0;
   padding: 0;
-  font-family: "Inter", sans-serif;
+  font-family: 'Inter', sans-serif;
   font-size: 16px;
   box-sizing: border-box;
   color: #444;
@@ -68,7 +68,7 @@ a {
 }
 
 .material-symbols-outlined {
-  font-variation-settings: "FILL" 1, "wght" 400, "GRAD" 0, "opsz" 48;
+  font-variation-settings: 'FILL' 1, 'wght' 400, 'GRAD' 0, 'opsz' 48;
 }
 .material-symbols-outlined:hover {
   color: #ad522a;
@@ -89,7 +89,7 @@ a {
 }
 
 .indexBody {
-  background-image: url("/images/sica_background.png");
+  background-image: url('../images/sica_background.png');
   background-position: center;
   background-size: cover;
 }
