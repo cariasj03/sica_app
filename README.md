@@ -1,6 +1,3 @@
-# sica_app
-SICA app for asset control and management
-
 # Asset Control and Management Web App
 This is the front-end part of a web application for asset control and management, designed to help users keep track of their assets in a user-friendly and efficient way.
 
