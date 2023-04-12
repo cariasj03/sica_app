@@ -1,77 +1,77 @@
 //Variables
-const form = document.querySelector("form");
+const form = document.querySelector('form');
 
 switch (form.id) {
-  case "userRegistrationRequestReviewForm":
+  case 'userRegistrationRequestReviewForm':
     const approveUserRegistrationButton = document.getElementById(
-      "approveUserRegistration"
+      'approveUserRegistration'
     );
     const rejectUserRegistrationButton = document.getElementById(
-      "rejectUserRegistration"
+      'rejectUserRegistration'
     );
 
-    approveUserRegistrationButton.addEventListener("click", function () {
+    approveUserRegistrationButton.addEventListener('click', function () {
       infoAlert(
-        "Solicitud de registro de usuario aprobada",
-        "La solicitud de registro del usuario ha sido aprobada.",
-        "/html/requests_registration_users.html"
+        'Solicitud de registro de usuario aprobada',
+        'La solicitud de registro del usuario ha sido aprobada.',
+        '../html/user_registration_requests_list.html'
       );
     });
 
-    rejectUserRegistrationButton.addEventListener("click", function () {
+    rejectUserRegistrationButton.addEventListener('click', function () {
       infoAlert(
-        "Solicitud de registro de usuario rechazada",
-        "La solicitud de registro del usuario ha sido rechazada.",
-        "/html/requests_registration_users.html"
+        'Solicitud de registro de usuario rechazada',
+        'La solicitud de registro del usuario ha sido rechazada.',
+        '../html/user_registration_requests_list.html'
       );
     });
     break;
 
-  case "assetRegistrationRequestReviewForm":
+  case 'assetRegistrationRequestReviewForm':
     const approveAssetRegistrationButton = document.getElementById(
-      "approveAssetRegistration"
+      'approveAssetRegistration'
     );
     const rejectAssetRegistrationButton = document.getElementById(
-      "rejectAssetRegistration"
+      'rejectAssetRegistration'
     );
 
-    approveAssetRegistrationButton.addEventListener("click", function () {
+    approveAssetRegistrationButton.addEventListener('click', function () {
       infoAlert(
-        "Solicitud de registro de activo aprobada",
-        "La solicitud de registro del activo ha sido aprobada.",
-        "/html/asset_registration_applications.html"
+        'Solicitud de registro de activo aprobada',
+        'La solicitud de registro del activo ha sido aprobada.',
+        '../html/asset_registration_requests_list.html'
       );
     });
 
-    rejectAssetRegistrationButton.addEventListener("click", function () {
+    rejectAssetRegistrationButton.addEventListener('click', function () {
       infoAlert(
-        "Solicitud de registro de activo rechazada",
-        "La solicitud de registro del activo ha sido rechazada.",
-        "/html/asset_registration_applications.html"
+        'Solicitud de registro de activo rechazada',
+        'La solicitud de registro del activo ha sido rechazada.',
+        '../html/asset_registration_requests_list.html'
       );
     });
     break;
 
-  case "assetTransferRequestReviewForm":
+  case 'assetTransferRequestReviewForm':
     const approveAssetTransferButton = document.getElementById(
-      "approveAssetTransfer"
+      'approveAssetTransfer'
     );
     const rejectAssetTransferButton =
-      document.getElementById("rejectAssetTrasfer");
+      document.getElementById('rejectAssetTrasfer');
 
-    approveAssetTransferButton.addEventListener("click", function () {
+    approveAssetTransferButton.addEventListener('click', function () {
       infoAlert(
-        "Solicitud de traslado de activo aprobada",
-        "La solicitud de traslado del activo ha sido aprobada.",
-        "/html/asset_transfer_applications.html"
+        'Solicitud de traslado de activo aprobada',
+        'La solicitud de traslado del activo ha sido aprobada.',
+        '../html/asset_transfer_requests_list.html'
       );
     });
 
-    rejectAssetTransferButton.addEventListener("click", function () {
+    rejectAssetTransferButton.addEventListener('click', function () {
       infoAlert(
-        "Solicitud de traslado de activo rechazada",
-        "La solicitud de traslado del activo ha sido rechazada.",
-        "/html/asset_transfer_applications.html"
+        'Solicitud de traslado de activo rechazada',
+        'La solicitud de traslado del activo ha sido rechazada.',
+        '../html/asset_transfer_requests_list.html'
       );
     });
     break;

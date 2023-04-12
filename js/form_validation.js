@@ -1,9 +1,9 @@
 //Variables
 //Stores the form of the page the user is in
-const form = document.querySelector("form");
+const form = document.querySelector('form');
 //Stores all the inputs, textareas and selects inside the form of the page the user is in
 const formInputs = document.querySelectorAll(
-  ".form input, .form textarea, .form select, .form label input, .form label textarea, .form label select"
+  '.form input, .form textarea, .form select, .form label input, .form label textarea, .form label select'
 );
 //Stores all the regular expressions to validate the input fields
 const regExp = {
@@ -15,90 +15,84 @@ const regExp = {
   email: /^[a-zA-Z0-9_.+-]+@[a-zA-Z0-9-]+\.[a-zA-Z0-9-.]+$/,
 };
 
-//Object for asset registration validation
-const assetRegistrationFields = {
-  assetName: false,
-  assetDescription: false,
-  assetUnit: false,
-  assetLocation: false,
-  assetStatus: false,
-};
-
-//Object for signup validation
-const signupRegistrationFields = {
-  userFirstName: false,
-  userLastName: false,
-  userId: false,
-  userDateOfBirth: false,
-  userEmail: false,
-  userPhoneNumber: false,
-  userUnit: false,
-  userProfilePicture: false,
-};
-
-//Object for signin validation
-const signinRegistrationFields = {
-  signinEmail: false,
-  signinPassword: false,
-};
-
-//Object for user info validation
-const userInfoFields = {
-  userFirstName: true,
-  userLastName: true,
-  userDateOfBirth: true,
-  userEmail: true,
-  userPhoneNumber: true,
-  userUnit: true,
-  userRole: true,
-};
-
-//Object for unit info validation
-const unitInfoFields = {
-  unitName: true,
-  unitDescription: true,
-  unitID: true,
-  unitCreationDate: true,
-  provinceSelect: true,
-  cantonSelect: true,
-  districtSelect: true,
-  additionalGeographicInformation: true,
-};
-
-// Object for unit registration validation
-const unitRegistrationFields = {
-  unitName: false,
-  unitDescription: false,
-  provinceSelect: false,
-  cantonSelect: false,
-  districtSelect: false,
-  additionalGeographicInformation: false,
-};
-
-// Object for asset individual info edit validation
-const assetIndividualInformationFields = {
-  assetName: true,
-  assetDescription: true,
-  assetLocation: true,
-};
-
-// Object for asset transfer request validation
-const assetTransferRequestFields = {
-  assetTargetUnit: false,
-  assetTargetLocation: false,
-  assetTransferReason: false,
-  assetRequestDescription: false,
-  uploadPictureAsset1: false,
-  uploadPictureAsset2: false,
-};
-
-//Object for user info validation
-const myProfileFields = {
-  userFirstName: true,
-  userLastName: true,
-  userDateOfBirth: true,
-  userEmail: true,
-  userPhoneNumber: true,
+const validationFields = {
+  //Object for asset registration validation
+  assetRegistrationFormFields: {
+    assetName: false,
+    assetDescription: false,
+    assetUnit: false,
+    assetLocation: false,
+    assetStatus: false,
+  },
+  //Object for signup validation
+  signupFormFields: {
+    userFirstName: false,
+    userLastName: false,
+    userId: false,
+    userDateOfBirth: false,
+    userEmail: false,
+    userPhoneNumber: false,
+    userUnit: false,
+    userProfilePicture: false,
+  },
+  //Object for signin validation
+  signinFormFields: {
+    signinEmail: false,
+    signinPassword: false,
+  },
+  //Object for user info validation
+  userInfoFormFields: {
+    userFirstName: true,
+    userLastName: true,
+    userDateOfBirth: true,
+    userEmail: true,
+    userPhoneNumber: true,
+    userUnit: true,
+    userRole: true,
+  },
+  //Object for unit info validation
+  unitInfoFormFields: {
+    unitName: true,
+    unitDescription: true,
+    unitID: true,
+    unitCreationDate: true,
+    provinceSelect: true,
+    cantonSelect: true,
+    districtSelect: true,
+    additionalGeographicInformation: true,
+  },
+  // Object for unit registration validation
+  unitRegistrationFormFields: {
+    unitName: false,
+    unitDescription: false,
+    provinceSelect: false,
+    cantonSelect: false,
+    districtSelect: false,
+    additionalGeographicInformation: false,
+  },
+  // Object for asset individual info edit validation
+  assetIndividualInformationFormFields: {
+    assetName: true,
+    assetDescription: true,
+    assetLocation: true,
+  },
+  // Object for asset transfer request validation
+  assetTransferRequestValidationFields: {
+    assetTargetUnit: false,
+    assetTargetLocation: false,
+    assetTransferReason: false,
+    assetRequestDescription: false,
+    uploadPictureAsset1: false,
+    uploadPictureAsset2: false,
+  },
+  //Object for user info validation
+  myProfileFormFields: {
+    userFirstName: true,
+    userLastName: true,
+    userDateOfBirth: true,
+    userEmail: true,
+    userPhoneNumber: true,
+  },
 };
 
 //Functions
@@ -106,65 +100,65 @@ const myProfileFields = {
 const validateForm = function (event) {
   const elementId = event.target.id; //Stores the input or element ID that triggered the event
   const elementValue = event.target.value; //Stores the input or element value
-  const errorActiveClass = "formInputErrorActive"; //Stores the class that has to be added for the error message to show up
+  const errorActiveClass = 'formInputErrorActive'; //Stores the class that has to be added for the error message to show up
 
-  console.log(myProfileFields);
+  console.log(validationFields[`${form.id}Fields`]);
 
   //Depending on the input field ID, the code runs certain validations or not
   switch (elementId) {
     //These are only validated not to be empty
-    case "assetName":
-    case "assetDescription":
-    case "assetUnit":
-    case "assetLocation":
-    case "assetStatus":
-    case "userDateOfBirth":
-    case "userUnit":
-    case "signinPassword":
-    case "userRole":
-    case "unitDescription":
-    case "provinceSelect":
-    case "cantonSelect":
-    case "districtSelect":
-    case "additionalGeographicInformation":
-    case "assetTargetUnit":
-    case "assetTargetLocation":
-    case "assetTransferReason":
-    case "assetRequestDescription":
+    case 'assetName':
+    case 'assetDescription':
+    case 'assetUnit':
+    case 'assetLocation':
+    case 'assetStatus':
+    case 'userDateOfBirth':
+    case 'userUnit':
+    case 'signinPassword':
+    case 'userRole':
+    case 'unitDescription':
+    case 'provinceSelect':
+    case 'cantonSelect':
+    case 'districtSelect':
+    case 'additionalGeographicInformation':
+    case 'assetTargetUnit':
+    case 'assetTargetLocation':
+    case 'assetTransferReason':
+    case 'assetRequestDescription':
       validateEmptyField(elementId, elementValue, errorActiveClass);
       break;
     //Validates the user inputs a valid email
-    case "signinEmail":
+    case 'signinEmail':
       validateEmailField(elementId, elementValue, errorActiveClass);
       break;
     //Validates if the input is empty and if not, validates that the field only contains letters
-    case "userFirstName":
-    case "userLastName":
-    case "unitName":
+    case 'userFirstName':
+    case 'userLastName':
+    case 'unitName':
       validateEmptyField(elementId, elementValue, errorActiveClass);
       if (!validateEmptyField(elementId, elementValue, errorActiveClass)) {
         validateLettersField(elementId, elementValue, errorActiveClass);
       }
       break;
     //Validates if the input is empty and if not, validates that the field only contains numbers
-    case "userId":
-    case "userPhoneNumber":
+    case 'userId':
+    case 'userPhoneNumber':
       validateEmptyField(elementId, elementValue, errorActiveClass);
       if (!validateEmptyField(elementId, elementValue, errorActiveClass)) {
         validateNumbersField(elementId, elementValue, errorActiveClass);
       }
       break;
     //Validates if the input is empty and if not, validates that the field contains a valid email
-    case "userEmail":
+    case 'userEmail':
       validateEmptyField(elementId, elementValue, errorActiveClass);
       if (!validateEmptyField(elementId, elementValue, errorActiveClass)) {
         validateEmailField(elementId, elementValue, errorActiveClass);
       }
       break;
     //Validates if the user uploaded a picture when required
-    case "userProfilePicture":
-    case "uploadPictureAsset1":
-    case "uploadPictureAsset2":
+    case 'userProfilePicture':
+    case 'uploadPictureAsset1':
+    case 'uploadPictureAsset2':
       validateFileField(elementId, elementValue, errorActiveClass);
       break;
   }
@@ -183,13 +177,13 @@ const validateEmptyField = function (
       elementId,
       errorActiveClass,
       true,
-      "Este es un campo obligatorio."
+      'Este es un campo obligatorio.'
     );
     //Returns true if the input is empty
     return true;
   } else {
     //If the field is not empty, calls the fuction that changes the error paragraph to not visible
-    errorModifier(elementId, errorActiveClass, false, "");
+    errorModifier(elementId, errorActiveClass, false, '');
     //Returns false if the input is not empty
     return false;
   }
@@ -209,11 +203,11 @@ const validateLettersField = function (
       elementId,
       errorActiveClass,
       true,
-      "Este campo solo puede contener letras y espacios."
+      'Este campo solo puede contener letras y espacios.'
     );
   } else {
     //If not, calls the fuctions that hides the error message.
-    errorModifier(elementId, errorActiveClass, false, "");
+    errorModifier(elementId, errorActiveClass, false, '');
   }
 };
 
@@ -231,11 +225,11 @@ const validateNumbersField = function (
       elementId,
       errorActiveClass,
       true,
-      "Este campo solo puede contener números sin espacios."
+      'Este campo solo puede contener números sin espacios.'
     );
   } else {
     //If not, calls the fuctions that hides the error message.
-    errorModifier(elementId, errorActiveClass, false, "");
+    errorModifier(elementId, errorActiveClass, false, '');
   }
 };
 
@@ -253,11 +247,11 @@ const validateEmailField = function (
       elementId,
       errorActiveClass,
       true,
-      "Ingrese un correo electrónico válido."
+      'Ingrese un correo electrónico válido.'
     );
   } else {
     //If it does, calls the fuctions that hides the error message
-    errorModifier(elementId, errorActiveClass, false, "");
+    errorModifier(elementId, errorActiveClass, false, '');
   }
 };
 
@@ -271,11 +265,11 @@ const validateFileField = function (elementId, elementValue, errorActiveClass) {
       elementId,
       errorActiveClass,
       true,
-      "No ha subido ningún archivo."
+      'No ha subido ningún archivo.'
     );
   } else {
     //If it does, calls the fuctions that hides the error message
-    errorModifier(elementId, errorActiveClass, false, "");
+    errorModifier(elementId, errorActiveClass, false, '');
   }
 };
 
@@ -290,70 +284,14 @@ const errorModifier = function (elementId, errorActiveClass, status, message) {
       .getElementById(`${elementId}Error`)
       .classList.add(errorActiveClass);
     //Depending on the form we're in, sets false to the field of that form that has errors, so that the form is not validated
-    switch (form.id) {
-      case "assetRegistrationForm":
-        assetRegistrationFields[elementId] = false;
-        break;
-      case "signupForm":
-        signupRegistrationFields[elementId] = false;
-        break;
-      case "signinForm":
-        signinRegistrationFields[elementId] = false;
-        break;
-      case "userInfoForm":
-        userInfoFields[elementId] = false;
-        break;
-      case "unitInfoForm":
-        unitInfoFields[elementId] = false;
-        break;
-      case "unitRegistrationForm":
-        unitRegistrationFields[elementId] = false;
-        break;
-      case "assetIndividualInformationForm":
-        assetIndividualInformationFields[elementId] = false;
-        break;
-      case "assetTransferRequestValidation":
-        assetTransferRequestFields[elementId] = false;
-        break;
-      case "myProfileForm":
-        myProfileFields[elementId] = false;
-        break;
-    }
+    validationFields[`${form.id}Fields`][`${elementId}`] = false;
   } else if (!status) {
     //If the status is true means the field is ok, the fuction hides the error paragraph by removing the visible class
     document
       .getElementById(`${elementId}Error`)
       .classList.remove(errorActiveClass);
     //Depending on the form we're in, sets true to the field of that form that is ok, so that the field for that form is validated
-    switch (form.id) {
-      case "assetRegistrationForm":
-        assetRegistrationFields[elementId] = true;
-        break;
-      case "signupForm":
-        signupRegistrationFields[elementId] = true;
-        break;
-      case "signinForm":
-        signinRegistrationFields[elementId] = true;
-        break;
-      case "userInfoForm":
-        userInfoFields[elementId] = true;
-        break;
-      case "unitInfoForm":
-        unitInfoFields[elementId] = true;
-        break;
-      case "unitRegistrationForm":
-        unitRegistrationFields[elementId] = true;
-        break;
-      case "assetIndividualInformationForm":
-        assetIndividualInformationFields[elementId] = true;
-        break;
-      case "assetTransferRequestValidation":
-        assetTransferRequestFields[elementId] = true;
-        break;
-      case "myProfileForm":
-        myProfileFields[elementId] = true;
-        break;
-    }
+    validationFields[`${form.id}Fields`][`${elementId}`] = true;
   }
 };
 
@@ -362,117 +300,123 @@ const submitBtn = function () {
   //Depending on the form the user is in, the function validates different objects and fields
 
   switch (form.id) {
-    case "assetRegistrationForm":
-      if (Object.values(assetRegistrationFields).every(Boolean)) {
+    case 'assetRegistrationForm':
+      if (Object.values(validationFields[`${form.id}Fields`]).every(Boolean)) {
         successAlert(
-          "Registro exitoso",
-          "El activo ha sido registrado con éxito."
+          'Registro exitoso',
+          'El activo ha sido registrado con éxito.'
         );
         form.reset();
-        Object.keys(assetRegistrationFields).forEach(
-          (attribute) => (assetRegistrationFields[attribute] = false)
+        Object.keys(validationFields[`${form.id}Fields`]).forEach(
+          (attribute) =>
+            (validationFields[`${form.id}Fields`][attribute] = false)
         );
       } else {
-        errorAlert("Hay campos obligatorios sin llenar.");
+        errorAlert('Hay campos obligatorios sin llenar.');
       }
       break;
 
-    case "signupForm":
-      if (Object.values(signupRegistrationFields).every(Boolean)) {
+    case 'signupForm':
+      if (Object.values(validationFields[`${form.id}Fields`]).every(Boolean)) {
         successAlert(
-          "Registro exitoso",
-          "Su solicitud para crear una cuenta ha sido enviada. En caso de ser aprobada le llegará una contraseña temporal al correo electónico registrado."
+          'Registro exitoso',
+          'Su solicitud para crear una cuenta ha sido enviada. En caso de ser aprobada le llegará una contraseña temporal al correo electónico registrado.'
         );
         form.reset();
-        const imageDisplaySignup = document.getElementById("imageDisplay");
-        imageDisplaySignup.src = "/images/profile_picture.png";
-        Object.keys(signupRegistrationFields).forEach(
-          (attribute) => (signupRegistrationFields[attribute] = false)
+        const imageDisplaySignup = document.getElementById('imageDisplay');
+        imageDisplaySignup.src = '../images/profile_picture.png';
+        Object.keys(validationFields[`${form.id}Fields`]).forEach(
+          (attribute) =>
+            (validationFields[`${form.id}Fields`][attribute] = false)
         );
       } else {
-        errorAlert("Hay campos obligatorios sin llenar.");
+        errorAlert('Hay campos obligatorios sin llenar.');
       }
       break;
 
-    case "signinForm":
-      if (Object.values(signinRegistrationFields).every(Boolean)) {
+    case 'signinForm':
+      if (Object.values(validationFields[`${form.id}Fields`]).every(Boolean)) {
         form.reset();
-        Object.keys(signinRegistrationFields).forEach(
-          (attribute) => (signinRegistrationFields[attribute] = false)
+        Object.keys(validationFields[`${form.id}Fields`]).forEach(
+          (attribute) =>
+            (validationFields[`${form.id}Fields`][attribute] = false)
         );
-        window.location.href = "/html/index.html";
+        window.location.href = '../html/index.html';
       } else {
-        errorAlert("Debe ingresar su correo y contraseña para iniciar sesión.");
+        errorAlert('Debe ingresar su correo y contraseña para iniciar sesión.');
       }
       break;
 
-    case "assetIndividualInformationForm":
-      if (Object.values(assetIndividualInformationFields).every(Boolean)) {
-        successAlert("La edición de la información del activo fue exitosa.");
+    case 'assetIndividualInformationForm':
+      if (Object.values(validationFields[`${form.id}Fields`]).every(Boolean)) {
+        successAlert('La edición de la información del activo fue exitosa.');
       } else {
-        errorAlert("Hay campos obligatorios sin llenar.");
+        errorAlert('Hay campos obligatorios sin llenar.');
       }
       break;
 
-    case "assetTransferRequestValidation":
-      if (Object.values(assetTransferRequestFields).every(Boolean)) {
-        successAlert("La solicitud se ha enviado con éxito.");
+    case 'assetTransferRequestValidation':
+      if (Object.values(validationFields[`${form.id}Fields`]).every(Boolean)) {
+        successAlert('La solicitud se ha enviado con éxito.');
         form.reset();
         const assetImageDisplay1 =
-          document.getElementById("assetImageDisplay1");
-        assetImageDisplay1.src = "/images/upload_picture_icon.jpeg";
+          document.getElementById('assetImageDisplay1');
+        assetImageDisplay1.src = '../images/upload_picture_icon.jpeg';
         const assetImageDisplay2 =
-          document.getElementById("assetImageDisplay2");
-        assetImageDisplay2.src = "/images/upload_picture_icon.jpeg";
-        Object.keys(assetTransferRequestFields).forEach(
-          (attribute) => (assetTransferRequestFields[attribute] = false)
+          document.getElementById('assetImageDisplay2');
+        assetImageDisplay2.src = '../images/upload_picture_icon.jpeg';
+        Object.keys(validationFields[`${form.id}Fields`]).forEach(
+          (attribute) =>
+            (validationFields[`${form.id}Fields`][attribute] = false)
         );
       } else {
-        errorAlert("Hay campos obligatorios sin llenar.");
+        errorAlert('Hay campos obligatorios sin llenar.');
       }
       break;
 
-    case "userInfoForm":
-      if (Object.values(userInfoFields).every(Boolean)) {
+    case 'userInfoForm':
+      if (Object.values(validationFields[`${form.id}Fields`]).every(Boolean)) {
         successAlert(
-          "La información se guardó con éxito",
-          "La actualización de la información del usuario se ha realizado exitosamente."
+          'La información se guardó con éxito',
+          'La actualización de la información del usuario se ha realizado exitosamente.'
         );
       } else {
-        errorAlert("Hay campos obligatorios sin llenar.");
+        errorAlert('Hay campos obligatorios sin llenar.');
       }
       break;
 
-    case "unitRegistrationForm":
-      if (Object.values(unitRegistrationFields).every(Boolean)) {
+    case 'unitRegistrationForm':
+      if (Object.values(validationFields[`${form.id}Fields`]).every(Boolean)) {
         successAlert(
-          "Registro exitoso",
-          "La unidad ha sido registrada con éxito."
+          'Registro exitoso',
+          'La unidad ha sido registrada con éxito.'
         );
         form.reset();
-        Object.keys(unitRegistrationFields).forEach(
-          (attribute) => (unitRegistrationFields[attribute] = false)
+        Object.keys(validationFields[`${form.id}Fields`]).forEach(
+          (attribute) =>
+            (validationFields[`${form.id}Fields`][attribute] = false)
         );
       } else {
-        errorAlert("Hay campos obligatorios sin llenar.");
+        errorAlert('Hay campos obligatorios sin llenar.');
       }
       break;
 
-    case "myProfileForm":
-      if (Object.values(myProfileFields).every(Boolean)) {
+    case 'myProfileForm':
+      if (Object.values(validationFields[`${form.id}Fields`]).every(Boolean)) {
         successAlert(
-          "La información se guardó con éxito",
-          "La actualización de su información se ha realizado exitosamente."
+          'La información se guardó con éxito',
+          'La actualización de su información se ha realizado exitosamente.'
         );
       } else {
-        errorAlert("Hay campos obligatorios sin llenar.");
+        errorAlert('Hay campos obligatorios sin llenar.');
       }
       break;
   }
 };
 
+const submitButton = document.getElementById('submit');
 const submit = function () {
-  form.addEventListener("submit", function (event) {
+  submitButton.addEventListener('click', function (event) {
     event.preventDefault();
     submitBtn(form);
   });
@@ -480,36 +424,12 @@ const submit = function () {
 
 const validation = function () {
   formInputs.forEach(function (input) {
-    input.addEventListener("blur", validateForm);
-    input.addEventListener("keyup", validateForm);
-    input.addEventListener("click", validateForm);
+    input.addEventListener('blur', validateForm);
+    input.addEventListener('keyup', validateForm);
+    input.addEventListener('click', validateForm);
   });
 };
 
 //Function calls
 validation();
 submit();
-
-switch (form.id) {
-  case "assetIndividualInformationForm":
-    const saveAssetButton = document.getElementById("saveAssetInformation");
-    saveAssetButton.addEventListener("click", submitBtn);
-    break;
-  case "userInfoForm":
-    const saveUserButton = document.getElementById("saveUserInformation");
-    saveUserButton.addEventListener("click", submitBtn);
-    break;
-  case "assetTransferRequestform":
-    const approveAssetRegistration = document.getElementById(
-      "approveAssetRegistration"
-    );
-    approveAssetRegistration.addEventListener(
-      "click",
-      successAlert("Solicitud apro")
-    );
-    break;
-  case "myProfileForm":
-    const saveProfileButton = document.getElementById("saveUserInformation");
-    saveProfileButton.addEventListener("click", submitBtn);
-    break;
-}

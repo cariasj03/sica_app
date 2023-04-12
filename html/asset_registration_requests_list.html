@@ -17,7 +17,7 @@
     <link href="../svg/sica_favicon.svg" rel="icon" />
     <link href="../css/general_style.css" rel="stylesheet" />
     <link href="../css/table_pages.css" rel="stylesheet" />
-    <title>SICA - Solicitudes de registro de usuarios</title>
+    <title>SICA - Solicitudes de registro de activos</title>
   </head>
 
   <body>
@@ -33,15 +33,19 @@
         <nav class="headerNav barNav">
           <a href="../html/index.html">Inicio</a>
           <a href="../html/assets.html">Activos</a>
-          <a class="currentTab" href="../html/requests_registration_users.html">Solicitudes</a>
+          <a
+            class="currentTab"
+            href="../html/user_registration_requests_list.html"
+            >Solicitudes</a
+          >
           <a href="../html/reports.html">Reportes</a>
         </nav>
       </div>
 
       <div class="headerIcons">
         <a href="../html/users.html"
-        ><span class="material-symbols-outlined"> settings </span>
-        </a> 
+          ><span class="material-symbols-outlined"> settings </span>
+        </a>
         <a href="../html/myprofile.html"
           ><span class="material-symbols-outlined"> account_circle </span></a
         >
@@ -53,13 +57,21 @@
 
     <main class="mainContainer">
       <nav class="sideNav barNav">
-        <a class="currentTab" href="../html/requests_registration_users.html">Solicitudes de registro de usuarios</a>
-        <a href="../html/asset_registration_applications.html">Solicitudes de registro de activos</a>
-        <a href="../html/requests_asset_transfer.html">Solicitudes de traslado de activos</a>
+        <a href="../html/user_registration_requests_list.html"
+          >Solicitudes de registro de usuarios</a
+        >
+        <a
+          class="currentTab"
+          href="../html/asset_registration_requests_list.html"
+          >Solicitudes de registro de activos</a
+        >
+        <a href="../html/asset_transfer_requests_list.html"
+          >Solicitudes de traslados de activos</a
+        >
       </nav>
 
       <div class="pageBody">
-        <h1>Solicitudes de registro de usuarios</h1>
+        <h1>Solicitudes de registro de activos</h1>
         <div class="pageContent">
           <div>
             <h2>Filtros</h2>
@@ -68,7 +80,7 @@
 
               <label for="idRadio"
                 ><input type="radio" id="idRadio" name="sortRadio" value="ID" />
-                Identificación</label
+                ID del activo</label
               >
               <label for="nameRadio"
                 ><input
@@ -77,7 +89,7 @@
                   name="sortRadio"
                   value="nombre"
                 />
-                Nombre</label
+                Nombre del activo</label
               >
               <label for="unitRadio"
                 ><input
@@ -86,7 +98,7 @@
                   name="sortRadio"
                   value="unidad"
                 />
-                Correo electrónico</label
+                Unidad</label
               >
               <label for="statusRadio"
                 ><input
@@ -95,7 +107,7 @@
                   name="sortRadio"
                   value="estado"
                 />
-                Unidad</label
+                Estado</label
               >
 
               <hr />
@@ -109,34 +121,34 @@
                   <option value="heredia">Heredia</option>
                 </select></label
               >
+              <label for="statusSelect"
+                >Estado<select class="inputStyle" id="statusSelect">
+                  <option value="" disabled selected hidden>Estado</option>
+                  <option value="activo">Activo</option>
+                  <option value="desuso">Desuso</option>
+                  <option value="danado">Dañado</option>
+                </select></label
+              >
 
               <hr />
 
               <h3>Buscar por</h3>
               <label for="idSearch"
-                >Identificación<input
-                class="inputStyle"
+                >ID del activo<input
+                  class="inputStyle"
                   type="search"
                   id="idSearch"
                   name="idSearch"
-                  placeholder="Identificación"
+                  placeholder="ID del activo"
               /></label>
               <label for="nameSearch"
-                >Nombre<input
-                class="inputStyle"
+                >Nombre del activo<input
+                  class="inputStyle"
                   type="search"
                   id="nameSearch"
                   name="nameSearch"
-                  placeholder="Nombre"
+                  placeholder="Nombre del activo  "
               /></label>
-              <label for="nameSearch"
-              >Correo electrónico<input
-              class="inputStyle"
-                type="search"
-                id="nameSearch"
-                name="nameSearch"
-                placeholder="Correo electrónico"
-            /></label>
             </div>
           </div>
 
@@ -144,68 +156,76 @@
             <table class="tables">
               <tr>
                 <th></th>
-                <th>Identificación</th>
+                <th>ID</th>
                 <th>Nombre</th>
-                <th>Correo electrónico</th>
                 <th>Unidad</th>
+                <th>Código de ubicación</th>
+                <th>Estado</th>
               </tr>
 
               <tr class="selectedRow">
                 <td>
                   <input type="radio" name="tableRadio" />
                 </td>
-                <td>101230456</td>
-                <td>Juan Pérez González</td>
-                <td>juan.perez@proveguard.cr</td>
-                <td>Cartago</td>
+                <td>000008</td>
+                <td>Monitor Samsung C24 Curve</td>
+                <td>Alajuela</td>
+                <td>PROALAPIS103</td>
+                <td>Activo</td>
               </tr>
 
               <tr>
                 <td><input type="radio" name="tableRadio" /></td>
-                <td>206540321</td>
-                <td>María Gómez Rodríguez</td>
-                <td>maria.gomez@proveguard.cr</td>
-                <td>Central</td>
+                <td>000009</td>
+                <td>Silla Ergonomica SON-3500</td>
+                <td>Alajuela</td>
+                <td>PROALAPIS207</td>
+                <td>Activo</td>
               </tr>
 
               <tr>
                 <td><input type="radio" name="tableRadio" /></td>
-                <td>115060213</td>
-                <td>Douglas Calvo Castro</td>
-                <td>douglas.calvo@proveguard.cr</td>
+                <td>000010</td>
+                <td>Laptop Dell 3511</td>
+                <td>Limón</td>
+                <td>PROLIMPIS123</td>
+                <td>Activo</td>
+              </tr>
+
+              <tr>
+                <td><input type="radio" name="tableRadio" /></td>
+                <td>000011</td>
+                <td>Impresora EPSON SureColor F2100</td>
                 <td>Heredia</td>
+                <td>PROHERPIS211</td>
+                <td>Activo</td>
               </tr>
 
               <tr>
                 <td><input type="radio" name="tableRadio" /></td>
-                <td>207430587</td>
-                <td>Andrea González Ramírez</td>
-                <td>andrea.gonzalez@proveguard.cr</td>
+                <td>000012</td>
+                <td>Tablet RCA RC7T3G21</td>
                 <td>San José</td>
+                <td>PROSANPIS105</td>
+                <td>Activo</td>
               </tr>
 
               <tr>
                 <td><input type="radio" name="tableRadio" /></td>
-                <td>407800560</td>
-                <td>Ismael Vargas Tenorio</td>
-                <td>ismale.vargas@proveguard.cr</td>
+                <td>000013</td>
+                <td>Escritorio en Baldosa MDR-20</td>
                 <td>San José</td>
+                <td>PROSANPIS435</td>
+                <td>Activo</td>
               </tr>
 
               <tr>
                 <td><input type="radio" name="tableRadio" /></td>
-                <td>108410348</td>
-                <td>Juan José Gutiérrez Jiménez</td>
-                <td>juan.gutierrez@proveguard.cr</td>
-                <td>San José</td>
-              </tr>
-
-              <tr>
-                <td><input type="radio" name="tableRadio" /></td>
-                <td>207440893</td>
-                <td>Teresa Jiménez Valerio</td>
-                <td>teresa.jimenez@proveguard.cr</td>
+                <td>000014</td>
+                <td>Impresora EPSON Surecolor T3170</td>
                 <td>Puntarenas</td>
+                <td>PROPUNPIS113</td>
+                <td>Activo</td>
               </tr>
 
               <tr>
@@ -214,18 +234,21 @@
                 <td></td>
                 <td></td>
                 <td></td>
-              </tr>
-
-              <tr>
-                <td><input type="radio" name="tableRadio" /></td>
-                <td></td>
-                <td></td>
-                <td></td>
                 <td></td>
               </tr>
 
               <tr>
                 <td><input type="radio" name="tableRadio" /></td>
+                <td></td>
+                <td></td>
+                <td></td>
+                <td></td>
+                <td></td>
+              </tr>
+
+              <tr>
+                <td><input type="radio" name="tableRadio" /></td>
+                <td></td>
                 <td></td>
                 <td></td>
                 <td></td>
@@ -245,10 +268,10 @@
             </div>
 
             <div class="buttonContainer">
-              <a href="../html/review_requests_registration_users.html">
-              <button class="primaryButton">Revisar solicitud</button>
+              <a href="../html/asset_registration_request_review.html"
+                ><button class="primaryButton">Revisar solicitud</button></a
+              >
             </div>
-
           </div>
         </div>
       </div>
@@ -257,6 +280,5 @@
     <footer class="footer">
       <p class="copyrightText">Copyright &copy; 2023 by Beelders.</p>
     </footer>
-
   </body>
 </html>

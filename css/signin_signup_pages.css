@@ -51,7 +51,7 @@
   grid-column: span 2;
 }
 
-#registerUser {
+.signupButton {
   width: 100%;
 }
 
@@ -84,12 +84,12 @@
   justify-self: center;
 }
 
-#signinButton {
+#submit {
   width: 100%;
   background-color: #ad522a;
 }
 
-#signinButton:hover {
+#submit:hover {
   background-color: #6c331a;
 }
 
