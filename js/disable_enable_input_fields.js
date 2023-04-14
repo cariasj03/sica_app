@@ -87,56 +87,54 @@ window.onload = function () {
       break;
     case 'unitInfoForm':
       // Unit individual information
-      const unitName = document.getElementById('unitName');
-      const unitDescription = document.getElementById('unitDescription');
-      const provinceSelect = document.getElementById('provinceSelect');
-      const cantonSelect = document.getElementById('cantonSelect');
-      const districtSelect = document.getElementById('districtSelect');
-      const additionalGeographicInformation = document.getElementById(
-        'additionalGeographicInformation'
-      );
+      const name = document.getElementById('name');
+      const description = document.getElementById('description');
+      const province = document.getElementById('province');
+      const canton = document.getElementById('canton');
+      const district = document.getElementById('district');
+      const address = document.getElementById('address');
       const unitSaveButton = document.getElementById('submit');
       const unitEditButton = document.getElementById('editUnitInformation');
 
       //Functions
       const disbleUnitFields = function () {
-        unitName.classList.add('disabled');
-        unitName.disabled = true;
+        name.classList.add('disabled');
+        name.disabled = true;
 
-        unitDescription.classList.add('disabled');
-        unitDescription.disabled = true;
+        description.classList.add('disabled');
+        description.disabled = true;
 
-        provinceSelect.classList.add('disabled');
-        provinceSelect.disabled = true;
+        province.classList.add('disabled');
+        province.disabled = true;
 
-        cantonSelect.classList.add('disabled');
-        cantonSelect.disabled = true;
+        canton.classList.add('disabled');
+        canton.disabled = true;
 
-        districtSelect.classList.add('disabled');
-        districtSelect.disabled = true;
+        district.classList.add('disabled');
+        district.disabled = true;
 
-        additionalGeographicInformation.classList.add('disabled');
-        additionalGeographicInformation.disabled = true;
+        address.classList.add('disabled');
+        address.disabled = true;
       };
 
       const enableUnitFields = function () {
-        unitName.classList.remove('disabled');
-        unitName.disabled = false;
+        name.classList.remove('disabled');
+        name.disabled = false;
 
-        unitDescription.classList.remove('disabled');
-        unitDescription.disabled = false;
+        description.classList.remove('disabled');
+        description.disabled = false;
 
-        provinceSelect.classList.remove('disabled');
-        provinceSelect.disabled = false;
+        province.classList.remove('disabled');
+        province.disabled = false;
 
-        cantonSelect.classList.remove('disabled');
-        cantonSelect.disabled = false;
+        canton.classList.remove('disabled');
+        canton.disabled = false;
 
-        districtSelect.classList.remove('disabled');
-        districtSelect.disabled = false;
+        district.classList.remove('disabled');
+        district.disabled = false;
 
-        additionalGeographicInformation.classList.remove('disabled');
-        additionalGeographicInformation.disabled = false;
+        address.classList.remove('disabled');
+        address.disabled = false;
       };
 
       disbleUnitFields();

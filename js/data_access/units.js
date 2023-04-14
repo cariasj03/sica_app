@@ -1,18 +1,20 @@
-fetch('http://127.0.0.1:8000/units')
-  .then((response) => {
-    const unitsList = response.json();
-    return unitsList;
-  })
-  .then((unitsList) => {
-    loadUnits(unitsList);
-    selectRow();
-  })
-  .catch((error) => {
-    console.log(error);
-  });
+//DOM elements
+const viewEditUnit = document.getElementById('viewEditUnit');
 
 //Function to load the units in the table
-const loadUnits = (unitsList) => {
+const loadUnits = async () => {
+  try {
+    const units = await fetch('http://127.0.0.1:8000/units');
+    const unitsList = await units.json();
+    buildTableRows(unitsList);
+    await selectRow();
+  } catch (error) {
+    console.log(error);
+  }
+};
+
+//Function to build the table rows
+const buildTableRows = (unitsList) => {
   unitsList.forEach(function (unit) {
     const table = document.querySelector('table');
     const tableRow = document.createElement('tr');
@@ -23,8 +25,8 @@ const loadUnits = (unitsList) => {
     const unitId = document.createElement('td');
     unitId.innerText = `${unit.id}`;
 
-    const unitName = document.createElement('td');
-    unitName.innerText = `${unit.name}`;
+    const name = document.createElement('td');
+    name.innerText = `${unit.name}`;
 
     const unitCreationDate = new Date(unit.creationDate);
     const day = ('0' + (unitCreationDate.getDate() + 1)).slice(-2);
@@ -40,7 +42,7 @@ const loadUnits = (unitsList) => {
 
     tableRow.appendChild(tableRowRadio);
     tableRow.appendChild(unitId);
-    tableRow.appendChild(unitName);
+    tableRow.appendChild(name);
     tableRow.appendChild(unitDate);
     tableRow.appendChild(unitProvince);
     tableRow.appendChild(unitCanton);
@@ -52,13 +54,10 @@ const loadUnits = (unitsList) => {
 //Function to select a row in the table
 const selectRow = () => {
   const tableRadioButtons = document.getElementsByName('tableRadio');
-
+  let unitId;
   tableRadioButtons.forEach((radioButton) => {
     const tableRowSelected = radioButton.parentElement.parentElement;
-    const unitId = tableRowSelected.children[1].innerText;
-
     radioButton.addEventListener('change', () => {
-      console.log('unitId: ', unitId);
       tableRadioButtons.forEach((radioButton) => {
         radioButton.parentElement.parentElement.classList.remove('selectedRow');
       });
@@ -68,3 +67,35 @@ const selectRow = () => {
     });
   });
 };
+
+//Function to get the selected unit id
+const getSelectedUnitId = () => {
+  const tableRadioButtons = document.getElementsByName('tableRadio');
+  let unitId;
+  tableRadioButtons.forEach((radioButton) => {
+    const tableRowSelected = radioButton.parentElement.parentElement;
+    if (radioButton.checked) {
+      unitId = tableRowSelected.children[1].innerText;
+    }
+  });
+  return unitId;
+};
+
+//Function to store the unit id in the local storage
+const storeUnitId = (unitId) => {
+  localStorage.setItem('unitId', unitId);
+  window.location.href = '../html/unit_individual_information.html';
+};
+
+//Event listeners
+viewEditUnit.addEventListener('click', () => {
+  const unitId = getSelectedUnitId();
+  if (unitId === undefined || unitId === null) {
+    errorAlert('No ha seleccionado una unidad. Seleccione una para continuar');
+  } else {
+    storeUnitId(unitId);
+  }
+});
+
+//Function call to load the units in the table
+loadUnits();

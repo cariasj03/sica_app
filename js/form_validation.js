@@ -52,23 +52,23 @@ const validationFields = {
   },
   //Object for unit info validation
   unitInfoFormFields: {
-    unitName: true,
-    unitDescription: true,
+    name: true,
+    description: true,
     unitID: true,
     unitCreationDate: true,
-    provinceSelect: true,
-    cantonSelect: true,
-    districtSelect: true,
-    additionalGeographicInformation: true,
+    province: true,
+    canton: true,
+    district: true,
+    address: true,
   },
   // Object for unit registration validation
   unitRegistrationFormFields: {
-    unitName: false,
-    unitDescription: false,
-    provinceSelect: false,
-    cantonSelect: false,
-    districtSelect: false,
-    additionalGeographicInformation: false,
+    name: false,
+    description: false,
+    province: false,
+    canton: false,
+    district: false,
+    address: false,
   },
   // Object for asset individual info edit validation
   assetIndividualInformationFormFields: {
@@ -102,7 +102,7 @@ const validateForm = function (event) {
   const elementValue = event.target.value; //Stores the input or element value
   const errorActiveClass = 'formInputErrorActive'; //Stores the class that has to be added for the error message to show up
 
-  console.log(validationFields[`${form.id}Fields`]);
+  /*   console.log(validationFields[`${form.id}Fields`]); */
 
   //Depending on the input field ID, the code runs certain validations or not
   switch (elementId) {
@@ -116,11 +116,11 @@ const validateForm = function (event) {
     case 'userUnit':
     case 'signinPassword':
     case 'userRole':
-    case 'unitDescription':
-    case 'provinceSelect':
-    case 'cantonSelect':
-    case 'districtSelect':
-    case 'additionalGeographicInformation':
+    case 'description':
+    case 'province':
+    case 'canton':
+    case 'district':
+    case 'address':
     case 'assetTargetUnit':
     case 'assetTargetLocation':
     case 'assetTransferReason':
@@ -134,7 +134,7 @@ const validateForm = function (event) {
     //Validates if the input is empty and if not, validates that the field only contains letters
     case 'userFirstName':
     case 'userLastName':
-    case 'unitName':
+    case 'name':
       validateEmptyField(elementId, elementValue, errorActiveClass);
       if (!validateEmptyField(elementId, elementValue, errorActiveClass)) {
         validateLettersField(elementId, elementValue, errorActiveClass);
@@ -418,7 +418,7 @@ const submitButton = document.getElementById('submit');
 const submit = function () {
   submitButton.addEventListener('click', function (event) {
     event.preventDefault();
-    submitBtn(form);
+    submitBtn();
   });
 };
 

@@ -108,24 +108,24 @@
               <hr />
 
               <h3>Filtrar por</h3>
-              <label for="provinceSelect"
-                >Provincia<select class="inputStyle" id="provinceSelect">
+              <label for="province"
+                >Provincia<select class="inputStyle" id="province">
                   <option value="" disabled selected hidden>Provincia</option>
-                  <option value="San Jose">San José</option>
+                  <option value="San José">San José</option>
                   <option value="Alajuela">Alajuela</option>
                   <option value="Cartago">Cartago</option>
                   <option value="Heredia">Heredia</option>
                   <option value="Guanacaste">Guanacaste</option>
                   <option value="Puntarenas">Puntarenas</option>
-                  <option value="Limon">Limón</option>
+                  <option value="Limón">Limón</option>
                 </select></label
               >
-              <label for="cantonSelect"
+              <label for="canton"
                 >Cantón
-                <select class="inputStyle" id="cantonSelect">
+                <select class="inputStyle" id="canton">
                   <option value="" disabled selected hidden>Cantón</option>
                   <optgroup label="San José">
-                    <option value="san-jose">San José</option>
+                    <option value="San José">San José</option>
                     <option value="escazu">Escazú</option>
                     <option value="desamparados">Desamparados</option>
                     <option value="puriscal">Puriscal</option>
@@ -212,7 +212,7 @@
                     <option value="pacifico-central">Pacífico Central</option>
                   </optgroup>
                   <optgroup label="Limón">
-                    <option value="limon">Limón</option>
+                    <option value="Limón">Limón</option>
                     <option value="pococi">Pococí</option>
                     <option value="siquirres">Siquirres</option>
                     <option value="talamanca">Talamanca</option>
@@ -272,8 +272,8 @@
                   Agregar una nueva unidad
                 </button></a
               >
-              <a href="../html/unit_individual_information.html"
-                ><button class="primaryButton">
+              <a href=#"
+                ><button id="viewEditUnit" class="primaryButton">
                   Ver o editar unidad selecionada
                 </button></a
               >
@@ -287,6 +287,8 @@
       <p class="copyrightText">Copyright &copy; 2023 by Beelders.</p>
     </footer>
 
+    <script src="../js/sweet_alert.js"></script>
+    <script src="../js/user_feedback.js"></script>
     <script src="../js/data_access/units.js"></script>
   </body>
 </html>

@@ -1,66 +1,21 @@
+//DOM variables
 const registerUnit = document.getElementById('submit');
-let nextId;
 
-/* //Gets the next id
-fetch('http://127.0.0.1:8000/units')
-  .then((response) => {
-    const unitsList = response.json();
-    return unitsList;
-  })
-  .then((unitsList) => {
-    const unitsIds = unitsList.map((unit) => {
-      return Number(unit.id);
-    });
-    const lastId = Math.max(...unitsIds);
-    nextId = getNextId(lastId);
-  })
-  .catch((error) => {
-    console.log(error);
-  }); */
-
-registerUnit.addEventListener('click', async (e) => {
-  e.preventDefault();
-  //Validates the fields of the form
-  if (
-    Object.values(validationFields.unitRegistrationFormFields).every(Boolean)
-  ) {
-    //Make the request to the server
-    const response = await fetch('http://127.0.0.1:8000/units', {
-      method: 'POST',
-      headers: {
-        'Content-type': 'application/json',
-      },
-      body: JSON.stringify(getFormFields()),
-    });
-    console.log('unit: ', response);
-  }
-});
-
+//Normal functions
 //Function to get the values of the form fields
-const getFormFields = () => {
-  const unitId = '000001';
-  const unitCreationDate = new Date();
-  const unitName = document.getElementById('unitName').value;
-  const unitDescription = document.getElementById('unitDescription').value;
-  const provinceSelect = document.getElementById('provinceSelect').value;
-  const cantonSelect = document.getElementById('cantonSelect').value;
-  const districtSelect = document.getElementById('districtSelect').value;
-  const address = document.getElementById(
-    'additionalGeographicInformation'
-  ).value;
-  const bodyContent = {
-    id: unitId,
-    creationDate: unitCreationDate,
-    name: unitName,
-    description: unitDescription,
-    province: provinceSelect,
-    canton: cantonSelect,
-    district: districtSelect,
-    address: address,
-  };
+const getFormFields = (nextId) => {
+  const formData = new FormData(form);
+  const bodyContent = {};
+  bodyContent['id'] = nextId;
+  bodyContent['creationDate'] = new Date();
+  formData.forEach((value, key) => {
+    bodyContent[key] = value;
+  });
+
   return bodyContent;
 };
 
+//Function to pad the zeros to the id
 const padZeros = (num) => {
   if (typeof num !== 'string') {
     num = num.toString();
@@ -69,7 +24,57 @@ const padZeros = (num) => {
   return paddedNum;
 };
 
+//Function to get the next id
 const getNextId = (num) => {
   num++;
   return padZeros(num);
 };
+
+//Async functions
+//Function to register a new unit
+const registerNewUnit = async (body) => {
+  try {
+    const response = await fetch('http://127.0.0.1:8000/units', {
+      method: 'POST',
+      headers: {
+        'Content-type': 'application/json',
+      },
+      body: JSON.stringify(body),
+    });
+    console.log('unit: ', response);
+  } catch (error) {
+    console.log(error);
+  }
+};
+
+//Function to get the unit id
+const getUnitId = async () => {
+  try {
+    const units = await fetch('http://127.0.0.1:8000/units');
+    const unitsList = await units.json();
+    const unitIds = await unitsList.map((unit) => {
+      return Number(unit.id);
+    });
+    const lastId = await Math.max(...unitIds);
+    const nextId = await getNextId(lastId);
+    return nextId;
+  } catch (error) {
+    console.log(error);
+    throw error;
+  }
+};
+
+//Event listeners
+registerUnit.addEventListener('click', async () => {
+  //Validates the fields of the form
+  if (
+    Object.values(validationFields.unitRegistrationFormFields).every(Boolean)
+  ) {
+    //Get the next id
+    const nextId = await getUnitId();
+    getFormFields(nextId);
+    //Make the request to the server
+    await registerNewUnit(getFormFields(nextId));
+    submitBtn();
+  }
+});
