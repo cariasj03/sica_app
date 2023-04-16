@@ -99,7 +99,7 @@ viewEditUnit.addEventListener('click', () => {
 //Function call to load the units in the table
 (async () => {
   const provinces = await fetchProvinces();
-  console.log(provinces[0]);
+
   const unitsList = await fetchUnits();
   buildTableRows(unitsList);
   selectRow();

@@ -46,7 +46,30 @@ const loadSelectedUnit = (selectedUnit) => {
 const loadSelectedUnitProvince = (selectedUnit) => {
   try {
     const provinceInput = document.getElementById('province');
+    console.log(selectedUnit.province);
     provinceInput.value = selectedUnit.province;
+  } catch (error) {
+    console.log(error);
+  }
+};
+
+//Function to load the unit requested
+const loadSelectedUnitCanton = (selectedUnit) => {
+  try {
+    const cantonInput = document.getElementById('canton');
+    console.log(selectedUnit.canton);
+    cantonInput.value = selectedUnit.canton;
+  } catch (error) {
+    console.log(error);
+  }
+};
+
+//Function to load the unit requested
+const loadSelectedUnitDistrict = (selectedUnit) => {
+  try {
+    const districtInput = document.getElementById('district');
+    console.log(selectedUnit.district);
+    districtInput.value = selectedUnit.district;
   } catch (error) {
     console.log(error);
   }
@@ -54,12 +77,29 @@ const loadSelectedUnitProvince = (selectedUnit) => {
 
 (async () => {
   const selectedUnit = await fetchUnitInformation();
+
+  //Load province information
   const provinces = await fetchProvinces();
   buildSelectOptions(provinces.data, 'province');
-  /*   loadSelectedUnitProvince(selectedUnit);
-  const provinceInput = document.getElementById('province');
-  console.log(provinceInput.options[provinceInput.selectedValue].id); */
-  /* const cantons = await fetchCantons(); */
-  /*   await buildSelectOptions(cantons.data, 'canton'); */
+  loadSelectedUnitProvince(selectedUnit);
+  const province =
+    document.getElementById('province').options[
+      document.getElementById('province').selectedIndex
+    ].id;
+
+  //Load canton information
+  const cantons = await fetchCantons(province);
+  buildSelectOptions(cantons.data, 'canton');
+  loadSelectedUnitCanton(selectedUnit);
+  const canton =
+    document.getElementById('canton').options[
+      document.getElementById('canton').selectedIndex
+    ].id;
+
+  //Load district information
+  const districts = await fetchDistricts(province, canton);
+  buildSelectOptions(districts.data, 'district');
+  loadSelectedUnitDistrict(selectedUnit);
+
   loadSelectedUnit(selectedUnit);
 })();

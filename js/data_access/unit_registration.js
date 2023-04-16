@@ -66,18 +66,21 @@ const getUnitId = async () => {
 
 //Event listeners
 registerUnit.addEventListener('click', async () => {
+  //Get the next id
+  const nextId = await getUnitId();
+  getFormFields(nextId);
+
   //Validates the fields of the form
-  if (
-    Object.values(validationFields.unitRegistrationFormFields).every(Boolean)
-  ) {
-    //Get the next id
-    const nextId = await getUnitId();
-    getFormFields(nextId);
-    //Make the request to the server
+  if (Object.values(validationFields[`${form.id}Fields`]).every(Boolean)) {
+    //Makes the request to the server
     await registerNewUnit(getFormFields(nextId));
-    submitBtn();
-  }
-  else{
-    submitBtn();
+
+    successAlert('Registro exitoso', 'La unidad ha sido registrada con éxito.');
+    form.reset();
+    Object.keys(validationFields[`${form.id}Fields`]).forEach(
+      (attribute) => (validationFields[`${form.id}Fields`][attribute] = false)
+    );
+  } else {
+    errorAlert('Hay campos obligatorios sin llenar.');
   }
 });
