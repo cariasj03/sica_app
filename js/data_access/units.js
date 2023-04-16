@@ -1,13 +1,12 @@
 //DOM elements
 const viewEditUnit = document.getElementById('viewEditUnit');
 
-//Function to load the units in the table
-const loadUnits = async () => {
+//Function to fetch units
+const fetchUnits = async () => {
   try {
     const units = await fetch('http://127.0.0.1:8000/units');
     const unitsList = await units.json();
-    buildTableRows(unitsList);
-    await selectRow();
+    return unitsList;
   } catch (error) {
     console.log(error);
   }
@@ -98,4 +97,10 @@ viewEditUnit.addEventListener('click', () => {
 });
 
 //Function call to load the units in the table
-loadUnits();
+(async () => {
+  const provinces = await fetchProvinces();
+  console.log(provinces[0]);
+  const unitsList = await fetchUnits();
+  buildTableRows(unitsList);
+  selectRow();
+})();

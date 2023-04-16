@@ -1,25 +1,37 @@
-//Function to load the provinces in the select
-const loadProvinces = async () => {
+//Function to fetch the provinces
+const fetchProvinces = async () => {
   try {
-    const provinces = await fetch('http://127.0.0.1:8000/provinces');
+    const provinces = await fetch(
+      'https://api.pruebayerror.com/locaciones/v1/provincias'
+    );
     const provincesList = await provinces.json();
-    buildSelectOptions(provincesList, 'province');
+    return provincesList;
   } catch (error) {
     console.log(error);
   }
 };
 
-//Function to load the cantons in the select
-const loadCantons = async () => {
+//Function to fetch the cantons
+const fetchCantons = async (province) => {
   try {
-    const provinceSelect = document.getElementById('province');
     const cantons = await fetch(
-      `http://127.0.0.1:8000/cantons/${
-        provinceSelect.options[provinceSelect.selectedIndex].id
-      }`
+      `https://api.pruebayerror.com/locaciones/v1/provincia/${province}/cantones`
     );
     const cantonsList = await cantons.json();
-    buildSelectOptions(cantonsList, 'canton');
+    return cantonsList;
+  } catch (error) {
+    console.log(error);
+  }
+};
+
+//Function to fetch the districts
+const fetchDistricts = async (province, canton) => {
+  try {
+    const districts = await fetch(
+      `https://api.pruebayerror.com/locaciones/v1/provincia/${province}/canton/${canton}/distritos`
+    );
+    const districtsList = await districts.json();
+    return districtsList;
   } catch (error) {
     console.log(error);
   }
@@ -33,9 +45,9 @@ const buildSelectOptions = (list, type) => {
     const districtSelect = document.getElementById('district');
     const selectOption = document.createElement('option');
 
-    selectOption.id = `${element[`${type}Code`]}`;
-    selectOption.value = `${element[`${type}Name`]}`;
-    selectOption.innerText = `${element[`${type}Name`]}`;
+    selectOption.id = `${element['numero']}`;
+    selectOption.value = `${element['nombre']}`;
+    selectOption.innerText = `${element['nombre']}`;
 
     switch (type) {
       case 'province':
@@ -43,6 +55,9 @@ const buildSelectOptions = (list, type) => {
         break;
       case 'canton':
         cantonSelect.appendChild(selectOption);
+        break;
+      case 'district':
+        districtSelect.appendChild(selectOption);
         break;
     }
   });

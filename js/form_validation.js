@@ -418,7 +418,7 @@ const submitButton = document.getElementById('submit');
 const submit = function () {
   submitButton.addEventListener('click', function (event) {
     event.preventDefault();
-    submitBtn();
+    /* submitBtn(); */
   });
 };
 
