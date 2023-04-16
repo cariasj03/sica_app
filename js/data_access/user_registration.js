@@ -33,12 +33,25 @@ const registerNewUser = async (body) => {
 
 registerUser.addEventListener('click', async () => {
     // Validates the fields of the form
-    if (
-        Object.values(validationFields.userRegistrationFormFields).every(Boolean)
-    ) {
-        // Make the request to the server
-        await registerNewUser(getFormFields());
-        // Show user feedback
-        submitBtn();
-    }
+    
+    if (Object.values(validationFields[`${form.id}Fields`]).every(Boolean)) {
+
+        await registerNewUser(getFormFields(nextId));
+        
+        successAlert(
+          'Registro exitoso',
+          'Su solicitud para crear una cuenta ha sido enviada. En caso de ser aprobada le llegará una contraseña temporal al correo electónico registrado.'
+        );
+        form.reset();
+        const imageDisplaySignup = document.getElementById('imageDisplay');
+        imageDisplaySignup.src = '../images/profile_picture.png';
+        Object.keys(validationFields[`${form.id}Fields`]).forEach(
+          (attribute) =>
+            (validationFields[`${form.id}Fields`][attribute] = false)
+        );
+      } else {
+        
+        errorAlert('Hay campos obligatorios sin llenar.');
+      }
+
 });

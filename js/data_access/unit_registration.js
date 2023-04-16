@@ -77,4 +77,7 @@ registerUnit.addEventListener('click', async () => {
     await registerNewUnit(getFormFields(nextId));
     submitBtn();
   }
+  else{
+    submitBtn();
+  }
 });

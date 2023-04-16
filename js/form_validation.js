@@ -298,6 +298,7 @@ const errorModifier = function (elementId, errorActiveClass, status, message) {
 //Submit button function
 const submitBtn = function () {
   //Depending on the form the user is in, the function validates different objects and fields
+  
 
   switch (form.id) {
     case 'assetRegistrationForm':
@@ -330,6 +331,7 @@ const submitBtn = function () {
             (validationFields[`${form.id}Fields`][attribute] = false)
         );
       } else {
+        
         errorAlert('Hay campos obligatorios sin llenar.');
       }
       break;
