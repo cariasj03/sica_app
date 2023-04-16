@@ -82,21 +82,33 @@ input[type='search'] {
   background-color: #eff3e4;
 }
 
-.paginationContainer {
+.paginationContainer,
+#paginationNumbers {
   display: flex;
   justify-content: center;
 }
 
-.paginationContainer a {
+.paginationButton,
+.paginationNumber {
+  background-color: #fff;
+  color: #444;
   padding: 8px 14px;
+  border: none;
   border-radius: 5px;
+  cursor: pointer;
 }
 
-.paginationContainer a.activePage {
+.activePage {
   background-color: #798754;
   color: white;
 }
 
-.paginationContainer a:hover:not(.activePage) {
+.paginationButton:hover:not(.disabledPageButton),
+.paginationNumber:hover:not(.activePage) {
   background-color: #eff3e4;
+}
+
+.disabledPageButton {
+  cursor: default;
+  color: #d6d6d6;
 }

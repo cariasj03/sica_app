@@ -111,114 +111,12 @@
               <label for="province"
                 >Provincia<select class="inputStyle" id="province">
                   <option value="" disabled selected hidden>Provincia</option>
-                  <option value="San José">San José</option>
-                  <option value="Alajuela">Alajuela</option>
-                  <option value="Cartago">Cartago</option>
-                  <option value="Heredia">Heredia</option>
-                  <option value="Guanacaste">Guanacaste</option>
-                  <option value="Puntarenas">Puntarenas</option>
-                  <option value="Limón">Limón</option>
                 </select></label
               >
               <label for="canton"
                 >Cantón
                 <select class="inputStyle" id="canton">
                   <option value="" disabled selected hidden>Cantón</option>
-                  <optgroup label="San José">
-                    <option value="San José">San José</option>
-                    <option value="escazu">Escazú</option>
-                    <option value="desamparados">Desamparados</option>
-                    <option value="puriscal">Puriscal</option>
-                    <option value="tarrazu">Tarrazú</option>
-                    <option value="aserri">Aserrí</option>
-                    <option value="mora">Mora</option>
-                    <option value="goicoechea">Goicoechea</option>
-                    <option value="santa-ana">Santa Ana</option>
-                    <option value="alajuelita">Alajuelita</option>
-                    <option value="vazquez-de-coronado">
-                      Vázquez de Coronado
-                    </option>
-                    <option value="acosta">Acosta</option>
-                    <option value="tibas">Tibás</option>
-                    <option value="moravia">Moravia</option>
-                    <option value="montes-de-oca">Montes de Oca</option>
-                    <option value="turrubares">Turrubares</option>
-                    <option value="dota">Dota</option>
-                    <option value="curridabat">Curridabat</option>
-                    <option value="perez-zeledon">Pérez Zeledón</option>
-                  </optgroup>
-                  <optgroup label="Heredia">
-                    <option value="heredia">Heredia</option>
-                    <option value="barva">Barva</option>
-                    <option value="santo-domingo">Santo Domingo</option>
-                    <option value="santa-barbara">Santa Bárbara</option>
-                    <option value="san-rafael">San Rafael</option>
-                    <option value="san-isidro">San Isidro</option>
-                    <option value="belen">Belén</option>
-                    <option value="flores">Flores</option>
-                  </optgroup>
-                  <optgroup label="Alajuela">
-                    <option value="alajuela">Alajuela</option>
-                    <option value="san-ramon">San Ramón</option>
-                    <option value="grecia">Grecia</option>
-                    <option value="san-mateo">San Mateo</option>
-                    <option value="atenas">Atenas</option>
-                    <option value="naranjo">Naranjo</option>
-                    <option value="palmares">Palmares</option>
-                    <option value="poas">Poás</option>
-                    <option value="orotina">Orotina</option>
-                    <option value="san-carlos">San Carlos</option>
-                    <option value="zarcero">Zarcero</option>
-                    <option value="valverde-vega">Valverde Vega</option>
-                    <option value="upala">Upala</option>
-                    <option value="los-chiles">Los Chiles</option>
-                    <option value="guatuso">Guatuso</option>
-                  </optgroup>
-                  <optgroup label="Cartago">
-                    <option value="cartago">Cartago</option>
-                    <option value="paraíso">Paraíso</option>
-                    <option value="la-union">La Unión</option>
-                    <option value="jimenez">Jiménez</option>
-                    <option value="turrialba">Turrialba</option>
-                    <option value="alvarado">Alvarado</option>
-                    <option value="oreamuno">Oreamuno</option>
-                    <option value="el-guarco">El Guarco</option>
-                  </optgroup>
-                  <optgroup label="Guanacaste">
-                    <option value="liberia">Liberia</option>
-                    <option value="nicoya">Nicoya</option>
-                    <option value="santa-cruz">Santa Cruz</option>
-                    <option value="bagaces">Bagaces</option>
-                    <option value="carrillo">Carrillo</option>
-                    <option value="canas">Cañas</option>
-                    <option value="abangares">Abangares</option>
-                    <option value="tilaran">Tilarán</option>
-                    <option value="nandayure">Nandayure</option>
-                    <option value="la-cruz">La Cruz</option>
-                    <option value="hojancha">Hojancha</option>
-                  </optgroup>
-                  <optgroup label="Puntarenas">
-                    <option value="puntarenas">Puntarenas</option>
-                    <option value="esparza">Esparza</option>
-                    <option value="buenos-aires">Buenos Aires</option>
-                    <option value="montes-de-oro">Montes de Oro</option>
-                    <option value="osa">Osa</option>
-                    <option value="quepos">Quepos</option>
-                    <option value="garabito">Garabito</option>
-                    <option value="golfito">Golfito</option>
-                    <option value="coto-brus">Coto Brus</option>
-                    <option value="parrita">Parrita</option>
-                    <option value="corredores">Corredores</option>
-                    <option value="pacifico-central">Pacífico Central</option>
-                  </optgroup>
-                  <optgroup label="Limón">
-                    <option value="Limón">Limón</option>
-                    <option value="pococi">Pococí</option>
-                    <option value="siquirres">Siquirres</option>
-                    <option value="talamanca">Talamanca</option>
-                    <option value="matina">Matina</option>
-                    <option value="guacimo">Guácimo</option>
-                  </optgroup>
                 </select></label
               >
               <hr />
@@ -244,7 +142,7 @@
           </div>
 
           <div class="tableContainer">
-            <table class="tables">
+            <table id="paginatedTable" class="tables">
               <tr>
                 <th></th>
                 <th>ID</th>
@@ -256,14 +154,11 @@
             </table>
 
             <div class="paginationContainer">
-              <a href="#">&lt;</a>
-              <a href="#" class="activePage">1</a>
-              <a href="#">2</a>
-              <a href="#">3</a>
-              <a href="#">4</a>
-              <a href="#">5</a>
-              <a href="#">6</a>
-              <a href="#"> &gt;</a>
+              <button id="prevButton" class="paginationButton" title="Anterior" aria-label="Anterior">&lt;</button>
+
+              <div id="paginationNumbers"></div>
+
+              <button id="nextButton" class="paginationButton" title="Siguiente" aria-label="Siguiente"> &gt;</button>
             </div>
 
             <div class="buttonContainer">

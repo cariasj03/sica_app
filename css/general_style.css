@@ -324,3 +324,7 @@ textarea:focus {
 .accountTab:hover span {
   color: #fff;
 }
+
+.hidden {
+  display: none;
+}

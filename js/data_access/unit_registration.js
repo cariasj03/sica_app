@@ -74,18 +74,28 @@ const getUnitId = async () => {
   buildSelectOptions(provinces.data, 'province');
 })();
 
+//Function to clear canton select
+const clearCantonSelect = () => {
+  cantonSelect.innerHTML = '<option value="" disabled hidden>Cantón</option>';
+  cantonSelect.options[0].selected = true;
+};
+
+//Function to clear district select
+const clearDistrictSelect = () => {
+  districtSelect.innerHTML =
+    '<option value="" disabled hidden>Distrito</option>';
+  districtSelect.options[0].selected = true;
+};
+
 //Event listeners
 //Changes on province select
 provinceSelect.addEventListener('change', async () => {
   //Clear canton select
-  cantonSelect.innerHTML = '<option value="" disabled hidden>Cantón</option>';
-  cantonSelect.options[0].selected = true;
+  clearCantonSelect();
   validationFields.unitInfoFormFields.canton = false;
 
   //Clear district select
-  districtSelect.innerHTML =
-    '<option value="" disabled hidden>Distrito</option>';
-  districtSelect.options[0].selected = true;
+  clearDistrictSelect();
   validationFields.unitInfoFormFields.district = false;
 
   //Selected province
@@ -99,9 +109,7 @@ provinceSelect.addEventListener('change', async () => {
 //Changes on canton select
 cantonSelect.addEventListener('change', async () => {
   //Clear district select
-  districtSelect.innerHTML =
-    '<option value="" disabled hidden>Distrito</option>';
-  districtSelect.options[0].selected = true;
+  clearDistrictSelect();
 
   //Selected province
   const province = provinceSelect.options[provinceSelect.selectedIndex].id;
@@ -129,6 +137,8 @@ registerUnit.addEventListener('click', async (event) => {
 
     successAlert('Registro exitoso', 'La unidad ha sido registrada con éxito.');
     form.reset();
+    clearCantonSelect();
+    clearDistrictSelect();
     Object.keys(validationFields.unitRegistrationFormFields).forEach(
       (attribute) =>
         (validationFields.unitRegistrationFormFields[attribute] = false)

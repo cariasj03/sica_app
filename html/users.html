@@ -235,14 +235,44 @@
             </table>
 
             <div class="paginationContainer">
-              <a href="#">&lt;</a>
-              <a href="#" class="activePage">1</a>
-              <a href="#">2</a>
-              <a href="#">3</a>
-              <a href="#">4</a>
-              <a href="#">5</a>
-              <a href="#">6</a>
-              <a href="#"> &gt;</a>
+              <button
+                id="prevButton"
+                class="paginationButton"
+                title="Anterior"
+                aria-label="Anterior"
+              >
+                &lt;
+              </button>
+
+              <div id="paginationNumbers">
+                <a
+                  class="paginationNumber activePage"
+                  page-index="1"
+                  aria-label="Page 1"
+                  >1</a
+                >
+                <a class="paginationNumber" page-index="2" aria-label="Page 2"
+                  >2</a
+                >
+                <a class="paginationNumber" page-index="3" aria-label="Page 3"
+                  >3</a
+                >
+                <a class="paginationNumber" page-index="4" aria-label="Page 4"
+                  >4</a
+                >
+                <a class="paginationNumber" page-index="5" aria-label="Page 5"
+                  >5</a
+                >
+              </div>
+
+              <button
+                id="nextButton"
+                class="paginationButton"
+                title="Siguiente"
+                aria-label="Siguiente"
+              >
+                &gt;
+              </button>
             </div>
 
             <div class="buttonContainer">
