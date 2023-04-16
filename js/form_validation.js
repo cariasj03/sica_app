@@ -298,7 +298,6 @@ const errorModifier = function (elementId, errorActiveClass, status, message) {
 //Submit button function
 const submitBtn = function () {
   //Depending on the form the user is in, the function validates different objects and fields
-  
 
   switch (form.id) {
     case 'assetRegistrationForm':
@@ -331,7 +330,6 @@ const submitBtn = function () {
             (validationFields[`${form.id}Fields`][attribute] = false)
         );
       } else {
-        
         errorAlert('Hay campos obligatorios sin llenar.');
       }
       break;
@@ -387,22 +385,6 @@ const submitBtn = function () {
       }
       break;
 
-    case 'unitRegistrationForm':
-      if (Object.values(validationFields[`${form.id}Fields`]).every(Boolean)) {
-        successAlert(
-          'Registro exitoso',
-          'La unidad ha sido registrada con éxito.'
-        );
-        form.reset();
-        Object.keys(validationFields[`${form.id}Fields`]).forEach(
-          (attribute) =>
-            (validationFields[`${form.id}Fields`][attribute] = false)
-        );
-      } else {
-        errorAlert('Hay campos obligatorios sin llenar.');
-      }
-      break;
-
     case 'myProfileForm':
       if (Object.values(validationFields[`${form.id}Fields`]).every(Boolean)) {
         successAlert(
@@ -416,13 +398,23 @@ const submitBtn = function () {
   }
 };
 
-const submitButton = document.getElementById('submit');
+/* const submitButton = document.getElementById('submit');
 const submit = function () {
-  submitButton.addEventListener('click', function (event) {
-    event.preventDefault();
-    /* submitBtn(); */
+  submitButton.addEventListener('click', () => {
+    if (Object.values(validationFields[`${form.id}Fields`]).every(Boolean)) {
+      successAlert(
+        'Registro exitoso',
+        'El activo ha sido registrado con éxito.'
+      );
+      form.reset();
+      Object.keys(validationFields[`${form.id}Fields`]).forEach(
+        (attribute) => (validationFields[`${form.id}Fields`][attribute] = false)
+      );
+    } else {
+      errorAlert('Hay campos obligatorios sin llenar.');
+    }
   });
-};
+}; */
 
 const validation = function () {
   formInputs.forEach(function (input) {
@@ -434,4 +426,3 @@ const validation = function () {
 
 //Function calls
 validation();
-submit();
