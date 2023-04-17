@@ -102,7 +102,7 @@ const validateForm = function (event) {
   const elementValue = event.target.value; //Stores the input or element value
   const errorActiveClass = 'formInputErrorActive'; //Stores the class that has to be added for the error message to show up
 
-  console.log(validationFields[`${form.id}Fields`]);
+  /*  console.log(validationFields[`${form.id}Fields`]); */
 
   //Depending on the input field ID, the code runs certain validations or not
   switch (elementId) {
