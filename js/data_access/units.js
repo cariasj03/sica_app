@@ -114,7 +114,6 @@ const pagination = () => {
   const prevButton = document.getElementById('prevButton');
 
   //Pagination variables
-  console.log(tableRows);
   const paginationLimit = 11;
   const pageCount = Math.ceil(tableRows.length / paginationLimit);
   let currentPage;

@@ -102,7 +102,7 @@ const validateForm = function (event) {
   const elementValue = event.target.value; //Stores the input or element value
   const errorActiveClass = 'formInputErrorActive'; //Stores the class that has to be added for the error message to show up
 
-  /*   console.log(validationFields[`${form.id}Fields`]); */
+  console.log(validationFields[`${form.id}Fields`]);
 
   //Depending on the input field ID, the code runs certain validations or not
   switch (elementId) {
@@ -307,24 +307,6 @@ const submitBtn = function () {
           'El activo ha sido registrado con éxito.'
         );
         form.reset();
-        Object.keys(validationFields[`${form.id}Fields`]).forEach(
-          (attribute) =>
-            (validationFields[`${form.id}Fields`][attribute] = false)
-        );
-      } else {
-        errorAlert('Hay campos obligatorios sin llenar.');
-      }
-      break;
-
-    case 'signupForm':
-      if (Object.values(validationFields[`${form.id}Fields`]).every(Boolean)) {
-        successAlert(
-          'Registro exitoso',
-          'Su solicitud para crear una cuenta ha sido enviada. En caso de ser aprobada le llegará una contraseña temporal al correo electónico registrado.'
-        );
-        form.reset();
-        const imageDisplaySignup = document.getElementById('imageDisplay');
-        imageDisplaySignup.src = '../images/profile_picture.png';
         Object.keys(validationFields[`${form.id}Fields`]).forEach(
           (attribute) =>
             (validationFields[`${form.id}Fields`][attribute] = false)

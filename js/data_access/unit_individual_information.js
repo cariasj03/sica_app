@@ -94,8 +94,6 @@ window.onload = () => {
   const selectedUnit = await fetchUnitInformation();
 
   //Load province information
-  const provinces = await fetchProvinces();
-  buildSelectOptions(provinces.data, 'province');
   loadSelectedUnitProvince(selectedUnit);
   const province =
     document.getElementById('province').options[
@@ -125,9 +123,6 @@ const unitId = document.getElementById('unitId');
 const unitName = document.getElementById('name');
 const description = document.getElementById('description');
 const address = document.getElementById('address');
-const provinceSelect = document.getElementById('province');
-const cantonSelect = document.getElementById('canton');
-const districtSelect = document.getElementById('district');
 const unitSaveButton = document.getElementById('submit');
 const unitEditButton = document.getElementById('editUnitInformation');
 
@@ -188,44 +183,16 @@ const getFormFields = () => {
 };
 
 //Event listeners
-//Changes on province select
-provinceSelect.addEventListener('change', async (event) => {
-  //Clear canton select
-  cantonSelect.innerHTML = '<option value="" disabled hidden>Cantón</option>';
-  cantonSelect.options[0].selected = true;
+
+//Turn off validations on province select
+provinceSelect.addEventListener('change', async () => {
   validationFields.unitInfoFormFields.canton = false;
-
-  //Clear district select
-  districtSelect.innerHTML =
-    '<option value="" disabled hidden>Distrito</option>';
-  districtSelect.options[0].selected = true;
   validationFields.unitInfoFormFields.district = false;
-
-  //Selected province
-  const province = provinceSelect.options[provinceSelect.selectedIndex].id;
-
-  //Fetch and load cantons
-  const cantons = await fetchCantons(province);
-  buildSelectOptions(cantons.data, 'canton');
 });
 
-//Changes on canton select
-cantonSelect.addEventListener('change', async (event) => {
-  //Clear district select
-  districtSelect.innerHTML =
-    '<option value="" disabled hidden>Distrito</option>';
-  districtSelect.options[0].selected = true;
+//Turn off validations on canton select
+cantonSelect.addEventListener('change', async () => {
   validationFields.unitInfoFormFields.district = false;
-
-  //Selected province
-  const province = provinceSelect.options[provinceSelect.selectedIndex].id;
-
-  //Selected canton
-  const canton = cantonSelect.options[cantonSelect.selectedIndex].id;
-
-  //Fetch and load districts
-  const districts = await fetchDistricts(province, canton);
-  buildSelectOptions(districts.data, 'district');
 });
 
 //Click on edit information button
