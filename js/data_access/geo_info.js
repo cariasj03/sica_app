@@ -76,7 +76,11 @@ const buildSelectOptions = (list, type) => {
   });
 };
 
-//DOM elements
+//Function to clear canton select
+const clearProvinceSelect = () => {
+  provinceSelect.options[0].selected = true;
+};
+
 //Function to clear canton select
 const clearCantonSelect = () => {
   cantonSelect.innerHTML = '<option value="" disabled hidden>Cantón</option>';

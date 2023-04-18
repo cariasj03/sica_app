@@ -206,7 +206,8 @@ unitEditButton.addEventListener('click', () => {
 });
 
 //Click on save information button
-unitSaveButton.addEventListener('click', async () => {
+unitSaveButton.addEventListener('click', async (event) => {
+  event.preventDefault();
   if (Object.values(validationFields.unitInfoFormFields).every(Boolean)) {
     await updateUnitInformation(unitId.value, getFormFields());
     disbleUnitFields();

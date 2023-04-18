@@ -66,7 +66,7 @@
               <h3>Ordenar por</h3>
 
               <label for="idRadio"
-                ><input type="radio" id="idRadio" name="sortRadio" value="ID" />
+                ><input type="radio" id="idRadio" name="sortRadio" value="id" />
                 ID</label
               >
               <label for="nameRadio"
@@ -74,7 +74,7 @@
                   type="radio"
                   id="nameRadio"
                   name="sortRadio"
-                  value="nombre"
+                  value="name"
                 />
                 Nombre</label
               >
@@ -143,14 +143,6 @@
 
           <div class="tableContainer">
             <table id="paginatedTable" class="tables">
-              <tr>
-                <th></th>
-                <th>ID</th>
-                <th>Nombre</th>
-                <th>Fecha de creación</th>
-                <th>Provincia</th>
-                <th>Cantón</th>
-              </tr>
             </table>
 
             <div class="paginationContainer">
@@ -182,8 +174,8 @@
       <p class="copyrightText">Copyright &copy; 2023 by Beelders.</p>
     </footer>
 
-    <script src="../js/sweet_alert.js"></script>
-    <script src="../js/user_feedback.js"></script>
+    <script src="../js/dom_manipulation/sweet_alert.js"></script>
+    <script src="../js/dom_manipulation/user_feedback.js"></script>
     <script src="../js/data_access/geo_info.js"></script>
     <script src="../js/data_access/units.js"></script>
   </body>
