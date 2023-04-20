@@ -4,7 +4,7 @@ fetch("http://127.0.0.1:8000/assets")
     return assetsList;
   })
   .then((assetsList) => {
-    loadAssets(assetsList);
+    loadUnits(assetsList);
     selectRow();
   })
   .catch((error) => {
@@ -12,7 +12,7 @@ fetch("http://127.0.0.1:8000/assets")
   });
 
 //Function to load the assets in the table
-const loadAssets = (assetsList) => {
+const loadUnits = (assetsList) => {
   assetsList.forEach(function (asset) {
     const table = document.querySelector("table");
     const tableRow = document.createElement("tr");

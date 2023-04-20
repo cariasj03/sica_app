@@ -67,58 +67,49 @@
           <input
             class="inputStyle"
             type="text"
-            id="assetName"
-            name="assetName"
+            id="name"
+            name="name"
             placeholder="Nombre del activo"
           />
-          <p class="formInputError" id="assetNameError"></p>
+          <p class="formInputError" id="nameError"></p>
 
           <label for="assetDescription">Descripción del activo *</label>
           <textarea
             class="inputStyle"
-            id="assetDescription"
-            name="assetDescription"
+            id="description"
+            name="description"
             rows="4"
             placeholder="Descripción del activo"
           ></textarea>
-          <p class="formInputError" id="assetDescriptionError"></p>
+          <p class="formInputError" id="descriptionError"></p>
 
-          <label for="assetUnit">Unidad en la que está ubicado *</label>
-          <select id="assetUnit" class="inputStyle">
+          <label for="assetunit">Unidad en la que está ubicado *</label>
+          <select id="unit" class="inputStyle" name="unit">
             <option value="" disabled selected hidden>
               Unidad en la que está ubicado
             </option>
-            <option value="bodega">Bodega</option>
-            <option value="donaciones">Donaciones</option>
-            <option value="central">Central</option>
-            <option value="sanJose">San José</option>
-            <option value="alajuela">Alajuela</option>
-            <option value="cartago">Cartago</option>
-            <option value="heredia">Heredia</option>
-            <option value="guanacaste">Guanacaste</option>
-            <option value="puntarenas">Puntarenas</option>
-            <option value="Limón">Limón</option>
           </select>
-          <p class="formInputError" id="assetUnitError"></p>
+
+          <p class="formInputError" id="unitError"></p>
 
           <label for="assetLocation">Ubicación del activo * </label>
           <input
             class="inputStyle"
             type="text"
-            id="assetLocation"
-            name="assetLocation"
+            id="location"
+            name="location"
             placeholder="Ubicación del activo"
           />
-          <p class="formInputError" id="assetLocationError"></p>
+          <p class="formInputError" id="locationError"></p>
 
           <label for="assetStatus">Estado *</label>
-          <select id="assetStatus" class="inputStyle">
+          <select id="status" class="inputStyle" name="status">
             <option value="" disabled selected hidden>Estado</option>
             <option value="activo">Activo</option>
             <option value="desuso">Desuso</option>
             <option value="danado">Dañado</option>
           </select>
-          <p class="formInputError" id="assetStatusError"></p>
+          <p class="formInputError" id="statusError"></p>
 
           <p>* Campos obligatorios</p>
 
