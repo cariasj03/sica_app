@@ -3,7 +3,7 @@ const registerUnit = document.getElementById('submit');
 
 //Normal functions
 //Function to get the values of the form fields
-const getFormFields = (nextId) => {
+const getFormFields = () => {
   const formData = new FormData(form);
   const bodyContent = {};
   formData.forEach((value, key) => {
@@ -24,9 +24,9 @@ const registerNewUnit = async (body) => {
       },
       body: JSON.stringify(body),
     });
-    console.log('unit: ', response);
   } catch (error) {
     console.log(error);
+    throw error;
   }
 };
 
@@ -45,22 +45,29 @@ cantonSelect.addEventListener('change', async () => {
 
 registerUnit.addEventListener('click', async (event) => {
   event.preventDefault();
-  //Validates the fields of the form
-  if (
-    Object.values(validationFields.unitRegistrationFormFields).every(Boolean)
-  ) {
-    //Makes the request to the server
-    await registerNewUnit(getFormFields());
+  try {
+    //Validates the fields of the form
+    if (
+      Object.values(validationFields.unitRegistrationFormFields).every(Boolean)
+    ) {
+      //Makes the request to the server
+      await registerNewUnit(getFormFields());
 
-    successAlert('Registro exitoso', 'La unidad ha sido registrada con éxito.');
-    form.reset();
-    clearCantonSelect();
-    clearDistrictSelect();
-    Object.keys(validationFields.unitRegistrationFormFields).forEach(
-      (attribute) =>
-        (validationFields.unitRegistrationFormFields[attribute] = false)
-    );
-  } else {
-    errorAlert('Hay campos obligatorios sin llenar.');
+      successAlert(
+        'Registro exitoso',
+        'La unidad ha sido registrada con éxito.'
+      );
+      form.reset();
+      clearCantonSelect();
+      clearDistrictSelect();
+      Object.keys(validationFields.unitRegistrationFormFields).forEach(
+        (attribute) =>
+          (validationFields.unitRegistrationFormFields[attribute] = false)
+      );
+    } else {
+      errorAlert('Hay campos obligatorios sin llenar.');
+    }
+  } catch (error) {
+    errorAlert('Ha ocurrido un error al registrar la unidad.');
   }
 });

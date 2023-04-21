@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="en" id="myprofile">
 <head>
 <meta charset="UTF-8" />
 <meta http-equiv="X-UA-Compatible" content="IE=edge" />
@@ -34,21 +34,21 @@
 
     <nav class="headerNav barNav">
         <a href="../html/index.html">Inicio</a>
-        <a href="../html/assets.html">Activos</a>
-        <a href="../html/user_registration_requests_list.html">Solicitudes</a>
-        <a href="../html/reports.html">Reportes</a>
+        <a href="../html/assets.html"id="assetsTab">Activos</a>
+        <a href="../html/user_registration_requests_list.html"id="requestsTab">Solicitudes</a>
+        <a href="../html/reports.html"id="reportsTab">Reportes</a>
     </nav>
     </div>
 
     <div class="headerIcons">
-        <a href="../html/users.html"
-        ><span class="material-symbols-outlined "> settings </span>
+        <a href="#"
+        ><span class="material-symbols-outlined "id="settingsTab"> settings </span>
         </a>        
         <a href="../html/myprofile.html"
           ><span class="material-symbols-outlined currentIcon"> account_circle </span></a
         >
         <a href="../html/signin.html"
-          ><span class="material-symbols-outlined"> logout </span></a
+          ><span class="material-symbols-outlined"id="logoutTab"> logout </span></a
         >
       </div>
     </header>
@@ -56,7 +56,7 @@
 <main class="mainContainer">
     <nav class="sideNav barNav">
         <a class="currentTab accountTab" href="../html/myprofile.html"><span class="material-symbols-outlined"> account_circle </span> Mi perfil</a>
-        <a class="accountTab" href="../html/signin.html"><span class="material-symbols-outlined"> logout </span> Cerrar sesión</a>
+        <a class="accountTab" href="../html/signin.html" id="logoutSideTab"><span class="material-symbols-outlined"> logout </span> Cerrar sesión</a>
     </nav>
 
     <div class="pageBody">
@@ -139,6 +139,7 @@
 <script src="../js/dom_manipulation/user_feedback.js"></script>
 <script src="../js/dom_manipulation/disable_enable_input_fields.js"></script>
 <script src="../js/dom_manipulation/upload_img_display.js"></script>
+<script src="../js/data_access/session_logic.js"></script>
 
 </body>
 </html>

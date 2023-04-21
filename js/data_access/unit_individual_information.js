@@ -10,8 +10,7 @@ const fetchUnitInformation = async () => {
     const rawCreationDate = new Date(unitJson[0].creationDate);
     const day = ('0' + (rawCreationDate.getDate() + 1)).slice(-2);
     const month = ('0' + (rawCreationDate.getMonth() + 1)).slice(-2);
-    const creationDate =
-      await `${day}/${month}/${rawCreationDate.getFullYear()}`;
+    const creationDate = `${day}/${month}/${rawCreationDate.getFullYear()}`;
     unitJson[0].creationDate = creationDate;
 
     return unitJson[0];

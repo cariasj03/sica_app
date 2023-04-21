@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="en" id="asset_registration_request_review">
   <head>
     <meta charset="UTF-8" />
     <meta http-equiv="X-UA-Compatible" content="IE=edge" />
@@ -33,21 +33,21 @@
 
         <nav class="headerNav barNav">
           <a href="../html/index.html">Inicio</a>
-          <a href="../html/assets.html">Activos</a>
-          <a class="currentTab" href="../html/user_registration_requests_list.html">Solicitudes</a>
-          <a href="../html/reports.html">Reportes</a>
+          <a href="../html/assets.html"id="assetsTab">Activos</a>
+          <a class="currentTab" href="../html/user_registration_requests_list.html"id="requestsTab">Solicitudes</a>
+          <a href="../html/reports.html"id="reportsTab">Reportes</a>
         </nav>
       </div>
 
       <div class="headerIcons">
-        <a href="../html/users.html"
-          ><span class="material-symbols-outlined"> settings </span>
+        <a href="#"
+          ><span class="material-symbols-outlined"id="settingsTab"> settings </span>
         </a>
         <a href="../html/myprofile.html"
           ><span class="material-symbols-outlined"> account_circle </span></a
         >
         <a href="../html/signin.html"
-          ><span class="material-symbols-outlined"> logout </span></a
+          ><span class="material-symbols-outlined"id="logoutTab"> logout </span></a
         >
       </div>
     </header>
@@ -55,13 +55,13 @@
     <main class="mainContainer">
       <nav class="sideNav barNav">
         <a href="../html/user_registration_requests_list.html"
-          >Solicitudes de registro de usuarios</a
+          id="usersRequestsTab">Solicitudes de registro de usuarios</a
         >
         <a class="currentTab" href="../html/asset_registration_requests_list.html"
-          >Solicitudes de registro de activos</a
+          id="assetsRegRequestsTab">Solicitudes de registro de activos</a
         >
         <a href="../html/asset_transfer_requests_list.html"
-          >Solicitudes de traslados de activos</a
+          id="assetsTransRequestsTab">Solicitudes de traslados de activos</a
         >
       </nav>
 
@@ -173,5 +173,6 @@
     <script src="../js/dom_manipulation/approve_reject_requests.js"></script>
     <script src="../js/dom_manipulation/sweet_alert.js"></script>
     <script src="../js/dom_manipulation/user_feedback.js"></script>
+    <script src="../js/data_access/session_logic.js"></script>
   </body>
 </html>

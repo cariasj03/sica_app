@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="en" id="index">
   <head>
     <meta charset="UTF-8" />
     <meta http-equiv="X-UA-Compatible" content="IE=edge" />
@@ -30,21 +30,29 @@
 
         <nav class="headerNav barNav">
           <a class="currentTab" href="../html/index.html">Inicio</a>
-          <a href="../html/assets.html">Activos</a>
-          <a href="../html/user_registration_requests_list.html">Solicitudes</a>
-          <a href="../html/reports.html">Reportes</a>
+          <a href="../html/assets.html" id="assetsTab">Activos</a>
+          <a
+            href="../html/user_registration_requests_list.html"
+            id="requestsTab"
+            >Solicitudes</a
+          >
+          <a href="../html/reports.html" id="reportsTab">Reportes</a>
         </nav>
       </div>
 
       <div class="headerIcons">
-        <a href="../html/users.html"
-          ><span class="material-symbols-outlined"> settings </span>
+        <a href="#"
+          ><span class="material-symbols-outlined" id="settingsTab">
+            settings
+          </span>
         </a>
         <a href="../html/myprofile.html"
           ><span class="material-symbols-outlined"> account_circle </span></a
         >
         <a href="../html/signin.html"
-          ><span class="material-symbols-outlined"> logout </span></a
+          ><span class="material-symbols-outlined" id="logoutTab">
+            logout
+          </span></a
         >
       </div>
     </header>
@@ -52,5 +60,7 @@
     <footer class="footer completeFooter">
       <p class="copyrightText">Copyright &copy; 2023 by Beelders.</p>
     </footer>
+
+    <script src="../js/data_access/session_logic.js"></script>
   </body>
 </html>
