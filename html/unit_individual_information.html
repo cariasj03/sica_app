@@ -156,6 +156,7 @@
         <p class="copyrightText">Copyright &copy; 2023 by Beelders.</p>
     </footer>
 
+<<<<<<< Updated upstream
     <script src="../js/dom_manipulation/user_feedback.js"></script>
     <script src="../js/dom_manipulation/sweet_alert.js"></script>
     <script src="../js/dom_manipulation/form_validation.js"></script>
@@ -163,4 +164,116 @@
     <script src="../js/data_access/unit_individual_information.js"></script>
     <script src="../js/data_access/session_logic.js"></script>
   </body>
+=======
+<main class="mainContainer">
+    <nav class="sideNav barNav">
+        <a href="../html/users.html">Lista de usuarios</a>
+        <a class="currentTab" href="../html/units.html">Lista de unidades</a>
+    </nav>
+
+  <div class="pageBody">
+    <h1>Información de unidad</h1>
+    <div class="unitFormContainer">
+      <form class="form" id="unitInfoForm">
+        <div class="formContainer">
+
+            <div class="inputContainer">
+              <label for="unitId">ID</label>
+              <input class="inputStyle disabled" type="text" id="unitId" name="unitId" disabled/>
+              <p class="formInputError" id="unitIdError"></p>
+            </div>
+          
+            <div class="inputContainer">
+              <label for="unitCreationDate">Fecha de creación</label>
+              <input class="inputStyle disabled" type="text" id="unitCreationDate" name="unitCreationDate" placeholder="03/03/2021"  disabled/>
+              <p class="formInputError" id="unitCreationDateError"></p>
+            </div>
+          </div>
+          
+        <label for="name">Nombre</label>
+            <input
+                type="text"
+                class="inputStyle"
+                id="name"
+                name="name"
+                placeholder="Nombre de la unidad"
+            ></input>
+            <p class="formInputError" id="nameError"></p> 
+
+        <label for="description">Descripción</label>
+            <textarea
+                class="inputStyle"
+                id="description"
+                name="description"
+                rows="4"
+                placeholder="Descripción de la unidad"
+            ></textarea>
+            <p class="formInputError" id="descriptionError"></p>
+
+        <h3>Ubicación geográfica</h3>
+        <div class="formContainer">
+          <div class="inputContainer">
+              <label for="province">Provincia</label>
+              <select class="inputStyle" id="province" name="province">
+                <option value="" disabled hidden>Provincia</option>
+              </select>
+              <p class="formInputError" id="provinceError"></p>
+          </div>
+
+          <div class="inputContainer">
+              <label for="canton">Cantón</label>
+              <select class="inputStyle" id="canton">
+                <option value="" disabled hidden>Cantón</option>
+              </select
+              >
+              <p class="formInputError" id="cantonError"></p>
+          </div>
+      </div>
+
+      <label for="district">Distrito</label>
+      <select class="inputStyle" id="district" name="district">
+        <option value="" disabled hidden>Distrito</option>
+    </select>
+    <p class="formInputError" id="districtError"></p>
+
+      <label for="address">Otras señas</label>
+      <input
+          class="inputStyle"
+          id="address"
+          name="address"
+          placeholder="Otras señas"
+      ></input>
+      <p class="formInputError" id="addressError"></p>
+
+      <div id="unitInfoButtonContainer" class="buttonContainer">
+        <button type="button" id="editUnitInformation" class="primaryButton">
+            Editar información
+        </button>
+
+        <button type="button" id="submit" class="primaryButton disabledButton" disabled>
+          Guardar información
+        </button>
+
+        <a href="../html/units.html"
+              ><button type="button" class="secondaryButton">
+                Regresar
+              </button></a>
+      </div>
+    </form>
+  </div>
+ </div>
+</main>
+
+<footer class="footer">
+    <p class="copyrightText">Copyright &copy; 2023 by Beelders.</p>
+</footer>  
+
+<script src="../js/user_feedback.js"></script>
+<script src="../js/sweet_alert.js"></script>
+<script src="../js/form_validation.js"></script>
+<script src="../js/data_access/geo_info.js"></script>
+<script src="../js/data_access/unit_individual_information.js"></script>
+
+</body>
+>>>>>>> Stashed changes
 </html>

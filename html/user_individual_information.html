@@ -83,34 +83,35 @@
                 id="userId"
                 name="userId"
                 placeholder="Identificación"
-                value="101230456"
+                
                 disabled
             ></input>
             </label>
 
             <label for="userName">Nombre
-                <input class="inputStyle" type="text" id="userFirstName" name="userFirstName" placeholder="Nombre" value="Juan"/>
+                <input class="inputStyle" type="text" id="userFirstName" name="userFirstName" placeholder="Nombre" />
                     <p class="formInputError" id="userFirstNameError"></p></label>
                 
-            <label for="userLastName">Apellidos <input class="inputStyle" type="text" id="userLastName" name="userLastName" placeholder="Apellidos" value="Pérez González"/>
+            <label for="userLastName">Apellidos <input class="inputStyle" type="text" id="userLastName" name="userLastName" placeholder="Apellidos" />
                     <p class="formInputError" id="userLastNameError"></p></label>
                 
-            <label for="userEmail">Correo electrónico <input class="inputStyle" type="text" id="userEmail" name="userEmail" placeholder="Correo electrónico" value="juan.perez@proveguard.cr"/>
+            <label for="userEmail">Correo electrónico <input class="inputStyle" type="text" id="userEmail" name="userEmail" placeholder="Correo electrónico" />
                     <p class="formInputError" id="userEmailError"></p></label>
                 
-            <label for="userPhoneNumber">Número de teléfono <input class="inputStyle" type="text" id="userPhoneNumber" name="userPhoneNumber" placeholder="Número de teléfono" value="88888888"/>
+            <label for="userPhoneNumber">Número de teléfono <input class="inputStyle" type="text" id="userPhoneNumber" name="userPhoneNumber" placeholder="Número de teléfono" />
                     <p class="formInputError" id="userPhoneNumberError"></p></label>
                 
             <label for="userRole">Rol asignado 
                 <select id="userRole" class="inputStyle">
                 <option value="" disabled hidden>Rol asignado</option>
+                <option value="">Seleccione un rol</option>
                 <option value="manager">Jefatura</option>
                 <option value="supply">Proveeduría</option>
-                <option value="inventoryUnitManager" selected>Encargado de Inventario por Unidad</option>
+                <option value="inventoryUnitManager" >Encargado de Inventario por Unidad</option>
               </select>
                     <p class="formInputError" id="userRoleError"></p></label>
                 
-            <label for="userDateOfBirth">Fecha de nacimiento <input class="inputStyle" type="date" id="userDateOfBirth" name="userDateOfBirth" placeholder="Fecha de nacimiento" value="2000-01-01"/>
+            <label for="userDateOfBirth">Fecha de nacimiento <input class="inputStyle" type="date" id="userDateOfBirth" name="userDateOfBirth" placeholder="Fecha de nacimiento" />
                     <p class="formInputError" id="userDateOfBirthError"></p></label>
 
             <label id="userUnitLabel"for="userUnit">Unidad a la que pertenece 
@@ -118,12 +119,13 @@
                 <option value=""disabled hidden>
                   Unidad a la que pertenece
                 </option>
+                <option value="">Seleccione una unidad</option>
                 <option value="bodega">Bodega</option>
                 <option value="donaciones">Donaciones</option>
                 <option value="central">Central</option>
                 <option value="sanJose">San José</option>
                 <option value="alajuela">Alajuela</option>
-                <option value="cartago"selected>Cartago</option>
+                <option value="cartago">Cartago</option>
                 <option value="heredia">Heredia</option>
                 <option value="guanacaste">Guanacaste</option>
                 <option value="puntarenas">Puntarenas</option>
@@ -157,11 +159,21 @@
 <footer class="footer">
     <p class="copyrightText">Copyright &copy; 2023 by Beelders.</p>
 </footer>
+<<<<<<< Updated upstream
 <script src="../js/dom_manipulation/user_feedback.js"></script>
 <script src="../js/dom_manipulation/sweet_alert.js"></script>
 <script src="../js/dom_manipulation/form_validation.js"></script>
 <script src="../js/dom_manipulation/disable_enable_input_fields.js"></script>
 <script src="../js/dom_manipulation/upload_img_display.js"></script>
 <script src="../js/data_access/session_logic.js"></script>
+=======
+<script src="../js/user_feedback.js"></script>
+<script src="../js/sweet_alert.js"></script>
+<script src="../js/form_validation.js"></script>
+<script src="../js/disable_enable_input_fields.js"></script>
+<script src="../js/upload_img_display.js"></script>
+<script src="../js/data_access/user_individual_information.js"></script>
+
+>>>>>>> Stashed changes
 </body>
 </html>
