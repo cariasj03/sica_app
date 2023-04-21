@@ -6,6 +6,7 @@ const logoutTab = document.getElementById('logoutTab');
 
 //User data stored in local storage
 const sessionUserData = JSON.parse(localStorage.getItem('sessionUserData'));
+console.log(sessionUserData);
 
 //Functions
 //
@@ -29,12 +30,12 @@ const defaultBehavior = () => {
 };
 
 //Deletes local storage data when browser is closed
-window.onbeforeunload = () => {
+/* window.onbeforeunload = () => {
   localStorage.removeItem('sessionUserData');
-};
+}; */
 
 //Checks if user is logged in
-if (localStorage.getItem('sessionUserData') !== null) {
+if (sessionUserData !== null) {
   switch (page.id) {
     case 'user_registration_requests_list':
     case 'user_registration_request_review':
