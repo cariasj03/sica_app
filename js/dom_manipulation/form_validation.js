@@ -26,14 +26,14 @@ const validationFields = {
   },
   //Object for signup validation
   signupFormFields: {
-    userFirstName: false,
-    userLastName: false,
-    userId: false,
-    userDateOfBirth: false,
-    userEmail: false,
-    userPhoneNumber: false,
-    userUnit: false,
-    userProfilePicture: false,
+    firstName: false,
+    lastName: false,
+    id: false,
+    dateOfBirth: false,
+    email: false,
+    phoneNumber: false,
+    unit: false,
+    profilePicture: false,
   },
   //Object for signin validation
   signinFormFields: {
@@ -103,6 +103,7 @@ const validateForm = function (event) {
   const errorActiveClass = "formInputErrorActive"; //Stores the class that has to be added for the error message to show up
 
   /*  console.log(validationFields[`${form.id}Fields`]); */
+  console.log(elementId);
 
   //Depending on the input field ID, the code runs certain validations or not
   switch (elementId) {
@@ -124,6 +125,7 @@ const validateForm = function (event) {
     case "assetTargetLocation":
     case "assetTransferReason":
     case "assetRequestDescription":
+    case "role":
       validateEmptyField(elementId, elementValue, errorActiveClass);
       break;
     //Validates the user inputs a valid email
@@ -134,6 +136,8 @@ const validateForm = function (event) {
     case "userFirstName":
     case "userLastName":
     case "name":
+    case "firstName":
+    case "lastName":
       validateEmptyField(elementId, elementValue, errorActiveClass);
       if (!validateEmptyField(elementId, elementValue, errorActiveClass)) {
         validateLettersField(elementId, elementValue, errorActiveClass);
@@ -142,6 +146,8 @@ const validateForm = function (event) {
     //Validates if the input is empty and if not, validates that the field only contains numbers
     case "userId":
     case "userPhoneNumber":
+    case "id":
+    case "phoneNumber":
       validateEmptyField(elementId, elementValue, errorActiveClass);
       if (!validateEmptyField(elementId, elementValue, errorActiveClass)) {
         validateNumbersField(elementId, elementValue, errorActiveClass);
@@ -149,6 +155,7 @@ const validateForm = function (event) {
       break;
     //Validates if the input is empty and if not, validates that the field contains a valid email
     case "userEmail":
+    case "email":
       validateEmptyField(elementId, elementValue, errorActiveClass);
       if (!validateEmptyField(elementId, elementValue, errorActiveClass)) {
         validateEmailField(elementId, elementValue, errorActiveClass);
@@ -158,6 +165,7 @@ const validateForm = function (event) {
     case "userProfilePicture":
     case "uploadPictureAsset1":
     case "uploadPictureAsset2":
+    case "profilePicture":
       validateFileField(elementId, elementValue, errorActiveClass);
       break;
   }
