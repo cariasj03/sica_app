@@ -151,6 +151,9 @@ const pagination = () => {
   const nextButton = document.getElementById('nextButton');
   const prevButton = document.getElementById('prevButton');
 
+  //Reset pagination numbers
+  paginationNumbers.innerHTML = '';
+
   //Pagination variables
   const paginationLimit = 11;
   const pageCount = Math.ceil(tableRows.length / paginationLimit);

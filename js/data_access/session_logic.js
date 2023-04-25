@@ -9,7 +9,14 @@ const sessionUserData = JSON.parse(localStorage.getItem('sessionUserData'));
 console.log(sessionUserData);
 
 //Functions
-//
+const changeUserDOBFormat = () => {
+  const rawDOB = new Date(sessionUserData.dateOfBirth);
+  const day = ('0' + (rawDOB.getDate() + 1)).slice(-2);
+  const month = ('0' + (rawDOB.getMonth() + 1)).slice(-2);
+  const DOB = `${rawDOB.getFullYear()}-${month}-${day}`;
+  sessionUserData.dateOfBirth = DOB;
+};
+
 const defaultBehavior = () => {
   switch (sessionUserData.role) {
     case 'Encargado de Inventario por Unidad':
@@ -123,6 +130,9 @@ if (sessionUserData !== null) {
 } else {
   window.location.href = '../html/signin.html';
 }
+
+//Function calls
+changeUserDOBFormat();
 
 //Deletes local storage data when browser is closed
 /* window.addEventListener('beforeunload', (e) => {

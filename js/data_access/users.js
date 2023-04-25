@@ -1,10 +1,12 @@
 //DOM elements
 const viewEditUser = document.getElementById('viewEditUser');
 
-//Function to fetch users
-const fetchUsers = async () => {
+//Function to fetch users sorted by name
+const fetchSortedUsers = async (sortValue) => {
   try {
-    const users = await fetch('http://localhost:8000/users');
+    const users = await fetch(
+      `http://127.0.0.1:8000/users/sort/by-${sortValue}`
+    );
     const usersList = await users.json();
     return usersList;
   } catch (error) {
@@ -100,8 +102,11 @@ const pagination = () => {
   const nextButton = document.getElementById('nextButton');
   const prevButton = document.getElementById('prevButton');
 
+  //Reset pagination numbers
+  paginationNumbers.innerHTML = '';
+
   //Pagination variables
-  const paginationLimit = 5;
+  const paginationLimit = 11;
   const pageCount = Math.ceil(tableRows.length / paginationLimit);
   let currentPage;
 
@@ -207,10 +212,40 @@ const pagination = () => {
   });
 };
 
-//Async function to fetch users and build the table
-(async () => {
-  const usersList = await fetchUsers();
+//Function sort the users in the table
+const sortUsers = () => {
+  const nameRadioButton = document.getElementById('nameRadio');
+  const sortRadioButtons = document.getElementsByName('sortRadio');
+
+  //Set the default sort radio button
+  nameRadioButton.checked = true;
+
+  //Event listeners
+  sortRadioButtons.forEach((radioButton) => {
+    radioButton.addEventListener('change', async () => {
+      if (radioButton.checked) {
+        const sortValue = radioButton.value;
+        const usersList = await fetchSortedUsers(sortValue);
+        buildPage(usersList);
+      }
+    });
+  });
+};
+
+//Function to build the page
+const buildPage = (usersList) => {
   loadUsers(usersList);
   selectRow();
   pagination();
-})();
+};
+
+//Async function to fetch users and build the table
+//Async function to fetch units and build the table
+const buildPageAsync = async function () {
+  const usersList = await fetchSortedUsers('name');
+  buildPage(usersList);
+  sortUsers();
+};
+
+//Function calls
+buildPageAsync();

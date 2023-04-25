@@ -37,6 +37,7 @@
       <div class="sideImgContainer">
         <img src="../svg/signup_illustration.svg" width="100%" />
       </div>
+
       <div class="pageContainer">
         <p class="link">
           ¿Ya tiene una cuenta?
@@ -44,78 +45,80 @@
             >Iniciar sesión</a
           >
         </p>
+
         <div class="headingFormContainer">
           <h1>Cree una cuenta</h1>
+
           <form id="signupForm" class="form">
-            <label for="firstName"
+            <label for="userFirstName"
               >Nombre *<input
                 class="inputStyle"
                 type="text"
-                id="firstName"
-                name="firstName"
+                id="userFirstName"
+                name="userFirstName"
                 placeholder="Nombre" />
-              <p class="formInputError" id="firstNameError"></p
+              <p class="formInputError" id="userFirstNameError"></p
             ></label>
 
-            <label for="lastName"
+            <label for="userLastName"
               >Apellidos *
               <input
                 class="inputStyle"
                 type="text"
-                id="lastName"
-                name="lastName"
+                id="userLastName"
+                name="userLastName"
                 placeholder="Apellidos" />
-              <p class="formInputError" id="lastNameError"></p
+              <p class="formInputError" id="userLastNameError"></p
             ></label>
 
-            <label for="id"
+            <label for="userId"
               >Identificación *
               <input
                 class="inputStyle"
                 type="text"
-                id="id"
-                name="id"
+                id="userId"
+                name="userId"
                 placeholder="Identificación" />
-              <p class="formInputError" id="idError"></p
+              <p class="formInputError" id="userIdError"></p
             ></label>
 
-            <label for="dateOfBirth"
+            <label for="userDateOfBirth"
               >Fecha de nacimiento *
               <input
                 class="inputStyle"
                 type="date"
-                id="dateOfBirth"
-                name="dateOfBirth"
+                id="userDateOfBirth"
+                name="userDateOfBirth"
                 placeholder="Fecha de nacimiento"
                 pattern="[0-9]{8}" />
-              <p class="formInputError" id="dateOfBirthError"></p
+              <p class="formInputError" id="userDateOfBirthError"></p
             ></label>
 
-            <label for="email"
+            <label for="userEmail"
               >Correo electrónico *
               <input
                 class="inputStyle"
                 type="text"
-                id="email"
-                name="email"
+                id="userEmail"
+                name="userEmail"
                 placeholder="Correo electrónico" />
-              <p class="formInputError" id="emailError"></p
+              <p class="formInputError" id="userEmailError"></p
             ></label>
 
-            <label for="phoneNumber"
+            <label for="userPhoneNumber"
               >Número de teléfono *
               <input
                 class="inputStyle"
                 type="text"
-                id="phoneNumber"
-                name="phoneNumber"
+                id="userPhoneNumber"
+                name="userPhoneNumber"
                 placeholder="Número de teléfono" />
-              <p class="formInputError" id="phoneNumberError"></p
+              <p class="formInputError" id="userPhoneNumberError"></p
             ></label>
 
-            <label id="userUnitLabel" for="unit"
+            <label id="userUnitLabel" for="userUnit"
               >Unidad a la que pertenece *
-              <select id="unit" class="inputStyle">
+              <select id="userUnit" class="inputStyle">
                 <option value="" disabled selected hidden>
                   Unidad a la que pertenece
                 </option>
@@ -130,10 +133,10 @@
                 <option value="puntarenas">Puntarenas</option>
                 <option value="Limón">Limón</option>
               </select>
-              <p class="formInputError" id="unitError"></p
+              <p class="formInputError" id="userUnitError"></p
             ></label>
 
-            <label id="userProfilePictureLabel" for="profilePicture"
+            <label id="userProfilePictureLabel" for="userProfilePicture"
               >Foto de perfil *
               <div class="imageDisplayInput">
                 <img
@@ -150,13 +153,13 @@
                 </button>
                 <input
                   class="inputStyle"
-                  id="profilePicture"
-                  name="profilePicture"
+                  id="userProfilePicture"
+                  name="userProfilePicture"
                   type="file"
                   accept=".png, .jpg"
                 /></div
             ></label>
-            <p class="formInputError" id="profilePictureError"></p>
+            <p class="formInputError" id="userProfilePictureError"></p>
 
             <p id="requiredFields">* Campos obligatorios</p>
 
@@ -182,6 +185,6 @@
     <script src="../js/dom_manipulation/upload_img_display.js"></script>
     <script src="../js/dom_manipulation/user_feedback.js"></script>
     <script src="../js/dom_manipulation/sweet_alert.js"></script>
-    <script src="../js/data_access/user_registration.js"></script>
+    <script src="../js/data_access/signup.js"></script>
   </body>
 </html>
