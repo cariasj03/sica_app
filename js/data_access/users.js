@@ -14,6 +14,45 @@ const fetchSortedUsers = async (sortValue) => {
   }
 };
 
+//Function to fetch filtered users
+const fetchFilteredUsers = async (unit) => {
+  try {
+    const users = await fetch(
+      `http://127.0.0.1:8000/users/filter/unit/${unit}`
+    );
+    const usersList = await users.json();
+    return usersList;
+  } catch (error) {
+    console.log(error);
+  }
+};
+
+//Function to fetch sorted units
+const fetchSortedUnits = async (sortValue) => {
+  try {
+    const units = await fetch(
+      `http://127.0.0.1:8000/units/sort/by-${sortValue}`
+    );
+    const unitsList = await units.json();
+    return unitsList;
+  } catch (error) {
+    console.log(error);
+  }
+};
+
+//Function to fetch searched users
+const fetchSearchedUsers = async (searchValue, type) => {
+  try {
+    const users = await fetch(
+      `http://127.0.0.1:8000/users/search/by-${type}/${searchValue}`
+    );
+    const usersList = await users.json();
+    return usersList;
+  } catch (error) {
+    console.log(error);
+  }
+};
+
 //Function to load the users in the table
 const loadUsers = (usersList) => {
   const table = document.querySelector('table');
@@ -212,6 +251,34 @@ const pagination = () => {
   });
 };
 
+//Function to build the options in the units select
+const buildUnitsSelect = (unitsList) => {
+  unitsList.forEach(function (element) {
+    const unitSelect = document.getElementById('unitSelect');
+    const selectOption = document.createElement('option');
+
+    selectOption.id = `${element['id']}`;
+    selectOption.value = `${element['name']}`;
+    selectOption.innerText = `${element['name']}`;
+
+    unitSelect.appendChild(selectOption);
+  });
+};
+
+//Function to clear de sort radio buttons
+const clearSortRadioButtons = () => {
+  const sortRadioButtons = document.getElementsByName('sortRadio');
+  sortRadioButtons.forEach((radioButton) => {
+    radioButton.checked = false;
+  });
+};
+
+//Function to clear unit select
+const clearUnitSelect = () => {
+  const unitSelect = document.getElementById('unitSelect');
+  unitSelect.options[0].selected = true;
+};
+
 //Function sort the users in the table
 const sortUsers = () => {
   const nameRadioButton = document.getElementById('nameRadio');
@@ -223,6 +290,7 @@ const sortUsers = () => {
   //Event listeners
   sortRadioButtons.forEach((radioButton) => {
     radioButton.addEventListener('change', async () => {
+      clearUnitSelect();
       if (radioButton.checked) {
         const sortValue = radioButton.value;
         const usersList = await fetchSortedUsers(sortValue);
@@ -232,19 +300,82 @@ const sortUsers = () => {
   });
 };
 
+//Function to filter the users in the table
+const filterUsers = () => {
+  const unitSelect = document.getElementById('unitSelect');
+  //Event listeners
+  unitSelect.addEventListener('change', async () => {
+    //Reset the sort radio buttons
+    clearSortRadioButtons();
+
+    const usersList = await fetchFilteredUsers(unitSelect.value);
+    buildPage(usersList);
+  });
+};
+
+//Function to search
+const searchUser = async (searchInput) => {
+  let usersList;
+  if (searchInput.value === '') {
+    usersList = await fetchSortedUsers('name');
+  } else {
+    //Clear the sort radio buttons
+    clearSortRadioButtons();
+
+    //Clear the unit select
+    clearUnitSelect();
+
+    const searchValue = searchInput.value;
+    let type;
+
+    switch (searchInput.id) {
+      case 'idSearch':
+        type = 'id';
+        break;
+      case 'nameSearch':
+        type = 'name';
+        break;
+      case 'emailSearch':
+        type = 'email';
+        break;
+    }
+    usersList = await fetchSearchedUsers(searchValue, type);
+  }
+  buildPage(usersList);
+};
+
+//Function to search the users in the table
+const searchUsers = () => {
+  //DOM elements
+  const searchInputs = document.getElementsByName('searchInput');
+
+  searchInputs.forEach((searchInput) => {
+    searchInput.addEventListener('change', async () => {
+      searchUser(searchInput);
+    });
+    searchInput.addEventListener('keyup', async () => {
+      searchUser(searchInput);
+    });
+  });
+};
+
 //Function to build the page
-const buildPage = (usersList) => {
+const buildPage = async (usersList) => {
   loadUsers(usersList);
   selectRow();
   pagination();
 };
 
-//Async function to fetch users and build the table
 //Async function to fetch units and build the table
 const buildPageAsync = async function () {
+  const unitsList = await fetchSortedUnits('name');
+  buildUnitsSelect(unitsList);
+
   const usersList = await fetchSortedUsers('name');
   buildPage(usersList);
   sortUsers();
+  filterUsers();
+  searchUsers();
 };
 
 //Function calls

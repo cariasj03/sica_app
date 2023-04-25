@@ -25,6 +25,20 @@ const getFormFields = () => {
   return bodyContent;
 };
 
+//Function to build the options in the units select
+const buildUnitsSelect = (unitsList) => {
+  unitsList.forEach(function (element) {
+    const userUnitSelect = document.getElementById('userUnit');
+    const selectOption = document.createElement('option');
+
+    selectOption.id = `${element['id']}`;
+    selectOption.value = `${element['name']}`;
+    selectOption.innerText = `${element['name']}`;
+
+    userUnitSelect.appendChild(selectOption);
+  });
+};
+
 //Async functions
 // Function to register a new user
 const registerNewUser = async (body) => {
@@ -37,6 +51,19 @@ const registerNewUser = async (body) => {
       body: JSON.stringify(body),
     });
     console.log('user: ', await response.json());
+  } catch (error) {
+    console.log(error);
+  }
+};
+
+//Function to fetch sorted units
+const fetchSortedUnits = async (sortValue) => {
+  try {
+    const units = await fetch(
+      `http://127.0.0.1:8000/units/sort/by-${sortValue}`
+    );
+    const unitsList = await units.json();
+    return unitsList;
   } catch (error) {
     console.log(error);
   }
@@ -64,3 +91,9 @@ registerUser.addEventListener('click', async (event) => {
     console.log('error');
   }
 });
+
+//Function calls
+(async () => {
+  const unitsList = await fetchSortedUnits('name');
+  buildUnitsSelect(unitsList);
+})();
