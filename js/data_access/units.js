@@ -376,10 +376,13 @@ viewEditUnit.addEventListener('click', () => {
 });
 
 //Async function to fetch units and build the table
-(async () => {
+const buildPageAsync = async function () {
   const unitsList = await fetchUnits();
   buildPage(unitsList);
   sortUnits();
   filterUnits();
   searchUnits();
-})();
+};
+
+//Function calls
+buildPageAsync();

@@ -152,27 +152,35 @@
           </div>
 
           <div class="tableContainer">
-            <table class="tables">
-              <tr>
-                <th></th>
-                <th>Identificación</th>
-                <th>Nombre</th>
-                <th>Correo electrónico</th>
-                <th>Unidad</th>
-              </tr>
-            </table>
+            <table class="tables" id="paginatedTable"></table>
 
             <div class="paginationContainer">
-              <button id="prevButton" class="paginationButton" title="Anterior" aria-label="Anterior">&lt;</button>
+              <button
+                id="prevButton"
+                class="paginationButton"
+                title="Anterior"
+                aria-label="Anterior"
+              >
+                &lt;
+              </button>
 
               <div id="paginationNumbers"></div>
 
-              <button id="nextButton" class="paginationButton" title="Siguiente" aria-label="Siguiente"> &gt;</button>
+              <button
+                id="nextButton"
+                class="paginationButton"
+                title="Siguiente"
+                aria-label="Siguiente"
+              >
+                &gt;
+              </button>
             </div>
 
             <div class="buttonContainer">
               <a href="#"
-                ><button id="viewEditUser" class="primaryButton">Ver o editar usuario</button></a
+                ><button id="viewEditUser" class="primaryButton">
+                  Ver o editar usuario
+                </button></a
               >
             </div>
           </div>
@@ -184,14 +192,8 @@
       <p class="copyrightText">Copyright &copy; 2023 by Beelders.</p>
     </footer>
 
-<<<<<<< Updated upstream
-    <script src="../js/data_access/session_logic.js"></script>
-=======
-    <script src="../js/sweet_alert.js"></script>
-    <script src="../js/user_feedback.js"></script>
+    <script src="../js/dom_manipulation/sweet_alert.js"></script>
+    <script src="../js/dom_manipulation/user_feedback.js"></script>
     <script src="../js/data_access/users.js"></script>
-
-
->>>>>>> Stashed changes
   </body>
 </html>

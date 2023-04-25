@@ -29,11 +29,6 @@ const defaultBehavior = () => {
   }
 };
 
-//Deletes local storage data when browser is closed
-/* window.onbeforeunload = () => {
-  localStorage.removeItem('sessionUserData');
-}; */
-
 //Checks if user is logged in
 if (sessionUserData !== null) {
   switch (page.id) {
@@ -128,3 +123,9 @@ if (sessionUserData !== null) {
 } else {
   window.location.href = '../html/signin.html';
 }
+
+//Deletes local storage data when browser is closed
+/* window.addEventListener('beforeunload', (e) => {
+  e.preventDefault();
+  localStorage.removeItem('sessionUserData');
+}); */

@@ -88,34 +88,6 @@ window.onload = () => {
   disbleUnitFields();
 };
 
-//Async function to load the page
-(async () => {
-  const selectedUnit = await fetchUnitInformation();
-
-  //Load province information
-  loadSelectedUnitProvince(selectedUnit);
-  const province =
-    document.getElementById('province').options[
-      document.getElementById('province').selectedIndex
-    ].id;
-
-  //Load canton information
-  const cantons = await fetchCantons(province);
-  buildSelectOptions(cantons.data, 'canton');
-  loadSelectedUnitCanton(selectedUnit);
-  const canton =
-    document.getElementById('canton').options[
-      document.getElementById('canton').selectedIndex
-    ].id;
-
-  //Load district information
-  const districts = await fetchDistricts(province, canton);
-  buildSelectOptions(districts.data, 'district');
-  loadSelectedUnitDistrict(selectedUnit);
-
-  loadSelectedUnit(selectedUnit);
-})();
-
 //DOM manipulation
 //DOM elements
 const unitId = document.getElementById('unitId');
@@ -223,3 +195,34 @@ unitSaveButton.addEventListener('click', async (event) => {
     errorAlert('Hay campos obligatorios sin llenar.');
   }
 });
+
+//Async function to load the page
+const loadPage = async function () {
+  const selectedUnit = await fetchUnitInformation();
+
+  //Load province information
+  loadSelectedUnitProvince(selectedUnit);
+  const province =
+    document.getElementById('province').options[
+      document.getElementById('province').selectedIndex
+    ].id;
+
+  //Load canton information
+  const cantons = await fetchCantons(province);
+  buildSelectOptions(cantons.data, 'canton');
+  loadSelectedUnitCanton(selectedUnit);
+  const canton =
+    document.getElementById('canton').options[
+      document.getElementById('canton').selectedIndex
+    ].id;
+
+  //Load district information
+  const districts = await fetchDistricts(province, canton);
+  buildSelectOptions(districts.data, 'district');
+  loadSelectedUnitDistrict(selectedUnit);
+
+  loadSelectedUnit(selectedUnit);
+};
+
+//Function calls
+loadPage();
