@@ -20,7 +20,6 @@ const getFormFields = () => {
     phoneNumber: userPhoneNumberInput.value,
     unit: userUnitInput.value,
     profilePicture: 'profile_picture.png',
-    isApproved: false,
   };
   return bodyContent;
 };
@@ -50,7 +49,8 @@ const registerNewUser = async (body) => {
       },
       body: JSON.stringify(body),
     });
-    console.log('user: ', await response.json());
+    const newUser = await response.json();
+    return newUser;
   } catch (error) {
     console.log(error);
   }
@@ -75,17 +75,21 @@ registerUser.addEventListener('click', async (event) => {
   // Validates the fields of the form
   event.preventDefault();
   if (Object.values(validationFields[`signupFormFields`]).every(Boolean)) {
-    await registerNewUser(getFormFields());
-    successAlert(
-      'Registro exitoso',
-      'Su solicitud para crear una cuenta ha sido enviada. En caso de ser aprobada le llegará una contraseña temporal al correo electónico registrado.'
-    );
-    form.reset();
-    const imageDisplaySignup = document.getElementById('imageDisplay');
-    imageDisplaySignup.src = '../images/profile_picture.png';
-    Object.keys(validationFields[`signupFormFields`]).forEach(
-      (attribute) => (validationFields[`signupFormFields`][attribute] = false)
-    );
+    const newUser = await registerNewUser(getFormFields());
+    if (newUser.hasOwnProperty('status')) {
+      errorAlert(newUser.status);
+    } else {
+      successAlert(
+        'Registro exitoso',
+        'Su solicitud para crear una cuenta ha sido enviada. En caso de ser aprobada le llegará una contraseña temporal al correo electónico registrado.'
+      );
+      form.reset();
+      const imageDisplaySignup = document.getElementById('imageDisplay');
+      imageDisplaySignup.src = '../images/profile_picture.png';
+      Object.keys(validationFields[`signupFormFields`]).forEach(
+        (attribute) => (validationFields[`signupFormFields`][attribute] = false)
+      );
+    }
   } else {
     errorAlert('Hay campos obligatorios sin llenar.');
     console.log('error');

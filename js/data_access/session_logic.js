@@ -6,7 +6,6 @@ const logoutTab = document.getElementById('logoutTab');
 
 //User data stored in local storage
 const sessionUserData = JSON.parse(localStorage.getItem('sessionUserData'));
-console.log(sessionUserData);
 
 //Functions
 const changeUserDOBFormat = () => {
@@ -27,10 +26,16 @@ const defaultBehavior = () => {
       settingsTab.addEventListener('click', () => {
         window.location.href = '../html/units.html';
       });
+      requestsTab.addEventListener('click', () => {
+        window.location.href = '../html/asset_registration_requests_list.html';
+      });
       break;
     case 'Jefatura':
       settingsTab.addEventListener('click', () => {
         window.location.href = '../html/users.html';
+      });
+      requestsTab.addEventListener('click', () => {
+        window.location.href = '../html/user_registration_requests_list.html';
       });
       break;
   }

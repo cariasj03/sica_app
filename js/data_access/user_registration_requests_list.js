@@ -1,11 +1,11 @@
 //DOM elements
-const viewEditUser = document.getElementById('viewEditUser');
+const reviewRequestButton = document.getElementById('reviewRequestButton');
 
 //Function to fetch users sorted by name
 const fetchSortedUsers = async (sortValue) => {
   try {
     const users = await fetch(
-      `http://127.0.0.1:8000/users/sort/by-${sortValue}`
+      `http://127.0.0.1:8000/user-requests/sort/by-${sortValue}`
     );
     const usersList = await users.json();
     return usersList;
@@ -18,7 +18,7 @@ const fetchSortedUsers = async (sortValue) => {
 const fetchFilteredUsers = async (unit) => {
   try {
     const users = await fetch(
-      `http://127.0.0.1:8000/users/filter/unit/${unit}`
+      `http://127.0.0.1:8000/user-requests/filter/unit/${unit}`
     );
     const usersList = await users.json();
     return usersList;
@@ -44,7 +44,7 @@ const fetchSortedUnits = async (sortValue) => {
 const fetchSearchedUsers = async (searchValue, type) => {
   try {
     const users = await fetch(
-      `http://127.0.0.1:8000/users/search/by-${type}/${searchValue}`
+      `http://127.0.0.1:8000/user-requests/search/by-${type}/${searchValue}`
     );
     const usersList = await users.json();
     return usersList;
@@ -118,19 +118,9 @@ const getSelectedUserId = () => {
 
 //Function to store the user id in the local storage
 const storeUserId = (userId) => {
-  localStorage.setItem('userId', userId);
-  window.location.href = '../html/user_individual_information.html';
+  localStorage.setItem('userRequestId', userId);
+  window.location.href = '../html/user_registration_request_review.html';
 };
-
-//Event listeners
-viewEditUser.addEventListener('click', () => {
-  const userId = getSelectedUserId();
-  if (userId === undefined || userId === null) {
-    errorAlert('No ha seleccionado un usuario. Seleccione uno para continuar.');
-  } else {
-    storeUserId(userId);
-  }
-});
 
 //////// Pagination ////////
 const pagination = () => {
@@ -365,6 +355,19 @@ const buildPage = async (usersList) => {
   selectRow();
   pagination();
 };
+
+//Event listeners
+reviewRequestButton.addEventListener('click', (event) => {
+  event.preventDefault();
+  const selectedUserId = getSelectedUserId();
+  if (selectedUserId === undefined || selectedUserId === null) {
+    errorAlert(
+      'No ha seleccionado una solicitud. Seleccione una para continuar.'
+    );
+  } else {
+    storeUserId(selectedUserId);
+  }
+});
 
 //Async function to fetch units and build the table
 const buildPageAsync = async function () {

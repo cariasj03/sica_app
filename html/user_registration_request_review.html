@@ -35,7 +35,7 @@
     <nav class="headerNav barNav">
         <a href="../html/index.html">Inicio</a>
         <a href="../html/assets.html"id="assetsTab">Activos</a>
-        <a class="currentTab" href="../html/user_registration_requests_list.html"id="requestsTab">Solicitudes</a>
+        <a class="currentTab" href="#"id="requestsTab">Solicitudes</a>
         <a href="../html/reports.html"id="reportsTab">Reportes</a>
       </nav>
     </div>
@@ -75,10 +75,9 @@
             id="userId"
             name="userId"
             placeholder="Identificación"
-            value="101230456"
             disabled
         ></input>
-        <p class="formInputError" id="userIdError"></p></label>
+    </label>
 
         <label for="userName">Nombre <input 
             class="inputStyle disabled"
@@ -86,10 +85,9 @@
             id="userName" 
             name="userName" 
             placeholder="Nombre" 
-            value="Juan"
             disabled
             />
-        <p class="formInputError" id="userNameError"></p></label>
+        </label>
 
         <label for="userLastName">Apellidos <input 
             class="inputStyle disabled"
@@ -97,10 +95,9 @@
             id="userLastName" 
             name="userLastName" 
             placeholder="Apellidos" 
-            value="Pérez González"
             disabled
             />
-        <p class="formInputError" id="userLastNameError"></p></label>
+        </label>
             
         <label for="userEmail">Correo electrónico registrado <input 
             class="inputStyle disabled"
@@ -108,10 +105,9 @@
             id="userEmail" 
             name="userEmail" 
             placeholder="Correo electrónico registrado" 
-            value="juan.perez@ejemplo.com"
             disabled
             />
-        <p class="formInputError" id="userEmailError"></p></label>
+        </label>
 
         <label for="userPhone">Número de teléfono <input 
             class="inputStyle disabled"
@@ -119,42 +115,37 @@
             id="userPhone" 
             name="userPhone" 
             placeholder="Número de teléfono" 
-            value="8888-8888"
             disabled
             />
-        <p class="formInputError" id="userPhoneError"></p></label>
+        </label>
                             
-        <label for="userRole">Rol por asignar* <input 
-            class="inputStyle disabled"
-            type="text" 
-            id="userRole" 
-            name="userRole" 
-            placeholder="Rol asignado" 
-            value="Encargado de inventario por unidad"
-            disabled
-            />
-        <p class="formInputError" id="userRoleError"></p></label>
+        <label for="userRole">Rol por asignar * 
+            <select id="userRole" class="inputStyle">
+            <option value="" disabled hidden selected>Rol por asignar</option>
+            <option value="Jefatura">Jefatura</option>
+            <option value="Proveeduría">Proveeduría</option>
+            <option value="Encargado de Inventario por Unidad">Encargado de Inventario por Unidad</option>
+          </select>
+          <p class="formInputError" id="userRoleError"></p>
+        </label>
 
-        <label for="userBirthDate">Fecha de nacimiento <input 
+        <label for="userDateOfBirth">Fecha de nacimiento <input 
             class="inputStyle disabled"
             type="text" 
-            id="userBirthDate" 
-            name="userBirthDate" 
+            id="userDateOfBirth" 
+            name="userDateOfBirth" 
             placeholder="Fecha de nacimiento" 
-            value="01/01/2000"
             disabled
             />
-        <p class="formInputError" id="userBirthDateError"></p></label>
+        </label>
 
-        <label for="userUnit" id="userIdLabelUserRegistration">Unidad a la que pertenece <input
-            class="inputStyle disabled"
-            id="userUnit"
-            name="userUnit"
-            placeholder="Unidad a la que pertenece"
-            value="Unidad de Cartago"
-            disabled
-        />
-        <p class="formInputError" id="userUnitError"></p> </label>
+        <label for="userUnit" id="userIdLabelUserRegistration">Unidad a la que pertenece *
+            <select id="userUnit" class="inputStyle">
+            <option value=""disabled hidden>
+              Unidad a la que pertenece
+            </option> 
+            </select>
+            <p class="formInputError" id="userUnitError"></p> </label>
 
         </div>
 
@@ -188,9 +179,10 @@
     <p class="copyrightText">Copyright &copy; 2023 by Beelders.</p>
 </footer>
 
-<script src="../js/dom_manipulation/approve_reject_requests.js"></script>
 <script src="../js/dom_manipulation/sweet_alert.js"></script>
 <script src="../js/dom_manipulation/user_feedback.js"></script>
+<script src="../js/dom_manipulation/form_validation.js"></script>
 <script src="../js/data_access/session_logic.js"></script>
+<script src="../js/data_access/user_registration_request_review.js"></script>
 </body>
 </html>

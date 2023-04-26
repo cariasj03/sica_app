@@ -1,9 +1,9 @@
 //Variables
 //Stores the form of the page the user is in
-const form = document.querySelector('.form');
+const form = document.querySelector('form');
 //Stores all the inputs, textareas and selects inside the form of the page the user is in
 const formInputs = document.querySelectorAll(
-  '.form input, .form textarea, .form select, .form label input, .form label textarea, .form label select'
+  'form input, form textarea, form select, form label input, form label textarea, form label select'
 );
 //Stores all the regular expressions to validate the input fields
 const regExp = {
@@ -84,6 +84,11 @@ const validationFields = {
     assetRequestDescription: false,
     uploadPictureAsset1: false,
     uploadPictureAsset2: false,
+  },
+  // Object for user registration request validation
+  userRegistrationRequestReviewFormFields: {
+    userRole: false,
+    userUnit: true,
   },
   //Object for user info validation
   myProfileFormFields: {
