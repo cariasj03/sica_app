@@ -72,9 +72,9 @@ const validationFields = {
   },
   // Object for asset individual info edit validation
   assetIndividualInformationFormFields: {
-    assetName: true,
-    assetDescription: true,
-    assetLocation: true,
+    name: true,
+    description: true,
+    location: true,
   },
   // Object for asset transfer request validation
   assetTransferRequestValidationFields: {
@@ -284,16 +284,12 @@ const errorModifier = function (elementId, errorActiveClass, status, message) {
     //If the status is true means the field has an error, so the fuction changes the error paragraph content to a message set by a parameter passed to the fuction
     document.getElementById(`${elementId}Error`).innerHTML = message;
     //It also adds a class to the paragraph to make it visible
-    document
-      .getElementById(`${elementId}Error`)
-      .classList.add(errorActiveClass);
+    document.getElementById(`${elementId}Error`).classList.add(errorActiveClass);
     //Depending on the form we're in, sets false to the field of that form that has errors, so that the form is not validated
     validationFields[`${form.id}Fields`][`${elementId}`] = false;
   } else if (!status) {
     //If the status is true means the field is ok, the fuction hides the error paragraph by removing the visible class
-    document
-      .getElementById(`${elementId}Error`)
-      .classList.remove(errorActiveClass);
+    document.getElementById(`${elementId}Error`).classList.remove(errorActiveClass);
     //Depending on the form we're in, sets true to the field of that form that is ok, so that the field for that form is validated
     validationFields[`${form.id}Fields`][`${elementId}`] = true;
   }
