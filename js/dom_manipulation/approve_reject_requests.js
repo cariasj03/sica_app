@@ -2,31 +2,6 @@
 const form = document.querySelector('form');
 
 switch (form.id) {
-  case 'userRegistrationRequestReviewForm':
-    const approveUserRegistrationButton = document.getElementById(
-      'approveUserRegistration'
-    );
-    const rejectUserRegistrationButton = document.getElementById(
-      'rejectUserRegistration'
-    );
-
-    approveUserRegistrationButton.addEventListener('click', function () {
-      infoAlert(
-        'Solicitud de registro de usuario aprobada',
-        'La solicitud de registro del usuario ha sido aprobada.',
-        '../html/user_registration_requests_list.html'
-      );
-    });
-
-    rejectUserRegistrationButton.addEventListener('click', function () {
-      infoAlert(
-        'Solicitud de registro de usuario rechazada',
-        'La solicitud de registro del usuario ha sido rechazada.',
-        '../html/user_registration_requests_list.html'
-      );
-    });
-    break;
-
   case 'assetRegistrationRequestReviewForm':
     const approveAssetRegistrationButton = document.getElementById(
       'approveAssetRegistration'

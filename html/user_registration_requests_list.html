@@ -33,7 +33,7 @@
         <nav class="headerNav barNav">
           <a href="../html/index.html">Inicio</a>
           <a href="../html/assets.html"id="assetsTab">Activos</a>
-          <a class="currentTab" href="../html/user_registration_requests_list.html"id="requestsTab">Solicitudes</a>
+          <a class="currentTab" href="#"id="requestsTab">Solicitudes</a>
           <a href="../html/reports.html"id="reportsTab">Reportes</a>
         </nav>
       </div>
@@ -66,34 +66,30 @@
             <div class="filters">
               <h3>Ordenar por</h3>
 
-              <label for="idRadio"
-                ><input type="radio" id="idRadio" name="sortRadio" value="ID" />
-                Identificación</label
-              >
               <label for="nameRadio"
                 ><input
                   type="radio"
                   id="nameRadio"
                   name="sortRadio"
-                  value="nombre"
+                  value="name"
                 />
                 Nombre</label
+              >
+              <label for="emailRadio"
+                ><input
+                  type="radio"
+                  id="emailRadio"
+                  name="sortRadio"
+                  value="email"
+                />
+                Correo electrónico</label
               >
               <label for="unitRadio"
                 ><input
                   type="radio"
                   id="unitRadio"
                   name="sortRadio"
-                  value="unidad"
-                />
-                Correo electrónico</label
-              >
-              <label for="statusRadio"
-                ><input
-                  type="radio"
-                  id="statusRadio"
-                  name="sortRadio"
-                  value="estado"
+                  value="unit"
                 />
                 Unidad</label
               >
@@ -104,9 +100,6 @@
               <label for="unitSelect"
                 >Unidad<select class="inputStyle" id="unitSelect">
                   <option value="" disabled selected hidden>Unidad</option>
-                  <option value="bodega">Bodega</option>
-                  <option value="cartago">Cartago</option>
-                  <option value="heredia">Heredia</option>
                 </select></label
               >
 
@@ -118,7 +111,7 @@
                 class="inputStyle"
                   type="search"
                   id="idSearch"
-                  name="idSearch"
+                  name="searchInput"
                   placeholder="Identificación"
               /></label>
               <label for="nameSearch"
@@ -126,110 +119,28 @@
                 class="inputStyle"
                   type="search"
                   id="nameSearch"
-                  name="nameSearch"
+                  name="searchInput"
                   placeholder="Nombre"
               /></label>
-              <label for="nameSearch"
+              <label for="emailSearch"
               >Correo electrónico<input
               class="inputStyle"
                 type="search"
-                id="nameSearch"
-                name="nameSearch"
+                id="emailSearch"
+                name="searchInput"
                 placeholder="Correo electrónico"
             /></label>
             </div>
           </div>
 
           <div class="tableContainer">
-            <table class="tables">
+            <table class="tables" id="paginatedTable">
               <tr>
                 <th></th>
                 <th>Identificación</th>
                 <th>Nombre</th>
                 <th>Correo electrónico</th>
                 <th>Unidad</th>
-              </tr>
-
-              <tr class="selectedRow">
-                <td>
-                  <input type="radio" name="tableRadio" />
-                </td>
-                <td>101230456</td>
-                <td>Juan Pérez González</td>
-                <td>juan.perez@proveguard.cr</td>
-                <td>Cartago</td>
-              </tr>
-
-              <tr>
-                <td><input type="radio" name="tableRadio" /></td>
-                <td>206540321</td>
-                <td>María Gómez Rodríguez</td>
-                <td>maria.gomez@proveguard.cr</td>
-                <td>Central</td>
-              </tr>
-
-              <tr>
-                <td><input type="radio" name="tableRadio" /></td>
-                <td>115060213</td>
-                <td>Douglas Calvo Castro</td>
-                <td>douglas.calvo@proveguard.cr</td>
-                <td>Heredia</td>
-              </tr>
-
-              <tr>
-                <td><input type="radio" name="tableRadio" /></td>
-                <td>207430587</td>
-                <td>Andrea González Ramírez</td>
-                <td>andrea.gonzalez@proveguard.cr</td>
-                <td>San José</td>
-              </tr>
-
-              <tr>
-                <td><input type="radio" name="tableRadio" /></td>
-                <td>407800560</td>
-                <td>Ismael Vargas Tenorio</td>
-                <td>ismale.vargas@proveguard.cr</td>
-                <td>San José</td>
-              </tr>
-
-              <tr>
-                <td><input type="radio" name="tableRadio" /></td>
-                <td>108410348</td>
-                <td>Juan José Gutiérrez Jiménez</td>
-                <td>juan.gutierrez@proveguard.cr</td>
-                <td>San José</td>
-              </tr>
-
-              <tr>
-                <td><input type="radio" name="tableRadio" /></td>
-                <td>207440893</td>
-                <td>Teresa Jiménez Valerio</td>
-                <td>teresa.jimenez@proveguard.cr</td>
-                <td>Puntarenas</td>
-              </tr>
-
-              <tr>
-                <td><input type="radio" name="tableRadio" /></td>
-                <td></td>
-                <td></td>
-                <td></td>
-                <td></td>
-              </tr>
-
-              <tr>
-                <td><input type="radio" name="tableRadio" /></td>
-                <td></td>
-                <td></td>
-                <td></td>
-                <td></td>
-              </tr>
-
-              <tr>
-                <td><input type="radio" name="tableRadio" /></td>
-                <td></td>
-                <td></td>
-                <td></td>
-                <td></td>
               </tr>
             </table>
 
@@ -243,26 +154,7 @@
                 &lt;
               </button>
 
-              <div id="paginationNumbers">
-                <a
-                  class="paginationNumber activePage"
-                  page-index="1"
-                  aria-label="Page 1"
-                  >1</a
-                >
-                <a class="paginationNumber" page-index="2" aria-label="Page 2"
-                  >2</a
-                >
-                <a class="paginationNumber" page-index="3" aria-label="Page 3"
-                  >3</a
-                >
-                <a class="paginationNumber" page-index="4" aria-label="Page 4"
-                  >4</a
-                >
-                <a class="paginationNumber" page-index="5" aria-label="Page 5"
-                  >5</a
-                >
-              </div>
+              <div id="paginationNumbers"></div>
 
               <button
                 id="nextButton"
@@ -276,7 +168,7 @@
 
             <div class="buttonContainer">
               <a href="../html/user_registration_request_review.html">
-              <button class="primaryButton">Revisar solicitud</button>
+              <button class="primaryButton" id="reviewRequestButton">Revisar solicitud</button>
             </div>
 
           </div>
@@ -288,6 +180,9 @@
       <p class="copyrightText">Copyright &copy; 2023 by Beelders.</p>
     </footer>
 
-     
-  <script src="../js/data_access/session_logic.js"></script></body>
+    <script src="../js/dom_manipulation/sweet_alert.js"></script>
+    <script src="../js/dom_manipulation/user_feedback.js"></script>
+    <script src="../js/data_access/session_logic.js"></script>
+    <script src="../js/data_access/user_registration_requests_list.js"></script>
+  </body>
 </html>

@@ -34,14 +34,7 @@ const signInSubmit = async () => {
   if (Object.values(validationFields[`${form.id}Fields`]).every(Boolean)) {
     const sessionUserData = await signIn();
     if (sessionUserData.hasOwnProperty('status')) {
-      switch (sessionUserData.status) {
-        case 'User not found':
-          errorAlert('El usuario no se encuentra registrado en el sistema.');
-          break;
-        case 'Wrong password':
-          errorAlert('La contraseña ingresada es incorrecta.');
-          break;
-      }
+      errorAlert(sessionUserData.status);
     } else {
       const sessionUserDataStr = JSON.stringify(sessionUserData);
       localStorage.setItem('sessionUserData', sessionUserDataStr);

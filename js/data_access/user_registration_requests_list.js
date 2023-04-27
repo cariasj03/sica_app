@@ -1,12 +1,27 @@
 //DOM elements
-const viewEditUnit = document.getElementById('viewEditUnit');
+const reviewRequestButton = document.getElementById('reviewRequestButton');
 
-//Function to fetch units
-const fetchUnits = async () => {
+//Function to fetch users sorted by name
+const fetchSortedUsers = async (sortValue) => {
   try {
-    const units = await fetch('http://127.0.0.1:8000/units/sort/by-id');
-    const unitsList = await units.json();
-    return unitsList;
+    const users = await fetch(
+      `http://127.0.0.1:8000/user-requests/sort/by-${sortValue}`
+    );
+    const usersList = await users.json();
+    return usersList;
+  } catch (error) {
+    console.log(error);
+  }
+};
+
+//Function to fetch filtered users
+const fetchFilteredUsers = async (unit) => {
+  try {
+    const users = await fetch(
+      `http://127.0.0.1:8000/user-requests/filter/unit/${unit}`
+    );
+    const usersList = await users.json();
+    return usersList;
   } catch (error) {
     console.log(error);
   }
@@ -25,82 +40,47 @@ const fetchSortedUnits = async (sortValue) => {
   }
 };
 
-//Function to fetch filtered units
-const fetchFilteredUnits = async (provinceFilterValue, cantonFilterValue) => {
+//Function to fetch searched users
+const fetchSearchedUsers = async (searchValue, type) => {
   try {
-    let units;
-    if (cantonFilterValue === null) {
-      units = await fetch(
-        `http://127.0.0.1:8000/units/filter/province/${provinceFilterValue}`
-      );
-    } else {
-      units = await fetch(
-        `http://127.0.0.1:8000/units/filter/province/${provinceFilterValue}/canton/${cantonFilterValue}`
-      );
-    }
-    const unitsList = await units.json();
-    return unitsList;
-  } catch (error) {
-    console.log(error);
-  }
-};
-
-//Function to fetch searched units
-const fetchSearchedUnits = async (searchValue, type) => {
-  try {
-    const units = await fetch(
-      `http://127.0.0.1:8000/units/search/by-${type}/${searchValue}`
+    const users = await fetch(
+      `http://127.0.0.1:8000/user-requests/search/by-${type}/${searchValue}`
     );
-    const unitsList = await units.json();
-    return unitsList;
+    const usersList = await users.json();
+    return usersList;
   } catch (error) {
     console.log(error);
   }
 };
 
-//Function to build the page
-const buildPage = (unitsList) => {
-  buildTableRows(unitsList);
-  selectRow();
-  pagination();
-};
-
-//Function to build the table rows
-const buildTableRows = (unitsList) => {
+//Function to load the users in the table
+const loadUsers = (usersList) => {
   const table = document.querySelector('table');
   table.innerHTML =
-    '<tr><th></th><th>ID</th><th>Nombre</th><th>Fecha de creación</th><th>Provincia</th><th>Cantón</th></tr>';
-
-  unitsList.forEach(function (unit) {
+    '<tr><th></th><th>Identificación</th><th>Nombre</th><th>Correo electrónico</th><th>Unidad</th></tr>';
+  usersList.forEach(function (user) {
     const tableRow = document.createElement('tr');
     const tableRowRadio = document.createElement('td');
 
     tableRowRadio.innerHTML = '<input type="radio" name="tableRadio" />';
 
-    const unitId = document.createElement('td');
-    unitId.innerText = `${unit.id}`;
+    const userID = document.createElement('td');
+    userID.innerText = `${user.id}`;
 
-    const name = document.createElement('td');
-    name.innerText = `${unit.name}`;
+    const userFullName = document.createElement('td');
+    userFullName.innerText = `${user.firstName}` + ' ' + `${user.lastName}`;
 
-    const unitCreationDate = new Date(unit.creationDate);
-    const day = ('0' + (unitCreationDate.getDate() + 1)).slice(-2);
-    const month = ('0' + (unitCreationDate.getMonth() + 1)).slice(-2);
-    const unitDate = document.createElement('td');
-    unitDate.innerText = `${day}/${month}/${unitCreationDate.getFullYear()}`;
+    const userEmail = document.createElement('td');
+    userEmail.innerText = `${user.email}`;
 
-    const unitProvince = document.createElement('td');
-    unitProvince.innerText = `${unit.province}`;
-
-    const unitCanton = document.createElement('td');
-    unitCanton.innerText = `${unit.canton}`;
+    const userUnit = document.createElement('td');
+    userUnit.innerText = `${user.unit}`;
 
     tableRow.appendChild(tableRowRadio);
-    tableRow.appendChild(unitId);
-    tableRow.appendChild(name);
-    tableRow.appendChild(unitDate);
-    tableRow.appendChild(unitProvince);
-    tableRow.appendChild(unitCanton);
+    tableRow.appendChild(userID);
+    tableRow.appendChild(userFullName);
+    tableRow.appendChild(userEmail);
+    tableRow.appendChild(userUnit);
 
     table.appendChild(tableRow);
   });
@@ -109,7 +89,7 @@ const buildTableRows = (unitsList) => {
 //Function to select a row in the table
 const selectRow = () => {
   const tableRadioButtons = document.getElementsByName('tableRadio');
-  let unitId;
+  let userId;
   tableRadioButtons.forEach((radioButton) => {
     const tableRowSelected = radioButton.parentElement.parentElement;
     radioButton.addEventListener('change', () => {
@@ -123,26 +103,26 @@ const selectRow = () => {
   });
 };
 
-//Function to get the selected unit id
-const getSelectedUnitId = () => {
+//Function to get the selected user id
+const getSelectedUserId = () => {
   const tableRadioButtons = document.getElementsByName('tableRadio');
-  let unitId;
+  let userId;
   tableRadioButtons.forEach((radioButton) => {
     const tableRowSelected = radioButton.parentElement.parentElement;
     if (radioButton.checked) {
-      unitId = tableRowSelected.children[1].innerText;
+      userId = tableRowSelected.children[1].innerText;
     }
   });
-  return unitId;
+  return userId;
 };
 
-//Function to store the unit id in the local storage
-const storeUnitId = (unitId) => {
-  localStorage.setItem('unitId', unitId);
-  window.location.href = '../html/unit_individual_information.html';
+//Function to store the user id in the local storage
+const storeUserId = (userId) => {
+  localStorage.setItem('userRequestId', userId);
+  window.location.href = '../html/user_registration_request_review.html';
 };
 
-//Function to handle pagination
+//////// Pagination ////////
 const pagination = () => {
   //DOM elements
   const paginationNumbers = document.getElementById('paginationNumbers');
@@ -170,7 +150,6 @@ const pagination = () => {
 
   //Function to build the pagination numbers
   const buildPaginationNumbers = () => {
-    paginationNumbers.innerHTML = '';
     for (let i = 1; i <= pageCount; i++) {
       appendPageNumber(i);
     }
@@ -262,6 +241,20 @@ const pagination = () => {
   });
 };
 
+//Function to build the options in the units select
+const buildUnitsSelect = (unitsList) => {
+  unitsList.forEach(function (element) {
+    const unitSelect = document.getElementById('unitSelect');
+    const selectOption = document.createElement('option');
+
+    selectOption.id = `${element['id']}`;
+    selectOption.value = `${element['name']}`;
+    selectOption.innerText = `${element['name']}`;
+
+    unitSelect.appendChild(selectOption);
+  });
+};
+
 //Function to clear de sort radio buttons
 const clearSortRadioButtons = () => {
   const sortRadioButtons = document.getElementsByName('sortRadio');
@@ -270,65 +263,57 @@ const clearSortRadioButtons = () => {
   });
 };
 
-//Function sort the units in the table
-const sortUnits = () => {
-  const idRadioButton = document.getElementById('idRadio');
+//Function to clear unit select
+const clearUnitSelect = () => {
+  const unitSelect = document.getElementById('unitSelect');
+  unitSelect.options[0].selected = true;
+};
+
+//Function sort the users in the table
+const sortUsers = () => {
+  const nameRadioButton = document.getElementById('nameRadio');
   const sortRadioButtons = document.getElementsByName('sortRadio');
 
   //Set the default sort radio button
-  idRadioButton.checked = true;
+  nameRadioButton.checked = true;
 
   //Event listeners
   sortRadioButtons.forEach((radioButton) => {
     radioButton.addEventListener('change', async () => {
-      //Clear the province and canton selects
-      clearProvinceSelect();
-      clearCantonSelect();
-
+      clearUnitSelect();
       if (radioButton.checked) {
         const sortValue = radioButton.value;
-        const unitsList = await fetchSortedUnits(sortValue);
-        buildPage(unitsList);
+        const usersList = await fetchSortedUsers(sortValue);
+        buildPage(usersList);
       }
     });
   });
 };
 
-//Function to filter the units in the table
-const filterUnits = () => {
+//Function to filter the users in the table
+const filterUsers = () => {
+  const unitSelect = document.getElementById('unitSelect');
   //Event listeners
-  provinceSelect.addEventListener('change', async () => {
+  unitSelect.addEventListener('change', async () => {
     //Reset the sort radio buttons
     clearSortRadioButtons();
 
-    const provinceFilterValue = provinceSelect.value;
-    const unitsList = await fetchFilteredUnits(provinceFilterValue, null);
-    buildPage(unitsList);
-  });
-
-  cantonSelect.addEventListener('change', async () => {
-    const provinceFilterValue = provinceSelect.value;
-    const cantonFilterValue = cantonSelect.value;
-    const unitsList = await fetchFilteredUnits(
-      provinceFilterValue,
-      cantonFilterValue
-    );
-    buildPage(unitsList);
+    const usersList = await fetchFilteredUsers(unitSelect.value);
+    buildPage(usersList);
   });
 };
 
 //Function to search
-const searchUnit = async (searchInput) => {
-  let unitsList;
+const searchUser = async (searchInput) => {
+  let usersList;
   if (searchInput.value === '') {
-    unitsList = await fetchUnits();
+    usersList = await fetchSortedUsers('name');
   } else {
     //Clear the sort radio buttons
     clearSortRadioButtons();
 
-    //Clear the province and canton selects
-    clearProvinceSelect();
-    clearCantonSelect();
+    //Clear the unit select
+    clearUnitSelect();
 
     const searchValue = searchInput.value;
     let type;
@@ -340,51 +325,61 @@ const searchUnit = async (searchInput) => {
       case 'nameSearch':
         type = 'name';
         break;
+      case 'emailSearch':
+        type = 'email';
+        break;
     }
-    unitsList = await fetchSearchedUnits(searchValue, type);
+    usersList = await fetchSearchedUsers(searchValue, type);
   }
-  buildPage(unitsList);
+  buildPage(usersList);
 };
 
-//Function to search the units in the table
-const searchUnits = () => {
+//Function to search the users in the table
+const searchUsers = () => {
   //DOM elements
-  const idSearchInput = document.getElementById('idSearch');
-  const nameSearchInput = document.getElementById('nameSearch');
+  const searchInputs = document.getElementsByName('searchInput');
 
-  //Event listeners
-  idSearchInput.addEventListener('change', async () => {
-    searchUnit(idSearchInput);
+  searchInputs.forEach((searchInput) => {
+    searchInput.addEventListener('change', async () => {
+      searchUser(searchInput);
+    });
+    searchInput.addEventListener('keyup', async () => {
+      searchUser(searchInput);
+    });
   });
-  idSearchInput.addEventListener('keyup', async () => {
-    searchUnit(idSearchInput);
-  });
+};
 
-  nameSearchInput.addEventListener('change', async () => {
-    searchUnit(nameSearchInput);
-  });
-  nameSearchInput.addEventListener('keyup', async () => {
-    searchUnit(nameSearchInput);
-  });
+//Function to build the page
+const buildPage = async (usersList) => {
+  loadUsers(usersList);
+  selectRow();
+  pagination();
 };
 
 //Event listeners
-viewEditUnit.addEventListener('click', () => {
-  const unitId = getSelectedUnitId();
-  if (unitId === undefined || unitId === null) {
-    errorAlert('No ha seleccionado una unidad. Seleccione una para continuar');
+reviewRequestButton.addEventListener('click', (event) => {
+  event.preventDefault();
+  const selectedUserId = getSelectedUserId();
+  if (selectedUserId === undefined || selectedUserId === null) {
+    errorAlert(
+      'No ha seleccionado una solicitud. Seleccione una para continuar.'
+    );
   } else {
-    storeUnitId(unitId);
+    storeUserId(selectedUserId);
   }
 });
 
 //Async function to fetch units and build the table
 const buildPageAsync = async function () {
-  const unitsList = await fetchUnits();
-  buildPage(unitsList);
-  sortUnits();
-  filterUnits();
-  searchUnits();
+  const unitsList = await fetchSortedUnits('name');
+  buildUnitsSelect(unitsList);
+
+  const usersList = await fetchSortedUsers('name');
+  buildPage(usersList);
+  sortUsers();
+  filterUsers();
+  searchUsers();
+  searchUsers();
 };
 
 //Function calls

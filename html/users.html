@@ -33,11 +33,7 @@
         <nav class="headerNav barNav">
           <a href="../html/index.html">Inicio</a>
           <a href="../html/assets.html" id="assetsTab">Activos</a>
-          <a
-            href="../html/user_registration_requests_list.html"
-            id="requestsTab"
-            >Solicitudes</a
-          >
+          <a href="#" id="requestsTab">Solicitudes</a>
           <a href="../html/reports.html" id="reportsTab">Reportes</a>
         </nav>
       </div>
@@ -74,10 +70,6 @@
             <h2>Filtros</h2>
             <div class="filters">
               <h3>Ordenar por</h3>
-              <label for="idRadio">
-                <input type="radio" id="idRadio" name="sortRadio" value="id" />
-                Identificación
-              </label>
               <label for="nameRadio">
                 <input
                   type="radio"
@@ -108,17 +100,9 @@
               <hr />
 
               <h3>Filtrar por</h3>
-              <label for="province"
-                >Unidad<select class="inputStyle" id="province">
+              <label for="unitSelect"
+                >Unidad<select class="inputStyle" id="unitSelect">
                   <option value="" disabled selected hidden>Unidad</option>
-                  <option value="central">Central</option>
-                  <option value="sanJose">San José</option>
-                  <option value="alajuela">Alajuela</option>
-                  <option value="cartago">Cartago</option>
-                  <option value="heredia">Heredia</option>
-                  <option value="guanacaste">Guanacaste</option>
-                  <option value="puntarenas">Puntarenas</option>
-                  <option value="Limón">Limón</option>
                 </select></label
               >
               <hr />
@@ -129,7 +113,7 @@
                   class="inputStyle"
                   type="search"
                   id="idSearch"
-                  name="idSearch"
+                  name="searchInput"
                   placeholder="Identificación"
               /></label>
               <label for="nameSearch"
@@ -137,7 +121,7 @@
                   class="inputStyle"
                   type="search"
                   id="nameSearch"
-                  name="nameSearch"
+                  name="searchInput"
                   placeholder="Nombre"
               /></label>
               <label for="emailSearch"
@@ -145,7 +129,7 @@
                   class="inputStyle"
                   type="search"
                   id="emailSearch"
-                  name="emailSearch"
+                  name="searchInput"
                   placeholder="Correo electrónico"
               /></label>
             </div>
