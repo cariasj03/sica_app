@@ -64,7 +64,8 @@
     id="assetIndividualInformationForm">
 
         <label for="assetId">ID </label>
-        <input class="inputStyle disabled"
+        <input
+        class="inputStyle"
         type="text"
         id="assetId"
         name="assetId"
@@ -75,54 +76,54 @@
 
         <label for="assetName">Nombre del activo</label>
         <input
-        class="inputStyle disabled"
-        id="assetName"
-        name="assetName" 
+        class="inputStyle"
+        id="name"
+        name="name" 
         type="text"
         >
-        <p class="formInputError" id="assetNameError"></p>
+        <p class="formInputError" id="nameError"></p>
 
         <label for="assetDescription">Descripción del activo</label>
         <textarea
-        class="inputStyle disabled"
-        id="assetDescription"
-        name="assetDescription"
+        class="inputStyle"
+        id="description"
+        name="description"
         type="text"
         rows="4"
         ></textarea>
-        <p class="formInputError" id="assetDescriptionError"></p>
+        <p class="formInputError" id="descriptionError"></p>
 
         <label for="assetUnit">Unidad en la que está ubicado</label>
         <input
-        class="inputStyle disabled"
-        id="assetUnit"
-        name="assetUnit"
+        class="inputStyle"
+        id="unit"
+        name="unit"
         type="text"
         rows="4"
         ></input>
 
         <label for="assetLocation">Ubicación del activo</label>
         <input
-        class="inputStyle disabled"
-        id="assetLocation"
-        name="assetLocation"
+        class="inputStyle"
+        id="location"
+        name="location"
         type="text"
         />
-        <p class="formInputError" id="assetLocationError"></p>
+        <p class="formInputError" id="locationError"></p>
 
         <label for="assetLocation">Código de la ubicación</label>
         <input
-        class="inputStyle disabled"
-        id="assetCodeLocation"
-        name="assetCodeLocation"
+        class="inputStyle"
+        id="locationCode"
+        name="locationCode"
         type="text"
         />
 
         <label for="assetStatus">Estado</label>
         <input 
-        class="inputStyle disabled"
-        id="assetStatus"
-        name="assetStatus"
+        class="inputStyle"
+        id="status"
+        name="status"
         type="text"
         />
 
@@ -162,6 +163,6 @@
 <script src="../js/dom_manipulation/form_validation.js"></script>
 <script src="../js/dom_manipulation/sweet_alert.js"></script>
 <script src="../js/dom_manipulation/user_feedback.js"></script>
-<script src="../js/dom_manipulation/asset_forms_provisional_content.js"></script>
+<script src="../js/data_access/asset_individual_information.js"></script>
 <script src="../js/data_access/session_logic.js"></script></body>
 </html>

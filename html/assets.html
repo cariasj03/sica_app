@@ -159,16 +159,7 @@
           </div>
 
           <div class="tableContainer">
-            <table class="tables">
-              <tr>
-                <th></th>
-                <th>ID</th>
-                <th>Nombre</th>
-                <th>Unidad</th>
-                <th>Código de ubicación</th>
-                <th>Estado</th>
-              </tr>
-            </table>
+            <table id="paginatedTable" class="tables"></table>
 
             <div class="paginationContainer">
               <button
@@ -213,12 +204,14 @@
 
             <div class="buttonContainer">
               <a href="../html/asset_individual_information.html">
-                <button type="button" class="primaryButton">
+                <button type="button" class="primaryButton" id="viewEditAsset">
                   Ver o editar activo
                 </button>
               </a>
               <a href="../html/asset_transfer_request.html"
-                ><button type="button" class="primaryButton">Trasladar</button>
+                ><button type="button" class="primaryButton" id="transferAsset">
+                  Trasladar
+                </button>
               </a>
             </div>
           </div>
@@ -231,6 +224,7 @@
     </footer>
 
     <script src="../js/data_access/assets.js"></script>
+    <script src="../js/data_access/asset_individual_information.js"></script>
     <script src="../js/data_access/session_logic.js"></script>
   </body>
 </html>
