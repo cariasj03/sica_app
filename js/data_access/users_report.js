@@ -13,11 +13,50 @@ const fetchSortedUsers = async (sortValue) => {
   }
 };
 
+//Function to fetch sorted units
+const fetchSortedUnits = async (sortValue) => {
+  try {
+    const units = await fetch(
+      `http://127.0.0.1:8000/units/sort/by-${sortValue}`
+    );
+    const unitsList = await units.json();
+    return unitsList;
+  } catch (error) {
+    console.log(error);
+  }
+};
+
+//Function to fetch users sorted by roles
+const fetchSortedRoles = async (sortValue) => {
+  try {
+    const roles = await fetch(
+      `http://127.0.0.1:8000/users/sort/by-${sortValue}`
+    );
+    const rolesList = await roles.json();
+    return rolesList;
+  } catch (error) {
+    console.log(error);
+  }
+};
+
 //Function to fetch filtered users
 const fetchFilteredUsers = async (unit) => {
   try {
     const users = await fetch(
       `http://127.0.0.1:8000/users/filter/unit/${unit}`
+    );
+    const usersList = await users.json();
+    return usersList;
+  } catch (error) {
+    console.log(error);
+  }
+};
+
+//Function to fetch filtered users
+const fetchFilteredRole = async (role) => {
+  try {
+    const users = await fetch(
+      `http://127.0.0.1:8000/users/filter/role/${role}`
     );
     const usersList = await users.json();
     return usersList;
@@ -101,24 +140,24 @@ const selectRow = () => {
   });
 };
 
-//Function to get the selected user id
-const getSelectedUserId = () => {
-  const tableRadioButtons = document.getElementsByName("tableRadio");
-  let userId;
-  tableRadioButtons.forEach((radioButton) => {
-    const tableRowSelected = radioButton.parentElement.parentElement;
-    if (radioButton.checked) {
-      userId = tableRowSelected.children[1].innerText;
-    }
-  });
-  return userId;
-};
+// //Function to get the selected user id
+// const getSelectedUserId = () => {
+//   const tableRadioButtons = document.getElementsByName("tableRadio");
+//   let userId;
+//   tableRadioButtons.forEach((radioButton) => {
+//     const tableRowSelected = radioButton.parentElement.parentElement;
+//     if (radioButton.checked) {
+//       userId = tableRowSelected.children[1].innerText;
+//     }
+//   });
+//   return userId;
+// };
 
-//Function to store the user id in the local storage
-const storeUserId = (userId) => {
-  localStorage.setItem("userId", userId);
-  window.location.href = "../html/user_individual_information.html";
-};
+// //Function to store the user id in the local storage
+// const storeUserId = (userId) => {
+//   localStorage.setItem("userId", userId);
+//   window.location.href = "../html/user_individual_information.html";
+// };
 
 
 //////// Pagination ////////
@@ -254,6 +293,24 @@ const buildUnitsSelect = (unitsList) => {
   });
 };
 
+//Function to build the options in the roles select
+const buildRoleSelect = (rolesList) => {
+  const uniqueRoles = new Set();
+  const roleSelect = document.getElementById('roleSelect');
+
+  rolesList.forEach(function (element) {
+    if (!uniqueRoles.has(element.role)) {
+      uniqueRoles.add(element.role);
+
+      const selectOption = document.createElement('option');
+      selectOption.id = `${element.id}`;
+      selectOption.value = `${element.role}`;
+      selectOption.innerText = `${element.role}`;
+      roleSelect.appendChild(selectOption);
+    }
+  });
+};
+
 //Function to clear de sort radio buttons
 const clearSortRadioButtons = () => {
   const sortRadioButtons = document.getElementsByName("sortRadio");
@@ -268,25 +325,22 @@ const clearUnitSelect = () => {
   unitSelect.options[0].selected = true;
 };
 
-// Function to clear the status select
-const clearStatusSelect = () => {
-  const statusSelect = document.getElementById("statusSelect");
-  statusSelect.options[0].selected = true;
+//Function to clear role select
+const clearRoleSelect = () => {
+  const roleSelect = document.getElementById('roleSelect');
+  roleSelect.options[0].selected = true;
 };
+
+
 
 //Function sort the users in the table
 const sortUsers = () => {
-  const nameRadioButton = document.getElementById("nameUserUser");
   const sortRadioButtons = document.getElementsByName("sortRadio");
-
-  //Set the default sort radio button
-  nameRadioButton.checked = true;
 
   //Event listeners
   sortRadioButtons.forEach((radioButton) => {
-    radioButton.addEventListener("change", async () => {
-      clearUnitSelect();
-      clearStatusSelect();
+    radioButton.addEventListener('change', async () => {
+      // clearUnitSelect();
       if (radioButton.checked) {
         const sortValue = radioButton.value;
         const usersList = await fetchSortedUsers(sortValue);
@@ -296,9 +350,12 @@ const sortUsers = () => {
   });
 };
 
+
+
 //Function to filter the users in the table
 const filterUsers = () => {
   const unitSelect = document.getElementById("unitSelect");
+  
   //Event listeners
   unitSelect.addEventListener("change", async () => {
     //Reset the sort radio buttons
@@ -307,7 +364,20 @@ const filterUsers = () => {
     const usersList = await fetchFilteredUsers(unitSelect.value);
     buildPage(usersList);
   });
+
+  const roleSelect = document.getElementById("roleSelect");
+  //Event listeners
+  roleSelect.addEventListener("change", async () => {
+    //Reset the sort radio buttons
+    clearSortRadioButtons();
+
+    const usersRoleList = await fetchFilteredRole(roleSelect.value);
+    buildPage(usersRoleList);
+  });
+
 };
+
+
 
 //Function to search
 const searchUser = async (searchInput) => {
@@ -318,9 +388,6 @@ const searchUser = async (searchInput) => {
     //Clear the sort radio buttons
     clearSortRadioButtons();
 
-    //Clear the unit select
-    clearUnitSelect();
-
     const searchValue = searchInput.value;
     let type;
 
@@ -330,9 +397,6 @@ const searchUser = async (searchInput) => {
         break;
       case "nameSearch":
         type = "name";
-        break;
-      case "emailSearch":
-        type = "email";
         break;
     }
     usersList = await fetchSearchedUsers(searchValue, type);
@@ -364,8 +428,15 @@ const buildPage = async (usersList) => {
 
 //Async function to fetch units and build the table
 const buildPageAsync = async function () {
-  const usersList = await fetchSortedUsers("name");
+  const unitsList = await fetchSortedUnits('name');
+  buildUnitsSelect(unitsList);
+
+  const rolesList = await fetchSortedRoles('name');
+  buildRoleSelect(rolesList);
+
+  const usersList = await fetchSortedUsers('name');
   buildPage(usersList);
+  
   sortUsers();
   filterUsers();
   searchUsers();

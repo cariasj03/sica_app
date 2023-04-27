@@ -88,24 +88,24 @@
             <div class="filters">
               <h3>Ordenar por</h3>
 
-              <label for="IDUserRadio"
+              <label for="idRadio"
                 ><input
                   type="radio"
                   id="IDUserRadio"
                   name="sortRadio"
-                  value="IDUser"
+                  value="id"
                 />
                 Identificación</label
               >
-              <label for="nameUserRadio"
-                ><input
+              <label for="nameRadio">
+                <input
                   type="radio"
-                  id="nameUserUser"
+                  id="nameRadio"
                   name="sortRadio"
-                  value="nameUser"
+                  value="name"
                 />
-                Nombre completo</label
-              >
+                Nombre Completo
+              </label>
               <label for="unitRadio"
                 ><input
                   type="radio"
@@ -128,42 +128,33 @@
               <hr />
 
               <h3>Filtrar por</h3>
-              <label for="unitSelect"
-                >Unidad<select class="inputStyle" id="unitSelect">
-                  <option value="" disabled selected hidden>Unidad</option>
-                  <option value="central">Central</option>
-                  <option value="heredia">Heredia</option>
-                  <option value="cartago">Cartago</option>
-                </select></label
-              >
-              <label for="statusSelect"
-                >Rol<select class="inputStyle" id="statusSelect">
+              <label for="unitSelect">Unidad<select class="inputStyle" id="unitSelect">
+                <option value="" disabled selected hidden>Unidad</option>
+              </select></label>
+
+              <label for="roleSelect"
+                >Rol<select class="inputStyle" id="roleSelect">
                   <option value="" disabled selected hidden>Rol</option>
-                  <option value="jefatura">Jefatura</option>
-                  <option value="proveeduria">Proveeduría</option>
-                  <option value="encargado">
-                    Encargado de inventario por unidad
-                  </option>
                 </select></label
               >
 
               <hr />
 
               <h3>Buscar por</h3>
-              <label for="IDUserSearch"
+              <label for="idSearch"
                 >Identificación<input
                   class="inputStyle"
                   type="search"
-                  id="IDUserSearch"
-                  name="IDUserSearch"
+                  id="idSearch"
+                  name="searchInput"
                   placeholder="ID"
               /></label>
-              <label for="nameUserSearch"
+              <label for="nameSearch"
                 >Nombre<input
                   class="inputStyle"
                   type="search"
-                  id="nameUserSearch"
-                  name="nameUserSearch"
+                  id="nameSearch"
+                  name="searchInput"
                   placeholder="Nombre"
               /></label>
             </div>
