@@ -105,7 +105,6 @@ const validationFields = {
 const validateForm = function (event) {
   const elementId = event.target.id; //Stores the input or element ID that triggered the event
   const elementValue = event.target.value; //Stores the input or element value
-  const errorActiveClass = 'formInputErrorActive'; //Stores the class that has to be added for the error message to show up
 
   /* console.log(validationFields[`${form.id}Fields`]); */
 
@@ -129,65 +128,56 @@ const validateForm = function (event) {
     case 'assetTargetLocation':
     case 'assetTransferReason':
     case 'assetRequestDescription':
-      validateEmptyField(elementId, elementValue, errorActiveClass);
+      validateEmptyField(elementId, elementValue);
       break;
     //Validates the user inputs a valid email
     case 'signinEmail':
-      validateEmailField(elementId, elementValue, errorActiveClass);
+      validateEmailField(elementId, elementValue);
       break;
     //Validates if the input is empty and if not, validates that the field only contains letters
     case 'userFirstName':
     case 'userLastName':
     case 'name':
-      validateEmptyField(elementId, elementValue, errorActiveClass);
-      if (!validateEmptyField(elementId, elementValue, errorActiveClass)) {
-        validateLettersField(elementId, elementValue, errorActiveClass);
+      validateEmptyField(elementId, elementValue);
+      if (!validateEmptyField(elementId, elementValue)) {
+        validateLettersField(elementId, elementValue);
       }
       break;
     //Validates if the input is empty and if not, validates that the field only contains numbers
     case 'userId':
     case 'userPhoneNumber':
-      validateEmptyField(elementId, elementValue, errorActiveClass);
-      if (!validateEmptyField(elementId, elementValue, errorActiveClass)) {
-        validateNumbersField(elementId, elementValue, errorActiveClass);
+      validateEmptyField(elementId, elementValue);
+      if (!validateEmptyField(elementId, elementValue)) {
+        validateNumbersField(elementId, elementValue);
       }
       break;
     //Validates if the input is empty and if not, validates that the field contains a valid email
     case 'userEmail':
-      validateEmptyField(elementId, elementValue, errorActiveClass);
-      if (!validateEmptyField(elementId, elementValue, errorActiveClass)) {
-        validateEmailField(elementId, elementValue, errorActiveClass);
+      validateEmptyField(elementId, elementValue);
+      if (!validateEmptyField(elementId, elementValue)) {
+        validateEmailField(elementId, elementValue);
       }
       break;
     //Validates if the user uploaded a picture when required
     case 'userProfilePicture':
     case 'uploadPictureAsset1':
     case 'uploadPictureAsset2':
-      validateFileField(elementId, elementValue, errorActiveClass);
+      validateFileField(elementId, elementValue);
       break;
   }
 };
 
 //Validation fuction for all fields, validates if the field is empty or not
-const validateEmptyField = function (
-  elementId,
-  elementValue,
-  errorActiveClass
-) {
+const validateEmptyField = function (elementId, elementValue) {
   //Compares the regular expression "empty" to see if the value of the input has at least 1 character (doesn't matter which)
   if (!regExp.empty.test(elementValue)) {
     //If the field does not have any characters in its value, calls the fuction that changes the error paragraph to visible and displays the error message we want.
-    errorModifier(
-      elementId,
-      errorActiveClass,
-      true,
-      'Este es un campo obligatorio.'
-    );
+    errorModifier(elementId, true, 'Este es un campo obligatorio.');
     //Returns true if the input is empty
     return true;
   } else {
     //If the field is not empty, calls the fuction that changes the error paragraph to not visible
-    errorModifier(elementId, errorActiveClass, false, '');
+    errorModifier(elementId, false, '');
     //Returns false if the input is not empty
     return false;
   }
@@ -195,90 +185,69 @@ const validateEmptyField = function (
 
 //Validation fuction for only letters and spaces fields
 //Validates a field has only letters and spaces
-const validateLettersField = function (
-  elementId,
-  elementValue,
-  errorActiveClass
-) {
+const validateLettersField = function (elementId, elementValue) {
   //Compares the regular expression "letters" to see if the value of the input has only letters and spaces
   if (!regExp.letters.test(elementValue)) {
     //If the input value has a character that is not a letter or a space, calls the function that displays the error message
     errorModifier(
       elementId,
-      errorActiveClass,
       true,
       'Este campo solo puede contener letras y espacios.'
     );
   } else {
     //If not, calls the fuctions that hides the error message.
-    errorModifier(elementId, errorActiveClass, false, '');
+    errorModifier(elementId, false, '');
   }
 };
 
 //Validation fuction for only numbers fields
 //Validates a field has only numbers
-const validateNumbersField = function (
-  elementId,
-  elementValue,
-  errorActiveClass
-) {
+const validateNumbersField = function (elementId, elementValue) {
   //Compares the regular expression "numbers" to see if the value of the input has only numbers
   if (!regExp.numbers.test(elementValue)) {
     //If the input value has a character that is not a number, calls the function that displays the error message
     errorModifier(
       elementId,
-      errorActiveClass,
       true,
       'Este campo solo puede contener números sin espacios.'
     );
   } else {
     //If not, calls the fuctions that hides the error message.
-    errorModifier(elementId, errorActiveClass, false, '');
+    errorModifier(elementId, false, '');
   }
 };
 
 //Validation fuction for email fields
 //Validates a field has a valid email
-const validateEmailField = function (
-  elementId,
-  elementValue,
-  errorActiveClass
-) {
+const validateEmailField = function (elementId, elementValue) {
   //Compares the regular expression "email" to see if the value of the input has a valid email
   if (!regExp.email.test(elementValue)) {
     //If the input value does not caontain a valid email, calls the function that displays the error message
-    errorModifier(
-      elementId,
-      errorActiveClass,
-      true,
-      'Ingrese un correo electrónico válido.'
-    );
+    errorModifier(elementId, true, 'Ingrese un correo electrónico válido.');
   } else {
     //If it does, calls the fuctions that hides the error message
-    errorModifier(elementId, errorActiveClass, false, '');
+    errorModifier(elementId, false, '');
   }
 };
 
 //Validation fuction for file fields
 //Validates if the user has uploades a file into the input field
-const validateFileField = function (elementId, elementValue, errorActiveClass) {
+const validateFileField = function (elementId) {
+  const imageSrc = imageDisplay.src;
   //Checks if the file of the input field has a length greater than 0
-  if (document.getElementById(elementId).files.length === 0) {
+  if (imageSrc.includes('profile_picture.png')) {
     //If the file does not have a length > 0, calls the fuction that displays the error message
-    errorModifier(
-      elementId,
-      errorActiveClass,
-      true,
-      'No ha subido ningún archivo.'
-    );
+    errorModifier(elementId, true, 'No ha subido ningún archivo.');
   } else {
     //If it does, calls the fuctions that hides the error message
-    errorModifier(elementId, errorActiveClass, false, '');
+    errorModifier(elementId, false, '');
   }
 };
 
 //Fuction that shows or hides error paragraph and sets its content
-const errorModifier = function (elementId, errorActiveClass, status, message) {
+const errorModifier = function (elementId, status, message) {
+  const errorActiveClass = 'formInputErrorActive'; //Stores the class that has to be added for the error message to show up
+
   //The status parameter is received as a true or false value, true shows the message, and false hides it
   if (status) {
     //If the status is true means the field has an error, so the fuction changes the error paragraph content to a message set by a parameter passed to the fuction
@@ -316,19 +285,6 @@ const submitBtn = function () {
       }
       break;
 
-    case 'signinForm':
-      if (Object.values(validationFields[`${form.id}Fields`]).every(Boolean)) {
-        form.reset();
-        Object.keys(validationFields[`${form.id}Fields`]).forEach(
-          (attribute) =>
-            (validationFields[`${form.id}Fields`][attribute] = false)
-        );
-        window.location.href = '../html/index.html';
-      } else {
-        errorAlert('Debe ingresar su correo y contraseña para iniciar sesión.');
-      }
-      break;
-
     case 'assetIndividualInformationForm':
       if (Object.values(validationFields[`${form.id}Fields`]).every(Boolean)) {
         successAlert('La edición de la información del activo fue exitosa.');
@@ -355,48 +311,8 @@ const submitBtn = function () {
         errorAlert('Hay campos obligatorios sin llenar.');
       }
       break;
-
-    case 'userInfoForm':
-      if (Object.values(validationFields[`${form.id}Fields`]).every(Boolean)) {
-        successAlert(
-          'La información se guardó con éxito',
-          'La actualización de la información del usuario se ha realizado exitosamente.'
-        );
-      } else {
-        errorAlert('Hay campos obligatorios sin llenar.');
-      }
-      break;
-
-    case 'myProfileForm':
-      if (Object.values(validationFields[`${form.id}Fields`]).every(Boolean)) {
-        successAlert(
-          'La información se guardó con éxito',
-          'La actualización de su información se ha realizado exitosamente.'
-        );
-      } else {
-        errorAlert('Hay campos obligatorios sin llenar.');
-      }
-      break;
   }
 };
-
-/* const submitButton = document.getElementById('submit');
-const submit = function () {
-  submitButton.addEventListener('click', () => {
-    if (Object.values(validationFields[`${form.id}Fields`]).every(Boolean)) {
-      successAlert(
-        'Registro exitoso',
-        'El activo ha sido registrado con éxito.'
-      );
-      form.reset();
-      Object.keys(validationFields[`${form.id}Fields`]).forEach(
-        (attribute) => (validationFields[`${form.id}Fields`][attribute] = false)
-      );
-    } else {
-      errorAlert('Hay campos obligatorios sin llenar.');
-    }
-  });
-}; */
 
 const validation = function () {
   formInputs.forEach(function (input) {
@@ -404,6 +320,23 @@ const validation = function () {
     input.addEventListener('keyup', validateForm);
     input.addEventListener('click', validateForm);
   });
+
+  if (form.id === 'signupForm') {
+    uploadPictureButton.addEventListener('click', (e) => {
+      e.preventDefault();
+      validateFileField(uploadPictureButton.id);
+    });
+
+    const observer = new MutationObserver((changes) => {
+      changes.forEach((change) => {
+        if (change.attributeName.includes('src')) {
+          validateFileField(uploadPictureButton.id);
+        }
+      });
+    });
+
+    observer.observe(imageDisplay, { attributes: true });
+  }
 };
 
 //Function calls

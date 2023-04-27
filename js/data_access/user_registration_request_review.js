@@ -94,6 +94,7 @@ const loadSelectedUser = (selectedUser) => {
     const phoneNumber = document.getElementById('userPhone');
     const userDOB = document.getElementById('userDateOfBirth');
     const userUnit = document.getElementById('userUnit');
+    const userProfilePicture = document.getElementById('profileImageDisplay');
 
     idInput.value = selectedUser.id;
     firstnameInput.value = selectedUser.firstName;
@@ -102,6 +103,7 @@ const loadSelectedUser = (selectedUser) => {
     phoneNumber.value = selectedUser.phoneNumber;
     userDOB.value = selectedUser.dateOfBirth;
     userUnit.value = selectedUser.unit;
+    userProfilePicture.src = selectedUser.profilePicture;
   } catch (error) {
     console.log(error);
   }

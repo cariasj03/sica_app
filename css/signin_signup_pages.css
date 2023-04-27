@@ -67,12 +67,6 @@
   border-radius: 50%;
 }
 
-#userProfilePicture {
-  height: 38px;
-  align-self: center;
-  display: none;
-}
-
 .imageDisplayInput {
   display: flex;
   align-items: center;
@@ -81,7 +75,7 @@
 
 #userProfilePictureError {
   align-self: center;
-  justify-self: center;
+  justify-self: start;
 }
 
 #submit {
