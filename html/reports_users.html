@@ -170,128 +170,29 @@
           </div>
 
           <div class="tableContainer">
-            <table class="tables">
-              <tr>
-                <th>Identificación</th>
-                <th>Nombre completo</th>
-                <th>Correo electrónico</th>
-                <th>Teléfono</th>
-                <th>Unidad</th>
-                <th>Rol</th>
-                <th>Fecha de creación</th>
-                <th>Aprobado por</th>
-              </tr>
+            <table class="tables" id="paginatedTable"></table>
 
-              <tr>
-                <td>705390185</td>
-                <td>Jeff Brown</td>
-                <td>jbrown@sica.co.cr</td>
-                <td>75829635</td>
-                <td>Central</td>
-                <td>Jefatura</td>
-                <td>25/02/1989</td>
-                <td>705390185</td>
-              </tr>
+            <div class="paginationContainer">
+              <button
+                id="prevButton"
+                class="paginationButton"
+                title="Anterior"
+                aria-label="Anterior"
+              >
+                &lt;
+              </button>
 
-              <tr>
-                <td>103580645</td>
-                <td>Mónica Gómez</td>
-                <td>mgomez@sica.co.cr</td>
-                <td>85369254</td>
-                <td>Central</td>
-                <td>Proveeduría</td>
-                <td>26/06/1995</td>
-                <td>705390185</td>
-              </tr>
+              <div id="paginationNumbers"></div>
 
-              <tr>
-                <td>405890654</td>
-                <td>Hazel Porras</td>
-                <td>hporras@sica.co.cr</td>
-                <td>69582415</td>
-                <td>Cartago</td>
-                <td>Encargado de inventario por unidad</td>
-                <td>03/03/1992</td>
-                <td>705390185</td>
-              </tr>
-
-              <tr>
-                <td>605890365</td>
-                <td>Phillips Morales</td>
-                <td>pmorales@sica.co.cr</td>
-                <td>89653245</td>
-                <td>Cartago</td>
-                <td>Encargado de inventario por unidad</td>
-                <td>03/07/1980</td>
-                <td>705390185</td>
-              </tr>
-
-              <tr>
-                <td>105360875</td>
-                <td>Malen Montesillo</td>
-                <td>mmontesillo@sica.co.cr</td>
-                <td>84593625</td>
-                <td>Central</td>
-                <td>Proveeduría</td>
-                <td>27/03/1999</td>
-                <td>705390185</td>
-              </tr>
-
-              <tr>
-                <td>308590654</td>
-                <td>Hazel Juárez</td>
-                <td>hjuarez@sica.co.cr</td>
-                <td>86259487</td>
-                <td>Heredia</td>
-                <td>Encargado de inventario por unidad</td>
-                <td>03/10/1997</td>
-                <td>705390185</td>
-              </tr>
-
-              <tr>
-                <td>405890654</td>
-                <td>Erick Quiñones</td>
-                <td>equinones@sica.co.cr</td>
-                <td>83456985</td>
-                <td>Heredia</td>
-                <td>Encargado de inventario por unidad</td>
-                <td>05/05/1987</td>
-                <td>705390185</td>
-              </tr>
-
-              <tr>
-                <td>505401251</td>
-                <td>Juan Aguilera</td>
-                <td>jaguilera@sica.co.cr</td>
-                <td>84209865</td>
-                <td>Central</td>
-                <td>Jefatura</td>
-                <td>25/03/1991</td>
-                <td>705390185</td>
-              </tr>
-
-              <tr>
-                <td></td>
-                <td></td>
-                <td></td>
-                <td></td>
-                <td></td>
-                <td></td>
-                <td></td>
-                <td></td>
-              </tr>
-
-              <tr>
-                <td></td>
-                <td></td>
-                <td></td>
-                <td></td>
-                <td></td>
-                <td></td>
-                <td></td>
-                <td></td>
-              </tr>
-            </table>
+              <button
+                id="nextButton"
+                class="paginationButton"
+                title="Siguiente"
+                aria-label="Siguiente"
+              >
+                &gt;
+              </button>
+            </div>
           </div>
         </div>
       </div>
@@ -300,6 +201,7 @@
     <footer class="footer">
       <p class="copyrightText">Copyright &copy; 2023 by Beelders.</p>
     </footer>
+    <script src="../js/data_access/users_report.js"></script>
     <script src="../js/data_access/session_logic.js"></script>
   </body>
 </html>
