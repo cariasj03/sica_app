@@ -294,15 +294,15 @@ const sortAssets = () => {
 
 
 //Function to filter the users in the table
-const filterUsers = () => {
+const filterAssets= () => {
     const unitSelect = document.getElementById('unitSelect');
     //Event listeners
-    unitSelect.addEventListener('change', async () => {
+    assetSelect.addEventListener('change', async () => {
       //Reset the sort radio buttons
       clearSortRadioButtons();
   
-      const usersList = await fetchFilteredUsers(unitSelect.value);
-      buildPage(usersList);
+      const assetsList = await fetchFilteredAssets(unitSelect.value);
+      buildPage(assetsList);
     });
   };
 
@@ -382,7 +382,7 @@ const buildPageAsync = async function () {
   buildPage(assetsList);
   sortAssets();
   filterAssets();
-  searchAssets();
+  searchAsset();
   searchAssets();
 };
 
