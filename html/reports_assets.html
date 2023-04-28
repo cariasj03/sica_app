@@ -84,7 +84,7 @@
               <h3>Ordenar por</h3>
 
               <label for="idRadio"
-                ><input type="radio" id="idRadio" name="sortRadio" value="ID" />
+                ><input type="radio" id="idRadio" name="sortRadio" value="id" />
                 ID</label
               >
               <label for="nameRadio"
@@ -92,7 +92,7 @@
                   type="radio"
                   id="nameRadio"
                   name="sortRadio"
-                  value="nombre"
+                  value="name"
                 />
                 Nombre</label
               >
@@ -101,7 +101,7 @@
                   type="radio"
                   id="unitRadio"
                   name="sortRadio"
-                  value="unidad"
+                  value="unit"
                 />
                 Unidad</label
               >
@@ -110,32 +110,16 @@
                   type="radio"
                   id="statusRadio"
                   name="sortRadio"
-                  value="estado"
+                  value="status"
                 />
                 Estado</label
               >
-
               <hr />
 
               <h3>Filtrar por</h3>
-              <label for="unitSelect"
-                >Unidad<select class="inputStyle" id="unitSelect">
-                  <option value="" disabled selected hidden>Unidad</option>
-                  <option value="bodega">Bodega</option>
-                  <option value="cartago">Cartago</option>
-                  <option value="heredia">Heredia</option>
-                </select></label
-              >
-              <label for="statusSelect"
-                >Estado<select class="inputStyle" id="statusSelect">
-                  <option value="" disabled selected hidden>Estado</option>
-                  <option value="activo">Activo</option>
-                  <option value="desuso">Desuso</option>
-                  <option value="danado">Dañado</option>
-                </select></label
-              >
-
-              <hr />
+              <label for="unitSelect">Unidad<select class="inputStyle" id="unitSelect">
+                <option value="" disabled selected hidden>Unidad</option>
+              </select></label>
 
               <h3>Buscar por</h3>
               <label for="idSearch"
@@ -143,7 +127,7 @@
                   class="inputStyle"
                   type="search"
                   id="idSearch"
-                  name="idSearch"
+                  name="searchInput"
                   placeholder="ID"
               /></label>
               <label for="nameSearch"
@@ -151,27 +135,36 @@
                   class="inputStyle"
                   type="search"
                   id="nameSearch"
-                  name="nameSearch"
+                  name="searchInput"
                   placeholder="Nombre"
               /></label>
             </div>
           </div>
 
-          <div id="reportAssets" class="tableContainer">
-            <table id="assetTable" class="tables">
-              <thead>
-                <tr>
-                  <th>ID</th>
-                  <th>Nombre</th>
-                  <th>Unidad</th>
-                  <th>Código de ubicación</th>
-                  <th>Estado</th>
-                  <th>Fecha de creación</th>
-                  <th>Aprobado por</th>
-                </tr>
-              </thead>
-              <tbody></tbody>
-            </table>
+          <div class="tableContainer">
+            <table class="tables" id="paginatedTable"></table>
+
+            <div class="paginationContainer">
+              <button
+                id="prevButton"
+                class="paginationButton"
+                title="Anterior"
+                aria-label="Anterior"
+              >
+                &lt;
+              </button>
+
+              <div id="paginationNumbers"></div>
+
+              <button
+                id="nextButton"
+                class="paginationButton"
+                title="Siguiente"
+                aria-label="Siguiente"
+              >
+                &gt;
+              </button>
+            </div>
           </div>
         </div>
       </div>
@@ -180,6 +173,7 @@
     <footer class="footer">
       <p class="copyrightText">Copyright &copy; 2023 by Beelders.</p>
     </footer>
+    <script src="../js/data_access/assets_reports.js"></script>
     <script src="../js/data_access/session_logic.js"></script>
   </body>
 </html>

@@ -19,8 +19,8 @@ const fetchSortedUnits = async (sortValue) => {
     const units = await fetch(
       `http://127.0.0.1:8000/units/sort/by-${sortValue}`
     );
-    const unitsList = await units.json();
-    return unitsList;
+    const unList = await units.json();
+    return unList;
   } catch (error) {
     console.log(error);
   }
@@ -39,14 +39,16 @@ const fetchSortedRoles = async (sortValue) => {
   }
 };
 
+
 //Function to fetch filtered users
-const fetchFilteredUsers = async (unit) => {
+const fetchFilteredUnit = async (unit) => {
   try {
-    const users = await fetch(
+    console.log(unit)
+    const units = await fetch(
       `http://127.0.0.1:8000/users/filter/unit/${unit}`
     );
-    const usersList = await users.json();
-    return usersList;
+    const unitList = await units.json();
+    return unitList;
   } catch (error) {
     console.log(error);
   }
@@ -104,8 +106,11 @@ const loadUsers = (usersList) => {
     const userRole = document.createElement("td");
     userRole.innerText = `${user.role}`;
 
-    const userCreationDate = document.createElement("td");
-    userCreationDate.innerText = `${user.creationDate}`;
+    const userCreationDate = new Date(user.creationDate);
+    const day = ('0' + (userCreationDate.getDate() + 1)).slice(-2);
+    const month = ('0' + (userCreationDate.getMonth() + 1)).slice(-2);
+    const userDate = document.createElement('td');
+    userDate.innerText = `${day}/${month}/${userCreationDate.getFullYear()}`;
 
     const userApprovedBy = document.createElement("td");
     userApprovedBy.innerText = `${user.approvedBy}`;
@@ -116,48 +121,12 @@ const loadUsers = (usersList) => {
     tableRow.appendChild(userPhone);
     tableRow.appendChild(userUnit);
     tableRow.appendChild(userRole);
-    tableRow.appendChild(userCreationDate);
+    tableRow.appendChild(userDate);
     tableRow.appendChild(userApprovedBy);
 
     table.appendChild(tableRow);
   });
 };
-
-//Function to select a row in the table
-const selectRow = () => {
-  const tableRadioButtons = document.getElementsByName("tableRadio");
-  let userId;
-  tableRadioButtons.forEach((radioButton) => {
-    const tableRowSelected = radioButton.parentElement.parentElement;
-    radioButton.addEventListener("change", () => {
-      tableRadioButtons.forEach((radioButton) => {
-        radioButton.parentElement.parentElement.classList.remove("selectedRow");
-      });
-      if (radioButton.checked) {
-        tableRowSelected.classList.add("selectedRow");
-      }
-    });
-  });
-};
-
-// //Function to get the selected user id
-// const getSelectedUserId = () => {
-//   const tableRadioButtons = document.getElementsByName("tableRadio");
-//   let userId;
-//   tableRadioButtons.forEach((radioButton) => {
-//     const tableRowSelected = radioButton.parentElement.parentElement;
-//     if (radioButton.checked) {
-//       userId = tableRowSelected.children[1].innerText;
-//     }
-//   });
-//   return userId;
-// };
-
-// //Function to store the user id in the local storage
-// const storeUserId = (userId) => {
-//   localStorage.setItem("userId", userId);
-//   window.location.href = "../html/user_individual_information.html";
-// };
 
 
 //////// Pagination ////////
@@ -361,8 +330,8 @@ const filterUsers = () => {
     //Reset the sort radio buttons
     clearSortRadioButtons();
 
-    const usersList = await fetchFilteredUsers(unitSelect.value);
-    buildPage(usersList);
+    const userList = await fetchFilteredUnit(unitSelect.value);
+    buildPage(userList);
   });
 
   const roleSelect = document.getElementById("roleSelect");
@@ -422,7 +391,6 @@ const searchUsers = () => {
 //Function to build the page
 const buildPage = async (usersList) => {
   loadUsers(usersList);
-  selectRow();
   pagination();
 };
 
@@ -439,7 +407,6 @@ const buildPageAsync = async function () {
   
   sortUsers();
   filterUsers();
-  searchUsers();
   searchUsers();
 };
 
