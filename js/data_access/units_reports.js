@@ -38,10 +38,11 @@ const fetchSearchedUnits = async (searchValue, type) => {
   }
 };
 
+
+
 //Function to fetch filtered users
 const fetchFilteredUnit = async (unit) => {
     try {
-      console.log(unit)
       const units = await fetch(
         `http://127.0.0.1:8000/units/filter/name/${unit}`
       );
@@ -50,7 +51,7 @@ const fetchFilteredUnit = async (unit) => {
     } catch (error) {
       console.log(error);
     }
-  };
+};
 
 //Function to build the options in the units select
 const buildUnitsSelect = (unitsList) => {
@@ -89,7 +90,7 @@ const loadUnits = (unitsList) => {
   const table = document.querySelector('table');
   table.innerHTML =
     '<tr><th>ID</th><th>Nombre</th><th>Fecha de creación</th><th>Aprobado por</th></tr>';
-
+  console.log(unitsList);
   unitsList.forEach(function (unit) {
     const tableRow = document.createElement('tr');
 
@@ -259,7 +260,7 @@ const sortUnits = () => {
 
       if (radioButton.checked) {
         const sortValue = radioButton.value;
-        const unitssList = await fetchUnits(sortValue);
+        const unitssList = await fetchSortedUnits(sortValue);
         buildPage(unitssList);
       }
     });
@@ -321,7 +322,7 @@ const filterUnits = () => {
     unitSelected.addEventListener("change", async () => {
       //Reset the sort radio buttons
       clearSortRadioButtons();
-  
+      console.log("unit selected is: "+unitSelected.value)
       const usList = await fetchFilteredUnit(unitSelected.value);
       buildPage(usList);
     });

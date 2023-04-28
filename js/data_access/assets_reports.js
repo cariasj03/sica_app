@@ -1,8 +1,8 @@
 
 //Function to fetch assets
-const fetchAssets = async () => {
+const fetchAssets = async (sortValue) => {
   try {
-    const assets = await fetch("http://127.0.0.1:8000/assets/sort/by-id");
+    const assets = await fetch(`http://127.0.0.1:8000/assets/sort/by-${sortValue}`);
     const assetsList = await assets.json();
     return assetsList;
   } catch (error) {
@@ -49,7 +49,18 @@ const fetchSearchedAssets = async (searchValue, type) => {
   }
 };
 
-
+//Function to fetch filtered users
+const fetchFilteredAsset = async (unit) => {
+  try {
+    const asse = await fetch(
+      `http://127.0.0.1:8000/assets/filter/unit/${unit}`
+    );
+    const asseList = await asse.json();
+    return asseList;
+  } catch (error) {
+    console.log(error);
+  }
+};
 
 //Function to load the assets in the table
 const buildAssestTable = (assetsList) => {
@@ -228,7 +239,7 @@ const sortAssets = () => {
 };
 
 // //Function to filter the assets in the table
-const filterUsers = () => {
+const filterAssets = () => {
   const unitSelect = document.getElementById("unitSelect");
   
   //Event listeners
@@ -236,7 +247,7 @@ const filterUsers = () => {
     //Reset the sort radio buttons
     clearSortRadioButtons();
 
-    const list = await fetchFilteredUnit(unitSelect.value);
+    const list = await fetchFilteredAsset(unitSelect.value);
     buildPage(list);
   });
 
@@ -282,7 +293,7 @@ const searchUser = async (searchInput) => {
 };
 
 //Function to search the users in the table
-const searchUsers = () => {
+const searchAssets = () => {
   //DOM elements
   const searchInputs = document.getElementsByName("searchInput");
 
@@ -309,12 +320,12 @@ const buildPageAsync = async function () {
   const unitsList = await fetchSortedUnits('name');
   buildUnitsSelect(unitsList);
 
-  const asstsList = await fetchSortedAssets('name');
+  const asstsList = await fetchAssets('name');
   buildPage(asstsList);
   
   sortAssets();
-  filterUsers();
-  searchUsers();
+  filterAssets();
+  searchAssets();
 };
 
 //Function calls
