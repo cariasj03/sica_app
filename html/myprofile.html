@@ -65,15 +65,8 @@
     <div class="userFormContainer">
         <form id="myProfileForm" class="form">
         <div class="profilePictureContainer">
-            <img id="profilePictureDisplay" class="imageStyle userImageDisplay" src="../images/juan_perez_profile_picture.jpg" alt="placeholderUserImage">
-            <button type="button" class="primaryButton" id="profilePictureUploadButton">Modificar</button>
-            <input
-                class="inputStyle"
-                id="profilePictureInput"
-                name="profilePictureInput"
-                type="file"
-                accept=".png, .jpg, .jpeg,"
-              />
+            <img id="profilePictureDisplay" class="imageStyle userImageDisplay" src="../images/profile_picture.png" alt="placeholderUserImage">
+            <button type="button" class="primaryButton disabledButton" id="profilePictureUploadButton" disabled>Modificar</button>
         </div>
         <div class="allInputsContainer">
             <label id="userIdLabel" for="userId">Identificación <input
@@ -138,6 +131,7 @@
     <p class="copyrightText">Copyright &copy; 2023 by Beelders.</p>
 </footer>
 
+<script src="https://widget.cloudinary.com/v2.0/global/all.js" type="text/javascript"></script>
 <script src="../js/dom_manipulation/form_validation.js"></script>
 <script src="../js/dom_manipulation/sweet_alert.js"></script>
 <script src="../js/dom_manipulation/user_feedback.js"></script>

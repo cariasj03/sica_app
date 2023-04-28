@@ -1,7 +1,7 @@
 //Local storage variables
 const selectedUserId = localStorage.getItem('userId');
 
-//Functions
+//Fetch Functions
 //Function to fetch the user information
 const fetchUserInformation = async () => {
   try {
@@ -46,62 +46,71 @@ const fetchUnits = async () => {
   }
 };
 
+//DOM elements
+const userId = document.getElementById('userId');
+const userFirstName = document.getElementById('userFirstName');
+const userLastName = document.getElementById('userLastName');
+const userEmail = document.getElementById('userEmail');
+const userPhoneNumber = document.getElementById('userPhoneNumber');
+const userRole = document.getElementById('userRole');
+const userUnit = document.getElementById('userUnit');
+const userDOB = document.getElementById('userDateOfBirth');
+const userPicture = document.getElementById('userPictureDisplay');
+
+const userSaveButton = document.getElementById('submit');
+const userEditButton = document.getElementById('editUserInformation');
+const modifyUserPictureButton = document.getElementById(
+  'editUserPictureButton'
+);
+
+//Functions
 //Function to load the user requested
 const loadSelectedUser = (selectedUser) => {
   try {
-    const idInput = document.getElementById('userId');
-    const firstnameInput = document.getElementById('userFirstName');
-    const lastNameInput = document.getElementById('userLastName');
-    const userEmail = document.getElementById('userEmail');
-    const phoneNumber = document.getElementById('userPhoneNumber');
-    const userRole = document.getElementById('userRole');
-    const userDOB = document.getElementById('userDateOfBirth');
-    const userUnit = document.getElementById('userUnit');
-
-    idInput.value = selectedUser.id;
-    firstnameInput.value = selectedUser.firstName;
-    lastNameInput.value = selectedUser.lastName;
+    userId.value = selectedUser.id;
+    userFirstName.value = selectedUser.firstName;
+    userLastName.value = selectedUser.lastName;
     userEmail.value = selectedUser.email;
-    phoneNumber.value = selectedUser.phoneNumber;
+    userPhoneNumber.value = selectedUser.phoneNumber;
     userRole.value = selectedUser.role;
     userDOB.value = selectedUser.dateOfBirth;
     userUnit.value = selectedUser.unit;
+    userPicture.src = selectedUser.profilePicture;
   } catch (error) {
     console.log(error);
   }
 };
 
-//DOM manipulation
-//DOM elements
-const userId = document.getElementById('userId');
-const firstName = document.getElementById('userFirstName');
-const lastName = document.getElementById('userLastName');
-const userEmail = document.getElementById('userEmail');
-const phoneNumber = document.getElementById('userPhoneNumber');
-const userRole = document.getElementById('userRole');
-const userUnit = document.getElementById('userUnit');
-const userDOB = document.getElementById('userDateOfBirth');
-
-const userSaveButton = document.getElementById('submit');
-const userEditButton = document.getElementById('editUserInformation');
-
-//Functions
+//Function to get the values of the form fields
+const getFormFields = () => {
+  const bodyContent = {
+    firstName: userFirstName.value,
+    lastName: userLastName.value,
+    dateOfBirth: userDOB.value,
+    email: userEmail.value,
+    phoneNumber: userPhoneNumber.value,
+    unit: userUnit.value,
+    role: userRole.value,
+    profilePicture: userPicture.src,
+  };
+  return bodyContent;
+};
 //Function to disable unit fields
 const disbleUserFields = () => {
   userId.classList.add('disabled');
   userId.disabled = true;
 
-  firstName.classList.add('disabled');
-  firstName.disabled = true;
+  userFirstName.classList.add('disabled');
+  userFirstName.disabled = true;
 
-  lastName.classList.add('disabled');
-  lastName.disabled = true;
+  userLastName.classList.add('disabled');
+  userLastName.disabled = true;
 
   userEmail.classList.add('disabled');
   userEmail.disabled = true;
 
-  phoneNumber.classList.add('disabled');
-  phoneNumber.disabled = true;
+  userPhoneNumber.classList.add('disabled');
+  userPhoneNumber.disabled = true;
 
   userRole.classList.add('disabled');
   userRole.disabled = true;
@@ -115,17 +124,17 @@ const disbleUserFields = () => {
 
 //Function to enable unit fields
 const enableUserFields = function () {
-  firstName.classList.remove('disabled');
-  firstName.disabled = false;
+  userFirstName.classList.remove('disabled');
+  userFirstName.disabled = false;
 
-  lastName.classList.remove('disabled');
-  lastName.disabled = false;
+  userLastName.classList.remove('disabled');
+  userLastName.disabled = false;
 
   userEmail.classList.remove('disabled');
   userEmail.disabled = false;
 
-  phoneNumber.classList.remove('disabled');
-  phoneNumber.disabled = false;
+  userPhoneNumber.classList.remove('disabled');
+  userPhoneNumber.disabled = false;
 
   userRole.classList.remove('disabled');
   userRole.disabled = false;
@@ -135,20 +144,6 @@ const enableUserFields = function () {
 
   userDOB.classList.remove('disabled');
   userDOB.disabled = false;
-};
-
-//Function to get the values of the form fields
-const getFormFields = () => {
-  const bodyContent = {
-    firstName: firstName.value,
-    lastName: lastName.value,
-    dateOfBirth: userDOB.value,
-    email: userEmail.value,
-    phoneNumber: phoneNumber.value,
-    unit: userUnit.value,
-    role: userRole.value,
-  };
-  return bodyContent;
 };
 
 //Function to build the options in the units select
@@ -173,6 +168,9 @@ userEditButton.addEventListener('click', () => {
 
   userSaveButton.classList.remove('disabledButton');
   userSaveButton.disabled = false;
+
+  modifyUserPictureButton.classList.remove('disabledButton');
+  modifyUserPictureButton.disabled = false;
 });
 
 //Click on save information button
@@ -184,6 +182,9 @@ userSaveButton.addEventListener('click', async (event) => {
       disbleUserFields();
       userSaveButton.classList.add('disabledButton');
       userSaveButton.disabled = true;
+
+      modifyUserPictureButton.classList.add('disabledButton');
+      modifyUserPictureButton.disabled = true;
 
       userEditButton.classList.remove('disabledButton');
       userEditButton.disabled = false;
