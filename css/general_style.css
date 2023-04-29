@@ -328,3 +328,15 @@ textarea:focus {
 .hidden {
   display: none;
 }
+
+.swal2-popup {
+  width: 35rem !important;
+  padding: 2rem !important;
+}
+
+.swalInputAlert {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+}

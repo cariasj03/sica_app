@@ -32,29 +32,35 @@
 
         <nav class="headerNav barNav">
           <a href="../html/index.html">Inicio</a>
-          <a href="../html/assets.html"id="assetsTab">Activos</a>
-          <a href="#"id="requestsTab">Solicitudes</a>
-          <a href="../html/reports.html"id="reportsTab">Reportes</a>
+          <a href="../html/assets.html" id="assetsTab">Activos</a>
+          <a href="#" id="requestsTab">Solicitudes</a>
+          <a href="../html/reports.html" id="reportsTab">Reportes</a>
         </nav>
       </div>
 
       <div class="headerIcons">
         <a href="#"
-          ><span class="material-symbols-outlined currentIcon"id="settingsTab"> settings </span>
+          ><span class="material-symbols-outlined currentIcon" id="settingsTab">
+            settings
+          </span>
         </a>
         <a href="../html/myprofile.html"
           ><span class="material-symbols-outlined"> account_circle </span></a
         >
         <a href="../html/signin.html"
-          ><span class="material-symbols-outlined"id="logoutTab"> logout </span></a
+          ><span class="material-symbols-outlined" id="logoutTab">
+            logout
+          </span></a
         >
       </div>
     </header>
 
     <main class="mainContainer">
       <nav class="sideNav barNav">
-        <a href="../html/users.html"id="usersListTab">Lista de usuarios</a>
-        <a class="currentTab" href="../html/units.html"id="unitsListTab">Lista de unidades</a>
+        <a href="../html/users.html" id="usersListTab">Lista de usuarios</a>
+        <a class="currentTab" href="../html/units.html" id="unitsListTab"
+          >Lista de unidades</a
+        >
       </nav>
 
       <div class="pageBody">
@@ -142,27 +148,38 @@
           </div>
 
           <div class="tableContainer">
-            <table id="paginatedTable" class="tables">
-            </table>
+            <table id="paginatedTable" class="tables"></table>
 
             <div class="paginationContainer">
-              <button id="prevButton" class="paginationButton" title="Anterior" aria-label="Anterior">&lt;</button>
+              <button
+                id="prevButton"
+                class="paginationButton"
+                title="Anterior"
+                aria-label="Anterior"
+              >
+                &lt;
+              </button>
 
               <div id="paginationNumbers"></div>
 
-              <button id="nextButton" class="paginationButton" title="Siguiente" aria-label="Siguiente"> &gt;</button>
+              <button
+                id="nextButton"
+                class="paginationButton"
+                title="Siguiente"
+                aria-label="Siguiente"
+              >
+                &gt;
+              </button>
             </div>
 
             <div class="buttonContainer">
               <a href="../html/unit_registration.html"
-                ><button class="primaryButton">
-                  Agregar una nueva unidad
-                </button></a>
-              <a href="#"
-                ><button id="viewEditUnit" class="primaryButton">
-                  Ver o editar unidad selecionada
-                </button></a
-              >
+                ><button class="primaryButton">Agregar una nueva unidad</button>
+              </a>
+
+              <button id="viewEditUnit" class="primaryButton">
+                Ver o editar unidad selecionada
+              </button>
             </div>
           </div>
         </div>
@@ -173,10 +190,10 @@
       <p class="copyrightText">Copyright &copy; 2023 by Beelders.</p>
     </footer>
 
+    <script src="../js/data_access/session_logic.js"></script>
     <script src="../js/dom_manipulation/sweet_alert.js"></script>
     <script src="../js/dom_manipulation/user_feedback.js"></script>
     <script src="../js/data_access/geo_info.js"></script>
-    <script src="../js/data_access/units.js"></script>   
-    <script src="../js/data_access/session_logic.js"></script>
+    <script src="../js/data_access/units.js"></script>
   </body>
 </html>

@@ -138,9 +138,3 @@ if (sessionUserData !== null) {
 
 //Function calls
 changeUserDOBFormat();
-
-//Deletes local storage data when browser is closed
-/* window.addEventListener('beforeunload', (e) => {
-  e.preventDefault();
-  localStorage.removeItem('sessionUserData');
-}); */
