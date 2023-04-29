@@ -7,6 +7,7 @@ const userDateOfBirthInput = document.getElementById('userDateOfBirth');
 const userEmailInput = document.getElementById('userEmail');
 const userPhoneNumberInput = document.getElementById('userPhoneNumber');
 const userUnitInput = document.getElementById('userUnit');
+const userProfilePictureInput = document.getElementById('imageDisplay');
 
 //Normal functions
 //Function to get the values of the form fields
@@ -19,7 +20,7 @@ const getFormFields = () => {
     email: userEmailInput.value,
     phoneNumber: userPhoneNumberInput.value,
     unit: userUnitInput.value,
-    profilePicture: 'profile_picture.png',
+    profilePicture: userProfilePictureInput.src,
   };
   return bodyContent;
 };
@@ -84,8 +85,10 @@ registerUser.addEventListener('click', async (event) => {
         'Su solicitud para crear una cuenta ha sido enviada. En caso de ser aprobada le llegará una contraseña temporal al correo electónico registrado.'
       );
       form.reset();
+
       const imageDisplaySignup = document.getElementById('imageDisplay');
       imageDisplaySignup.src = '../images/profile_picture.png';
+
       Object.keys(validationFields[`signupFormFields`]).forEach(
         (attribute) => (validationFields[`signupFormFields`][attribute] = false)
       );

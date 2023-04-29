@@ -1,22 +1,28 @@
 //Variables
 //Stores the form of the page the user is in
 const uploadPictureForm = document.querySelector('form');
+let imageDisplay;
+let uploadPictureButton;
 
-switch (uploadPictureForm.id) {
-  case 'signupForm':
-    const uploadPictureButton = document.getElementById('pictureUploadButton');
-    const imageInput = document.getElementById('userProfilePicture');
-    const imageDisplay = document.getElementById('imageDisplay');
+//Function to change the image display depending on the page the user is in
+const changeImageElements = () => {
+  switch (uploadPictureForm.id) {
+    case 'myProfileForm':
+      imageDisplay = document.getElementById('profilePictureDisplay');
+      uploadPictureButton = document.getElementById(
+        'profilePictureUploadButton'
+      );
+      break;
 
-    uploadPictureButton.addEventListener('click', function () {
-      imageInput.click();
-    });
+    case 'signupForm':
+      imageDisplay = document.getElementById('imageDisplay');
+      uploadPictureButton = document.getElementById('userProfilePicture');
+      break;
 
-    //Event Listeners
-    imageInput.addEventListener('change', function (e) {
-      imageDisplay.src = URL.createObjectURL(e.target.files[0]);
-    });
-    break;
+    case 'userInfoForm':
+      imageDisplay = document.getElementById('userPictureDisplay');
+      uploadPictureButton = document.getElementById('editUserPictureButton');
+      break;
 
   case 'assetTransferRequestValidation':
     const assetImageInput1 = document.getElementById('transferPictureOne');
@@ -24,49 +30,71 @@ switch (uploadPictureForm.id) {
     const assetImageInput2 = document.getElementById('transferPictureTwo');
     const assetImageDisplay2 = document.getElementById('assetImageDisplay2');
 
-    //Event Listeners
-    assetImageInput1.addEventListener('change', function (e) {
-      assetImageDisplay1.src = URL.createObjectURL(e.target.files[0]);
-    });
+      //Event Listeners
+      assetImageInput1.addEventListener('change', function (e) {
+        assetImageDisplay1.src = URL.createObjectURL(e.target.files[0]);
+      });
 
-    assetImageInput2.addEventListener('change', function (e) {
-      assetImageDisplay2.src = URL.createObjectURL(e.target.files[0]);
-    });
-    break;
+      assetImageInput2.addEventListener('change', function (e) {
+        assetImageDisplay2.src = URL.createObjectURL(e.target.files[0]);
+      });
+      break;
+  }
+};
 
-  case 'userInfoForm':
-    const userPictureButton = document.getElementById('editUserPictureButton');
-    const userPictureInput = document.getElementById('userPictureInput');
-    const userPictureDisplay = document.getElementById('userPictureDisplay');
+//Creates the widget to upload images
+const cloudinaryWidget = cloudinary.createUploadWidget(
+  {
+    cloudName: 'cariasj',
+    uploadPreset: 'cariasj',
+    sources: [
+      'camera',
+      'google_drive',
+      'facebook',
+      'dropbox',
+      'instagram',
+      'local',
+    ],
+    clientAllowedFormats: ['png', 'jpeg', 'jpg'],
+    showAdvancedOptions: false,
+    cropping: false,
+    multiple: true,
+    defaultSource: 'local',
+    styles: {
+      palette: {
+        window: '#FFFFFF',
+        windowBorder: '#90A0B3',
+        tabIcon: '#D86634',
+        menuIcons: '#5A616A',
+        textDark: '#000000',
+        textLight: '#FFFFFF',
+        link: '#D86634',
+        action: '#687448',
+        inactiveTabIcon: '#57613C',
+        error: '#F44235',
+        inProgress: '#ADC178',
+        complete: '#20B832',
+        sourceBg: '#E4EBF1',
+      },
+      fonts: { default: { active: true } },
+    },
+  },
+  (err, result) => {
+    if (!err && result && result.event === 'success') {
+      console.log('Imagen subida con éxito', result.info);
+      imageDisplay.src = result.info.secure_url;
+    }
+  }
+);
 
-    //Event Listeners
-    userPictureButton.addEventListener('click', function () {
-      userPictureInput.click();
-    });
+//Function calls
+changeImageElements();
 
-    userPictureInput.addEventListener('change', function (e) {
-      userPictureDisplay.src = URL.createObjectURL(e.target.files[0]);
-    });
-    break;
-
-  case 'myProfileForm':
-    const myProfilePictureButton = document.getElementById(
-      'profilePictureUploadButton'
-    );
-    const myProfilePictureInput = document.getElementById(
-      'profilePictureInput'
-    );
-    const myProfilePictureDisplay = document.getElementById(
-      'profilePictureDisplay'
-    );
-
-    //Event Listeners
-    myProfilePictureButton.addEventListener('click', function () {
-      myProfilePictureInput.click();
-    });
-
-    myProfilePictureInput.addEventListener('change', function (e) {
-      myProfilePictureDisplay.src = URL.createObjectURL(e.target.files[0]);
-    });
-    break;
-}
+//Event Listeners
+uploadPictureButton.addEventListener(
+  'click',
+  () => {
+    cloudinaryWidget.open();
+  },
+  false
+);

@@ -88,50 +88,34 @@
             <div class="filters">
               <h3>Ordenar por</h3>
 
-              <label for="unitId"
-                ><input
-                  type="radio"
-                  id="unitId"
-                  name="sortRadio"
-                  value="unitId"
-                />
+              <label for="idRadio"
+                ><input type="radio" id="idRadio" name="sortRadio" value="id" />
                 ID</label
               >
-              <label for="unitRadio"
+              <label for="nameRadio"
                 ><input
                   type="radio"
-                  id="unitRadio"
+                  id="nameRadio"
                   name="sortRadio"
-                  value="unit"
+                  value="name"
                 />
-                Unidad</label
+                Nombre</label
               >
-
-              <label for="statusRadio"
+              <label for="creationDateRadio"
                 ><input
                   type="radio"
-                  id="statusRadio"
+                  id="creationDateRadio"
                   name="sortRadio"
-                  value="dateSide"
+                  value="creationDate"
                 />
                 Fecha de creación</label
               >
-
               <hr />
 
               <h3>Filtrar por</h3>
-              <label for="unitSelect"
-                >Unidad<select class="inputStyle" id="unitSelect">
-                  <option value="" disabled selected hidden>Unidad</option>
-                  <option value="central">Central</option>
-                  <option value="bodega">Bodega</option>
-                  <option value="donaciones">Donaciones</option>
-                  <option value="cartago">Cartago</option>
-                  <option value="heredia">Heredia</option>
-                </select></label
-              >
-
-              <hr />
+              <label for="unitSelect">Unidad<select class="inputStyle" id="unitSelect">
+                <option value="" disabled selected hidden>Unidad</option>
+              </select></label>
 
               <h3>Buscar por</h3>
               <label for="idSearch"
@@ -142,107 +126,41 @@
                   name="idSearch"
                   placeholder="ID"
               /></label>
-              <label for="unitSearch"
+              <label for="nameSearch"
                 >Nombre<input
                   class="inputStyle"
                   type="search"
-                  id="unitSearch"
-                  name="unitSearch"
-                  placeholder="Unidad"
+                  id="nameSearch"
+                  name="nameSearch"
+                  placeholder="Nombre"
               /></label>
             </div>
           </div>
 
           <div class="tableContainer">
-            <table class="tables">
-              <tr>
-                <th>ID</th>
-                <th>Unidad</th>
-                <th>Ubicación</th>
-                <th>Fecha de creación</th>
-                <th>Aprobado por</th>
-              </tr>
+            <table class="tables" id="paginatedTable"></table>
 
-              <tr>
-                <td>01</td>
-                <td>Central</td>
-                <td>San José</td>
-                <td>20/02/2010</td>
-                <td>705390185</td>
-              </tr>
+            <div class="paginationContainer">
+              <button
+                id="prevButton"
+                class="paginationButton"
+                title="Anterior"
+                aria-label="Anterior"
+              >
+                &lt;
+              </button>
 
-              <tr>
-                <td>02</td>
-                <td>Bodega</td>
-                <td>San José</td>
-                <td>06/03/2011</td>
-                <td>705390185</td>
-              </tr>
+              <div id="paginationNumbers"></div>
 
-              <tr>
-                <td>03</td>
-                <td>Donaciones</td>
-                <td>San José</td>
-                <td>16/10/2014</td>
-                <td>705390185</td>
-              </tr>
-
-              <tr>
-                <td>04</td>
-                <td>Heredia</td>
-                <td>Heredia</td>
-                <td>06/06/2016</td>
-                <td>705390185</td>
-              </tr>
-
-              <tr>
-                <td>05</td>
-                <td>Cartago</td>
-                <td>Cartago</td>
-                <td>05/07/2018</td>
-                <td>705390185</td>
-              </tr>
-
-              <tr>
-                <td>06</td>
-                <td>Alajuela</td>
-                <td>Alajuela</td>
-                <td>08/07/2020</td>
-                <td>705390185</td>
-              </tr>
-
-              <tr>
-                <td>07</td>
-                <td>Puntarenas</td>
-                <td>Puntarenas</td>
-                <td>15/09/2022</td>
-                <td>705390185</td>
-              </tr>
-
-              <tr>
-                <td></td>
-                <td></td>
-                <td></td>
-                <td></td>
-                <td></td>
-              </tr>
-
-              <tr>
-                <td></td>
-                <td></td>
-                <td></td>
-                <td></td>
-                <td></td>
-              </tr>
-
-              <tr>
-                <td></td>
-                <td></td>
-                <td></td>
-                <td></td>
-                <td></td>
-              </tr>
-            </table>
+              <button
+                id="nextButton"
+                class="paginationButton"
+                title="Siguiente"
+                aria-label="Siguiente"
+              >
+                &gt;
+              </button>
+            </div>
           </div>
         </div>
       </div>
@@ -252,5 +170,6 @@
       <p class="copyrightText">Copyright &copy; 2023 by Beelders.</p>
     </footer>
     <script src="../js/data_access/session_logic.js"></script>
+    <script src="../js/data_access/units_reports.js"></script>
   </body>
 </html>

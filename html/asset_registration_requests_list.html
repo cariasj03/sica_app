@@ -158,7 +158,7 @@
           </div>
 
           <div class="tableContainer">
-            <table class="tables">
+            <table class="tables" id="paginatedTable">
               <tr>
                 <th></th>
                 <th>ID</th>
@@ -166,98 +166,6 @@
                 <th>Unidad</th>
                 <th>Código de ubicación</th>
                 <th>Estado</th>
-              </tr>
-
-              <tr class="selectedRow">
-                <td>
-                  <input type="radio" name="tableRadio" />
-                </td>
-                <td>000008</td>
-                <td>Monitor Samsung C24 Curve</td>
-                <td>Alajuela</td>
-                <td>PROALAPIS103</td>
-                <td>Activo</td>
-              </tr>
-
-              <tr>
-                <td><input type="radio" name="tableRadio" /></td>
-                <td>000009</td>
-                <td>Silla Ergonomica SON-3500</td>
-                <td>Alajuela</td>
-                <td>PROALAPIS207</td>
-                <td>Activo</td>
-              </tr>
-
-              <tr>
-                <td><input type="radio" name="tableRadio" /></td>
-                <td>000010</td>
-                <td>Laptop Dell 3511</td>
-                <td>Limón</td>
-                <td>PROLIMPIS123</td>
-                <td>Activo</td>
-              </tr>
-
-              <tr>
-                <td><input type="radio" name="tableRadio" /></td>
-                <td>000011</td>
-                <td>Impresora EPSON SureColor F2100</td>
-                <td>Heredia</td>
-                <td>PROHERPIS211</td>
-                <td>Activo</td>
-              </tr>
-
-              <tr>
-                <td><input type="radio" name="tableRadio" /></td>
-                <td>000012</td>
-                <td>Tablet RCA RC7T3G21</td>
-                <td>San José</td>
-                <td>PROSANPIS105</td>
-                <td>Activo</td>
-              </tr>
-
-              <tr>
-                <td><input type="radio" name="tableRadio" /></td>
-                <td>000013</td>
-                <td>Escritorio en Baldosa MDR-20</td>
-                <td>San José</td>
-                <td>PROSANPIS435</td>
-                <td>Activo</td>
-              </tr>
-
-              <tr>
-                <td><input type="radio" name="tableRadio" /></td>
-                <td>000014</td>
-                <td>Impresora EPSON Surecolor T3170</td>
-                <td>Puntarenas</td>
-                <td>PROPUNPIS113</td>
-                <td>Activo</td>
-              </tr>
-
-              <tr>
-                <td><input type="radio" name="tableRadio" /></td>
-                <td></td>
-                <td></td>
-                <td></td>
-                <td></td>
-                <td></td>
-              </tr>
-
-              <tr>
-                <td><input type="radio" name="tableRadio" /></td>
-                <td></td>
-                <td></td>
-                <td></td>
-                <td></td>
-                <td></td>
-              </tr>
-
-              <tr>
-                <td><input type="radio" name="tableRadio" /></td>
-                <td></td>
-                <td></td>
-                <td></td>
-                <td></td>
-                <td></td>
               </tr>
             </table>
 
@@ -271,26 +179,7 @@
                 &lt;
               </button>
 
-              <div id="paginationNumbers">
-                <a
-                  class="paginationNumber activePage"
-                  page-index="1"
-                  aria-label="Page 1"
-                  >1</a
-                >
-                <a class="paginationNumber" page-index="2" aria-label="Page 2"
-                  >2</a
-                >
-                <a class="paginationNumber" page-index="3" aria-label="Page 3"
-                  >3</a
-                >
-                <a class="paginationNumber" page-index="4" aria-label="Page 4"
-                  >4</a
-                >
-                <a class="paginationNumber" page-index="5" aria-label="Page 5"
-                  >5</a
-                >
-              </div>
+              <div id="paginationNumbers"></div>
 
               <button
                 id="nextButton"
@@ -303,10 +192,10 @@
             </div>
 
             <div class="buttonContainer">
-              <a href="../html/asset_registration_request_review.html"
-                ><button class="primaryButton">Revisar solicitud</button></a
-              >
+              <a href="../html/asset_registration_request_review.html">
+              <button class="primaryButton" id="reviewAssetsRequestButton">Revisar solicitud</button>
             </div>
+
           </div>
         </div>
       </div>
@@ -315,6 +204,9 @@
     <footer class="footer">
       <p class="copyrightText">Copyright &copy; 2023 by Beelders.</p>
     </footer>
+    <script src="../js/dom_manipulation/sweet_alert.js"></script>
+    <script src="../js/dom_manipulation/user_feedback.js"></script>
     <script src="../js/data_access/session_logic.js"></script>
+    <script src="../js/data_access/asset_registration_requests_list.js"></script>
   </body>
 </html>
