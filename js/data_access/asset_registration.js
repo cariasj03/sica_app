@@ -92,7 +92,7 @@ registerAsset.addEventListener("click", async (event) => {
     //Makes the request to the server
     await registerNewAsset(getFormFields());
 
-    successAlert("Registro exitoso", "La unidad ha sido registrada con éxito.");
+    successAlert("Registro exitoso", "El activo ha sido registrado con éxito.");
     form.reset();
     Object.keys(validationFields.assetRegistrationFormFields).forEach(
       (attribute) =>

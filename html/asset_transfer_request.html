@@ -75,7 +75,7 @@
         >
           <label for="assetId"
             >ID del activo
-            <input class="inputStyle" type="text" id="assetId" name="assetId"
+            <input class="inputStyle" type="text" id="transferId" name="transferId"
           /></label>
 
           <label for="assetName"
@@ -83,8 +83,8 @@
             <input
               class="inputStyle"
               type="text"
-              id="assetName"
-              name="assetName"
+              id="transferName"
+              name="transferName"
           /></label>
 
           <label for="assetOriginUnit"
@@ -92,8 +92,8 @@
             <input
               class="inputStyle"
               type="text"
-              id="assetOriginUnit"
-              name="assetOriginUnit"
+              id="transferUnitOrigin"
+              name="transferUnitOrigin"
           /></label>
 
           <label for="assetTargetUnit"
@@ -101,24 +101,14 @@
             <select
               class="inputStyle"
               type="text"
-              id="assetTargetUnit"
-              name="assetTargetUnit"
+              id="transferUnitDestination"
+              name="transferUnitDestination"
             >
               <option value="" disabled selected hidden>
                 Unidad de Destino
               </option>
-              <option value="warehouse">Bodega</option>
-              <option value="donations">Donaciones</option>
-              <option value="central">Central</option>
-              <option value="sanJose">San José</option>
-              <option value="alajuela">Alajuela</option>
-              <option value="cartago">Cartago</option>
-              <option value="heredia">Heredia</option>
-              <option value="guanacaste">Guanacaste</option>
-              <option value="puntarenas">Puntarenas</option>
-              <option value="Limón">Limón</option>
             </select>
-            <p class="formInputError" id="assetTargetUnitError"></p
+            <p class="formInputError" id="transferUnitDestinationError"></p
           ></label>
 
           <label for="assetTargetLocation"
@@ -126,10 +116,10 @@
             <input
               class="inputStyle"
               type="text"
-              id="assetTargetLocation"
-              name="assetTargetLocation"
+              id="transferLocationDestination"
+              name="transferLocationDestination"
               placeholder="Ubicación de destino" />
-            <p class="formInputError" id="assetTargetLocationError"></p
+            <p class="formInputError" id="transferLocationDestinationError"></p
           ></label>
 
           <label for="assetTransferReason"
@@ -137,8 +127,8 @@
             <select
               class="inputStyle"
               type="text"
-              id="assetTransferReason"
-              name="assetTransferReason"
+              id="transferReason"
+              name="transferReason"
             >
               <option value="" disabled selected hidden>
                 Motivo del traslado
@@ -147,7 +137,7 @@
               <option value="disuse">Desuso</option>
               <option value="donation">Donación</option>
             </select>
-            <p class="formInputError" id="assetTransferReasonError"></p>
+            <p class="formInputError" id="transferReasonError"></p>
           </label>
 
           <label for="assetRequestDescription" id="userIdLabelAssetTransfer"
@@ -155,11 +145,11 @@
             <textarea
               class="inputStyle"
               type="text"
-              id="assetRequestDescription"
-              name="assetRequestDescription"
+              id="transferDescription"
+              name="transferDescription"
               placeholder="Descripción detallada de la solicitud"
             ></textarea>
-            <p class="formInputError" id="assetRequestDescriptionError"></p>
+            <p class="formInputError" id="transferDescriptionError"></p>
           </label>
 
           <div id="userIdLabelAssetTransfer">
@@ -186,31 +176,30 @@
 
               <input
                 class="inputStyle uploadPictureAsset"
-                id="uploadPictureAsset1"
-                name="uploadPictureAsset1"
+                id="transferPictureOne"
+                name="transferPictureOne"
                 type="file"
                 accept=".png, .jpg, .jpeg,"
               />
 
               <input
                 class="inputStyle uploadPictureAsset"
-                id="uploadPictureAsset2"
-                name="uploadPictureAsset2"
+                id="transferPictureTwo"
+                name="transferPictureTwo"
                 type="file"
                 accept=".png, .jpg, .jpeg,"
               />
 
-              <p class="formInputError" id="uploadPictureAsset1Error"></p>
+              <p class="formInputError" id="transferPictureOneError"></p>
 
-              <p class="formInputError" id="uploadPictureAsset2Error"></p>
+              <p class="formInputError" id="transferPictureTwoError"></p>
             </div>
           </div>
 
           <p id="userIdLabelAssetTransfer">* Campos obligatorios</p>
-          <p class="formInputError" id="assetStatusError"></p>
 
           <div id="buttonContainer">
-            <button type="submit" class="primaryButton" id="submit">
+            <button type="button" class="primaryButton" id="submit2">
               Enviar solicitud
             </button>
 
@@ -231,8 +220,8 @@
     <script src="../js/dom_manipulation/form_validation.js"></script>
     <script src="../js/dom_manipulation/sweet_alert.js"></script>
     <script src="../js/dom_manipulation/user_feedback.js"></script>
-    <script src="../js/dom_manipulation/transfer_forms_provisional_content.js"></script>
     <script src="../js/dom_manipulation/upload_img_display.js"></script>
     <script src="../js/data_access/session_logic.js"></script>
+    <script src="../js/data_access/transfer_request.js"></script>
   </body>
 </html>

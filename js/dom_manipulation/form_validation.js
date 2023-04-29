@@ -78,12 +78,12 @@ const validationFields = {
   },
   // Object for asset transfer request validation
   assetTransferRequestValidationFields: {
-    assetTargetUnit: false,
-    assetTargetLocation: false,
-    assetTransferReason: false,
-    assetRequestDescription: false,
-    uploadPictureAsset1: false,
-    uploadPictureAsset2: false,
+    transferUnitDestination: false,
+    transferLocationDestination: false,
+    transferReason: false,
+    transferDescription: false,
+    // transferPictureOne: false,
+    // transferPictureTwo: false,
   },
   // Object for user registration request validation
   userRegistrationRequestReviewFormFields: {
@@ -125,10 +125,10 @@ const validateForm = function (event) {
     case 'canton':
     case 'district':
     case 'address':
-    case 'assetTargetUnit':
-    case 'assetTargetLocation':
-    case 'assetTransferReason':
-    case 'assetRequestDescription':
+    case 'transferUnitDestination':
+    case 'transferLocationDestination':
+    case 'transferReason':
+    case 'transferDescription':
       validateEmptyField(elementId, elementValue, errorActiveClass);
       break;
     //Validates the user inputs a valid email
