@@ -13,6 +13,71 @@ const fetchAssets = async () => {
   }
 };
 
+//Function to fetch assets sorted by name
+const fetchSortedAssets = async (sortValue) => {
+  try {
+    const assets = await fetch(
+      `http://127.0.0.1:8000/assets/sort/by-${sortValue}`
+    );
+    const assetsList = await assets.json();
+    return assetsList;
+  } catch (error) {
+    console.log(error);
+  }
+};
+
+//Function to fetch searched assets
+const fetchSearchedAssets = async (searchValue, type) => {
+try {
+  const assets = await fetch(
+    `http://127.0.0.1:8000/assets/search/by-${type}/${searchValue}`
+  );
+  const assetsList = await assets.json();
+  return assetsList;
+} catch (error) {
+  console.log(error);
+}
+};
+
+//Function to fetch filtered assets
+const fetchFilteredAsset = async (unit) => {
+try {
+  const asse = await fetch(
+    `http://127.0.0.1:8000/assets/filter/unit/${unit}`
+  );
+  const asseList = await asse.json();
+  return asseList;
+} catch (error) {
+  console.log(error);
+}
+};
+
+//Function to fetch filtered assets
+const fetchFilteredStatus = async (status) => {
+try {
+  const assets = await fetch(
+    `http://127.0.0.1:8000/assets/filter/status/${status}`
+  );
+  const assetsList = await assets.json();
+  return assetsList;
+} catch (error) {
+  console.log(error);
+}
+};
+
+//Function to fetch sorted units
+const fetchSortedUnits = async (sortValue) => {
+  try {
+    const units = await fetch(
+      `http://127.0.0.1:8000/units/sort/by-${sortValue}`
+    );
+    const unitsList = await units.json();
+    return unitsList;
+  } catch (error) {
+    console.log(error);
+  }
+};
+
 //Function to fetch sorted assets
 // const fetchSortedAssets = async (sortValue) => {
 //   try {
@@ -233,99 +298,129 @@ const clearSortRadioButtons = () => {
   });
 };
 
-//Function sort the assets in the table
+//Function sort the Assets in the table
 const sortAssets = () => {
-  const idRadioButton = document.getElementById("idRadio");
-  const sortRadioButtons = document.getElementsByName("sortRadio");
+  const sortRadioButtons = document.getElementsByName('sortRadio');
+    //Event listeners
+    sortRadioButtons.forEach((radioButton) => {
+      radioButton.addEventListener('change', async () => {
+        clearUnitSelect();
+        if (radioButton.checked) {
+          const sortValue = radioButton.value;
+          const assetsList = await fetchSortedAssets(sortValue);
+          buildPage(assetsList);
+        }
+      });
+    });
+};
 
-  //Set the default sort radio button
-  idRadioButton.checked = true;
-
+//Function to filter the assets in the table
+const filterAssets= () => {
+  const unitSelect = document.getElementById("unitSelect");
+  
   //Event listeners
-  sortRadioButtons.forEach((radioButton) => {
-    radioButton.addEventListener("change", async () => {
-      if (radioButton.checked) {
-        const sortValue = radioButton.value;
-        const assetsList = await fetchSortedAssets(sortValue);
-        buildPage(assetsList);
-      }
+  unitSelect.addEventListener("change", async () => {
+    //Reset the sort radio buttons
+    clearSortRadioButtons();
+
+    const userList = await fetchFilteredAsset(unitSelect.value);
+    buildPage(userList);
+  });
+
+  const statusSelect = document.getElementById("statusSelect");
+  //Event listeners
+  statusSelect.addEventListener("change", async () => {
+    //Reset the sort radio buttons
+    clearSortRadioButtons();
+
+    const AssetsStatusList = await fetchFilteredStatus(statusSelect.value);
+    buildPage(AssetsStatusList);
+  });
+};
+
+//Function to clear unit select
+const clearUnitSelect = () => {
+  const unitSelect = document.getElementById('unitSelect');
+  unitSelect.options[0].selected = true;
+};
+
+//Function to search
+const searchAsset = async (searchInput) => {
+  let assetsList;
+  if (!searchInput || searchInput.value === '') {
+    assetsList = await fetchSortedAssets('name');
+  } else {
+    //Clear the sort radio buttons
+    clearSortRadioButtons();
+
+    //Clear the unit select
+    clearUnitSelect();
+
+    const searchValue = searchInput.value;
+    let type;
+
+    switch (searchInput.id) {
+      case 'idSearch':
+        type = 'id';
+        break;
+      case 'nameSearch':
+        type = 'name';
+        break;
+     
+    }
+    assetsList = await fetchSearchedAssets(searchValue, type);
+  }
+  buildPage(assetsList);
+};
+
+//Function to build the options in the units select
+const buildUnitsSelect = (unitsList) => {
+  unitsList.forEach(function (element) {
+    const unitSelect = document.getElementById('unitSelect');
+    const selectOption = document.createElement('option');
+
+    selectOption.id = `${element['id']}`;
+    selectOption.value = `${element['name']}`;
+    selectOption.innerText = `${element['name']}`;
+
+    unitSelect.appendChild(selectOption);
+  });
+};
+
+//Function to build the options in the units select
+const buildStatusSelect = (asList) => {
+
+  const uniqueStatus = new Set();
+  const statusSelect = document.getElementById('statusSelect');
+
+  asList.forEach(function (element) {
+    if (!uniqueStatus.has(element.status)) {
+      uniqueStatus.add(element.status);
+
+      const selectOption = document.createElement('option');
+      selectOption.id = `${element.id}`;
+      selectOption.value = `${element.status}`;
+      selectOption.innerText = `${element.status}`;
+      statusSelect.appendChild(selectOption);
+    }
+  });
+};
+
+//Function to search the users in the table
+const searchAssets = () => {
+  //DOM elements
+  const searchInputs = document.getElementsByName('searchInput');
+
+  searchInputs.forEach((searchInput) => {
+    searchInput.addEventListener('change', async () => {
+      searchAsset(searchInput);
+    });
+    searchInput.addEventListener('keyup', async () => {
+      searchAsset(searchInput);
     });
   });
 };
 
-// //Function to filter the assets in the table
-// const filterAssets = () => {
-//   //Event listeners
-//   provinceSelect.addEventListener('change', async () => {
-//     //Reset the sort radio buttons
-//     clearSortRadioButtons();
-
-//     const provinceFilterValue = provinceSelect.value;
-//     const unitsList = await fetchFilteredUnits(provinceFilterValue, null);
-//     buildPage(unitsList);
-//   });
-
-//   // cantonSelect.addEventListener('change', async () => {
-//   //   const provinceFilterValue = provinceSelect.value;
-//   //   const cantonFilterValue = cantonSelect.value;
-//   //   const unitsList = await fetchFilteredUnits(
-//   //     provinceFilterValue,
-//   //     cantonFilterValue
-//   //   );
-//     buildPage(unitsList);
-//   });
-// };
-
-// //Function to search
-// const searchUnit = async (searchInput) => {
-//   let unitsList;
-//   if (searchInput.value === '') {
-//     unitsList = await fetchUnits();
-//   } else {
-//     //Clear the sort radio buttons
-//     clearSortRadioButtons();
-
-//     //Clear the province and canton selects
-//     clearProvinceSelect();
-//     clearCantonSelect();
-
-//     const searchValue = searchInput.value;
-//     let type;
-
-//     switch (searchInput.id) {
-//       case 'idSearch':
-//         type = 'id';
-//         break;
-//       case 'nameSearch':
-//         type = 'name';
-//         break;
-//     }
-//     unitsList = await fetchSearchedUnits(searchValue, type);
-//   }
-//   buildPage(unitsList);
-// };
-
-// //Function to search the units in the table
-// const searchUnits = () => {
-//   //DOM elements
-//   const idSearchInput = document.getElementById('idSearch');
-//   const nameSearchInput = document.getElementById('nameSearch');
-
-//   //Event listeners
-//   idSearchInput.addEventListener('change', async () => {
-//     searchUnit(idSearchInput);
-//   });
-//   idSearchInput.addEventListener('keyup', async () => {
-//     searchUnit(idSearchInput);
-//   });
-
-//   nameSearchInput.addEventListener('change', async () => {
-//     searchUnit(nameSearchInput);
-//   });
-//   nameSearchInput.addEventListener('keyup', async () => {
-//     searchUnit(nameSearchInput);
-//   });
-// };
 
 //Event listeners
 viewEditAsset.addEventListener("click", () => {
@@ -338,10 +433,20 @@ viewEditAsset.addEventListener("click", () => {
 });
 
 //Async function to fetch units and build the table
-(async () => {
-  const assetsList = await fetchAssets();
+const buildPageAsync = async function () {
+  const unitsList = await fetchSortedUnits('name');
+  buildUnitsSelect(unitsList);
+
+  const statusList = await fetchSortedAssets('name');
+  buildStatusSelect(statusList);
+
+  const assetsList = await fetchSortedAssets('name');
   buildPage(assetsList);
   sortAssets();
-  // filterAssets();
-  // searchUnits();
-})();
+  filterAssets();
+  searchAsset();
+  searchAssets();
+};
+
+//Function calls
+buildPageAsync();

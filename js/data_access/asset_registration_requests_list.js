@@ -27,9 +27,6 @@ const fetchSearchedAssets = async (searchValue, type) => {
   }
 };
 
-
-
-
 //Function to fetch filtered assets
 const fetchFilteredAsset = async (unit) => {
   try {
@@ -328,7 +325,7 @@ const sortAssets = () => {
         }
       });
     });
-  };
+};
 
 
 //Function to filter the assets in the table
@@ -383,7 +380,7 @@ const searchAsset = async (searchInput) => {
       assetsList = await fetchSearchedAssets(searchValue, type);
     }
     buildPage(assetsList);
-  };
+};
 
 //Function to search the users in the table
 const searchAssets = () => {
@@ -398,7 +395,7 @@ const searchAssets = () => {
         searchAsset(searchInput);
       });
     });
-  };
+};
 
 //Function to build the page
 const buildPage = async (assetsList) => {
@@ -419,7 +416,7 @@ reviewAssetsRequestButton.addEventListener('click', (event) => {
     } else {
       storeAssetId(selectedAssetId);
     }
-  });
+});
 
 
 //Async function to fetch units and build the table
