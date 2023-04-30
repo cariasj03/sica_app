@@ -185,7 +185,7 @@
           </div>
 
           <div class="tableContainer">
-            <table class="tables">
+            <table class="tables" id="paginatedTable">
               <tr>
                 <th></th>
                 <th>ID del traslado</th>
@@ -193,98 +193,6 @@
                 <th>Nombre del activo</th>
                 <th>Unidad de origen</th>
                 <th>Unidad de destino</th>
-              </tr>
-
-              <tr class="selectedRow">
-                <td>
-                  <input type="radio" name="tableRadio" />
-                </td>
-                <td>000001</td>
-                <td>000003</td>
-                <td>Impresora EPSON F570</td>
-                <td>Cartago</td>
-                <td>Alajuela</td>
-              </tr>
-
-              <tr>
-                <td><input type="radio" name="tableRadio" /></td>
-                <td>000002</td>
-                <td>000003</td>
-                <td>UPS APC LS1200</td>
-                <td>Cartago</td>
-                <td>Bodega</td>
-              </tr>
-
-              <tr>
-                <td><input type="radio" name="tableRadio" /></td>
-                <td>000003</td>
-                <td>000004</td>
-                <td>Silla Ergonomica SON-4100</td>
-                <td>San José</td>
-                <td>Heredia</td>
-              </tr>
-
-              <tr>
-                <td><input type="radio" name="tableRadio" /></td>
-                <td>000004</td>
-                <td>000006</td>
-                <td>Televisor Samsung FULL HD UN43T5300</td>
-                <td>Cartago</td>
-                <td>San José</td>
-              </tr>
-
-              <tr>
-                <td><input type="radio" name="tableRadio" /></td>
-                <td>000005</td>
-                <td>000007</td>
-                <td>Laptop Lenovo 82K200X8GJ</td>
-                <td>Puntarenas</td>
-                <td>San José</td>
-              </tr>
-
-              <tr>
-                <td><input type="radio" name="tableRadio" /></td>
-                <td>000006</td>
-                <td>000011</td>
-                <td>Impresora EPSON SureColor F2100</td>
-                <td>Heredia</td>
-                <td>Bodega</td>
-              </tr>
-
-              <tr>
-                <td><input type="radio" name="tableRadio" /></td>
-                <td>000007</td>
-                <td>000013</td>
-                <td>Escritorio en Baldosa MDR-20</td>
-                <td>San José</td>
-                <td>Bodega</td>
-              </tr>
-
-              <tr>
-                <td><input type="radio" name="tableRadio" /></td>
-                <td></td>
-                <td></td>
-                <td></td>
-                <td></td>
-                <td></td>
-              </tr>
-
-              <tr>
-                <td><input type="radio" name="tableRadio" /></td>
-                <td></td>
-                <td></td>
-                <td></td>
-                <td></td>
-                <td></td>
-              </tr>
-
-              <tr>
-                <td><input type="radio" name="tableRadio" /></td>
-                <td></td>
-                <td></td>
-                <td></td>
-                <td></td>
-                <td></td>
               </tr>
             </table>
 
@@ -298,26 +206,7 @@
                 &lt;
               </button>
 
-              <div id="paginationNumbers">
-                <a
-                  class="paginationNumber activePage"
-                  page-index="1"
-                  aria-label="Page 1"
-                  >1</a
-                >
-                <a class="paginationNumber" page-index="2" aria-label="Page 2"
-                  >2</a
-                >
-                <a class="paginationNumber" page-index="3" aria-label="Page 3"
-                  >3</a
-                >
-                <a class="paginationNumber" page-index="4" aria-label="Page 4"
-                  >4</a
-                >
-                <a class="paginationNumber" page-index="5" aria-label="Page 5"
-                  >5</a
-                >
-              </div>
+              <div id="paginationNumbers"></div>
 
               <button
                 id="nextButton"
@@ -330,10 +219,10 @@
             </div>
 
             <div class="buttonContainer">
-              <a href="../html/asset_transfer_request_review.html"
-                ><button class="primaryButton">Revisar solicitud</button></a
-              >
+              <a href="../html/asset_transfer_request_review.html">
+              <button class="primaryButton" id="reviewTransferAssetRequestButton">Revisar solicitud</button>
             </div>
+
           </div>
         </div>
       </div>
@@ -343,5 +232,6 @@
       <p class="copyrightText">Copyright &copy; 2023 by Beelders.</p>
     </footer>
     <script src="../js/data_access/session_logic.js"></script>
+    <script src="../js/data_access/asset_transfer_requests_list.js"></script>
   </body>
 </html>
