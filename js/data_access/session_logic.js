@@ -44,6 +44,12 @@ const defaultBehavior = () => {
 //Checks if user is logged in
 if (sessionUserData !== null) {
   switch (page.id) {
+    case 'index':
+      if (sessionUserData.changePassword) {
+        changePassword(false, false, false);
+      }
+      break;
+
     case 'user_registration_requests_list':
     case 'user_registration_request_review':
     case 'asset_transfer_requests_list':
@@ -138,9 +144,3 @@ if (sessionUserData !== null) {
 
 //Function calls
 changeUserDOBFormat();
-
-//Deletes local storage data when browser is closed
-/* window.addEventListener('beforeunload', (e) => {
-  e.preventDefault();
-  localStorage.removeItem('sessionUserData');
-}); */

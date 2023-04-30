@@ -55,12 +55,16 @@ const fetchSearchedAssets = async (searchValue, type) => {
   };
 
 
-  //Function to load the assets in the table
+//Function to load the assets in the table
 const loadAssets = (assetsList) => {
     const table = document.querySelector('table');
     table.innerHTML =
       '<tr><th></th><th>ID</th><th>Nombre</th><th>Unidad</th><th>Código de ubicación</th><th>Estado</th></tr>';
-    assetsList.forEach(function (asset) {
+    if (!Array.isArray(assetsList) || assetsList.length === 0) {
+      console.log('La lista de activos está vacía o no es un array.');
+      return;
+    }  
+    assetsList.forEach(function(asset) {
       const tableRow = document.createElement('tr');
       const tableRowRadio = document.createElement('td');
   
@@ -293,16 +297,16 @@ const sortAssets = () => {
   };
 
 
-//Function to filter the users in the table
-const filterUsers = () => {
-    const unitSelect = document.getElementById('unitSelect');
+//Function to filter the assets in the table
+const filterAssets= () => {
+    const assetSelect = document.getElementById('unitSelect');
     //Event listeners
-    unitSelect.addEventListener('change', async () => {
+    assetSelect.addEventListener('change', async () => {
       //Reset the sort radio buttons
       clearSortRadioButtons();
   
-      const usersList = await fetchFilteredUsers(unitSelect.value);
-      buildPage(usersList);
+      const assetsList = await fetchFilteredAssets(unitSelect.value);
+      buildPage(assetsList);
     });
   };
 
@@ -310,7 +314,7 @@ const filterUsers = () => {
 //Function to search
 const searchAsset = async (searchInput) => {
     let assetsList;
-    if (searchInput.value === '') {
+    if (!searchInput || searchInput.value === '') {
       assetsList = await fetchSortedAssets('name');
     } else {
       //Clear the sort radio buttons
@@ -375,14 +379,13 @@ reviewAssetsRequestButton.addEventListener('click', (event) => {
 
 //Async function to fetch units and build the table
 const buildPageAsync = async function () {
-  const unitsList = await fetchSortedUnits('name');
-  buildUnitsSelect(unitsList);
+  
 
   const assetsList = await fetchSortedAssets('name');
   buildPage(assetsList);
   sortAssets();
   filterAssets();
-  searchAssets();
+  searchAsset();
   searchAssets();
 };
 

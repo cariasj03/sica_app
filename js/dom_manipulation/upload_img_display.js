@@ -24,11 +24,11 @@ const changeImageElements = () => {
       uploadPictureButton = document.getElementById('editUserPictureButton');
       break;
 
-    case 'assetTransferRequestValidation':
-      const assetImageInput1 = document.getElementById('uploadPictureAsset1');
-      const assetImageDisplay1 = document.getElementById('assetImageDisplay1');
-      const assetImageInput2 = document.getElementById('uploadPictureAsset2');
-      const assetImageDisplay2 = document.getElementById('assetImageDisplay2');
+  case 'assetTransferRequestValidation':
+    const assetImageInput1 = document.getElementById('transferPictureOne');
+    const assetImageDisplay1 = document.getElementById('assetImageDisplay1');
+    const assetImageInput2 = document.getElementById('transferPictureTwo');
+    const assetImageDisplay2 = document.getElementById('assetImageDisplay2');
 
       //Event Listeners
       assetImageInput1.addEventListener('change', function (e) {
