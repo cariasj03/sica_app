@@ -70,6 +70,23 @@ const fetchUnits = async () => {
   }
 };
 
+//Function to update the user Password
+const changeUserPassword = async (body) => {
+  try {
+    const response = await fetch(`http://localhost:8000/forgot-password`, {
+      method: 'POST',
+      headers: {
+        'Content-type': 'application/json',
+      },
+      body: JSON.stringify(body),
+    });
+    return response;
+  } catch (error) {
+    console.log(error);
+    throw error;
+  }
+};
+
 //Function to build the options in the units select
 const buildUnitsSelect = (unitsList) => {
   unitsList.forEach(function (element) {
@@ -115,14 +132,17 @@ const approveUserRegistration = async () => {
     const idInput = document.getElementById('userId');
     const userRole = document.getElementById('userRole');
     const userUnit = document.getElementById('userUnit');
+    const userEmail = document.getElementById('userEmail');
 
     const body = {
+      email: userEmail.value,
       role: userRole.value,
       unit: userUnit.value,
       isApproved: true,
     };
 
     await updateUserInformation(idInput.value, body);
+    await changeUserPassword(body);
   } catch (error) {
     console.log(error);
   }
