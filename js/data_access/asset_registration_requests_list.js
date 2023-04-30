@@ -5,28 +5,53 @@ const reviewAssetsRequestButton = document.getElementById('reviewAssetsRequestBu
 const fetchSortedAssets = async (sortValue) => {
     try {
       const assets = await fetch(
-        `http://127.0.0.1:8000/assets-requests/sort/by-${sortValue}`
+        `http://127.0.0.1:8000/assets/sort/by-${sortValue}`
       );
       const assetsList = await assets.json();
       return assetsList;
     } catch (error) {
       console.log(error);
     }
-  };
+};
 
+//Function to fetch searched assets
+const fetchSearchedAssets = async (searchValue, type) => {
+  try {
+    const assets = await fetch(
+      `http://127.0.0.1:8000/assets/search/by-${type}/${searchValue}`
+    );
+    const assetsList = await assets.json();
+    return assetsList;
+  } catch (error) {
+    console.log(error);
+  }
+};
 
 //Function to fetch filtered assets
-const fetchFilteredAssets = async (asset) => {
-    try {
-      const assets = await fetch(
-        `http://127.0.0.1:8000/assets-requests/filter/unit/${unit}`
-      );
-      const assetsList = await assets.json();
-      return assetsList;
-    } catch (error) {
-      console.log(error);
-    }
-  };
+const fetchFilteredAsset = async (unit) => {
+  try {
+    const asse = await fetch(
+      `http://127.0.0.1:8000/assets/filter/unit/${unit}`
+    );
+    const asseList = await asse.json();
+    return asseList;
+  } catch (error) {
+    console.log(error);
+  }
+};
+
+//Function to fetch filtered assets
+const fetchFilteredStatus = async (status) => {
+  try {
+    const assets = await fetch(
+      `http://127.0.0.1:8000/assets/filter/status/${status}`
+    );
+    const assetsList = await assets.json();
+    return assetsList;
+  } catch (error) {
+    console.log(error);
+  }
+};
 
 //Function to fetch sorted units
 const fetchSortedUnits = async (sortValue) => {
@@ -39,31 +64,36 @@ const fetchSortedUnits = async (sortValue) => {
     } catch (error) {
       console.log(error);
     }
-  };
+};
 
-//Function to fetch searched assets
-const fetchSearchedAssets = async (searchValue, type) => {
-    try {
-      const assets = await fetch(
-        `http://127.0.0.1:8000/assets-requests/search/by-${type}/${searchValue}`
-      );
-      const assetsList = await assets.json();
-      return assetsList;
-    } catch (error) {
-      console.log(error);
+//Function to build the options in the units select
+const buildStatusSelect = (asList) => {
+
+  const uniqueStatus = new Set();
+  const statusSelect = document.getElementById('statusSelect');
+
+  asList.forEach(function (element) {
+    if (!uniqueStatus.has(element.status)) {
+      uniqueStatus.add(element.status);
+
+      const selectOption = document.createElement('option');
+      selectOption.id = `${element.id}`;
+      selectOption.value = `${element.status}`;
+      selectOption.innerText = `${element.status}`;
+      statusSelect.appendChild(selectOption);
     }
-  };
-
+  });
+};
 
 //Function to load the assets in the table
 const loadAssets = (assetsList) => {
     const table = document.querySelector('table');
     table.innerHTML =
       '<tr><th></th><th>ID</th><th>Nombre</th><th>Unidad</th><th>Código de ubicación</th><th>Estado</th></tr>';
-    if (!Array.isArray(assetsList) || assetsList.length === 0) {
-      console.log('La lista de activos está vacía o no es un array.');
-      return;
-    }  
+    // if (!Array.isArray(assetsList) || assetsList.length === 0) {
+    //   console.log('La lista de activos está vacía o no es un array.');
+    //   return;
+    // }  
     assetsList.forEach(function(asset) {
       const tableRow = document.createElement('tr');
       const tableRowRadio = document.createElement('td');
@@ -81,12 +111,17 @@ const loadAssets = (assetsList) => {
 
       const assetLocationCode = document.createElement('td');
       assetLocationCode.innerText = `${asset.locationCode}`;
+
+      const assetStatus = document.createElement('td');
+      assetStatus.innerText = `${asset.status}`;
   
       tableRow.appendChild(tableRowRadio);
       tableRow.appendChild(assetID);
       tableRow.appendChild(assetName);
       tableRow.appendChild(assetUnit);
       tableRow.appendChild(assetLocationCode);
+      tableRow.appendChild(assetStatus);
+
   
       table.appendChild(tableRow);
     });
@@ -277,11 +312,7 @@ const clearUnitSelect = () => {
 
 //Function sort the Assets in the table
 const sortAssets = () => {
-    const nameRadioButton = document.getElementById('nameRadio');
     const sortRadioButtons = document.getElementsByName('sortRadio');
-  
-    //Set the default sort radio button
-    nameRadioButton.checked = true;
   
     //Event listeners
     sortRadioButtons.forEach((radioButton) => {
@@ -294,21 +325,32 @@ const sortAssets = () => {
         }
       });
     });
-  };
+};
 
 
 //Function to filter the assets in the table
 const filterAssets= () => {
-    const assetSelect = document.getElementById('unitSelect');
-    //Event listeners
-    assetSelect.addEventListener('change', async () => {
-      //Reset the sort radio buttons
-      clearSortRadioButtons();
+  const unitSelect = document.getElementById("unitSelect");
   
-      const assetsList = await fetchFilteredAssets(unitSelect.value);
-      buildPage(assetsList);
-    });
-  };
+  //Event listeners
+  unitSelect.addEventListener("change", async () => {
+    //Reset the sort radio buttons
+    clearSortRadioButtons();
+
+    const userList = await fetchFilteredAsset(unitSelect.value);
+    buildPage(userList);
+  });
+
+  const statusSelect = document.getElementById("statusSelect");
+  //Event listeners
+  statusSelect.addEventListener("change", async () => {
+    //Reset the sort radio buttons
+    clearSortRadioButtons();
+
+    const AssetsStatusList = await fetchFilteredStatus(statusSelect.value);
+    buildPage(AssetsStatusList);
+  });
+};
 
 
 //Function to search
@@ -338,7 +380,7 @@ const searchAsset = async (searchInput) => {
       assetsList = await fetchSearchedAssets(searchValue, type);
     }
     buildPage(assetsList);
-  };
+};
 
 //Function to search the users in the table
 const searchAssets = () => {
@@ -353,7 +395,7 @@ const searchAssets = () => {
         searchAsset(searchInput);
       });
     });
-  };
+};
 
 //Function to build the page
 const buildPage = async (assetsList) => {
@@ -374,12 +416,16 @@ reviewAssetsRequestButton.addEventListener('click', (event) => {
     } else {
       storeAssetId(selectedAssetId);
     }
-  });
+});
 
 
 //Async function to fetch units and build the table
 const buildPageAsync = async function () {
-  
+  const unitsList = await fetchSortedUnits('name');
+  buildUnitsSelect(unitsList);
+
+  const statusList = await fetchSortedAssets('name');
+  buildStatusSelect(statusList);
 
   const assetsList = await fetchSortedAssets('name');
   buildPage(assetsList);

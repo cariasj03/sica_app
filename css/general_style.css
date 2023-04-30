@@ -340,3 +340,12 @@ textarea:focus {
   align-items: center;
   justify-content: center;
 }
+
+.swal2-input {
+  margin-top: 0rem !important;
+  margin-bottom: 1rem !important;
+}
+
+.swal2-label {
+  margin-bottom: 0.5rem !important;
+}

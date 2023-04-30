@@ -84,24 +84,29 @@
               <h3>Ordenar por</h3>
 
               <label for="idRadio"
-                ><input type="radio" id="idRadio" name="sortRadio" value="ID" />
+                ><input
+                  type="radio"
+                  id="IDUserRadio"
+                  name="sortRadio"
+                  value="id"
+                />
                 ID del activo</label
               >
-              <label for="nameRadio"
-                ><input
+              <label for="nameRadio">
+                <input
                   type="radio"
                   id="nameRadio"
                   name="sortRadio"
-                  value="nombre"
+                  value="name"
                 />
-                Nombre del activo</label
-              >
+                Nombre del activo
+              </label>
               <label for="unitRadio"
                 ><input
                   type="radio"
                   id="unitRadio"
                   name="sortRadio"
-                  value="unidad"
+                  value="unit"
                 />
                 Unidad</label
               >
@@ -110,7 +115,7 @@
                   type="radio"
                   id="statusRadio"
                   name="sortRadio"
-                  value="estado"
+                  value="status"
                 />
                 Estado</label
               >
@@ -118,20 +123,12 @@
               <hr />
 
               <h3>Filtrar por</h3>
-              <label for="unitSelect"
-                >Unidad<select class="inputStyle" id="unitSelect">
-                  <option value="" disabled selected hidden>Unidad</option>
-                  <option value="bodega">Bodega</option>
-                  <option value="cartago">Cartago</option>
-                  <option value="heredia">Heredia</option>
-                </select></label
-              >
-              <label for="statusSelect"
-                >Estado<select class="inputStyle" id="statusSelect">
+              <label for="unitSelect">Unidad<select class="inputStyle" id="unitSelect">
+                <option value="" disabled selected hidden>Unidad</option>
+              </select></label>
+
+              <label for="statusSelect">Estado<select class="inputStyle" id="statusSelect">
                   <option value="" disabled selected hidden>Estado</option>
-                  <option value="activo">Activo</option>
-                  <option value="desuso">Desuso</option>
-                  <option value="danado">Dañado</option>
                 </select></label
               >
 
@@ -143,31 +140,22 @@
                   class="inputStyle"
                   type="search"
                   id="idSearch"
-                  name="idSearch"
-                  placeholder="ID del activo"
+                  name="searchInput"
+                  placeholder="ID"
               /></label>
               <label for="nameSearch"
                 >Nombre del activo<input
                   class="inputStyle"
                   type="search"
                   id="nameSearch"
-                  name="nameSearch"
-                  placeholder="Nombre del activo  "
+                  name="searchInput"
+                  placeholder="Nombre"
               /></label>
             </div>
           </div>
 
           <div class="tableContainer">
-            <table class="tables" id="paginatedTable">
-              <tr>
-                <th></th>
-                <th>ID</th>
-                <th>Nombre</th>
-                <th>Unidad</th>
-                <th>Código de ubicación</th>
-                <th>Estado</th>
-              </tr>
-            </table>
+            <table class="tables" id="paginatedTable"></table>
 
             <div class="paginationContainer">
               <button
@@ -189,6 +177,7 @@
               >
                 &gt;
               </button>
+
             </div>
 
             <div class="buttonContainer">
@@ -197,6 +186,8 @@
             </div>
 
           </div>
+            </div>
+          
         </div>
       </div>
     </main>
