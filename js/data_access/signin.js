@@ -2,6 +2,7 @@
 const signInEmailInput = document.getElementById('signinEmail');
 const signInPasswordInput = document.getElementById('signinPassword');
 const signInButton = document.getElementById('submit');
+const forgotPasswordLink = document.getElementById('forgotPassword');
 
 //Functions
 //Function to fetch the user's email and password
@@ -23,6 +24,40 @@ const signIn = async () => {
     const sessionUserData = await response.json();
 
     return sessionUserData;
+  } catch (error) {
+    console.log(error);
+    throw error;
+  }
+};
+
+//Function to check if the user exists
+const checkUserExists = async (body) => {
+  try {
+    const response = await fetch(`http://localhost:8000/user-exists`, {
+      method: 'POST',
+      headers: {
+        'Content-type': 'application/json',
+      },
+      body: JSON.stringify(body),
+    });
+    return response.json();
+  } catch (error) {
+    console.log(error);
+    throw error;
+  }
+};
+
+//Function to check if the user exists
+const forgotPasswordUpdate = async (body) => {
+  try {
+    const response = await fetch(`http://localhost:8000/forgot-password`, {
+      method: 'POST',
+      headers: {
+        'Content-type': 'application/json',
+      },
+      body: JSON.stringify(body),
+    });
+    return response.json();
   } catch (error) {
     console.log(error);
     throw error;
@@ -57,4 +92,9 @@ signInButton.addEventListener('click', async (event) => {
   } catch (error) {
     console.log(error);
   }
+});
+
+forgotPasswordLink.addEventListener('click', (event) => {
+  event.preventDefault();
+  forgotPasswordAlert();
 });
