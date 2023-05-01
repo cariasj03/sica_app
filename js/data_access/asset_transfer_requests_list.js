@@ -289,7 +289,7 @@ const pagination = () => {
         clearUnitSelect();
         if (radioButton.checked) {
           const sortValue = radioButton.value;
-          const usersList = await fetchSortedUsers(sortValue);
+          const usersList = await fetchSortedTransfers(sortValue);
           buildPage(usersList);
         }
       });

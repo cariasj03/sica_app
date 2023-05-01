@@ -124,32 +124,23 @@ const rejectTransfer = async () => {
 
 
 //Event listeners
-//Event listener to approve the user registration
+//Event listener to approve the transfer
 
 approveButton.addEventListener('click', async (event) => {
     event.preventDefault();
-    formInputs.forEach((input) => {
-      input.click();
-    });
     try {
-      if (
-        Object.values(
-          validationFields.assetTransferRequestReviewFormFields
-        ).every(Boolean)
-      ) {
+       {
         confirmationAlert(
-          '¿Está seguro de que desea aprobar la solicitud?',
-          'Solicitud aprobada.',
-          'La solicitud fue aprobada con éxito.',
+          '¿Está seguro de que desea aprobar el traslado?',
+          'Traslado aprobado.',
+          'El traslado fue aprobado con éxito.',
           '../html/asset_transfer_requests_list.html',
-          approveTransferRegistration
+          approveTransfer
         );
-      } else {
-        errorAlert('Hay campos obligatorios sin llenar.');
-      }
+      } 
     } catch (error) {
       console.log(error);
-      errorAlert('Hubo un error al aprobar el usuario.');
+      errorAlert('Hubo un error al aprobar el traslado.');
     }
   });
   
@@ -158,15 +149,15 @@ approveButton.addEventListener('click', async (event) => {
 rejectButton.addEventListener('click', async () => {
     try {
       confirmationAlert(
-        '¿Está seguro de que desea rechazar la solicitud?',
-        'Solicitud rechazada.',
-        'La solicitud fue rechazada con éxito.',
-        '../html/user_registration_requests_list.html',
+        '¿Está seguro de que desea rechazar el traslado?',
+        'Traslado rechazado.',
+        'El traslado fue rechazado con éxito.',
+        '../html/assets_transfer_requests_list.html',
         rejectTransfer
       );
     } catch (error) {
       console.log(error);
-      errorAlert('Hubo un error al aprobar el usuario.');
+      errorAlert('Hubo un error al rechazar el traslado.');
     }
   });
 

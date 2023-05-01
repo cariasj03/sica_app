@@ -82,7 +82,6 @@
                 type="text"
                 id="assetTransferId"
                 name="assetTransferId"
-                value="000003"
                 disabled
             /></label>
 
@@ -93,7 +92,6 @@
                 type="text"
                 id="assetTransferRequestDate"
                 name="assetTransferRequestDate"
-                value="16/03/2023"
                 disabled
             /></label>
 
@@ -104,7 +102,6 @@
                 type="text"
                 id="assetId"
                 name="assetId"
-                value="000001"
                 disabled
             /></label>
 
@@ -115,7 +112,6 @@
                 type="text"
                 id="assetName"
                 name="assetName"
-                value="Impresora EPSON F570"
                 disabled
             /></label>
 
@@ -126,7 +122,6 @@
                 type="text"
                 id="assetOriginUnit"
                 name="assetOriginUnit"
-                value="Cartago"
                 disabled
             /></label>
 
@@ -137,7 +132,6 @@
                 type="text"
                 id="assetTargetUnit"
                 name="assetTargetUnit"
-                value="Piso 4, estante 2, caja 3"
                 disabled
             /></label>
 
@@ -148,7 +142,6 @@
                 type="text"
                 id="assetTransferReason"
                 name="assetTransferReason"
-                value="Daño"
                 disabled
             /></label>
 
@@ -159,7 +152,6 @@
                 type="text"
                 id="assetTargetLocation"
                 name="assetTargetLocation"
-                value="Alajuela"
                 disabled
             /></label>
 
@@ -171,10 +163,7 @@
                 name="assetRequestDescription"
                 rows="3"
                 disabled
-              >
-Impresora presenta problemas de conectividad con la red Wi-Fi de la unidad. No se ha logrado recuperar su funcionalidad luego de visitas de técnicos especializados.
-            </textarea
-              >
+              > </textarea>
             </label>
           </div>
 
@@ -182,11 +171,13 @@ Impresora presenta problemas de conectividad con la red Wi-Fi de la unidad. No s
             <label for="assetStatus">Imágenes que justifican el traslado</label>
             <img
               class="assetTransferPicture"
+              id="assetTransferPicture1"
               alt="Upload a picture 1"
               src="../images/assetTransferPicture1.png"
             />
             <img
               class="assetTransferPicture"
+              id="assetTransferPicture2"
               alt="Upload a picture 2"
               src="../images/assetTransferPicture2.png"
             />
@@ -227,5 +218,6 @@ Impresora presenta problemas de conectividad con la red Wi-Fi de la unidad. No s
     <script src="../js/dom_manipulation/sweet_alert.js"></script>
     <script src="../js/dom_manipulation/user_feedback.js"></script>
     <script src="../js/data_access/session_logic.js"></script>
+    <script src="../js/data_access/asset_transfer_request_review.js"></script>
   </body>
 </html>
