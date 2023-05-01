@@ -98,8 +98,6 @@ const approveAssetRegistration = async () => {
 //Function to reject the asset registration
 const rejectAssetRegistration = async () => {
     try {
-      const idInput = document.getElementById('assetId');
-  
       await deleteAsset(idInput.value);
     } catch (error) {
       console.log(error);
@@ -111,15 +109,8 @@ const rejectAssetRegistration = async () => {
 //Event listener to approve the user registration
 approveButton.addEventListener('click', async (event) => {
     event.preventDefault();
-    formInputs.forEach((input) => {
-      input.click();
-    });
     try {
-      if (
-        Object.values(
-          validationFields.assetRegistrationRequestReviewFormFields
-        ).every(Boolean)
-      ) {
+      
         confirmationAlert(
           '¿Está seguro de que desea aprobar la solicitud?',
           'Solicitud aprobada.',
@@ -127,9 +118,7 @@ approveButton.addEventListener('click', async (event) => {
           '../html/asset_registration_requests_list.html',
           approveAssetRegistration
         );
-      } else {
-        errorAlert('Hay campos obligatorios sin llenar.');
-      }
+      
     } catch (error) {
       console.log(error);
       errorAlert('Hubo un error al aprobar el activo.');
@@ -157,6 +146,6 @@ rejectButton.addEventListener('click', async () => {
 //Async function to load the page
 (async () => {
     const selectedAsset = await fetchAssetInformation();
-    loadSelectedUser(selectedAsset);
+    loadSelectedAsset(selectedAsset);
   })();
   
