@@ -156,8 +156,6 @@ const getSelectedAssetId = () => {
 //Function to store the unit id in the local storage
 const storeAssetId = (assetId) => {
   localStorage.setItem('assetId', assetId);
-  window.location.href = '../html/asset_individual_information.html';
-  window.location.href = '../html/asset_transfer_request.html';
 };
 
 //Function to handle pagination
@@ -427,6 +425,17 @@ viewEditAsset.addEventListener('click', () => {
     errorAlert('No ha seleccionado un activo. Seleccione uno para continuar');
   } else {
     storeAssetId(assetId);
+    window.location.href = '../html/asset_individual_information.html';
+  }
+});
+
+transferAsset.addEventListener('click', () => {
+  const assetId = getSelectedAssetId();
+  if (assetId === undefined || assetId === null) {
+    errorAlert('No ha seleccionado un activo. Seleccione uno para continuar');
+  } else {
+    storeAssetId(assetId);
+    window.location.href = '../html/asset_transfer_request.html';
   }
 });
 

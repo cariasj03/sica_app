@@ -257,6 +257,40 @@ textarea:focus {
   transform: translateY(0);
 }
 
+.uploadPictureButton {
+  background-clip: padding-box;
+  background-color: #e4e4e4;
+  border: none;
+  border-radius: 0.5rem;
+  box-shadow: rgba(0, 0, 0, 0.2) 0 1px 3px 0;
+  box-sizing: border-box;
+  color: #444;
+  cursor: pointer;
+  min-height: 2rem;
+  padding: 0.25rem 0.5rem;
+  transition: all 250ms;
+  user-select: none;
+  -webkit-user-select: none;
+  touch-action: manipulation;
+  font-size: 14px;
+}
+
+.uploadPictureButton:hover,
+.uploadPictureButton:focus {
+  background-color: #b2b2b2;
+  box-shadow: rgba(0, 0, 0, 0.5) 0 4px 12px;
+}
+
+.uploadPictureButton:hover {
+  transform: translateY(-5px);
+}
+
+.uploadPictureButton:active {
+  background-color: #b2b2b2;
+  box-shadow: rgba(0, 0, 0, 0.2) 0 1px 3px 0;
+  transform: translateY(0);
+}
+
 .disabledButton,
 .disabledButton:hover {
   background-color: #d6d6d6;

@@ -145,8 +145,9 @@ select:required:invalid {
   grid-template-columns: 1fr 1fr;
 }
 
-#userIdLabelAssetTransfer {
-  display: grid;
+#transferDescriptionLabel,
+#mandatoryFields,
+#transferPictureContainer {
   grid-column: 1/3;
 }
 
@@ -159,6 +160,10 @@ select:required:invalid {
   display: grid;
   grid-template-columns: 1fr 1fr;
   justify-self: left;
+  align-items: center;
+  justify-items: center;
+  margin-bottom: 1.5rem;
+  gap: 1rem;
 }
 
 .uploadPictureAsset {
@@ -208,6 +213,13 @@ select:required:invalid {
 #userProfilePictureLabel,
 #assetDescriptionLabel {
   grid-column: 1/3;
+}
+
+#transferUploadButton1Error {
+  grid-column: 1;
+}
+#transferUploadButton2Error {
+  grid-column: 2;
 }
 
 .signinSignupMain {

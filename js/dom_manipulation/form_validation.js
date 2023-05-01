@@ -77,13 +77,13 @@ const validationFields = {
     location: true,
   },
   // Object for asset transfer request validation
-  assetTransferRequestValidationFields: {
-    transferUnitDestination: false,
-    transferLocationDestination: false,
+  assetTransferRequestFormFields: {
+    targetUnit: false,
+    targetLocation: false,
     transferReason: false,
     transferDescription: false,
-    // transferPictureOne: false,
-    // transferPictureTwo: false,
+    transferUploadButton1: false,
+    transferUploadButton2: false,
   },
   // Object for user registration request validation
   userRegistrationRequestReviewFormFields: {
@@ -124,8 +124,8 @@ const validateForm = function (event) {
     case 'canton':
     case 'district':
     case 'address':
-    case 'transferUnitDestination':
-    case 'transferLocationDestination':
+    case 'targetUnit':
+    case 'targetLocation':
     case 'transferReason':
     case 'transferDescription':
       validateEmptyField(elementId, elementValue);
@@ -157,12 +157,6 @@ const validateForm = function (event) {
       if (!validateEmptyField(elementId, elementValue)) {
         validateEmailField(elementId, elementValue);
       }
-      break;
-    //Validates if the user uploaded a picture when required
-    case 'userProfilePicture':
-    case 'uploadPictureAsset1':
-    case 'uploadPictureAsset2':
-      validateFileField(elementId, elementValue);
       break;
   }
 };
@@ -231,15 +225,14 @@ const validateEmailField = function (elementId, elementValue) {
 };
 
 //Validation fuction for file fields
-//Validates if the user has uploades a file into the input field
-const validateFileField = function (elementId) {
-  const imageSrc = imageDisplay.src;
-  //Checks if the file of the input field has a length greater than 0
-  if (imageSrc.includes('profile_picture.png')) {
-    //If the file does not have a length > 0, calls the fuction that displays the error message
+const validateFileField = function (elementId, image) {
+  const imageSrc = image.src;
+  if (
+    imageSrc.includes('profile_picture.png') ||
+    imageSrc.includes('upload_picture_icon')
+  ) {
     errorModifier(elementId, true, 'No ha subido ningún archivo.');
   } else {
-    //If it does, calls the fuctions that hides the error message
     errorModifier(elementId, false, '');
   }
 };
@@ -268,56 +261,6 @@ const errorModifier = function (elementId, status, message) {
   }
 };
 
-//Submit button function
-const submitBtn = function () {
-  //Depending on the form the user is in, the function validates different objects and fields
-
-  switch (form.id) {
-    case 'assetRegistrationForm':
-      if (Object.values(validationFields[`${form.id}Fields`]).every(Boolean)) {
-        successAlert(
-          'Registro exitoso',
-          'El activo ha sido registrado con éxito.'
-        );
-        form.reset();
-        Object.keys(validationFields[`${form.id}Fields`]).forEach(
-          (attribute) =>
-            (validationFields[`${form.id}Fields`][attribute] = false)
-        );
-      } else {
-        errorAlert('Hay campos obligatorios sin llenar.');
-      }
-      break;
-
-    case 'assetIndividualInformationForm':
-      if (Object.values(validationFields[`${form.id}Fields`]).every(Boolean)) {
-        successAlert('La edición de la información del activo fue exitosa.');
-      } else {
-        errorAlert('Hay campos obligatorios sin llenar.');
-      }
-      break;
-
-    case 'assetTransferRequestValidation':
-      if (Object.values(validationFields[`${form.id}Fields`]).every(Boolean)) {
-        successAlert('La solicitud se ha enviado con éxito.');
-        form.reset();
-        const assetImageDisplay1 =
-          document.getElementById('assetImageDisplay1');
-        assetImageDisplay1.src = '../images/upload_picture_icon.jpeg';
-        const assetImageDisplay2 =
-          document.getElementById('assetImageDisplay2');
-        assetImageDisplay2.src = '../images/upload_picture_icon.jpeg';
-        Object.keys(validationFields[`${form.id}Fields`]).forEach(
-          (attribute) =>
-            (validationFields[`${form.id}Fields`][attribute] = false)
-        );
-      } else {
-        errorAlert('Hay campos obligatorios sin llenar.');
-      }
-      break;
-  }
-};
-
 const validation = function () {
   formInputs.forEach(function (input) {
     input.addEventListener('blur', validateForm);
@@ -325,21 +268,36 @@ const validation = function () {
     input.addEventListener('click', validateForm);
   });
 
-  if (form.id === 'signupForm') {
+  if (form.id === 'signupForm' || form.id === 'assetTransferRequestForm') {
     uploadPictureButton.addEventListener('click', (e) => {
       e.preventDefault();
-      validateFileField(uploadPictureButton.id);
+      validateFileField(uploadPictureButton.id, imageDisplay);
     });
 
     const observer = new MutationObserver((changes) => {
       changes.forEach((change) => {
         if (change.attributeName.includes('src')) {
-          validateFileField(uploadPictureButton.id);
+          validateFileField(uploadPictureButton.id, imageDisplay);
         }
       });
     });
-
     observer.observe(imageDisplay, { attributes: true });
+  }
+
+  if (form.id === 'assetTransferRequestForm') {
+    uploadPictureButton2.addEventListener('click', (e) => {
+      e.preventDefault();
+      validateFileField(uploadPictureButton2.id, imageDisplay2);
+    });
+
+    const observer = new MutationObserver((changes) => {
+      changes.forEach((change) => {
+        if (change.attributeName.includes('src')) {
+          validateFileField(uploadPictureButton2.id, imageDisplay2);
+        }
+      });
+    });
+    observer.observe(imageDisplay2, { attributes: true });
   }
 };
 

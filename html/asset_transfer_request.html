@@ -69,60 +69,64 @@
       <div class="pageBody">
         <h1 id="titleMargin">Solicitud de traslado de un activo</h1>
 
-        <form
-          class="containerAssetTransfer form"
-          id="assetTransferRequestValidation"
-        >
+        <form class="containerAssetTransfer form" id="assetTransferRequestForm">
           <label for="assetId"
             >ID del activo
-            <input class="inputStyle" type="text" id="transferId" name="transferId"
+            <input
+              class="inputStyle disabled"
+              type="text"
+              id="assetId"
+              name="assetId"
+              disabled
           /></label>
 
           <label for="assetName"
             >Nombre del activo
             <input
-              class="inputStyle"
+              class="inputStyle disabled"
               type="text"
-              id="transferName"
-              name="transferName"
+              id="assetName"
+              name="assetName"
+              disabled
           /></label>
 
-          <label for="assetOriginUnit"
+          <label for="originUnit"
             >Unidad de origen
             <input
-              class="inputStyle"
+              class="inputStyle disabled"
               type="text"
-              id="transferUnitOrigin"
-              name="transferUnitOrigin"
+              id="originUnit"
+              name="originUnit"
+              disabled
           /></label>
 
-          <label for="assetTargetUnit"
+          <label for="targetUnit"
             >Unidad de destino *
             <select
               class="inputStyle"
               type="text"
-              id="transferUnitDestination"
-              name="transferUnitDestination"
+              id="targetUnit"
+              name="targetUnit"
             >
               <option value="" disabled selected hidden>
-                Unidad de Destino
+                Unidad de destino
               </option>
             </select>
-            <p class="formInputError" id="transferUnitDestinationError"></p
+            <p class="formInputError" id="targetUnitError"></p
           ></label>
 
-          <label for="assetTargetLocation"
+          <label for="targetLocation"
             >Ubicación de destino *
             <input
               class="inputStyle"
               type="text"
-              id="transferLocationDestination"
-              name="transferLocationDestination"
+              id="targetLocation"
+              name="targetLocation"
               placeholder="Ubicación de destino" />
-            <p class="formInputError" id="transferLocationDestinationError"></p
+            <p class="formInputError" id="targetLocationError"></p
           ></label>
 
-          <label for="assetTransferReason"
+          <label for="transferReason"
             >Motivo del traslado *
             <select
               class="inputStyle"
@@ -133,14 +137,15 @@
               <option value="" disabled selected hidden>
                 Motivo del traslado
               </option>
-              <option value="damage">Daño</option>
-              <option value="disuse">Desuso</option>
-              <option value="donation">Donación</option>
+              <option value="Daño">Daño</option>
+              <option value="Desuso">Desuso</option>
+              <option value="Donación">Donación</option>
+              <option value="Otro">Otro</option>
             </select>
             <p class="formInputError" id="transferReasonError"></p>
           </label>
 
-          <label for="assetRequestDescription" id="userIdLabelAssetTransfer"
+          <label for="transferDescription" id="transferDescriptionLabel"
             >Descripción detallada de la solicitud *
             <textarea
               class="inputStyle"
@@ -152,8 +157,8 @@
             <p class="formInputError" id="transferDescriptionError"></p>
           </label>
 
-          <div id="userIdLabelAssetTransfer">
-            <label for="assetRequestPictures" id="userIdLabelAssetTransfer"
+          <div id="transferPictureContainer">
+            <label for="assetRequestPictures"
               >Imagenes que justifiquen el traslado *</label
             >
           </div>
@@ -161,45 +166,45 @@
           <div id="firstColumn">
             <div id="centerFirstColumn">
               <img
-                id="assetImageDisplay1"
+                id="transferImageDisplay1"
                 alt="Upload a picture"
                 src="../images/upload_picture_icon.jpeg"
                 class="imageStyleTransfers"
               />
 
               <img
-                id="assetImageDisplay2"
+                id="transferImageDisplay2"
                 alt="Upload a picture"
                 src="../images/upload_picture_icon.jpeg"
                 class="imageStyleTransfers"
               />
 
-              <input
-                class="inputStyle uploadPictureAsset"
-                id="transferPictureOne"
-                name="transferPictureOne"
-                type="file"
-                accept=".png, .jpg, .jpeg,"
-              />
+              <button
+                type="button"
+                id="transferUploadButton1"
+                class="uploadPictureButton"
+              >
+                Elegir archivo
+              </button>
 
-              <input
-                class="inputStyle uploadPictureAsset"
-                id="transferPictureTwo"
-                name="transferPictureTwo"
-                type="file"
-                accept=".png, .jpg, .jpeg,"
-              />
+              <button
+                type="button"
+                id="transferUploadButton2"
+                class="uploadPictureButton"
+              >
+                Elegir archivo
+              </button>
 
-              <p class="formInputError" id="transferPictureOneError"></p>
+              <p class="formInputError" id="transferUploadButton1Error"></p>
 
-              <p class="formInputError" id="transferPictureTwoError"></p>
+              <p class="formInputError" id="transferUploadButton2Error"></p>
             </div>
           </div>
 
-          <p id="userIdLabelAssetTransfer">* Campos obligatorios</p>
+          <p id="mandatoryFields">* Campos obligatorios</p>
 
           <div id="buttonContainer">
-            <button type="button" class="primaryButton" id="submit2">
+            <button type="button" class="primaryButton" id="submit">
               Enviar solicitud
             </button>
 
@@ -217,11 +222,16 @@
       <p class="copyrightText">Copyright &copy; 2023 by Beelders.</p>
     </footer>
 
-    <script src="../js/dom_manipulation/form_validation.js"></script>
+    <script
+      src="https://widget.cloudinary.com/v2.0/global/all.js"
+      type="text/javascript"
+    ></script>
+
+    <script src="../js/data_access/session_logic.js"></script>
     <script src="../js/dom_manipulation/sweet_alert.js"></script>
     <script src="../js/dom_manipulation/user_feedback.js"></script>
     <script src="../js/dom_manipulation/upload_img_display.js"></script>
-    <script src="../js/data_access/session_logic.js"></script>
-    <script src="../js/data_access/transfer_request.js"></script>
+    <script src="../js/dom_manipulation/form_validation.js"></script>
+    <script src="../js/data_access/asset_transfer_request.js"></script>
   </body>
 </html>

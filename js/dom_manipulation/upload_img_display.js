@@ -2,7 +2,9 @@
 //Stores the form of the page the user is in
 const uploadPictureForm = document.querySelector('form');
 let imageDisplay;
+let imageDisplay2;
 let uploadPictureButton;
+let uploadPictureButton2;
 
 //Function to change the image display depending on the page the user is in
 const changeImageElements = () => {
@@ -24,26 +26,26 @@ const changeImageElements = () => {
       uploadPictureButton = document.getElementById('editUserPictureButton');
       break;
 
-  case 'assetTransferRequestValidation':
-    const assetImageInput1 = document.getElementById('transferPictureOne');
-    const assetImageDisplay1 = document.getElementById('assetImageDisplay1');
-    const assetImageInput2 = document.getElementById('transferPictureTwo');
-    const assetImageDisplay2 = document.getElementById('assetImageDisplay2');
+    case 'assetTransferRequestForm':
+      imageDisplay = document.getElementById('transferImageDisplay1');
+      imageDisplay2 = document.getElementById('transferImageDisplay2');
+      uploadPictureButton = document.getElementById('transferUploadButton1');
+      uploadPictureButton2 = document.getElementById('transferUploadButton2');
 
-      //Event Listeners
-      assetImageInput1.addEventListener('change', function (e) {
-        assetImageDisplay1.src = URL.createObjectURL(e.target.files[0]);
-      });
+      uploadPictureButton2.addEventListener(
+        'click',
+        () => {
+          cloudinaryWidget2.open();
+        },
+        false
+      );
 
-      assetImageInput2.addEventListener('change', function (e) {
-        assetImageDisplay2.src = URL.createObjectURL(e.target.files[0]);
-      });
       break;
   }
 };
 
 //Creates the widget to upload images
-const cloudinaryWidget = cloudinary.createUploadWidget(
+const cloudinaryWidget1 = cloudinary.createUploadWidget(
   {
     cloudName: 'cariasj',
     uploadPreset: 'cariasj',
@@ -87,6 +89,51 @@ const cloudinaryWidget = cloudinary.createUploadWidget(
   }
 );
 
+//Creates the widget to upload images
+const cloudinaryWidget2 = cloudinary.createUploadWidget(
+  {
+    cloudName: 'cariasj',
+    uploadPreset: 'cariasj',
+    sources: [
+      'camera',
+      'google_drive',
+      'facebook',
+      'dropbox',
+      'instagram',
+      'local',
+    ],
+    clientAllowedFormats: ['png', 'jpeg', 'jpg'],
+    showAdvancedOptions: false,
+    cropping: false,
+    multiple: true,
+    defaultSource: 'local',
+    styles: {
+      palette: {
+        window: '#FFFFFF',
+        windowBorder: '#90A0B3',
+        tabIcon: '#D86634',
+        menuIcons: '#5A616A',
+        textDark: '#000000',
+        textLight: '#FFFFFF',
+        link: '#D86634',
+        action: '#687448',
+        inactiveTabIcon: '#57613C',
+        error: '#F44235',
+        inProgress: '#ADC178',
+        complete: '#20B832',
+        sourceBg: '#E4EBF1',
+      },
+      fonts: { default: { active: true } },
+    },
+  },
+  (err, result) => {
+    if (!err && result && result.event === 'success') {
+      console.log('Imagen subida con éxito', result.info);
+      imageDisplay2.src = result.info.secure_url;
+    }
+  }
+);
+
 //Function calls
 changeImageElements();
 
@@ -94,7 +141,7 @@ changeImageElements();
 uploadPictureButton.addEventListener(
   'click',
   () => {
-    cloudinaryWidget.open();
+    cloudinaryWidget1.open();
   },
   false
 );

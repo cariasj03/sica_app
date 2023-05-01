@@ -16,6 +16,19 @@ const successAlert = function (alertTitle, message) {
   });
 };
 
+const successAlertRedirect = function (alertTitle, message, url) {
+  Swal.fire({
+    title: alertTitle,
+    text: message,
+    icon: 'success',
+    confirmButtonText: 'Aceptar',
+  }).then((result) => {
+    if (result.isConfirmed) {
+      window.location.href = url;
+    }
+  });
+};
+
 const forgotPasswordAlert = function () {
   Swal.fire({
     title: 'Recuperación de contraseña',
