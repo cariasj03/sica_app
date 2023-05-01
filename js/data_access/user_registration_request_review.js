@@ -139,6 +139,7 @@ const approveUserRegistration = async () => {
       role: userRole.value,
       unit: userUnit.value,
       isApproved: true,
+      approvedBy: sessionUserData.id,
     };
 
     await updateUserInformation(idInput.value, body);

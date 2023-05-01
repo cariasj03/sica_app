@@ -9,6 +9,7 @@ const updateUserInformation = async (id, body) => {
       },
       body: JSON.stringify(body),
     });
+    return response.json();
   } catch (error) {
     console.log(error);
   }
@@ -202,8 +203,11 @@ userSaveButton.addEventListener('click', async (event) => {
   event.preventDefault();
   try {
     if (Object.values(validationFields.userInfoFormFields).every(Boolean)) {
-      await updateUserInformation(userId.value, getFormFields());
-      const sessionUserDataStr = JSON.stringify(getFormFields());
+      const sessionUserData = await updateUserInformation(
+        userId.value,
+        getFormFields()
+      );
+      const sessionUserDataStr = JSON.stringify(sessionUserData);
       localStorage.setItem('sessionUserData', sessionUserDataStr);
       disbleUserFields();
       userSaveButton.classList.add('disabledButton');

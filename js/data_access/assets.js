@@ -1,11 +1,11 @@
 //DOM elements
-const viewEditAsset = document.getElementById("viewEditAsset");
-const transferAsset = document.getElementById("transferAsset");
+const viewEditAsset = document.getElementById('viewEditAsset');
+const transferAsset = document.getElementById('transferAsset');
 
 //Function to fetch assets
 const fetchAssets = async () => {
   try {
-    const assets = await fetch("http://127.0.0.1:8000/assets/sort/by-id");
+    const assets = await fetch('http://127.0.0.1:8000/assets/sort/by-id');
     const assetsList = await assets.json();
     return assetsList;
   } catch (error) {
@@ -28,41 +28,41 @@ const fetchSortedAssets = async (sortValue) => {
 
 //Function to fetch searched assets
 const fetchSearchedAssets = async (searchValue, type) => {
-try {
-  const assets = await fetch(
-    `http://127.0.0.1:8000/assets/search/by-${type}/${searchValue}`
-  );
-  const assetsList = await assets.json();
-  return assetsList;
-} catch (error) {
-  console.log(error);
-}
+  try {
+    const assets = await fetch(
+      `http://127.0.0.1:8000/assets/search/by-${type}/${searchValue}`
+    );
+    const assetsList = await assets.json();
+    return assetsList;
+  } catch (error) {
+    console.log(error);
+  }
 };
 
 //Function to fetch filtered assets
 const fetchFilteredAsset = async (unit) => {
-try {
-  const asse = await fetch(
-    `http://127.0.0.1:8000/assets/filter/unit/${unit}`
-  );
-  const asseList = await asse.json();
-  return asseList;
-} catch (error) {
-  console.log(error);
-}
+  try {
+    const asse = await fetch(
+      `http://127.0.0.1:8000/assets/filter/unit/${unit}`
+    );
+    const asseList = await asse.json();
+    return asseList;
+  } catch (error) {
+    console.log(error);
+  }
 };
 
 //Function to fetch filtered assets
 const fetchFilteredStatus = async (status) => {
-try {
-  const assets = await fetch(
-    `http://127.0.0.1:8000/assets/filter/status/${status}`
-  );
-  const assetsList = await assets.json();
-  return assetsList;
-} catch (error) {
-  console.log(error);
-}
+  try {
+    const assets = await fetch(
+      `http://127.0.0.1:8000/assets/filter/status/${status}`
+    );
+    const assetsList = await assets.json();
+    return assetsList;
+  } catch (error) {
+    console.log(error);
+  }
 };
 
 //Function to fetch sorted units
@@ -78,7 +78,6 @@ const fetchSortedUnits = async (sortValue) => {
   }
 };
 
-
 //Function to build the page
 const buildPage = (assetsList) => {
   buildTableRows(assetsList);
@@ -88,29 +87,29 @@ const buildPage = (assetsList) => {
 
 //Function to load the assets in the table
 const buildTableRows = (assetsList) => {
-  const table = document.querySelector("table");
+  const table = document.querySelector('table');
   table.innerHTML =
-    "<tr><th></th><th>ID</th><th>Nombre</th><th>Unidad</th><th>Código de ubicación</th><th>Estado</th></tr>";
+    '<tr><th></th><th>ID</th><th>Nombre</th><th>Unidad</th><th>Código de ubicación</th><th>Estado</th></tr>';
 
   assetsList.forEach(function (asset) {
-    const tableRow = document.createElement("tr");
-    const tableRowRadio = document.createElement("td");
+    const tableRow = document.createElement('tr');
+    const tableRowRadio = document.createElement('td');
 
     tableRowRadio.innerHTML = '<input type="radio" name="tableRadio" />';
 
-    const assetId = document.createElement("td");
+    const assetId = document.createElement('td');
     assetId.innerText = `${asset.id}`;
 
-    const assetName = document.createElement("td");
+    const assetName = document.createElement('td');
     assetName.innerText = `${asset.name}`;
 
-    const assetUnit = document.createElement("td");
+    const assetUnit = document.createElement('td');
     assetUnit.innerText = `${asset.unit}`;
 
-    const assetLocationCode = document.createElement("td");
+    const assetLocationCode = document.createElement('td');
     assetLocationCode.innerText = `${asset.locationCode}`;
 
-    const assetStatus = document.createElement("td");
+    const assetStatus = document.createElement('td');
     assetStatus.innerText = `${asset.status}`;
 
     tableRow.appendChild(tableRowRadio);
@@ -126,16 +125,16 @@ const buildTableRows = (assetsList) => {
 
 //Function to select a row in the table
 const selectRow = () => {
-  const tableRadioButtons = document.getElementsByName("tableRadio");
+  const tableRadioButtons = document.getElementsByName('tableRadio');
   let assetId;
   tableRadioButtons.forEach((radioButton) => {
     const tableRowSelected = radioButton.parentElement.parentElement;
-    radioButton.addEventListener("change", () => {
+    radioButton.addEventListener('change', () => {
       tableRadioButtons.forEach((radioButton) => {
-        radioButton.parentElement.parentElement.classList.remove("selectedRow");
+        radioButton.parentElement.parentElement.classList.remove('selectedRow');
       });
       if (radioButton.checked) {
-        tableRowSelected.classList.add("selectedRow");
+        tableRowSelected.classList.add('selectedRow');
       }
     });
   });
@@ -143,7 +142,7 @@ const selectRow = () => {
 
 //Function to get the selected asset id
 const getSelectedAssetId = () => {
-  const tableRadioButtons = document.getElementsByName("tableRadio");
+  const tableRadioButtons = document.getElementsByName('tableRadio');
   let assetId;
   tableRadioButtons.forEach((radioButton) => {
     const tableRowSelected = radioButton.parentElement.parentElement;
@@ -156,19 +155,19 @@ const getSelectedAssetId = () => {
 
 //Function to store the unit id in the local storage
 const storeAssetId = (assetId) => {
-  localStorage.setItem("assetId", assetId);
-  window.location.href = "../html/asset_individual_information.html";
-  window.location.href = "../html/asset_transfer_request.html";
+  localStorage.setItem('assetId', assetId);
+  window.location.href = '../html/asset_individual_information.html';
+  window.location.href = '../html/asset_transfer_request.html';
 };
 
 //Function to handle pagination
 const pagination = () => {
   //DOM elements
-  const paginationNumbers = document.getElementById("paginationNumbers");
-  const paginatedTable = document.getElementById("paginatedTable");
-  const tableRows = paginatedTable.querySelectorAll("tr");
-  const nextButton = document.getElementById("nextButton");
-  const prevButton = document.getElementById("prevButton");
+  const paginationNumbers = document.getElementById('paginationNumbers');
+  const paginatedTable = document.getElementById('paginatedTable');
+  const tableRows = paginatedTable.querySelectorAll('tr');
+  const nextButton = document.getElementById('nextButton');
+  const prevButton = document.getElementById('prevButton');
 
   //Pagination variables
   const paginationLimit = 11;
@@ -176,17 +175,17 @@ const pagination = () => {
   let currentPage;
 
   const appendPageNumber = (index) => {
-    const pageNumber = document.createElement("a");
+    const pageNumber = document.createElement('a');
     pageNumber.innerHTML = index;
-    pageNumber.classList.add("paginationNumber");
-    pageNumber.setAttribute("page-index", index);
-    pageNumber.setAttribute("aria-label", "Page " + index);
+    pageNumber.classList.add('paginationNumber');
+    pageNumber.setAttribute('page-index', index);
+    pageNumber.setAttribute('aria-label', 'Page ' + index);
     paginationNumbers.appendChild(pageNumber);
   };
 
   //Function to build the pagination numbers
   const buildPaginationNumbers = () => {
-    paginationNumbers.innerHTML = "";
+    paginationNumbers.innerHTML = '';
     for (let i = 1; i <= pageCount; i++) {
       appendPageNumber(i);
     }
@@ -202,41 +201,41 @@ const pagination = () => {
     const prevRange = (pageNum - 1) * paginationLimit;
     const currRange = pageNum * paginationLimit;
     tableRows.forEach((row, index) => {
-      row.classList.add("hidden");
+      row.classList.add('hidden');
       if (index >= prevRange && index < currRange) {
-        row.classList.remove("hidden");
+        row.classList.remove('hidden');
       }
 
       if (index === 0) {
-        row.classList.remove("hidden");
+        row.classList.remove('hidden');
       }
     });
   };
 
   //Function to handle active page number
   const handleActivePageNumber = () => {
-    document.querySelectorAll(".paginationNumber").forEach((number) => {
-      number.classList.remove("active");
+    document.querySelectorAll('.paginationNumber').forEach((number) => {
+      number.classList.remove('active');
 
-      const pageIndex = Number(number.getAttribute("page-index"));
+      const pageIndex = Number(number.getAttribute('page-index'));
       if (pageIndex === currentPage) {
-        number.classList.add("activePage");
+        number.classList.add('activePage');
       } else {
-        number.classList.remove("activePage");
+        number.classList.remove('activePage');
       }
     });
   };
 
   //Function to disable prev and next buttons
   const disableButton = (button) => {
-    button.classList.add("disabledPageButton");
-    button.setAttribute("disabled", true);
+    button.classList.add('disabledPageButton');
+    button.setAttribute('disabled', true);
   };
 
   //Function to enable prev and next buttons
   const enableButton = (button) => {
-    button.classList.remove("disabledPageButton");
-    button.removeAttribute("disabled");
+    button.classList.remove('disabledPageButton');
+    button.removeAttribute('disabled');
   };
 
   //Function to handle page buttons status
@@ -258,29 +257,29 @@ const pagination = () => {
   setCurrentPage(1);
 
   //Event listeners
-  const paginationNumbersList = document.querySelectorAll(".paginationNumber");
+  const paginationNumbersList = document.querySelectorAll('.paginationNumber');
   paginationNumbersList.forEach((number) => {
-    const pageIndex = Number(number.getAttribute("page-index"));
+    const pageIndex = Number(number.getAttribute('page-index'));
 
     if (pageIndex) {
-      number.addEventListener("click", () => {
+      number.addEventListener('click', () => {
         setCurrentPage(pageIndex);
       });
     }
   });
 
-  prevButton.addEventListener("click", () => {
+  prevButton.addEventListener('click', () => {
     setCurrentPage(currentPage - 1);
   });
 
-  nextButton.addEventListener("click", () => {
+  nextButton.addEventListener('click', () => {
     setCurrentPage(currentPage + 1);
   });
 };
 
 //Function to clear de sort radio buttons
 const clearSortRadioButtons = () => {
-  const sortRadioButtons = document.getElementsByName("sortRadio");
+  const sortRadioButtons = document.getElementsByName('sortRadio');
   sortRadioButtons.forEach((radioButton) => {
     radioButton.checked = false;
   });
@@ -289,39 +288,43 @@ const clearSortRadioButtons = () => {
 //Function sort the Assets in the table
 const sortAssets = () => {
   const sortRadioButtons = document.getElementsByName('sortRadio');
-    //Event listeners
-    sortRadioButtons.forEach((radioButton) => {
-      radioButton.addEventListener('change', async () => {
-        clearUnitSelect();
-        clearStatusSelect();
-        if (radioButton.checked) {
-          const sortValue = radioButton.value;
-          const assetsList = await fetchSortedAssets(sortValue);
-          buildPage(assetsList);
-        }
-      });
+  //Event listeners
+  sortRadioButtons.forEach((radioButton) => {
+    radioButton.addEventListener('change', async () => {
+      clearUnitSelect();
+      clearStatusSelect();
+      if (radioButton.checked) {
+        const sortValue = radioButton.value;
+        const assetsList = await fetchSortedAssets(sortValue);
+        buildPage(assetsList);
+      }
     });
+  });
 };
 
 //Function to filter the assets in the table
-const filterAssets= () => {
-  const unitSelect = document.getElementById("unitSelect");
-  
+const filterAssets = () => {
+  const unitSelect = document.getElementById('unitSelect');
+
   //Event listeners
-  unitSelect.addEventListener("change", async () => {
+  unitSelect.addEventListener('change', async () => {
     //Reset the sort radio buttons
     clearSortRadioButtons();
+
+    //Clear the status select
     clearStatusSelect();
 
     const userList = await fetchFilteredAsset(unitSelect.value);
     buildPage(userList);
   });
 
-  const statusSelect = document.getElementById("statusSelect");
+  const statusSelect = document.getElementById('statusSelect');
   //Event listeners
-  statusSelect.addEventListener("change", async () => {
+  statusSelect.addEventListener('change', async () => {
     //Reset the sort radio buttons
     clearSortRadioButtons();
+
+    //Clear the unit select
     clearUnitSelect();
 
     const AssetsStatusList = await fetchFilteredStatus(statusSelect.value);
@@ -337,15 +340,15 @@ const clearUnitSelect = () => {
 
 //Function to clear status select
 const clearStatusSelect = () => {
-  const unitSelect = document.getElementById('statusSelect');
-  unitSelect.options[0].selected = true;
+  const statusSelect = document.getElementById('statusSelect');
+  statusSelect.options[0].selected = true;
 };
 
 //Function to search
 const searchAsset = async (searchInput) => {
   let assetsList;
   if (!searchInput || searchInput.value === '') {
-    assetsList = await fetchSortedAssets('name');
+    assetsList = await fetchSortedAssets('id');
   } else {
     //Clear the sort radio buttons
     clearSortRadioButtons();
@@ -364,7 +367,6 @@ const searchAsset = async (searchInput) => {
       case 'nameSearch':
         type = 'name';
         break;
-     
     }
     assetsList = await fetchSearchedAssets(searchValue, type);
   }
@@ -387,7 +389,6 @@ const buildUnitsSelect = (unitsList) => {
 
 //Function to build the options in the units select
 const buildStatusSelect = (asList) => {
-
   const uniqueStatus = new Set();
   const statusSelect = document.getElementById('statusSelect');
 
@@ -419,12 +420,11 @@ const searchAssets = () => {
   });
 };
 
-
 //Event listeners
-viewEditAsset.addEventListener("click", () => {
+viewEditAsset.addEventListener('click', () => {
   const assetId = getSelectedAssetId();
   if (assetId === undefined || assetId === null) {
-    errorAlert("No ha seleccionado un activo. Seleccione uno para continuar");
+    errorAlert('No ha seleccionado un activo. Seleccione uno para continuar');
   } else {
     storeAssetId(assetId);
   }
@@ -435,10 +435,8 @@ const buildPageAsync = async function () {
   const unitsList = await fetchSortedUnits('name');
   buildUnitsSelect(unitsList);
 
-  const statusList = await fetchSortedAssets('name');
-  buildStatusSelect(statusList);
-
-  const assetsList = await fetchSortedAssets('name');
+  const assetsList = await fetchSortedAssets('id');
+  buildStatusSelect(assetsList);
   buildPage(assetsList);
   sortAssets();
   filterAssets();
