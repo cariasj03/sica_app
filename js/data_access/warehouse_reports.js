@@ -1,11 +1,31 @@
-//DOM elements
-const viewEditAsset = document.getElementById("viewEditAsset");
-const transferAsset = document.getElementById("transferAsset");
+//Function to fetch assets
+const fetchAssets1 = async () => {
+  try {
+    const assets = await fetch("http://127.0.0.1:8000/assets-warehouse/sort/by-id");
+    const assetsList = await assets.json();
+    return assetsList;
+  } catch (error) {
+    console.log(error);
+  }
+};
 
 //Function to fetch assets
-const fetchAssets = async () => {
+const fetchAssets = async (sortValue) => {
+    try {
+      const assets = await fetch(`http://127.0.0.1:8000/assets-warehouse/sort/by-${sortValue}`);
+      const assetsList = await assets.json();
+      return assetsList;
+    } catch (error) {
+      console.log(error);
+    }
+  };
+
+//Function to fetch assets sorted by name
+const fetchSortedAssets = async (sortValue) => {
   try {
-    const assets = await fetch("http://127.0.0.1:8000/assets/sort/by-id");
+    const assets = await fetch(
+      `http://127.0.0.1:8000/assets-warehouse/sort/by-${sortValue}`
+    );
     const assetsList = await assets.json();
     return assetsList;
   } catch (error) {
@@ -14,89 +34,59 @@ const fetchAssets = async () => {
 };
 
 //Function to fetch assets sorted by name
-const fetchSortedAssets = async (sortValue) => {
-  try {
-    const assets = await fetch(
-      `http://127.0.0.1:8000/assets/sort/by-${sortValue}`
-    );
-    const assetsList = await assets.json();
-    return assetsList;
-  } catch (error) {
-    console.log(error);
-  }
+const fetchSortedStatus = async (sortValue) => {
+    try {
+      const assets = await fetch(
+        `http://127.0.0.1:8000/assets/sort/by-${sortValue}`
+      );
+      const assetsList = await assets.json();
+      return assetsList;
+    } catch (error) {
+      console.log(error);
+    }
 };
 
 //Function to fetch searched assets
 const fetchSearchedAssets = async (searchValue, type) => {
-try {
-  const assets = await fetch(
-    `http://127.0.0.1:8000/assets/search/by-${type}/${searchValue}`
-  );
-  const assetsList = await assets.json();
-  return assetsList;
-} catch (error) {
-  console.log(error);
-}
-};
-
-//Function to fetch filtered assets
-const fetchFilteredAsset = async (unit) => {
-try {
-  const asse = await fetch(
-    `http://127.0.0.1:8000/assets/filter/unit/${unit}`
-  );
-  const asseList = await asse.json();
-  return asseList;
-} catch (error) {
-  console.log(error);
-}
+    try {
+        const assets = await fetch(
+            `http://127.0.0.1:8000/assets-warehouse/search/by-${type}/${searchValue}`
+        );
+        const asseList = await assets.json();
+        return asseList;
+    } catch (error) {
+      console.log(error);
+    }
 };
 
 //Function to fetch filtered assets
 const fetchFilteredStatus = async (status) => {
-try {
-  const assets = await fetch(
-    `http://127.0.0.1:8000/assets/filter/status/${status}`
-  );
-  const assetsList = await assets.json();
-  return assetsList;
-} catch (error) {
-  console.log(error);
-}
-};
-
-//Function to fetch sorted units
-const fetchSortedUnits = async (sortValue) => {
-  try {
-    const units = await fetch(
-      `http://127.0.0.1:8000/units/sort/by-${sortValue}`
-    );
-    const unitsList = await units.json();
-    return unitsList;
-  } catch (error) {
-    console.log(error);
-  }
+    try {
+        const assets = await fetch(
+          `http://127.0.0.1:8000/assets-warehouse/filter/status/${status}`
+        );
+        const assetsList = await assets.json();
+        return assetsList;
+      } catch (error) {
+        console.log(error);
+      }
 };
 
 
 //Function to build the page
 const buildPage = (assetsList) => {
-  buildTableRows(assetsList);
-  selectRow();
+    buildWarehouseTable(assetsList);
   pagination();
 };
 
 //Function to load the assets in the table
-const buildTableRows = (assetsList) => {
+const buildWarehouseTable = (assetsList) => {
   const table = document.querySelector("table");
   table.innerHTML =
-    "<tr><th></th><th>ID</th><th>Nombre</th><th>Unidad</th><th>Código de ubicación</th><th>Estado</th></tr>";
+    "</th><th>ID</th><th>Nombre</th><th>Código de ubicación</th><th>Estado</th></tr>";
 
-  assetsList.forEach(function (asset) {
+    assetsList.forEach(function (asset) {
     const tableRow = document.createElement("tr");
-    const tableRowRadio = document.createElement("td");
-
-    tableRowRadio.innerHTML = '<input type="radio" name="tableRadio" />';
 
     const assetId = document.createElement("td");
     assetId.innerText = `${asset.id}`;
@@ -104,61 +94,19 @@ const buildTableRows = (assetsList) => {
     const assetName = document.createElement("td");
     assetName.innerText = `${asset.name}`;
 
-    const assetUnit = document.createElement("td");
-    assetUnit.innerText = `${asset.unit}`;
-
     const assetLocationCode = document.createElement("td");
     assetLocationCode.innerText = `${asset.locationCode}`;
 
     const assetStatus = document.createElement("td");
     assetStatus.innerText = `${asset.status}`;
 
-    tableRow.appendChild(tableRowRadio);
     tableRow.appendChild(assetId);
     tableRow.appendChild(assetName);
-    tableRow.appendChild(assetUnit);
     tableRow.appendChild(assetLocationCode);
     tableRow.appendChild(assetStatus);
 
     table.appendChild(tableRow);
   });
-};
-
-//Function to select a row in the table
-const selectRow = () => {
-  const tableRadioButtons = document.getElementsByName("tableRadio");
-  let assetId;
-  tableRadioButtons.forEach((radioButton) => {
-    const tableRowSelected = radioButton.parentElement.parentElement;
-    radioButton.addEventListener("change", () => {
-      tableRadioButtons.forEach((radioButton) => {
-        radioButton.parentElement.parentElement.classList.remove("selectedRow");
-      });
-      if (radioButton.checked) {
-        tableRowSelected.classList.add("selectedRow");
-      }
-    });
-  });
-};
-
-//Function to get the selected asset id
-const getSelectedAssetId = () => {
-  const tableRadioButtons = document.getElementsByName("tableRadio");
-  let assetId;
-  tableRadioButtons.forEach((radioButton) => {
-    const tableRowSelected = radioButton.parentElement.parentElement;
-    if (radioButton.checked) {
-      assetId = tableRowSelected.children[1].innerText;
-    }
-  });
-  return assetId;
-};
-
-//Function to store the unit id in the local storage
-const storeAssetId = (assetId) => {
-  localStorage.setItem("assetId", assetId);
-  window.location.href = "../html/asset_individual_information.html";
-  window.location.href = "../html/asset_transfer_request.html";
 };
 
 //Function to handle pagination
@@ -292,7 +240,6 @@ const sortAssets = () => {
     //Event listeners
     sortRadioButtons.forEach((radioButton) => {
       radioButton.addEventListener('change', async () => {
-        clearUnitSelect();
         clearStatusSelect();
         if (radioButton.checked) {
           const sortValue = radioButton.value;
@@ -305,104 +252,70 @@ const sortAssets = () => {
 
 //Function to filter the assets in the table
 const filterAssets= () => {
-  const unitSelect = document.getElementById("unitSelect");
-  
-  //Event listeners
-  unitSelect.addEventListener("change", async () => {
-    //Reset the sort radio buttons
-    clearSortRadioButtons();
-    clearStatusSelect();
-
-    const userList = await fetchFilteredAsset(unitSelect.value);
-    buildPage(userList);
-  });
-
   const statusSelect = document.getElementById("statusSelect");
   //Event listeners
   statusSelect.addEventListener("change", async () => {
     //Reset the sort radio buttons
     clearSortRadioButtons();
-    clearUnitSelect();
+    // clearStatusSelect();
 
     const AssetsStatusList = await fetchFilteredStatus(statusSelect.value);
     buildPage(AssetsStatusList);
   });
 };
 
-//Function to clear unit select
-const clearUnitSelect = () => {
-  const unitSelect = document.getElementById('unitSelect');
-  unitSelect.options[0].selected = true;
-};
-
 //Function to clear status select
 const clearStatusSelect = () => {
-  const unitSelect = document.getElementById('statusSelect');
-  unitSelect.options[0].selected = true;
+    const unitSelect = document.getElementById('statusSelect');
+    unitSelect.options[0].selected = true;
 };
 
 //Function to search
 const searchAsset = async (searchInput) => {
-  let assetsList;
-  if (!searchInput || searchInput.value === '') {
-    assetsList = await fetchSortedAssets('name');
-  } else {
-    //Clear the sort radio buttons
-    clearSortRadioButtons();
-
-    //Clear the unit select
-    clearUnitSelect();
-    clearStatusSelect();
-
-    const searchValue = searchInput.value;
-    let type;
-
-    switch (searchInput.id) {
-      case 'idSearch':
-        type = 'id';
-        break;
-      case 'nameSearch':
-        type = 'name';
-        break;
-     
+    let usersList;
+    if (searchInput.value === "") {
+      usersList = await fetchSortedAssets("name");
+    } else {
+      //Clear the sort radio buttons
+      clearSortRadioButtons();
+  
+      clearStatusSelect();
+  
+      const searchValue = searchInput.value;
+      let type;
+  
+      switch (searchInput.id) {
+        case "idSearch":
+          type = "id";
+          break;
+        case "nameSearch":
+          type = "name";
+          break;
+      }
+      usersList = await fetchSearchedAssets(searchValue, type);
     }
-    assetsList = await fetchSearchedAssets(searchValue, type);
-  }
-  buildPage(assetsList);
-};
+    buildPage(usersList);
+  };
 
-//Function to build the options in the units select
-const buildUnitsSelect = (unitsList) => {
-  unitsList.forEach(function (element) {
-    const unitSelect = document.getElementById('unitSelect');
-    const selectOption = document.createElement('option');
-
-    selectOption.id = `${element['id']}`;
-    selectOption.value = `${element['name']}`;
-    selectOption.innerText = `${element['name']}`;
-
-    unitSelect.appendChild(selectOption);
-  });
-};
 
 //Function to build the options in the units select
 const buildStatusSelect = (asList) => {
 
-  const uniqueStatus = new Set();
-  const statusSelect = document.getElementById('statusSelect');
-
-  asList.forEach(function (element) {
-    if (!uniqueStatus.has(element.status)) {
-      uniqueStatus.add(element.status);
-
-      const selectOption = document.createElement('option');
-      selectOption.id = `${element.id}`;
-      selectOption.value = `${element.status}`;
-      selectOption.innerText = `${element.status}`;
-      statusSelect.appendChild(selectOption);
-    }
-  });
-};
+    const uniqueStatus = new Set();
+    const statusSelect = document.getElementById('statusSelect');
+  
+    asList.forEach(function (element) {
+      if (!uniqueStatus.has(element.status)) {
+        uniqueStatus.add(element.status);
+  
+        const selectOption = document.createElement('option');
+        selectOption.id = `${element.id}`;
+        selectOption.value = `${element.status}`;
+        selectOption.innerText = `${element.status}`;
+        statusSelect.appendChild(selectOption);
+      }
+    });
+  };
 
 //Function to search the users in the table
 const searchAssets = () => {
@@ -419,31 +332,18 @@ const searchAssets = () => {
   });
 };
 
-
-//Event listeners
-viewEditAsset.addEventListener("click", () => {
-  const assetId = getSelectedAssetId();
-  if (assetId === undefined || assetId === null) {
-    errorAlert("No ha seleccionado un activo. Seleccione uno para continuar");
-  } else {
-    storeAssetId(assetId);
-  }
-});
-
 //Async function to fetch units and build the table
 const buildPageAsync = async function () {
-  const unitsList = await fetchSortedUnits('name');
-  buildUnitsSelect(unitsList);
 
-  const statusList = await fetchSortedAssets('name');
-  buildStatusSelect(statusList);
+    const statusList = await fetchSortedStatus('name');
+    buildStatusSelect(statusList);
 
-  const assetsList = await fetchSortedAssets('name');
-  buildPage(assetsList);
-  sortAssets();
-  filterAssets();
-  searchAsset();
-  searchAssets();
+    const assetsList = await fetchAssets('name');
+    buildPage(assetsList);
+    sortAssets();
+    filterAssets();
+    // searchAsset();
+    searchAssets();
 };
 
 //Function calls

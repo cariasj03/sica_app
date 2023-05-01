@@ -309,7 +309,8 @@ const sortUsers = () => {
   //Event listeners
   sortRadioButtons.forEach((radioButton) => {
     radioButton.addEventListener('change', async () => {
-      // clearUnitSelect();
+      clearUnitSelect();
+      clearRoleSelect();
       if (radioButton.checked) {
         const sortValue = radioButton.value;
         const usersList = await fetchSortedUsers(sortValue);
@@ -329,6 +330,7 @@ const filterUsers = () => {
   unitSelect.addEventListener("change", async () => {
     //Reset the sort radio buttons
     clearSortRadioButtons();
+    clearRoleSelect();
 
     const userList = await fetchFilteredUnit(unitSelect.value);
     buildPage(userList);
@@ -339,7 +341,8 @@ const filterUsers = () => {
   roleSelect.addEventListener("change", async () => {
     //Reset the sort radio buttons
     clearSortRadioButtons();
-
+    clearUnitSelect();
+    
     const usersRoleList = await fetchFilteredRole(roleSelect.value);
     buildPage(usersRoleList);
   });
@@ -356,7 +359,8 @@ const searchUser = async (searchInput) => {
   } else {
     //Clear the sort radio buttons
     clearSortRadioButtons();
-
+    clearUnitSelect();
+    clearRoleSelect();
     const searchValue = searchInput.value;
     let type;
 

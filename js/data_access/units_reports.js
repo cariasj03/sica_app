@@ -257,7 +257,7 @@ const sortUnits = () => {
   //Event listeners
   sortRadioButtons.forEach((radioButton) => {
     radioButton.addEventListener('change', async () => {
-
+      clearUnitSelect();
       if (radioButton.checked) {
         const sortValue = radioButton.value;
         const unitssList = await fetchSortedUnits(sortValue);
@@ -276,6 +276,8 @@ const searchUnit = async (searchInput) => {
   } else {
     //Clear the sort radio buttons
     clearSortRadioButtons();
+
+    clearUnitSelect();
 
     const searchValue = searchInput.value;
     let type;

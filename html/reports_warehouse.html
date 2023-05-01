@@ -87,7 +87,7 @@
               <h3>Ordenar por</h3>
 
               <label for="idRadio"
-                ><input type="radio" id="idRadio" name="sortRadio" value="ID" />
+                ><input type="radio" id="idRadio" name="sortRadio" value="id" />
                 ID</label
               >
               <label for="nameRadio"
@@ -95,7 +95,7 @@
                   type="radio"
                   id="nameRadio"
                   name="sortRadio"
-                  value="nombre"
+                  value="name"
                 />
                 Nombre</label
               >
@@ -104,23 +104,16 @@
                   type="radio"
                   id="statusRadio"
                   name="sortRadio"
-                  value="estado"
+                  value="status"
                 />
                 Estado</label
               >
-
               <hr />
 
               <h3>Filtrar por</h3>
-
-              <label for="statusSelect"
-                >Estado<select class="inputStyle" id="statusSelect">
-                  <option value="" disabled selected hidden>Estado</option>
-                  <option value="activo">Activo</option>
-                  <option value="desuso">Desuso</option>
-                  <option value="danado">Dañado</option>
-                </select></label
-              >
+              <label for="statusSelect">Estado<select class="inputStyle" id="statusSelect">
+                <option value="" disabled selected hidden>Estado</option>
+              </select></label>
 
               <hr />
 
@@ -130,7 +123,7 @@
                   class="inputStyle"
                   type="search"
                   id="idSearch"
-                  name="idSearch"
+                  name="searchInput"
                   placeholder="ID"
               /></label>
               <label for="nameSearch"
@@ -138,113 +131,36 @@
                   class="inputStyle"
                   type="search"
                   id="nameSearch"
-                  name="nameSearch"
+                  name="searchInput"
                   placeholder="Nombre"
               /></label>
             </div>
           </div>
 
           <div class="tableContainer">
-            <table class="tables">
-              <tr>
-                <th>ID</th>
-                <th>Nombre</th>
-                <th>Código de ubicación</th>
-                <th>Estado</th>
-                <th>Fecha de creación</th>
-                <th>Aprobado por</th>
-              </tr>
+            <table class="tables" id="paginatedTable"></table>
 
-              <tr>
-                <td>000002</td>
-                <td>Monitor LG IPS</td>
-                <td>PROBODPIS102</td>
-                <td>Desuso</td>
-                <td>20/03/2023</td>
-                <td>105360875</td>
-              </tr>
+            <div class="paginationContainer">
+              <button
+                id="prevButton"
+                class="paginationButton"
+                title="Anterior"
+                aria-label="Anterior"
+              >
+                &lt;
+              </button>
 
-              <tr>
-                <td>000004</td>
-                <td>Monitor LG IPS</td>
-                <td>PROBODPIS104</td>
-                <td>Dañado</td>
-                <td>20/03/2023</td>
-                <td>105360875</td>
-              </tr>
+              <div id="paginationNumbers"></div>
 
-              <tr>
-                <td>000005</td>
-                <td>UPS APC LS1200</td>
-                <td>PROBODPIS105</td>
-                <td>Desuso</td>
-                <td>20/03/2023</td>
-                <td>105360875</td>
-              </tr>
-
-              <tr>
-                <td>000006</td>
-                <td>Impresora EPSON F570</td>
-                <td>PROBODPIS106</td>
-                <td>Dañado</td>
-                <td>20/03/2023</td>
-                <td>105360875</td>
-              </tr>
-
-              <tr>
-                <td></td>
-                <td></td>
-                <td></td>
-                <td></td>
-                <td></td>
-                <td></td>
-              </tr>
-
-              <tr>
-                <td></td>
-                <td></td>
-                <td></td>
-                <td></td>
-                <td></td>
-                <td></td>
-              </tr>
-
-              <tr>
-                <td></td>
-                <td></td>
-                <td></td>
-                <td></td>
-                <td></td>
-                <td></td>
-              </tr>
-
-              <tr>
-                <td></td>
-                <td></td>
-                <td></td>
-                <td></td>
-                <td></td>
-                <td></td>
-              </tr>
-
-              <tr>
-                <td></td>
-                <td></td>
-                <td></td>
-                <td></td>
-                <td></td>
-                <td></td>
-              </tr>
-
-              <tr>
-                <td></td>
-                <td></td>
-                <td></td>
-                <td></td>
-                <td></td>
-                <td></td>
-              </tr>
-            </table>
+              <button
+                id="nextButton"
+                class="paginationButton"
+                title="Siguiente"
+                aria-label="Siguiente"
+              >
+                &gt;
+              </button>
+            </div>
           </div>
         </div>
       </div>
@@ -254,5 +170,6 @@
       <p class="copyrightText">Copyright &copy; 2023 by Beelders.</p>
     </footer>
     <script src="../js/data_access/session_logic.js"></script>
+    <script src="../js/data_access/warehouse_reports.js"></script>
   </body>
 </html>

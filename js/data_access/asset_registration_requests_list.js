@@ -5,7 +5,7 @@ const reviewAssetsRequestButton = document.getElementById('reviewAssetsRequestBu
 const fetchSortedAssets = async (sortValue) => {
     try {
       const assets = await fetch(
-        `http://127.0.0.1:8000/assets/sort/by-${sortValue}`
+        `http://127.0.0.1:8000/asset-requests/sort/by-${sortValue}`
       );
       const assetsList = await assets.json();
       return assetsList;
@@ -18,7 +18,7 @@ const fetchSortedAssets = async (sortValue) => {
 const fetchSearchedAssets = async (searchValue, type) => {
   try {
     const assets = await fetch(
-      `http://127.0.0.1:8000/assets/search/by-${type}/${searchValue}`
+      `http://127.0.0.1:8000/asset-requests/search/by-${type}/${searchValue}`
     );
     const assetsList = await assets.json();
     return assetsList;
@@ -31,7 +31,7 @@ const fetchSearchedAssets = async (searchValue, type) => {
 const fetchFilteredAsset = async (unit) => {
   try {
     const asse = await fetch(
-      `http://127.0.0.1:8000/assets/filter/unit/${unit}`
+      `http://127.0.0.1:8000/asset-requests/filter/unit/${unit}`
     );
     const asseList = await asse.json();
     return asseList;
@@ -44,7 +44,7 @@ const fetchFilteredAsset = async (unit) => {
 const fetchFilteredStatus = async (status) => {
   try {
     const assets = await fetch(
-      `http://127.0.0.1:8000/assets/filter/status/${status}`
+      `http://127.0.0.1:8000/asset-requests/filter/status/${status}`
     );
     const assetsList = await assets.json();
     return assetsList;
@@ -308,7 +308,12 @@ const clearSortRadioButtons = () => {
 const clearUnitSelect = () => {
     const unitSelect = document.getElementById('unitSelect');
     unitSelect.options[0].selected = true;
-  };
+};
+//Function to clear status select
+const clearStatusSelect = () => {
+  const unitSelect = document.getElementById('statusSelect');
+  unitSelect.options[0].selected = true;
+};
 
 //Function sort the Assets in the table
 const sortAssets = () => {
@@ -318,6 +323,7 @@ const sortAssets = () => {
     sortRadioButtons.forEach((radioButton) => {
       radioButton.addEventListener('change', async () => {
         clearUnitSelect();
+        clearStatusSelect();
         if (radioButton.checked) {
           const sortValue = radioButton.value;
           const assetsList = await fetchSortedAssets(sortValue);
@@ -336,6 +342,7 @@ const filterAssets= () => {
   unitSelect.addEventListener("change", async () => {
     //Reset the sort radio buttons
     clearSortRadioButtons();
+    clearStatusSelect();
 
     const userList = await fetchFilteredAsset(unitSelect.value);
     buildPage(userList);
@@ -346,6 +353,7 @@ const filterAssets= () => {
   statusSelect.addEventListener("change", async () => {
     //Reset the sort radio buttons
     clearSortRadioButtons();
+    clearUnitSelect();
 
     const AssetsStatusList = await fetchFilteredStatus(statusSelect.value);
     buildPage(AssetsStatusList);
@@ -364,6 +372,7 @@ const searchAsset = async (searchInput) => {
   
       //Clear the unit select
       clearUnitSelect();
+      clearStatusSelect();
   
       const searchValue = searchInput.value;
       let type;

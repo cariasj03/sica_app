@@ -2,7 +2,7 @@
 //Function to fetch assets
 const fetchAssets = async (sortValue) => {
   try {
-    const assets = await fetch(`http://127.0.0.1:8000/assets/sort/by-${sortValue}`);
+    const assets = await fetch(`http://127.0.0.1:8000/asset-report/sort/by-${sortValue}`);
     const assetsList = await assets.json();
     return assetsList;
   } catch (error) {
@@ -27,7 +27,7 @@ const fetchSortedUnits = async (sortValue) => {
 const fetchSortedAssets = async (sortValue) => {
   try {
     const assets = await fetch(
-      `http://127.0.0.1:8000/assets/sort/by-${sortValue}`
+      `http://127.0.0.1:8000/asset-report/sort/by-${sortValue}`
     );
     const assetsList = await assets.json();
     return assetsList;
@@ -40,7 +40,7 @@ const fetchSortedAssets = async (sortValue) => {
 const fetchSearchedAssets = async (searchValue, type) => {
   try {
     const asset = await fetch(
-      `http://127.0.0.1:8000/assets/search/by-${type}/${searchValue}`
+      `http://127.0.0.1:8000/asset-report/search/by-${type}/${searchValue}`
     );
     const usersList = await asset.json();
     return usersList;
@@ -53,7 +53,7 @@ const fetchSearchedAssets = async (searchValue, type) => {
 const fetchFilteredAsset = async (unit) => {
   try {
     const asse = await fetch(
-      `http://127.0.0.1:8000/assets/filter/unit/${unit}`
+      `http://127.0.0.1:8000/asset-report/filter/unit/${unit}`
     );
     const asseList = await asse.json();
     return asseList;
@@ -226,9 +226,12 @@ const clearSortRadioButtons = () => {
 const sortAssets = () => {
   const sortRadioButtons = document.getElementsByName("sortRadio");
 
+
   //Event listeners
   sortRadioButtons.forEach((radioButton) => {
+    
     radioButton.addEventListener("change", async () => {
+      clearUnitSelect();
       if (radioButton.checked) {
         const sortValue = radioButton.value;
         const assetsList = await fetchSortedAssets(sortValue);
@@ -253,6 +256,12 @@ const filterAssets = () => {
 
 };
 
+//Function to clear status select
+const clearUnitSelect = () => {
+  const unitSelect = document.getElementById('unitSelect');
+  unitSelect.options[0].selected = true;
+};
+
 //Function to build the options in the units select
 const buildUnitsSelect = (unitsList) => {
   unitsList.forEach(function (element) {
@@ -275,6 +284,8 @@ const searchUser = async (searchInput) => {
   } else {
     //Clear the sort radio buttons
     clearSortRadioButtons();
+
+    clearUnitSelect();
 
     const searchValue = searchInput.value;
     let type;
