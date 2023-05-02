@@ -1,5 +1,6 @@
 //User data stored in local storage
 const sessionUserData = JSON.parse(localStorage.getItem('sessionUserData'));
+const pageId = document.querySelector('html').id;
 
 //DOM elements
 ////////////Main tabs////////////
@@ -38,6 +39,12 @@ const changeUserDOBFormat = () => {
 
 const defaultBehavior = () => {
   if (sessionUserData !== null) {
+    if (sessionUserData.changePassword) {
+      changePassword(false, false, false);
+      sessionUserData.changePassword = false;
+      localStorage.setItem('sessionUserData', JSON.stringify(sessionUserData));
+    }
+
     switch (sessionUserData.role) {
       case 'Encargado de Inventario por Unidad':
         requestsTab.classList.add('hidden');

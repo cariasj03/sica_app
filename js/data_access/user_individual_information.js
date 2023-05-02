@@ -11,7 +11,7 @@ const fetchUserInformation = async () => {
     const rawDOB = new Date(userJson[0].dateOfBirth);
     const day = ('0' + (rawDOB.getDate() + 1)).slice(-2);
     const month = ('0' + (rawDOB.getMonth() + 1)).slice(-2);
-    const DOB = await `${rawDOB.getFullYear()}-${month}-${day}`;
+    const DOB = `${rawDOB.getFullYear()}-${month}-${day}`;
     userJson[0].dateOfBirth = DOB;
 
     return userJson[0];

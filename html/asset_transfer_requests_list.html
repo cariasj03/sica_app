@@ -77,43 +77,37 @@
             <div class="filters">
               <h3>Ordenar por</h3>
 
-              <label for="idRadio">
-                <input type="radio" id="idRadio" name="sortRadio" value="ID" />
+              <label for="transferIdRadio">
+                <input type="radio" id="transferIdRadio" name="sortRadio" value="transfer-id"/>
                 ID del traslado</label
               >
-              <label for="nameRadio"
+
+              <label for="assetIdRadio"
                 ><input
                   type="radio"
-                  id="nameRadio"
+                  id="assetIdRadio"
                   name="sortRadio"
-                  value="nombre"
+                  value="asset-id"
                 />
                 ID del activo</label
               >
-              <label for="unitRadio"
+
+              <label for="originUnitRadio"
                 ><input
                   type="radio"
-                  id="unitRadio"
+                  id="originUnitRadio"
                   name="sortRadio"
-                  value="unidad"
-                />
-                Nombre del activo</label
-              >
-              <label for="statusRadio"
-                ><input
-                  type="radio"
-                  id="statusRadio"
-                  name="sortRadio"
-                  value="estado"
+                  value="origin-unit"
                 />
                 Unidad de origen</label
               >
-              <label for="statusRadio"
+
+              <label for="targetUnitRadio"
                 ><input
                   type="radio"
-                  id="statusRadio"
+                  id="targetUnitRadio"
                   name="sortRadio"
-                  value="estado"
+                  value="target-unit"
                 />
                 Unidad de destino</label
               >
@@ -121,59 +115,45 @@
               <hr />
 
               <h3>Filtrar por</h3>
-              <label for="unitSelectOrigin"
+              <label for="originUnit"
                 >Unidad de origen<select
                   class="inputStyle"
-                  id="unitSelectOrigin"
+                  id="originUnit"
                 >
                   <option value="" disabled selected hidden>
                     Unidad de origen
                   </option>
-                  <option value="bodega">Bodega</option>
-                  <option value="cartago">Cartago</option>
-                  <option value="heredia">Heredia</option>
                 </select></label
               >
-              <label for="unitSelectTarget"
+              <label for="targetUnit"
                 >Unidad de destino<select
                   class="inputStyle"
-                  id="unitSelectTarget"
+                  id="targetUnit"
                 >
                   <option value="" disabled selected hidden>
                     Unidad de destino
                   </option>
-                  <option value="bodega">Bodega</option>
-                  <option value="cartago">Cartago</option>
-                  <option value="heredia">Heredia</option>
                 </select></label
               >
 
               <hr />
 
               <h3>Buscar por</h3>
-              <label for="idTransferSearch"
+              <label for="transferIdSearch"
                 >ID del traslado<input
                   class="inputStyle"
                   type="search"
-                  id="idTransferSearch"
-                  name="idTransferSearch"
+                  id="transferIdSearch"
+                  name="searchInput"
                   placeholder="ID del traslado"
               /></label>
-              <label for="idAssetSearch"
+              <label for="assetIdSearch"
                 >ID del activo<input
                   class="inputStyle"
                   type="search"
-                  id="idAssetSearch"
-                  name="idAssetSearch"
+                  id="assetIdSearch"
+                  name="searchInput"
                   placeholder="ID del activo"
-              /></label>
-              <label for="nameSearch"
-                >Nombre del activo<input
-                  class="inputStyle"
-                  type="search"
-                  id="nameSearch"
-                  name="nameSearch"
-                  placeholder="Nombre del activo"
               /></label>
             </div>
           </div>
@@ -226,6 +206,8 @@
       <p class="copyrightText">Copyright &copy; 2023 by Beelders.</p>
     </footer>
     <script src="../js/data_access/session_logic.js"></script>
+    <script src="../js/dom_manipulation/sweet_alert.js"></script>
+    <script src="../js/dom_manipulation/user_feedback.js"></script>
     <script src="../js/data_access/asset_transfer_requests_list.js"></script>
   </body>
 </html>

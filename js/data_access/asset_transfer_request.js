@@ -3,6 +3,7 @@ const selectedAssetId = localStorage.getItem('assetId');
 
 //DOM elements
 const assetIdInput = document.getElementById('assetId');
+const assetNameInput = document.getElementById('assetName');
 const originUnitInput = document.getElementById('originUnit');
 const targetUnitInput = document.getElementById('targetUnit');
 const targetLocationInput = document.getElementById('targetLocation');
@@ -70,8 +71,6 @@ const populateUnits = async () => {
 //Function to load the asset requested
 const loadSelectedAsset = (selectedAsset) => {
   try {
-    const assetNameInput = document.getElementById('assetName');
-
     assetIdInput.value = selectedAsset.id;
     assetNameInput.value = selectedAsset.name;
     originUnitInput.value = selectedAsset.unit;
@@ -86,6 +85,7 @@ const loadSelectedAsset = (selectedAsset) => {
 const getFormFields = () => {
   const bodyContent = {
     assetId: assetIdInput.value,
+    assetName: assetNameInput.value,
     originUnit: originUnitInput.value,
     targetUnit: targetUnitInput.value,
     targetLocation: targetLocationInput.value,

@@ -253,6 +253,8 @@ select:required:invalid {
 
 .assetTransferPicture {
   height: 12.5rem;
+  width: 12.5rem;
+  object-fit: cover;
   border: none;
   border-radius: 1rem;
   box-shadow: 5px 5px 5px #00000099;
