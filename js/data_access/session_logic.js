@@ -39,6 +39,7 @@ const changeUserDOBFormat = () => {
 
 const defaultBehavior = () => {
   if (sessionUserData !== null) {
+    changeUserDOBFormat();
     if (sessionUserData.changePassword) {
       changePassword(false, false, false);
       sessionUserData.changePassword = false;
@@ -91,6 +92,7 @@ const defaultBehavior = () => {
         break;
     }
   } else {
+    console.log('No session data found');
     window.location.href = '../html/signin.html';
   }
 };
@@ -102,5 +104,4 @@ logoutTab.addEventListener('click', () => {
 });
 
 //Function calls
-changeUserDOBFormat();
 defaultBehavior();
