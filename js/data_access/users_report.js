@@ -70,7 +70,7 @@ const fetchFilteredRole = async (role) => {
 const loadUsers = (usersList) => {
   const table = document.querySelector('table');
   table.innerHTML =
-    '<tr><th>Identificación</th><th>Nombre Completo</th><th>Correo electrónico</th><th>Teléfono</th><th>Unidad</th><th>Rol</th><th>Fecha de creación</th><th>Aprobado por</th></tr>';
+    '<tr><th>ID</th><th>Nombre completo</th><th>Correo electrónico</th><th>Teléfono</th><th>Unidad</th><th>Rol</th><th>Fecha de creación</th><th>Aprobado por</th></tr>';
   usersList.forEach(function (user) {
     const tableRow = document.createElement('tr');
 
@@ -127,7 +127,7 @@ const pagination = () => {
   paginationNumbers.innerHTML = '';
 
   //Pagination variables
-  const paginationLimit = 11;
+  const paginationLimit = 6;
   const pageCount = Math.ceil(tableRows.length / paginationLimit);
   let currentPage;
 
@@ -288,6 +288,10 @@ const clearRoleSelect = () => {
 //Function sort the users in the table
 const sortUsers = () => {
   const sortRadioButtons = document.getElementsByName('sortRadio');
+  const idSortRadio = document.getElementById('idRadio');
+
+  //Set the id radio button as default
+  idSortRadio.checked = true;
 
   //Event listeners
   sortRadioButtons.forEach((radioButton) => {
@@ -343,7 +347,7 @@ const buildPageAsync = async function () {
   const rolesList = await fetchSortedRoles('name');
   buildRoleSelect(rolesList);
 
-  const usersList = await fetchSortedUsers('name');
+  const usersList = await fetchSortedUsers('id');
   buildPage(usersList);
 
   sortUsers();

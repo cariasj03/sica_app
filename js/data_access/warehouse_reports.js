@@ -1,47 +1,8 @@
-//Function to fetch assets
-const fetchAssets1 = async () => {
-  try {
-    const assets = await fetch(
-      'http://127.0.0.1:8000/assets-warehouse/sort/by-id'
-    );
-    const assetsList = await assets.json();
-    return assetsList;
-  } catch (error) {
-    console.log(error);
-  }
-};
-
-//Function to fetch assets
-const fetchAssets = async (sortValue) => {
-  try {
-    const assets = await fetch(
-      `http://127.0.0.1:8000/assets-warehouse/sort/by-${sortValue}`
-    );
-    const assetsList = await assets.json();
-    return assetsList;
-  } catch (error) {
-    console.log(error);
-  }
-};
-
 //Function to fetch assets sorted by name
 const fetchSortedAssets = async (sortValue) => {
   try {
     const assets = await fetch(
-      `http://127.0.0.1:8000/assets-warehouse/sort/by-${sortValue}`
-    );
-    const assetsList = await assets.json();
-    return assetsList;
-  } catch (error) {
-    console.log(error);
-  }
-};
-
-//Function to fetch assets sorted by name
-const fetchSortedStatus = async (sortValue) => {
-  try {
-    const assets = await fetch(
-      `http://127.0.0.1:8000/assets/sort/by-${sortValue}`
+      `http://127.0.0.1:8000/assets/warehouse/sort/by-${sortValue}`
     );
     const assetsList = await assets.json();
     return assetsList;
@@ -51,10 +12,10 @@ const fetchSortedStatus = async (sortValue) => {
 };
 
 //Function to fetch filtered assets
-const fetchFilteredStatus = async (status) => {
+const fetchFilteredAssets = async (status) => {
   try {
     const assets = await fetch(
-      `http://127.0.0.1:8000/assets-warehouse/filter/status/${status}`
+      `http://127.0.0.1:8000/assets/warehouse/filter/by-status/${status}`
     );
     const assetsList = await assets.json();
     return assetsList;
@@ -227,6 +188,11 @@ const clearSortRadioButtons = () => {
 //Function sort the Assets in the table
 const sortAssets = () => {
   const sortRadioButtons = document.getElementsByName('sortRadio');
+  const idSortRadio = document.getElementById('idRadio');
+
+  //Setting the id radio button as default
+  idSortRadio.checked = true;
+
   //Event listeners
   sortRadioButtons.forEach((radioButton) => {
     radioButton.addEventListener('change', async () => {
@@ -249,7 +215,7 @@ const filterAssets = () => {
     clearSortRadioButtons();
     // clearStatusSelect();
 
-    const AssetsStatusList = await fetchFilteredStatus(statusSelect.value);
+    const AssetsStatusList = await fetchFilteredAssets(statusSelect.value);
     buildPage(AssetsStatusList);
   });
 };
@@ -280,10 +246,8 @@ const buildStatusSelect = (asList) => {
 
 //Async function to fetch units and build the table
 const buildPageAsync = async function () {
-  const statusList = await fetchSortedStatus('name');
-  buildStatusSelect(statusList);
-
-  const assetsList = await fetchAssets('name');
+  const assetsList = await fetchSortedAssets('id');
+  buildStatusSelect(assetsList);
   buildPage(assetsList);
   sortAssets();
   filterAssets();

@@ -1,18 +1,5 @@
 //DOM elements
 
-//Function to fetch units
-const fetchUnits = async (sortValue) => {
-  try {
-    const units = await fetch(
-      `http://127.0.0.1:8000/units/sort/by-${sortValue}`
-    );
-    const uList = await units.json();
-    return uList;
-  } catch (error) {
-    console.log(error);
-  }
-};
-
 //Function to fetch sorted units
 const fetchSortedUnits = async (sortValue) => {
   try {
@@ -241,6 +228,10 @@ const clearSortRadioButtons = () => {
 //Function sort the units in the table
 const sortUnits = () => {
   const sortRadioButtons = document.getElementsByName('sortRadio');
+  const idSortRadio = document.getElementById('idRadio');
+
+  //Setting the id radio button as default
+  idSortRadio.checked = true;
 
   //Event listeners
   sortRadioButtons.forEach((radioButton) => {
@@ -270,7 +261,7 @@ const filterUnits = () => {
 const buildPageAsync = async function () {
   await buildProvinceSelect();
 
-  const unitsL = await fetchUnits('id');
+  const unitsL = await fetchSortedUnits('id');
   buildPage(unitsL);
   sortUnits();
   filterUnits();

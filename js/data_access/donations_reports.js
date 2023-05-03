@@ -1,60 +1,8 @@
-//Function to fetch assets
-const fetchAssets1 = async () => {
-  try {
-    const assets = await fetch(
-      'http://127.0.0.1:8000/assets-donations/sort/by-id'
-    );
-    const assetsList = await assets.json();
-    return assetsList;
-  } catch (error) {
-    console.log(error);
-  }
-};
-
-//Function to fetch assets
-const fetchAssets = async (sortValue) => {
-  try {
-    const assets = await fetch(
-      `http://127.0.0.1:8000/assets-donations/sort/by-${sortValue}`
-    );
-    const assetsList = await assets.json();
-    return assetsList;
-  } catch (error) {
-    console.log(error);
-  }
-};
-
 //Function to fetch assets sorted by name
 const fetchSortedAssets = async (sortValue) => {
   try {
     const assets = await fetch(
-      `http://127.0.0.1:8000/assets-donations/sort/by-${sortValue}`
-    );
-    const assetsList = await assets.json();
-    return assetsList;
-  } catch (error) {
-    console.log(error);
-  }
-};
-
-//Function to fetch assets sorted by name
-const fetchSortedStatus = async (sortValue) => {
-  try {
-    const assets = await fetch(
-      `http://127.0.0.1:8000/assets/sort/by-${sortValue}`
-    );
-    const assetsList = await assets.json();
-    return assetsList;
-  } catch (error) {
-    console.log(error);
-  }
-};
-
-//Function to fetch filtered assets
-const fetchFilteredStatus = async (status) => {
-  try {
-    const assets = await fetch(
-      `http://127.0.0.1:8000/assets-donations/filter/status/${status}`
+      `http://127.0.0.1:8000/assets/donations/sort/by-${sortValue}`
     );
     const assetsList = await assets.json();
     return assetsList;
@@ -216,21 +164,17 @@ const pagination = () => {
   });
 };
 
-//Function to clear de sort radio buttons
-const clearSortRadioButtons = () => {
-  const sortRadioButtons = document.getElementsByName('sortRadio');
-  sortRadioButtons.forEach((radioButton) => {
-    radioButton.checked = false;
-  });
-};
-
 //Function sort the Assets in the table
 const sortAssets = () => {
   const sortRadioButtons = document.getElementsByName('sortRadio');
+  const idSortRadio = document.getElementById('idRadio');
+
+  //Set the id radio button as default
+  idSortRadio.checked = true;
+
   //Event listeners
   sortRadioButtons.forEach((radioButton) => {
     radioButton.addEventListener('change', async () => {
-      clearStatusSelect();
       if (radioButton.checked) {
         const sortValue = radioButton.value;
         const assetsList = await fetchSortedAssets(sortValue);
@@ -240,53 +184,11 @@ const sortAssets = () => {
   });
 };
 
-//Function to filter the assets in the table
-const filterAssets = () => {
-  const statusSelect = document.getElementById('statusSelect');
-  //Event listeners
-  statusSelect.addEventListener('change', async () => {
-    //Reset the sort radio buttons
-    clearSortRadioButtons();
-    // clearStatusSelect();
-
-    const AssetsStatusList = await fetchFilteredStatus(statusSelect.value);
-    buildPage(AssetsStatusList);
-  });
-};
-
-//Function to clear status select
-const clearStatusSelect = () => {
-  const unitSelect = document.getElementById('statusSelect');
-  unitSelect.options[0].selected = true;
-};
-
-//Function to build the options in the units select
-const buildStatusSelect = (asList) => {
-  const uniqueStatus = new Set();
-  const statusSelect = document.getElementById('statusSelect');
-
-  asList.forEach(function (element) {
-    if (!uniqueStatus.has(element.status)) {
-      uniqueStatus.add(element.status);
-
-      const selectOption = document.createElement('option');
-      selectOption.id = `${element.id}`;
-      selectOption.value = `${element.status}`;
-      selectOption.innerText = `${element.status}`;
-      statusSelect.appendChild(selectOption);
-    }
-  });
-};
-
 //Async function to fetch units and build the table
 const buildPageAsync = async function () {
-  const statusList = await fetchSortedStatus('name');
-  buildStatusSelect(statusList);
-
-  const assetsList = await fetchAssets('name');
+  const assetsList = await fetchSortedAssets('id');
   buildPage(assetsList);
   sortAssets();
-  filterAssets();
 };
 
 //Function calls

@@ -86,36 +86,59 @@
             <div class="filters">
               <h3>Ordenar por</h3>
 
+              <label for="dateRadio"
+                ><input
+                  type="radio"
+                  id="dateRadio"
+                  name="sortRadio"
+                  value="creation-date"
+                />
+                Fecha del traslado</label
+              >
+
               <label for="idRadio"
-                ><input type="radio" id="idRadio" name="sortRadio" value="ID" />
+                ><input type="radio" id="idRadio" name="sortRadio" value="id" />
                 ID</label
               >
+
               <label for="nameRadio"
                 ><input
                   type="radio"
                   id="nameRadio"
                   name="sortRadio"
-                  value="nombre"
+                  value="name"
                 />
                 Nombre</label
               >
-              <label for="oldUnitRadio"
+
+              <label for="originUnitRadio"
                 ><input
                   type="radio"
-                  id="oldUnitRadio"
+                  id="originUnitRadio"
                   name="sortRadio"
-                  value="unidadAnterior"
+                  value="origin-unit"
                 />
-                Unidad anterior</label
+                Unidad de origen</label
               >
-              <label for="newUnitRadio"
+
+              <label for="targetUnitRadio"
                 ><input
                   type="radio"
-                  id="newUnitRadio"
+                  id="targetUnitRadio"
                   name="sortRadio"
-                  value="unidadActual"
+                  value="target-unit"
                 />
-                Unidad actual</label
+                Unidad de destino</label
+              >
+
+              <label for="transferReasonRadio"
+                ><input
+                  type="radio"
+                  id="transferReasonRadio"
+                  name="sortRadio"
+                  value="transfer-reason"
+                />
+                Motivo de traslado</label
               >
 
               <hr />
@@ -181,9 +204,7 @@
                 &gt;
               </button>
             </div>
-
           </div>
-
         </div>
       </div>
     </main>

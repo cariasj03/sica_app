@@ -1,21 +1,8 @@
-//Function to fetch assets
-const fetchAssets = async (sortValue) => {
-  try {
-    const assets = await fetch(
-      `http://127.0.0.1:8000/asset-report/sort/by-${sortValue}`
-    );
-    const assetsList = await assets.json();
-    return assetsList;
-  } catch (error) {
-    console.log(error);
-  }
-};
-
 //Function to fetch sorted units
 const fetchSortedUnits = async (sortValue) => {
   try {
     const units = await fetch(
-      `http://127.0.0.1:8000/units/sort/by-${sortValue}`
+      `http://127.0.0.1:8000/units/sort/by-${sortValue}?id=${sessionUserData.id}`
     );
     const unList = await units.json();
     return unList;
@@ -28,7 +15,7 @@ const fetchSortedUnits = async (sortValue) => {
 const fetchSortedAssets = async (sortValue) => {
   try {
     const assets = await fetch(
-      `http://127.0.0.1:8000/asset-report/sort/by-${sortValue}`
+      `http://127.0.0.1:8000/assets/sort/by-${sortValue}?id=${sessionUserData.id}`
     );
     const assetsList = await assets.json();
     return assetsList;
@@ -40,11 +27,11 @@ const fetchSortedAssets = async (sortValue) => {
 //Function to fetch filtered users
 const fetchFilteredAsset = async (unit) => {
   try {
-    const asse = await fetch(
-      `http://127.0.0.1:8000/asset-report/filter/unit/${unit}`
+    const asset = await fetch(
+      `http://127.0.0.1:8000/assets/filter/unit/${unit}?id=${sessionUserData.id}`
     );
-    const asseList = await asse.json();
-    return asseList;
+    const assetList = await asset.json();
+    return assetList;
   } catch (error) {
     console.log(error);
   }
@@ -54,10 +41,13 @@ const fetchFilteredAsset = async (unit) => {
 const buildAssestTable = (assetsList) => {
   const table = document.querySelector('table');
   table.innerHTML =
-    '<tr><th>ID</th><th>Nombre</th><th>Unidad</th><th>Estado</th></tr>';
+    '<tr><th>Unidad</th><th>ID</th><th>Nombre</th><th>Estado</th></tr>';
 
   assetsList.forEach(function (asset) {
     const tableRow = document.createElement('tr');
+
+    const assetUnit = document.createElement('td');
+    assetUnit.innerText = `${asset.unit}`;
 
     const assetId = document.createElement('td');
     assetId.innerText = `${asset.id}`;
@@ -65,15 +55,12 @@ const buildAssestTable = (assetsList) => {
     const assetName = document.createElement('td');
     assetName.innerText = `${asset.name}`;
 
-    const assetUnit = document.createElement('td');
-    assetUnit.innerText = `${asset.unit}`;
-
     const assetStatus = document.createElement('td');
     assetStatus.innerText = `${asset.status}`;
 
+    tableRow.appendChild(assetUnit);
     tableRow.appendChild(assetId);
     tableRow.appendChild(assetName);
-    tableRow.appendChild(assetUnit);
     tableRow.appendChild(assetStatus);
 
     table.appendChild(tableRow);
@@ -210,6 +197,10 @@ const clearSortRadioButtons = () => {
 //Function sort the assets in the table
 const sortAssets = () => {
   const sortRadioButtons = document.getElementsByName('sortRadio');
+  const unitSortRadio = document.getElementById('unitRadio');
+
+  //Setting the unit radio button as default
+  unitSortRadio.checked = true;
 
   //Event listeners
   sortRadioButtons.forEach((radioButton) => {
@@ -269,7 +260,7 @@ const buildPageAsync = async function () {
   const unitsList = await fetchSortedUnits('name');
   buildUnitsSelect(unitsList);
 
-  const asstsList = await fetchAssets('name');
+  const asstsList = await fetchSortedAssets('unit');
   buildPage(asstsList);
 
   sortAssets();

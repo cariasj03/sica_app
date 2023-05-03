@@ -1,16 +1,18 @@
 //Function to fetch transfers sorted by id
 const fetchSortedTransfers = async () => {
   try {
-    const transfers = await fetch('http://127.0.0.1:8000/transfers/sort/by-id');
+    const transfers = await fetch(
+      'http://127.0.0.1:8000/transfers/sort/by-creation-date'
+    );
     const transfersJson = await transfers.json();
 
     transfersJson.forEach((transfer) => {
       const rawCreationDate = new Date(transfer.creationDate);
       const day = ('0' + (rawCreationDate.getDate() + 1)).slice(-2);
       const month = ('0' + (rawCreationDate.getMonth() + 1)).slice(-2);
-      const CD = `${rawCreationDate.getFullYear()}-${month}-${day}`;
+      const CD = `${day}/${month}/${rawCreationDate.getFullYear()}`;
       transfer.creationDate = CD;
-    })
+    });
 
     return transfersJson;
   } catch (error) {
@@ -28,16 +30,19 @@ const buildPage = (transfersList) => {
 const buildTableRows = (transfersList) => {
   const table = document.querySelector('table');
   table.innerHTML =
-    '<tr><th>Solicitado por</th><th>Aprobado por</th><th>Unidad de Origen</th><th>Unidad de Destino</th><th>Fecha de Traslado</th><th>Motivo del Traslado</th></th></tr>';
+    '<tr><th>Fecha de traslado</th><th>ID</th><th>Nombre</th><th>Unidad de origen</th><th>Unidad de destino</th><th>Motivo del traslado</th><th>Solicitado por</th><th>Aprobado por</th></tr>';
 
   transfersList.forEach(function (transfer) {
     const tableRow = document.createElement('tr');
 
-    const userRequestId = document.createElement('td');
-    userRequestId.innerText = `${transfer.requestedBy}`;
+    const transferDate = document.createElement('td');
+    transferDate.innerText = `${transfer.creationDate}`;
 
-    const userApprovalId = document.createElement('td');
-    userApprovalId.innerText = `${transfer.approvedBy}`;
+    const assetId = document.createElement('td');
+    assetId.innerText = `${transfer.assetId}`;
+
+    const assetName = document.createElement('td');
+    assetName.innerText = `${transfer.assetName}`;
 
     const unitOrigin = document.createElement('td');
     unitOrigin.innerText = `${transfer.originUnit}`;
@@ -45,19 +50,23 @@ const buildTableRows = (transfersList) => {
     const unitTarget = document.createElement('td');
     unitTarget.innerText = `${transfer.targetUnit}`;
 
-    const transferDate = document.createElement('td');
-    transferDate.innerText = `${transfer.creationDate}`;
-
     const transferReason = document.createElement('td');
     transferReason.innerText = `${transfer.transferReason}`;
 
-    tableRow.appendChild(userRequestId);
-    tableRow.appendChild(userApprovalId);
+    const userRequestId = document.createElement('td');
+    userRequestId.innerText = `${transfer.requestedBy}`;
+
+    const userApprovalId = document.createElement('td');
+    userApprovalId.innerText = `${transfer.approvedBy}`;
+
+    tableRow.appendChild(transferDate);
+    tableRow.appendChild(assetId);
+    tableRow.appendChild(assetName);
     tableRow.appendChild(unitOrigin);
     tableRow.appendChild(unitTarget);
-    tableRow.appendChild(transferDate);
     tableRow.appendChild(transferReason);
-
+    tableRow.appendChild(userRequestId);
+    tableRow.appendChild(userApprovalId);
 
     table.appendChild(tableRow);
   });

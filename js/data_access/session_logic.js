@@ -103,5 +103,14 @@ logoutTab.addEventListener('click', () => {
   window.location.href = '../html/signin.html';
 });
 
+if (pageId === 'myprofile') {
+  const logoutSideTab = document.getElementById('logoutSideTab');
+
+  logoutSideTab.addEventListener('click', () => {
+    localStorage.removeItem('sessionUserData');
+    window.location.href = '../html/signin.html';
+  });
+}
+
 //Function calls
 defaultBehavior();
