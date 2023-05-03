@@ -38,21 +38,6 @@ const fetchTransferInformation = async () => {
   }
 };
 
-//Function to update the asset information
-const updateAssetInformation = async (id, body) => {
-  try {
-    const response = await fetch(`http://127.0.0.1:8000/assets/${id}`, {
-      method: 'POST',
-      headers: {
-        'Content-type': 'application/json',
-      },
-      body: JSON.stringify(body),
-    });
-  } catch (error) {
-    console.log(error);
-  }
-};
-
 //Function to update the transfer information
 const updateTransferInformation = async (id, body) => {
   try {
@@ -138,29 +123,22 @@ const getAssetNewStatus = (transferReason) => {
 };
 
 //Function to build the asset updated information
-const assetUpdatedInformation = () => {
+const updatedInformation = () => {
   try {
     const bodyContent = {
-      unit: targetUnitInput.value,
-      location: targetLocationInput.value,
-      locationCode: generateAssetLocationCode(
-        targetLocationInput.value,
-        targetUnitInput.value
-      ),
-      status: getAssetNewStatus(transferReasonInput.value),
-    };
-    return bodyContent;
-  } catch (error) {
-    console.log(error);
-  }
-};
-
-//Function to build the transfer updated information
-const transferUpdatedInformation = () => {
-  try {
-    const bodyContent = {
-      isApproved: true,
-      approvedBy: sessionUserData.id,
+      assetUpdatedInfo: {
+        unit: targetUnitInput.value,
+        location: targetLocationInput.value,
+        locationCode: generateAssetLocationCode(
+          targetLocationInput.value,
+          targetUnitInput.value
+        ),
+        status: getAssetNewStatus(transferReasonInput.value),
+      },
+      transferUpdatedInfo: {
+        isApproved: true,
+        approvedBy: sessionUserData.id,
+      },
     };
     return bodyContent;
   } catch (error) {
@@ -173,10 +151,8 @@ const approveTransfer = async () => {
   try {
     await updateTransferInformation(
       transferIdInput.value,
-      transferUpdatedInformation()
+      updatedInformation()
     );
-
-    await updateAssetInformation(assetIdInput.value, assetUpdatedInformation());
   } catch (error) {
     console.log(error);
   }

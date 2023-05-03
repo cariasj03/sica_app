@@ -323,13 +323,11 @@ const buildPage = (transferList) => {
 
 //Async function to fetch transfers and build the table
 const buildPageAsync = async function () {
-  const unitsOriginList = await fetchSortedUnits('name');
-  buildUnitsOriginSelect(unitsOriginList);
+  const unitsList = await fetchSortedUnits('name');
+  buildUnitsOriginSelect(unitsList);
+  buildUnitsTargetSelect(unitsList);
 
-  const unitsTargetList = await fetchSortedUnits('name');
-  buildUnitsTargetSelect(unitsTargetList);
-
-  const transferList = await fetchSortedTransfers('assetId');
+  const transferList = await fetchSortedTransfers('creation-date');
   buildPage(transferList);
 
   sortTransfers();

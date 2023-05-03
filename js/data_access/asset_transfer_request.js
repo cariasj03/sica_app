@@ -31,13 +31,16 @@ const fetchAssetInformation = async () => {
 //Function to request the asset transfer
 const requestTransfer = async (body) => {
   try {
-    const response = await fetch(`http://127.0.0.1:8000/transfers`, {
-      method: 'POST',
-      headers: {
-        'Content-type': 'application/json',
-      },
-      body: JSON.stringify(body),
-    });
+    const response = await fetch(
+      `http://127.0.0.1:8000/transfers?id=${sessionUserData.id}`,
+      {
+        method: 'POST',
+        headers: {
+          'Content-type': 'application/json',
+        },
+        body: JSON.stringify(body),
+      }
+    );
   } catch (error) {
     console.log(error);
   }
@@ -80,23 +83,57 @@ const loadSelectedAsset = (selectedAsset) => {
 };
 
 //Functions
+//Function to get the new asset status
+const getAssetNewStatus = (transferReason) => {
+  let assetNewStatus = '';
+  switch (transferReason) {
+    case 'Daño':
+      assetNewStatus = 'Dañado';
+      break;
+    case 'Desuso':
+      assetNewStatus = 'Desuso';
+      break;
+    case 'Donación':
+      assetNewStatus = 'Donado';
+      break;
+    case 'Otro':
+      assetNewStatus = 'Activo';
+      break;
+  }
+  return assetNewStatus;
+};
 
-//Function to get the values of the form fields
+//Function to build the asset updated information
 const getFormFields = () => {
-  const bodyContent = {
-    assetId: assetIdInput.value,
-    assetName: assetNameInput.value,
-    originUnit: originUnitInput.value,
-    targetUnit: targetUnitInput.value,
-    targetLocation: targetLocationInput.value,
-    targetLocationCode: generateLocationCode(targetLocationInput.value),
-    transferReason: transferReasonInput.value,
-    transferDescription: transferDescriptionInput.value,
-    transferImage1: transferImage1Input.src,
-    transferImage2: transferImage2Input.src,
-    requestedBy: sessionUserData.id,
-  };
-  return bodyContent;
+  try {
+    const bodyContent = {
+      assetUpdatedInfo: {
+        unit: targetUnitInput.value,
+        location: targetLocationInput.value,
+        locationCode: generateLocationCode(
+          targetLocationInput.value,
+          targetUnitInput.value
+        ),
+        status: getAssetNewStatus(transferReasonInput.value),
+      },
+      transferInfo: {
+        assetId: assetIdInput.value,
+        assetName: assetNameInput.value,
+        originUnit: originUnitInput.value,
+        targetUnit: targetUnitInput.value,
+        targetLocation: targetLocationInput.value,
+        targetLocationCode: generateLocationCode(targetLocationInput.value),
+        transferReason: transferReasonInput.value,
+        transferDescription: transferDescriptionInput.value,
+        transferImage1: transferImage1Input.src,
+        transferImage2: transferImage2Input.src,
+        requestedBy: sessionUserData.id,
+      },
+    };
+    return bodyContent;
+  } catch (error) {
+    console.log(error);
+  }
 };
 
 function generateLocationCode(locationInput) {
