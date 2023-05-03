@@ -1,11 +1,18 @@
 //Function to fetch transfers sorted by id
-const fetchSortedTransfers = async (sortValue) => {
+const fetchSortedTransfers = async () => {
   try {
-    const transfers = await fetch(
-      `/transfers/sort/by-id`
-    );
-    const transfersList = await transfers.json();
-    return transfersList;
+    const transfers = await fetch('http://127.0.0.1:8000/transfers/sort/by-id');
+    const transfersJson = await transfers.json();
+
+    transfersJson.forEach((transfer) => {
+      const rawCreationDate = new Date(transfer.creationDate);
+      const day = ('0' + (rawCreationDate.getDate() + 1)).slice(-2);
+      const month = ('0' + (rawCreationDate.getMonth() + 1)).slice(-2);
+      const CD = `${rawCreationDate.getFullYear()}-${month}-${day}`;
+      transfer.creationDate = CD;
+    })
+
+    return transfersJson;
   } catch (error) {
     console.log(error);
   }
@@ -14,7 +21,6 @@ const fetchSortedTransfers = async (sortValue) => {
 //Function to build the page
 const buildPage = (transfersList) => {
   buildTableRows(transfersList);
-  selectRow();
   pagination();
 };
 
@@ -22,73 +28,39 @@ const buildPage = (transfersList) => {
 const buildTableRows = (transfersList) => {
   const table = document.querySelector('table');
   table.innerHTML =
-    '<tr><th></th><th>Solicitado por:</th><th>Aprobado por:</th><th>Unidad de Origen:</th><th>Unidad de </th><th>Estado</th></tr>';
+    '<tr><th>Solicitado por</th><th>Aprobado por</th><th>Unidad de Origen</th><th>Unidad de Destino</th><th>Fecha de Traslado</th><th>Motivo del Traslado</th></th></tr>';
 
-  transfersList.forEach(function (asset) {
+  transfersList.forEach(function (transfer) {
     const tableRow = document.createElement('tr');
-    const tableRowRadio = document.createElement('td');
 
-    tableRowRadio.innerHTML = '<input type="radio" name="tableRadio" />';
+    const userRequestId = document.createElement('td');
+    userRequestId.innerText = `${transfer.requestedBy}`;
 
-    const assetId = document.createElement('td');
-    assetId.innerText = `${asset.id}`;
+    const userApprovalId = document.createElement('td');
+    userApprovalId.innerText = `${transfer.approvedBy}`;
 
-    const assetName = document.createElement('td');
-    assetName.innerText = `${asset.name}`;
+    const unitOrigin = document.createElement('td');
+    unitOrigin.innerText = `${transfer.originUnit}`;
 
-    const assetUnit = document.createElement('td');
-    assetUnit.innerText = `${asset.unit}`;
+    const unitTarget = document.createElement('td');
+    unitTarget.innerText = `${transfer.targetUnit}`;
 
-    const assetLocationCode = document.createElement('td');
-    assetLocationCode.innerText = `${asset.locationCode}`;
+    const transferDate = document.createElement('td');
+    transferDate.innerText = `${transfer.creationDate}`;
 
-    const assetStatus = document.createElement('td');
-    assetStatus.innerText = `${asset.status}`;
+    const transferReason = document.createElement('td');
+    transferReason.innerText = `${transfer.transferReason}`;
 
-    tableRow.appendChild(tableRowRadio);
-    tableRow.appendChild(assetId);
-    tableRow.appendChild(assetName);
-    tableRow.appendChild(assetUnit);
-    tableRow.appendChild(assetLocationCode);
-    tableRow.appendChild(assetStatus);
+    tableRow.appendChild(userRequestId);
+    tableRow.appendChild(userApprovalId);
+    tableRow.appendChild(unitOrigin);
+    tableRow.appendChild(unitTarget);
+    tableRow.appendChild(transferDate);
+    tableRow.appendChild(transferReason);
+
 
     table.appendChild(tableRow);
   });
-};
-
-//Function to select a row in the table
-const selectRow = () => {
-  const tableRadioButtons = document.getElementsByName('tableRadio');
-  let assetId;
-  tableRadioButtons.forEach((radioButton) => {
-    const tableRowSelected = radioButton.parentElement.parentElement;
-    radioButton.addEventListener('change', () => {
-      tableRadioButtons.forEach((radioButton) => {
-        radioButton.parentElement.parentElement.classList.remove('selectedRow');
-      });
-      if (radioButton.checked) {
-        tableRowSelected.classList.add('selectedRow');
-      }
-    });
-  });
-};
-
-//Function to get the selected asset id
-const getSelectedAssetId = () => {
-  const tableRadioButtons = document.getElementsByName('tableRadio');
-  let assetId;
-  tableRadioButtons.forEach((radioButton) => {
-    const tableRowSelected = radioButton.parentElement.parentElement;
-    if (radioButton.checked) {
-      assetId = tableRowSelected.children[1].innerText;
-    }
-  });
-  return assetId;
-};
-
-//Function to store the unit id in the local storage
-const storeAssetId = (assetId) => {
-  localStorage.setItem('assetId', assetId);
 };
 
 //Function to handle pagination
@@ -208,182 +180,10 @@ const pagination = () => {
   });
 };
 
-//Function to clear de sort radio buttons
-const clearSortRadioButtons = () => {
-  const sortRadioButtons = document.getElementsByName('sortRadio');
-  sortRadioButtons.forEach((radioButton) => {
-    radioButton.checked = false;
-  });
-};
-
-//Function sort the Assets in the table
-const sortAssets = () => {
-  const sortRadioButtons = document.getElementsByName('sortRadio');
-  //Event listeners
-  sortRadioButtons.forEach((radioButton) => {
-    radioButton.addEventListener('change', async () => {
-      clearUnitSelect();
-      clearStatusSelect();
-      if (radioButton.checked) {
-        const sortValue = radioButton.value;
-        const transfersList = await fetchSortedTransfers(sortValue);
-        buildPage(transfersList);
-      }
-    });
-  });
-};
-
-//Function to filter the assets in the table
-const filterAssets = () => {
-  const unitSelect = document.getElementById('unitSelect');
-
-  //Event listeners
-  unitSelect.addEventListener('change', async () => {
-    //Reset the sort radio buttons
-    clearSortRadioButtons();
-
-    //Clear the status select
-    clearStatusSelect();
-
-    const userList = await fetchFilteredAsset(unitSelect.value);
-    buildPage(userList);
-  });
-
-  const statusSelect = document.getElementById('statusSelect');
-  //Event listeners
-  statusSelect.addEventListener('change', async () => {
-    //Reset the sort radio buttons
-    clearSortRadioButtons();
-
-    //Clear the unit select
-    clearUnitSelect();
-
-    const AssetsStatusList = await fetchFilteredStatus(statusSelect.value);
-    buildPage(AssetsStatusList);
-  });
-};
-
-//Function to clear unit select
-const clearUnitSelect = () => {
-  const unitSelect = document.getElementById('unitSelect');
-  unitSelect.options[0].selected = true;
-};
-
-//Function to clear status select
-const clearStatusSelect = () => {
-  const statusSelect = document.getElementById('statusSelect');
-  statusSelect.options[0].selected = true;
-};
-
-//Function to search
-const searchAsset = async (searchInput) => {
-  let transfersList;
-  if (!searchInput || searchInput.value === '') {
-    transfersList = await fetchSortedAssets('id');
-  } else {
-    //Clear the sort radio buttons
-    clearSortRadioButtons();
-
-    //Clear the unit select
-    clearUnitSelect();
-    clearStatusSelect();
-
-    const searchValue = searchInput.value;
-    let type;
-
-    switch (searchInput.id) {
-      case 'idSearch':
-        type = 'id';
-        break;
-      case 'nameSearch':
-        type = 'name';
-        break;
-    }
-    transfersList = await fetchSearchedAssets(searchValue, type);
-  }
-  buildPage(transfersList);
-};
-
-//Function to build the options in the units select
-const buildUnitsSelect = (unitsList) => {
-  unitsList.forEach(function (element) {
-    const unitSelect = document.getElementById('unitSelect');
-    const selectOption = document.createElement('option');
-
-    selectOption.id = `${element['id']}`;
-    selectOption.value = `${element['name']}`;
-    selectOption.innerText = `${element['name']}`;
-
-    unitSelect.appendChild(selectOption);
-  });
-};
-
-//Function to build the options in the units select
-const buildStatusSelect = (asList) => {
-  const uniqueStatus = new Set();
-  const statusSelect = document.getElementById('statusSelect');
-
-  asList.forEach(function (element) {
-    if (!uniqueStatus.has(element.status)) {
-      uniqueStatus.add(element.status);
-
-      const selectOption = document.createElement('option');
-      selectOption.id = `${element.id}`;
-      selectOption.value = `${element.status}`;
-      selectOption.innerText = `${element.status}`;
-      statusSelect.appendChild(selectOption);
-    }
-  });
-};
-
-//Function to search the users in the table
-const searchAssets = () => {
-  //DOM elements
-  const searchInputs = document.getElementsByName('searchInput');
-
-  searchInputs.forEach((searchInput) => {
-    searchInput.addEventListener('change', async () => {
-      searchAsset(searchInput);
-    });
-    searchInput.addEventListener('keyup', async () => {
-      searchAsset(searchInput);
-    });
-  });
-};
-
-//Event listeners
-viewEditAsset.addEventListener('click', () => {
-  const assetId = getSelectedAssetId();
-  if (assetId === undefined || assetId === null) {
-    errorAlert('No ha seleccionado un activo. Seleccione uno para continuar');
-  } else {
-    storeAssetId(assetId);
-    window.location.href = '../html/asset_individual_information.html';
-  }
-});
-
-transferAsset.addEventListener('click', () => {
-  const assetId = getSelectedAssetId();
-  if (assetId === undefined || assetId === null) {
-    errorAlert('No ha seleccionado un activo. Seleccione uno para continuar');
-  } else {
-    storeAssetId(assetId);
-    window.location.href = '../html/asset_transfer_request.html';
-  }
-});
-
-//Async function to fetch units and build the table
+//Async function to build page
 const buildPageAsync = async function () {
-  const unitsList = await fetchSortedUnits('name');
-  buildUnitsSelect(unitsList);
-
-  const transfersList = await fetchSortedAssets('id');
-  buildStatusSelect(transfersList);
+  const transfersList = await fetchSortedTransfers();
   buildPage(transfersList);
-  sortAssets();
-  filterAssets();
-  searchAsset();
-  searchAssets();
 };
 
 //Function calls
