@@ -17,7 +17,7 @@ const fetchAssets = async () => {
 const fetchSortedAssets = async (sortValue) => {
   try {
     const assets = await fetch(
-      `http://127.0.0.1:8000/assets/sort/by-${sortValue}`
+      `http://127.0.0.1:8000/assets/sort/by-${sortValue}?id=${sessionUserData.id}`
     );
     const assetsList = await assets.json();
     return assetsList;
@@ -30,7 +30,7 @@ const fetchSortedAssets = async (sortValue) => {
 const fetchSearchedAssets = async (searchValue, type) => {
   try {
     const assets = await fetch(
-      `http://127.0.0.1:8000/assets/search/by-${type}/${searchValue}`
+      `http://127.0.0.1:8000/assets/search/by-${type}/${searchValue}?id=${sessionUserData.id}`
     );
     const assetsList = await assets.json();
     return assetsList;
@@ -69,7 +69,7 @@ const fetchFilteredStatus = async (status) => {
 const fetchSortedUnits = async (sortValue) => {
   try {
     const units = await fetch(
-      `http://127.0.0.1:8000/units/sort/by-${sortValue}`
+      `http://127.0.0.1:8000/units/sort/by-${sortValue}?id=${sessionUserData.id}`
     );
     const unitsList = await units.json();
     return unitsList;
