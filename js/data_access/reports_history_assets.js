@@ -1,5 +1,5 @@
 //Function to fetch transfers sorted by id
-const fetchSortedTransfers = async (sortValue) =>  {
+const fetchSortedTransfers = async (sortValue) => {
   try {
     const transfers = await fetch(
       `http://127.0.0.1:8000/transfers/sort/by-${sortValue}`
@@ -26,7 +26,7 @@ const fetchSortedUnits = async (sortValue) => {
 
 //Function to fetch filtered users
 const fetchFilteredOriginTransfers = async (unitO) => {
-  console.log(unitO)
+  console.log(unitO);
   try {
     const users = await fetch(
       `http://127.0.0.1:8000/transfers/filter/originUnit/${unitO}`
@@ -40,9 +40,8 @@ const fetchFilteredOriginTransfers = async (unitO) => {
 
 //Function to fetch filtered users
 const fetchFilteredTargetTransfers = async (unitT) => {
-  
   try {
-    console.log(unitT)
+    console.log(unitT);
     const users = await fetch(
       `http://127.0.0.1:8000/transfers/filter/targetUnit/${unitT}`
     );
@@ -243,6 +242,10 @@ const clearTargetUnitSelect = () => {
 //Function sort the Transfers in the table
 const sortTransfers = () => {
   const sortRadioButtons = document.getElementsByName('sortRadio');
+  const dateSortRadio = document.getElementById('dateRadio');
+
+  //Setting the date radio button as default
+  dateSortRadio.checked = true;
 
   //Event listeners
   sortRadioButtons.forEach((radioButton) => {
@@ -286,9 +289,7 @@ const filterTransfers = () => {
 
 //Function to build the options in the units select
 const buildUnitsOriginSelect = (unitsList) => {
-  
   unitsList.forEach(function (element) {
-    
     const originUnit = document.getElementById('originUnit');
     const selectOption = document.createElement('option');
 
@@ -302,7 +303,6 @@ const buildUnitsOriginSelect = (unitsList) => {
 
 //Function to build the options in the units select
 const buildUnitsTargetSelect = (unitsList) => {
-  
   unitsList.forEach(function (element) {
     const targetUnit = document.getElementById('targetUnit');
     const selectOption = document.createElement('option');
@@ -323,7 +323,6 @@ const buildPage = (transferList) => {
 
 //Async function to fetch transfers and build the table
 const buildPageAsync = async function () {
-
   const unitsOriginList = await fetchSortedUnits('name');
   buildUnitsOriginSelect(unitsOriginList);
 

@@ -228,6 +228,10 @@ const clearSortRadioButtons = () => {
 //Function sort the units in the table
 const sortUnits = () => {
   const sortRadioButtons = document.getElementsByName('sortRadio');
+  const idSortRadio = document.getElementById('idRadio');
+
+  //Setting the id radio button as default
+  idSortRadio.checked = true;
 
   //Event listeners
   sortRadioButtons.forEach((radioButton) => {

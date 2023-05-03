@@ -127,7 +127,7 @@ const pagination = () => {
   paginationNumbers.innerHTML = '';
 
   //Pagination variables
-  const paginationLimit = 6;
+  const paginationLimit = 10;
   const pageCount = Math.ceil(tableRows.length / paginationLimit);
   let currentPage;
 
