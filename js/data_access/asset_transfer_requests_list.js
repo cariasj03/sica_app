@@ -300,11 +300,7 @@ const clearUnitSelect = () => {
 
 //Function sort the users in the table
 const sortTransfers = () => {
-  const transferIdRadioButton = document.getElementById('transferIdRadio');
   const sortRadioButtons = document.getElementsByName('sortRadio');
-
-  //Set the default sort radio button
-  transferIdRadioButton.checked = true;
 
   //Event listeners
   sortRadioButtons.forEach((radioButton) => {

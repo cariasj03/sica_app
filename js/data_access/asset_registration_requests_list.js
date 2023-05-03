@@ -318,10 +318,6 @@ const clearStatusSelect = () => {
 //Function sort the Assets in the table
 const sortAssets = () => {
   const idRadioButton = document.getElementById('idRadio');
-  const sortRadioButtons = document.getElementsByName('sortRadio');
-
-  //Set the default sort radio button
-  idRadioButton.checked = true;
 
   //Event listeners
   sortRadioButtons.forEach((radioButton) => {

@@ -98,7 +98,7 @@
 
               <label for="idRadio"
                 ><input type="radio" id="idRadio" name="sortRadio" value="id" />
-                ID</label
+                ID del activo</label
               >
 
               <label for="nameRadio"
@@ -108,7 +108,7 @@
                   name="sortRadio"
                   value="name"
                 />
-                Nombre</label
+                Nombre del activo</label
               >
 
               <label for="originUnitRadio"
@@ -162,7 +162,7 @@
           </div>
 
           <div class="tableContainer">
-            <table id="paginatedTable" class="tables"></table>
+            <table class="tables" id="paginatedTable"></table>
 
             <div class="paginationContainer">
               <button
@@ -174,26 +174,7 @@
                 &lt;
               </button>
 
-              <div id="paginationNumbers">
-                <a
-                  class="paginationNumber activePage"
-                  page-index="1"
-                  aria-label="Page 1"
-                  >1</a
-                >
-                <a class="paginationNumber" page-index="2" aria-label="Page 2"
-                  >2</a
-                >
-                <a class="paginationNumber" page-index="3" aria-label="Page 3"
-                  >3</a
-                >
-                <a class="paginationNumber" page-index="4" aria-label="Page 4"
-                  >4</a
-                >
-                <a class="paginationNumber" page-index="5" aria-label="Page 5"
-                  >5</a
-                >
-              </div>
+              <div id="paginationNumbers"></div>
 
               <button
                 id="nextButton"
