@@ -120,23 +120,21 @@
 
               <hr />
 
-              <h3>Buscar por</h3>
-              <label for="idSearch"
-                >ID<input
-                  class="inputStyle"
-                  type="search"
-                  id="idSearch"
-                  name="idSearch"
-                  placeholder="ID"
-              /></label>
-              <label for="nameSearch"
-                >Nombre<input
-                  class="inputStyle"
-                  type="search"
-                  id="nameSearch"
-                  name="nameSearch"
-                  placeholder="Nombre"
-              /></label>
+              <h3>Filtrar por</h3>
+              <label for="originUnit"
+                >Unidad de origen<select class="inputStyle" id="originUnit">
+                  <option value="" disabled selected hidden>
+                    Unidad de origen
+                  </option>
+                </select></label
+              >
+              <label for="targetUnit"
+                >Unidad de destino<select class="inputStyle" id="targetUnit">
+                  <option value="" disabled selected hidden>
+                    Unidad de destino
+                  </option>
+                </select></label
+              >
             </div>
           </div>
 
@@ -145,9 +143,8 @@
               <tr>
                 <th>ID</th>
                 <th>Nombre</th>
-                <th>Unidad anterior</th>
-                <th>Unidad actual</th>
-                <th>Código de ubicación</th>
+                <th>Unidad de origen</th>
+                <th>Unidad de destino</th>
                 <th>Fecha de creación</th>
                 <th>Solicitado por</th>
                 <th>Aprobado por</th>
@@ -158,7 +155,6 @@
                 <td>Impresora EPSON F570</td>
                 <td>Central</td>
                 <td>Heredia</td>
-                <td>PROHERPIS301</td>
                 <td>19/03/2023</td>
                 <td>105360875</td>
                 <td>105360875</td>
@@ -169,7 +165,6 @@
                 <td>Monitor LG IPS</td>
                 <td>Central</td>
                 <td>Bodega</td>
-                <td>PROBODPIS102</td>
                 <td>20/03/2023</td>
                 <td>105360875</td>
                 <td>105360875</td>
@@ -180,7 +175,6 @@
                 <td>UPS APC LS1200</td>
                 <td>Central</td>
                 <td>Cartago</td>
-                <td>PROCARPIS203</td>
                 <td>25/03/2023</td>
                 <td>105360875</td>
                 <td>105360875</td>
@@ -191,7 +185,6 @@
                 <td>Monitor LG IPS</td>
                 <td>Central</td>
                 <td>Bodega</td>
-                <td>PROBODPIS104</td>
                 <td>20/03/2023</td>
                 <td>105360875</td>
                 <td>105360875</td>
@@ -202,7 +195,6 @@
                 <td>UPS APC LS1200</td>
                 <td>Central</td>
                 <td>Bodega</td>
-                <td>PROBODPIS105</td>
                 <td>20/03/2023</td>
                 <td>105360875</td>
                 <td>105360875</td>
@@ -213,7 +205,6 @@
                 <td>Impresora EPSON F570</td>
                 <td>Central</td>
                 <td>Bodega</td>
-                <td>PROBODPIS106</td>
                 <td>20/03/2023</td>
                 <td>105360875</td>
                 <td>105360875</td>
@@ -224,7 +215,6 @@
                 <td>Impresora EPSON F570</td>
                 <td>Central</td>
                 <td>Donaciones</td>
-                <td>PRDONPIS307</td>
                 <td>19/03/2023</td>
                 <td>105360875</td>
                 <td>105360875</td>
@@ -235,7 +225,6 @@
                 <td>Impresora EPSON F570</td>
                 <td>Central</td>
                 <td>Donaciones</td>
-                <td>PRODONPIS308</td>
                 <td>19/03/2023</td>
                 <td>105360875</td>
                 <td>105360875</td>
@@ -246,7 +235,6 @@
                 <td>UPS APC LS1200</td>
                 <td>Central</td>
                 <td>Donaciones</td>
-                <td>PRODONPIS209</td>
                 <td>25/03/2023</td>
                 <td>105360875</td>
                 <td>105360875</td>
@@ -257,7 +245,6 @@
                 <td>UPS APC LS1200</td>
                 <td>Central</td>
                 <td>Donaciones</td>
-                <td>PRODONPIS2010</td>
                 <td>25/03/2023</td>
                 <td>105360875</td>
                 <td>105360875</td>
