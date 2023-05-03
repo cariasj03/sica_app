@@ -75,23 +75,23 @@
         <h1>Revisión de solicitud de traslado de un activo</h1>
         <form id="assetTransferRequestReviewForm">
           <div class="formInputContainer">
-            <label for="assetTransferId"
+            <label for="transferId"
               >ID del traslado
               <input
                 class="inputStyle disabled"
                 type="text"
-                id="assetTransferId"
-                name="assetTransferId"
+                id="transferId"
+                name="transferId"
                 disabled
             /></label>
 
-            <label for="assetTransferRequestDate"
+            <label for="requestCreationDate"
               >Fecha de la solicitud
               <input
                 class="inputStyle disabled"
                 type="text"
-                id="assetTransferRequestDate"
-                name="assetTransferRequestDate"
+                id="requestCreationDate"
+                name="requestCreationDate"
                 disabled
             /></label>
 
@@ -115,52 +115,52 @@
                 disabled
             /></label>
 
-            <label for="assetOriginUnit"
+            <label for="originUnit"
               >Unidad de origen
               <input
                 class="inputStyle disabled"
                 type="text"
-                id="assetOriginUnit"
-                name="assetOriginUnit"
+                id="originUnit"
+                name="originUnit"
                 disabled
             /></label>
 
-            <label for="assetTargetUnit"
+            <label for="targetUnit"
               >Unidad de destino
               <input
                 class="inputStyle disabled"
                 type="text"
-                id="assetTargetUnit"
-                name="assetTargetUnit"
+                id="targetUnit"
+                name="targetUnit"
                 disabled
             /></label>
 
-            <label for="assetTransferReason"
+            <label for="transferReason"
               >Motivo del traslado
               <input
                 class="inputStyle disabled"
                 type="text"
-                id="assetTransferReason"
-                name="assetTransferReason"
+                id="transferReason"
+                name="transferReason"
                 disabled
             /></label>
 
-            <label for="assetTargetLocation"
+            <label for="targetLocation"
               >Ubicación de destino
               <input
                 class="inputStyle disabled"
                 type="text"
-                id="assetTargetLocation"
-                name="assetTargetLocation"
+                id="targetLocation"
+                name="targetLocation"
                 disabled
             /></label>
 
-            <label id="assetDescriptionLabel" for="assetDescription"
+            <label id="transferDescriptionLabel" for="transferDescription"
               >Descripción detallada de la solicitud
               <textarea
                 class="inputStyle disabled"
-                id="assetRequestDescription"
-                name="assetRequestDescription"
+                id="transferDescription"
+                name="transferDescription"
                 rows="3"
                 disabled
               > </textarea>
@@ -173,13 +173,13 @@
               class="assetTransferPicture"
               id="assetTransferPicture1"
               alt="Upload a picture 1"
-              src="../images/assetTransferPicture1.png"
+              src="../images/upload_picture_icon.jpeg"
             />
             <img
               class="assetTransferPicture"
               id="assetTransferPicture2"
               alt="Upload a picture 2"
-              src="../images/assetTransferPicture2.png"
+              src="../images/upload_picture_icon.jpeg"
             />
           </div>
 
@@ -213,11 +213,10 @@
     <footer class="footer">
       <p class="copyrightText">Copyright &copy; 2023 by Beelders.</p>
     </footer>
-
-    <script src="../js/dom_manipulation/approve_reject_requests.js"></script>
+    
+    <script src="../js/data_access/session_logic.js"></script>
     <script src="../js/dom_manipulation/sweet_alert.js"></script>
     <script src="../js/dom_manipulation/user_feedback.js"></script>
-    <script src="../js/data_access/session_logic.js"></script>
     <script src="../js/data_access/asset_transfer_request_review.js"></script>
   </body>
 </html>

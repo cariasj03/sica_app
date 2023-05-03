@@ -1,5 +1,5 @@
 //DOM elements
-const reviewTransferAssetRequestButton = document.getElementById(
+const reviewRequestButton = document.getElementById(
   'reviewTransferAssetRequestButton'
 );
 
@@ -17,13 +17,13 @@ const fetchSortedTransfers = async (sortValue) => {
 };
 
 //Function to fetch filtered transfers
-const fetchFilteredTransfers = async (unit) => {
+const fetchFilteredTransfers = async (filterType, unit) => {
   try {
-    const Transfers = await fetch(
-      `http://127.0.0.1:8000/transfers-requests/filter/unit/${unit}`
+    const transfers = await fetch(
+      `http://127.0.0.1:8000/transfers-requests/filter/by-${filterType}/${unit}`
     );
-    const TransfersList = await transfers.json();
-    return TransfersList;
+    const transfersList = await transfers.json();
+    return transfersList;
   } catch (error) {
     console.log(error);
   }
@@ -45,22 +45,35 @@ const fetchSortedUnits = async (sortValue) => {
 //Function to fetch searched Transfers
 const fetchSearchedTransfers = async (searchValue, type) => {
   try {
-    const Transfers = await fetch(
+    const transfers = await fetch(
       `http://127.0.0.1:8000/transfers-requests/search/by-${type}/${searchValue}`
     );
-    const TransfersList = await transfers.json();
-    return TransfersList;
+    const transfersList = await transfers.json();
+    return transfersList;
+  } catch (error) {
+    console.log(error);
+  }
+};
+
+//Function to fetch asset information
+const fetchAssetInformation = async (assetId) => {
+  try {
+    const asset = await fetch(`http://127.0.0.1:8000/assets/${assetId}`);
+    const assetJson = await asset.json();
+
+    return assetJson[0];
   } catch (error) {
     console.log(error);
   }
 };
 
 //Function to load the transfers in the table
-const loadTranfers = (transfersList) => {
+const loadTransfers = (transfersList) => {
   const table = document.querySelector('table');
   table.innerHTML =
     '<tr><th></th><th>ID del traslado</th><th>ID del activo</th><th>Nombre del activo</th><th>Unidad de origen</th><th>Unidad de destino</th></tr>';
-  transfersList.forEach(function (transfer) {
+
+  transfersList.forEach(async (transfer) => {
     const tableRow = document.createElement('tr');
     const tableRowRadio = document.createElement('td');
 
@@ -69,20 +82,24 @@ const loadTranfers = (transfersList) => {
     const transferId = document.createElement('td');
     transferId.innerText = `${transfer.transferId}`;
 
-    const transferName = document.createElement('td');
-    transferName.innerText = `${transfer.transferName}`;
+    const assetId = document.createElement('td');
+    assetId.innerText = `${transfer.assetId}`;
 
-    const transferUnitOrigin = document.createElement('td');
-    transferUnitOrigin.innerText = `${tranfer.transferUnitOrigin}`;
+    const assetName = document.createElement('td');
+    assetName.innerText = `${transfer.assetName}`;
 
-    const transferUnitDestination = document.createElement('td');
-    transferUnitDestination.innerText = `${transfer.transferUnitDestination}`;
+    const originUnit = document.createElement('td');
+    originUnit.innerText = `${transfer.originUnit}`;
+
+    const targetUnit = document.createElement('td');
+    targetUnit.innerText = `${transfer.targetUnit}`;
 
     tableRow.appendChild(tableRowRadio);
     tableRow.appendChild(transferId);
-    tableRow.appendChild(transferName);
-    tableRow.appendChild(transferUnitOrigin);
-    tableRow.appendChild(transferUnitDestination);
+    tableRow.appendChild(assetId);
+    tableRow.appendChild(assetName);
+    tableRow.appendChild(originUnit);
+    tableRow.appendChild(targetUnit);
 
     table.appendChild(tableRow);
   });
@@ -217,26 +234,6 @@ const pagination = () => {
       enableButton(nextButton);
     }
   };
-<<<<<<< Updated upstream
-  
-  //Function sort the users in the table
-  const sortTransfers = () => {
-    const nameRadioButton = document.getElementById('nameRadio');
-    const sortRadioButtons = document.getElementsByName('sortRadio');
-  
-    //Set the default sort radio button
-    nameRadioButton.checked = true;
-  
-    //Event listeners
-    sortRadioButtons.forEach((radioButton) => {
-      radioButton.addEventListener('change', async () => {
-        clearUnitSelect();
-        if (radioButton.checked) {
-          const sortValue = radioButton.value;
-          const usersList = await fetchSortedTransfers(sortValue);
-          buildPage(usersList);
-        }
-=======
 
   //Function calls
   buildPaginationNumbers();
@@ -250,7 +247,6 @@ const pagination = () => {
     if (pageIndex) {
       number.addEventListener('click', () => {
         setCurrentPage(pageIndex);
->>>>>>> Stashed changes
       });
     }
   });
@@ -267,14 +263,21 @@ const pagination = () => {
 //Function to build the options in the units select
 const buildUnitsSelect = (unitsList) => {
   unitsList.forEach(function (element) {
-    const unitSelect = document.getElementById('unitSelect');
-    const selectOption = document.createElement('option');
+    const originUnitSelect = document.getElementById('originUnit');
+    const targetUnitSelect = document.getElementById('targetUnit');
+    const originSelectOption = document.createElement('option');
+    const targetSelectOption = document.createElement('option');
 
-    selectOption.id = `${element['id']}`;
-    selectOption.value = `${element['name']}`;
-    selectOption.innerText = `${element['name']}`;
+    originSelectOption.id = `${element['id']}`;
+    originSelectOption.value = `${element['name']}`;
+    originSelectOption.innerText = `${element['name']}`;
 
-    unitSelect.appendChild(selectOption);
+    targetSelectOption.id = `${element['id']}`;
+    targetSelectOption.value = `${element['name']}`;
+    targetSelectOption.innerText = `${element['name']}`;
+
+    originUnitSelect.appendChild(originSelectOption);
+    targetUnitSelect.appendChild(targetSelectOption);
   });
 };
 
@@ -288,40 +291,62 @@ const clearSortRadioButtons = () => {
 
 //Function to clear unit select
 const clearUnitSelect = () => {
-  const unitSelect = document.getElementById('unitSelect');
-  unitSelect.options[0].selected = true;
+  const originUnitSelect = document.getElementById('originUnit');
+  const targetUnitSelect = document.getElementById('targetUnit');
+
+  originUnitSelect.options[0].selected = true;
+  targetUnitSelect.options[0].selected = true;
 };
 
 //Function sort the users in the table
 const sortTransfers = () => {
-  const nameRadioButton = document.getElementById('nameRadio');
+  const transferIdRadioButton = document.getElementById('transferIdRadio');
   const sortRadioButtons = document.getElementsByName('sortRadio');
 
   //Set the default sort radio button
-  nameRadioButton.checked = true;
+  transferIdRadioButton.checked = true;
 
   //Event listeners
   sortRadioButtons.forEach((radioButton) => {
-    radioButton.addEventListener('change', async () => {
+    radioButton.addEventListener('click', async () => {
       clearUnitSelect();
-      if (radioButton.checked) {
-        const sortValue = radioButton.value;
-        const usersList = await fetchSortedUsers(sortValue);
-        buildPage(usersList);
-      }
+      const sortValue = radioButton.value;
+      const transfersList = await fetchSortedTransfers(sortValue);
+
+      buildPage(transfersList);
     });
   });
 };
 
 //Function to filter the transfers in the table
 const filterTransfers = () => {
-  const unitSelect = document.getElementById('unitSelect');
+  const originUnitSelect = document.getElementById('originUnit');
+  const targetUnitSelect = document.getElementById('targetUnit');
+
   //Event listeners
-  unitSelect.addEventListener('change', async () => {
+  originUnitSelect.addEventListener('change', async () => {
     //Reset the sort radio buttons
     clearSortRadioButtons();
 
-    const transfersList = await fetchFilteredTransfers(unitSelect.value);
+    targetUnitSelect.options[0].selected = true;
+
+    const transfersList = await fetchFilteredTransfers(
+      'origin-unit',
+      originUnitSelect.value
+    );
+    buildPage(transfersList);
+  });
+
+  targetUnitSelect.addEventListener('change', async () => {
+    //Reset the sort radio buttons
+    clearSortRadioButtons();
+
+    originUnitSelect.options[0].selected = true;
+
+    const transfersList = await fetchFilteredTransfers(
+      'target-unit',
+      targetUnitSelect.value
+    );
     buildPage(transfersList);
   });
 };
@@ -330,7 +355,7 @@ const filterTransfers = () => {
 const searchTransfer = async (searchInput) => {
   let transfersList;
   if (searchInput.value === '') {
-    transfersList = await fetchSortedTransfers('id');
+    transfersList = await fetchSortedTransfers('transfer-id');
   } else {
     //Clear the sort radio buttons
     clearSortRadioButtons();
@@ -342,16 +367,16 @@ const searchTransfer = async (searchInput) => {
     let type;
 
     switch (searchInput.id) {
-      case 'idTransferSearch':
-        type = 'id';
+      case 'transferIdSearch':
+        type = 'transfer-id';
         break;
-      case 'nameSearch':
-        type = 'name';
+      case 'assetIdSearch':
+        type = 'asset-id';
         break;
     }
     transfersList = await fetchSearchedTransfers(searchValue, type);
   }
-  buildPage(transfersList);
+  await buildPage(transfersList);
 };
 
 //Function to search the transfers in the table
@@ -360,18 +385,18 @@ const searchTransfers = () => {
   const searchInputs = document.getElementsByName('searchInput');
 
   searchInputs.forEach((searchInput) => {
-    searchInput.addEventListener('change', async () => {
+    searchInput.addEventListener('change', () => {
       searchTransfer(searchInput);
     });
-    searchInput.addEventListener('keyup', async () => {
+    searchInput.addEventListener('keyup', () => {
       searchTransfer(searchInput);
     });
   });
 };
 
 //Function to build the page
-const buildPage = async (usersList) => {
-  loadTranfers(transfersList);
+const buildPage = (transfersList) => {
+  loadTransfers(transfersList);
   selectRow();
   pagination();
 };
@@ -394,12 +419,11 @@ const buildPageAsync = async function () {
   const unitsList = await fetchSortedUnits('name');
   buildUnitsSelect(unitsList);
 
-  const transfersList = await fetchSortedTransfers('id');
+  const transfersList = await fetchSortedTransfers('transfer-id');
   buildPage(transfersList);
   sortTransfers();
   filterTransfers();
   searchTransfers();
-  searchTransfer();
 };
 
 //Function calls

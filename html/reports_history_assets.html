@@ -120,23 +120,21 @@
 
               <hr />
 
-              <h3>Buscar por</h3>
-              <label for="idSearch"
-                >ID<input
-                  class="inputStyle"
-                  type="search"
-                  id="idSearch"
-                  name="idSearch"
-                  placeholder="ID"
-              /></label>
-              <label for="nameSearch"
-                >Nombre<input
-                  class="inputStyle"
-                  type="search"
-                  id="nameSearch"
-                  name="nameSearch"
-                  placeholder="Nombre"
-              /></label>
+              <h3>Filtrar por</h3>
+              <label for="originUnit"
+                >Unidad de origen<select class="inputStyle" id="originUnit">
+                  <option value="" disabled selected hidden>
+                    Unidad de origen
+                  </option>
+                </select></label
+              >
+              <label for="targetUnit"
+                >Unidad de destino<select class="inputStyle" id="targetUnit">
+                  <option value="" disabled selected hidden>
+                    Unidad de destino
+                  </option>
+                </select></label
+              >
             </div>
           </div>
 
@@ -153,26 +151,16 @@
                 &lt;
               </button>
 
-              <div id="paginationNumbers">
-                <a
-                  class="paginationNumber activePage"
-                  page-index="1"
-                  aria-label="Page 1"
-                  >1</a
-                >
-                <a class="paginationNumber" page-index="2" aria-label="Page 2"
-                  >2</a
-                >
-                <a class="paginationNumber" page-index="3" aria-label="Page 3"
-                  >3</a
-                >
-                <a class="paginationNumber" page-index="4" aria-label="Page 4"
-                  >4</a
-                >
-                <a class="paginationNumber" page-index="5" aria-label="Page 5"
-                  >5</a
-                >
-              </div>
+              <tr>
+                <td>000002</td>
+                <td>Monitor LG IPS</td>
+                <td>Central</td>
+                <td>Bodega</td>
+                <td>PROBODPIS102</td>
+                <td>20/03/2023</td>
+                <td>105360875</td>
+                <td>105360875</td>
+              </tr>
 
               <button
                 id="nextButton"

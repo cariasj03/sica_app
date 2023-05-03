@@ -39,11 +39,10 @@ const fetchSortedRoles = async (sortValue) => {
   }
 };
 
-
 //Function to fetch filtered users
 const fetchFilteredUnit = async (unit) => {
   try {
-    console.log(unit)
+    console.log(unit);
     const units = await fetch(
       `http://127.0.0.1:8000/users/filter/unit/${unit}`
     );
@@ -67,43 +66,30 @@ const fetchFilteredRole = async (role) => {
   }
 };
 
-//Function to fetch searched users
-const fetchSearchedUsers = async (searchValue, type) => {
-  try {
-    const users = await fetch(
-      `http://127.0.0.1:8000/users/search/by-${type}/${searchValue}`
-    );
-    const usersList = await users.json();
-    return usersList;
-  } catch (error) {
-    console.log(error);
-  }
-};
-
 //Function to load the users in the table
 const loadUsers = (usersList) => {
-  const table = document.querySelector("table");
+  const table = document.querySelector('table');
   table.innerHTML =
-    "<tr><th>Identificación</th><th>Nombre Completo</th><th>Correo electrónico</th><th>Teléfono</th><th>Unidad</th><th>Rol</th><th>Fecha de creación</th><th>Aprobado por</th></tr>";
+    '<tr><th>Identificación</th><th>Nombre Completo</th><th>Correo electrónico</th><th>Teléfono</th><th>Unidad</th><th>Rol</th><th>Fecha de creación</th><th>Aprobado por</th></tr>';
   usersList.forEach(function (user) {
-    const tableRow = document.createElement("tr");
+    const tableRow = document.createElement('tr');
 
-    const userID = document.createElement("td");
+    const userID = document.createElement('td');
     userID.innerText = `${user.id}`;
 
-    const userFullName = document.createElement("td");
-    userFullName.innerText = `${user.firstName}` + " " + `${user.lastName}`;
+    const userFullName = document.createElement('td');
+    userFullName.innerText = `${user.firstName}` + ' ' + `${user.lastName}`;
 
-    const userEmail = document.createElement("td");
+    const userEmail = document.createElement('td');
     userEmail.innerText = `${user.email}`;
 
-    const userPhone = document.createElement("td");
+    const userPhone = document.createElement('td');
     userPhone.innerText = `${user.phoneNumber}`;
 
-    const userUnit = document.createElement("td");
+    const userUnit = document.createElement('td');
     userUnit.innerText = `${user.unit}`;
 
-    const userRole = document.createElement("td");
+    const userRole = document.createElement('td');
     userRole.innerText = `${user.role}`;
 
     const userCreationDate = new Date(user.creationDate);
@@ -112,7 +98,7 @@ const loadUsers = (usersList) => {
     const userDate = document.createElement('td');
     userDate.innerText = `${day}/${month}/${userCreationDate.getFullYear()}`;
 
-    const userApprovedBy = document.createElement("td");
+    const userApprovedBy = document.createElement('td');
     userApprovedBy.innerText = `${user.approvedBy}`;
 
     tableRow.appendChild(userID);
@@ -128,18 +114,17 @@ const loadUsers = (usersList) => {
   });
 };
 
-
 //////// Pagination ////////
 const pagination = () => {
   //DOM elements
-  const paginationNumbers = document.getElementById("paginationNumbers");
-  const paginatedTable = document.getElementById("paginatedTable");
-  const tableRows = paginatedTable.querySelectorAll("tr");
-  const nextButton = document.getElementById("nextButton");
-  const prevButton = document.getElementById("prevButton");
+  const paginationNumbers = document.getElementById('paginationNumbers');
+  const paginatedTable = document.getElementById('paginatedTable');
+  const tableRows = paginatedTable.querySelectorAll('tr');
+  const nextButton = document.getElementById('nextButton');
+  const prevButton = document.getElementById('prevButton');
 
   //Reset pagination numbers
-  paginationNumbers.innerHTML = "";
+  paginationNumbers.innerHTML = '';
 
   //Pagination variables
   const paginationLimit = 11;
@@ -147,11 +132,11 @@ const pagination = () => {
   let currentPage;
 
   const appendPageNumber = (index) => {
-    const pageNumber = document.createElement("a");
+    const pageNumber = document.createElement('a');
     pageNumber.innerHTML = index;
-    pageNumber.classList.add("paginationNumber");
-    pageNumber.setAttribute("page-index", index);
-    pageNumber.setAttribute("aria-label", "Page " + index);
+    pageNumber.classList.add('paginationNumber');
+    pageNumber.setAttribute('page-index', index);
+    pageNumber.setAttribute('aria-label', 'Page ' + index);
     paginationNumbers.appendChild(pageNumber);
   };
 
@@ -172,41 +157,41 @@ const pagination = () => {
     const prevRange = (pageNum - 1) * paginationLimit;
     const currRange = pageNum * paginationLimit;
     tableRows.forEach((row, index) => {
-      row.classList.add("hidden");
+      row.classList.add('hidden');
       if (index >= prevRange && index < currRange) {
-        row.classList.remove("hidden");
+        row.classList.remove('hidden');
       }
 
       if (index === 0) {
-        row.classList.remove("hidden");
+        row.classList.remove('hidden');
       }
     });
   };
 
   //Function to handle active page number
   const handleActivePageNumber = () => {
-    document.querySelectorAll(".paginationNumber").forEach((number) => {
-      number.classList.remove("active");
+    document.querySelectorAll('.paginationNumber').forEach((number) => {
+      number.classList.remove('active');
 
-      const pageIndex = Number(number.getAttribute("page-index"));
+      const pageIndex = Number(number.getAttribute('page-index'));
       if (pageIndex === currentPage) {
-        number.classList.add("activePage");
+        number.classList.add('activePage');
       } else {
-        number.classList.remove("activePage");
+        number.classList.remove('activePage');
       }
     });
   };
 
   //Function to disable prev and next buttons
   const disableButton = (button) => {
-    button.classList.add("disabledPageButton");
-    button.setAttribute("disabled", true);
+    button.classList.add('disabledPageButton');
+    button.setAttribute('disabled', true);
   };
 
   //Function to enable prev and next buttons
   const enableButton = (button) => {
-    button.classList.remove("disabledPageButton");
-    button.removeAttribute("disabled");
+    button.classList.remove('disabledPageButton');
+    button.removeAttribute('disabled');
   };
 
   //Function to handle page buttons status
@@ -228,22 +213,22 @@ const pagination = () => {
   setCurrentPage(1);
 
   //Event listeners
-  const paginationNumbersList = document.querySelectorAll(".paginationNumber");
+  const paginationNumbersList = document.querySelectorAll('.paginationNumber');
   paginationNumbersList.forEach((number) => {
-    const pageIndex = Number(number.getAttribute("page-index"));
+    const pageIndex = Number(number.getAttribute('page-index'));
 
     if (pageIndex) {
-      number.addEventListener("click", () => {
+      number.addEventListener('click', () => {
         setCurrentPage(pageIndex);
       });
     }
   });
 
-  prevButton.addEventListener("click", () => {
+  prevButton.addEventListener('click', () => {
     setCurrentPage(currentPage - 1);
   });
 
-  nextButton.addEventListener("click", () => {
+  nextButton.addEventListener('click', () => {
     setCurrentPage(currentPage + 1);
   });
 };
@@ -251,12 +236,12 @@ const pagination = () => {
 //Function to build the options in the units select
 const buildUnitsSelect = (unitsList) => {
   unitsList.forEach(function (element) {
-    const unitSelect = document.getElementById("unitSelect");
-    const selectOption = document.createElement("option");
+    const unitSelect = document.getElementById('unitSelect');
+    const selectOption = document.createElement('option');
 
-    selectOption.id = `${element["id"]}`;
-    selectOption.value = `${element["name"]}`;
-    selectOption.innerText = `${element["name"]}`;
+    selectOption.id = `${element['id']}`;
+    selectOption.value = `${element['name']}`;
+    selectOption.innerText = `${element['name']}`;
 
     unitSelect.appendChild(selectOption);
   });
@@ -282,7 +267,7 @@ const buildRoleSelect = (rolesList) => {
 
 //Function to clear de sort radio buttons
 const clearSortRadioButtons = () => {
-  const sortRadioButtons = document.getElementsByName("sortRadio");
+  const sortRadioButtons = document.getElementsByName('sortRadio');
   sortRadioButtons.forEach((radioButton) => {
     radioButton.checked = false;
   });
@@ -290,7 +275,7 @@ const clearSortRadioButtons = () => {
 
 //Function to clear unit select
 const clearUnitSelect = () => {
-  const unitSelect = document.getElementById("unitSelect");
+  const unitSelect = document.getElementById('unitSelect');
   unitSelect.options[0].selected = true;
 };
 
@@ -300,11 +285,9 @@ const clearRoleSelect = () => {
   roleSelect.options[0].selected = true;
 };
 
-
-
 //Function sort the users in the table
 const sortUsers = () => {
-  const sortRadioButtons = document.getElementsByName("sortRadio");
+  const sortRadioButtons = document.getElementsByName('sortRadio');
 
   //Event listeners
   sortRadioButtons.forEach((radioButton) => {
@@ -320,14 +303,12 @@ const sortUsers = () => {
   });
 };
 
-
-
 //Function to filter the users in the table
 const filterUsers = () => {
-  const unitSelect = document.getElementById("unitSelect");
-  
+  const unitSelect = document.getElementById('unitSelect');
+
   //Event listeners
-  unitSelect.addEventListener("change", async () => {
+  unitSelect.addEventListener('change', async () => {
     //Reset the sort radio buttons
     clearSortRadioButtons();
     clearRoleSelect();
@@ -336,59 +317,15 @@ const filterUsers = () => {
     buildPage(userList);
   });
 
-  const roleSelect = document.getElementById("roleSelect");
+  const roleSelect = document.getElementById('roleSelect');
   //Event listeners
-  roleSelect.addEventListener("change", async () => {
+  roleSelect.addEventListener('change', async () => {
     //Reset the sort radio buttons
     clearSortRadioButtons();
     clearUnitSelect();
-    
+
     const usersRoleList = await fetchFilteredRole(roleSelect.value);
     buildPage(usersRoleList);
-  });
-
-};
-
-
-
-//Function to search
-const searchUser = async (searchInput) => {
-  let usersList;
-  if (searchInput.value === "") {
-    usersList = await fetchSortedUsers("name");
-  } else {
-    //Clear the sort radio buttons
-    clearSortRadioButtons();
-    clearUnitSelect();
-    clearRoleSelect();
-    const searchValue = searchInput.value;
-    let type;
-
-    switch (searchInput.id) {
-      case "idSearch":
-        type = "id";
-        break;
-      case "nameSearch":
-        type = "name";
-        break;
-    }
-    usersList = await fetchSearchedUsers(searchValue, type);
-  }
-  buildPage(usersList);
-};
-
-//Function to search the users in the table
-const searchUsers = () => {
-  //DOM elements
-  const searchInputs = document.getElementsByName("searchInput");
-
-  searchInputs.forEach((searchInput) => {
-    searchInput.addEventListener("change", async () => {
-      searchUser(searchInput);
-    });
-    searchInput.addEventListener("keyup", async () => {
-      searchUser(searchInput);
-    });
   });
 };
 
@@ -408,10 +345,9 @@ const buildPageAsync = async function () {
 
   const usersList = await fetchSortedUsers('name');
   buildPage(usersList);
-  
+
   sortUsers();
   filterUsers();
-  searchUsers();
 };
 
 //Function calls

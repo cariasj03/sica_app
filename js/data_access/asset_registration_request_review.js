@@ -82,6 +82,7 @@ const approveAssetRegistration = async () => {
     const idInput = document.getElementById('assetId');
     const body = {
       isApproved: true,
+      approvedBy: sessionUserData.id,
     };
 
     await updateAssetInformation(idInput.value, body);
@@ -104,26 +105,14 @@ const rejectAssetRegistration = async () => {
 //Event listeners
 //Event listener to approve the user registration
 approveButton.addEventListener('click', async (event) => {
-  event.preventDefault();
-  formInputs.forEach((input) => {
-    input.click();
-  });
   try {
-    if (
-      Object.values(
-        validationFields.assetRegistrationRequestReviewFormFields
-      ).every(Boolean)
-    ) {
-      confirmationAlert(
-        '¿Está seguro de que desea aprobar la solicitud?',
-        'Solicitud aprobada.',
-        'La solicitud fue aprobada con éxito.',
-        '../html/asset_registration_requests_list.html',
-        approveAssetRegistration
-      );
-    } else {
-      errorAlert('Hay campos obligatorios sin llenar.');
-    }
+    confirmationAlert(
+      '¿Está seguro de que desea aprobar la solicitud?',
+      'Solicitud aprobada.',
+      'La solicitud fue aprobada con éxito.',
+      '../html/asset_registration_requests_list.html',
+      approveAssetRegistration
+    );
   } catch (error) {
     console.log(error);
     errorAlert('Hubo un error al aprobar el activo.');
