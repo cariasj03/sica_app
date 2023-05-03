@@ -12,19 +12,19 @@ const fetchSortedTransfers = async (sortValue) => {
 };
 
 //Function to build the page
-const buildPage = (assetsList) => {
-  buildTableRows(assetsList);
+const buildPage = (transfersList) => {
+  buildTableRows(transfersList);
   selectRow();
   pagination();
 };
 
 //Function to load the assets in the table
-const buildTableRows = (assetsList) => {
+const buildTableRows = (transfersList) => {
   const table = document.querySelector('table');
   table.innerHTML =
-    '<tr><th></th><th>ID</th><th>Nombre</th><th>Unidad</th><th>Código de ubicación</th><th>Estado</th></tr>';
+    '<tr><th></th><th>Solicitado por:</th><th>Aprobado por:</th><th>Unidad de Origen:</th><th>Unidad de </th><th>Estado</th></tr>';
 
-  assetsList.forEach(function (asset) {
+  transfersList.forEach(function (asset) {
     const tableRow = document.createElement('tr');
     const tableRowRadio = document.createElement('td');
 
@@ -226,8 +226,8 @@ const sortAssets = () => {
       clearStatusSelect();
       if (radioButton.checked) {
         const sortValue = radioButton.value;
-        const assetsList = await fetchSortedTransfers(sortValue);
-        buildPage(assetsList);
+        const transfersList = await fetchSortedTransfers(sortValue);
+        buildPage(transfersList);
       }
     });
   });
@@ -277,9 +277,9 @@ const clearStatusSelect = () => {
 
 //Function to search
 const searchAsset = async (searchInput) => {
-  let assetsList;
+  let transfersList;
   if (!searchInput || searchInput.value === '') {
-    assetsList = await fetchSortedAssets('id');
+    transfersList = await fetchSortedAssets('id');
   } else {
     //Clear the sort radio buttons
     clearSortRadioButtons();
@@ -299,9 +299,9 @@ const searchAsset = async (searchInput) => {
         type = 'name';
         break;
     }
-    assetsList = await fetchSearchedAssets(searchValue, type);
+    transfersList = await fetchSearchedAssets(searchValue, type);
   }
-  buildPage(assetsList);
+  buildPage(transfersList);
 };
 
 //Function to build the options in the units select
@@ -377,9 +377,9 @@ const buildPageAsync = async function () {
   const unitsList = await fetchSortedUnits('name');
   buildUnitsSelect(unitsList);
 
-  const assetsList = await fetchSortedAssets('id');
-  buildStatusSelect(assetsList);
-  buildPage(assetsList);
+  const transfersList = await fetchSortedAssets('id');
+  buildStatusSelect(transfersList);
+  buildPage(transfersList);
   sortAssets();
   filterAssets();
   searchAsset();
